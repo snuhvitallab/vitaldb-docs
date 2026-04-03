@@ -1,5 +1,10 @@
-### Drager Infinity C500 / C700
+# Drager Infinity C500 / C700
 
+<!-- meta
+category: Patient Monitor
+manufacturer: Drager
+vr_device_name: Infinity
+-->
 > **Note:** No additional device configuration required.
 
 | Cable | Adapter | Port | VR Device Name |
@@ -11,15 +16,15 @@
 
 1. Prepare a cable: **RJ10 pins 3, 2, 4** → **DB-9F pins 2, 3, 5**.
 
-   <img src="hardware_images/drager_infinity_c500_2.png" width="290" alt="RJ10 to DB-9F pinout">
+   <img src="../hardware_images/drager_infinity_c500_2.png" width="300" alt="RJ10 to DB-9F pinout">
 
 2. Connect the **RJ10 end** to the P2500 RJ10 port.
 
-   <img src="hardware_images/drager_infinity_c500_3.png" width="600" alt="P2500 RJ10 port connection">
+   <img src="../hardware_images/drager_infinity_c500_3.png" width="450" alt="P2500 RJ10 port connection">
 
 3. Connect the **DB-9F end** to the PC via USB-Serial converter.
 
-   <img src="hardware_images/drager_infinity_c500_4.png" width="600" alt="Full connection overview">
+   <img src="../hardware_images/drager_infinity_c500_4.png" width="450" alt="Full connection overview">
 
 **Connection Steps — Waveform Data:**
 
@@ -28,8 +33,4 @@
    - [Connector purchase link](http://www.cableguy.com/shop/mall.php?cat=007002007&query=view&no=210644)
    - [Pre-made cable purchase link](http://www.cableguy.com/shop/mall.php?cat=025015011&query=view&no=209983)
 
-   <img src="hardware_images/drager_infinity_c500_1.png" width="600" alt="MDR14 to RJ45 wiring diagram">
-
-[↑ Quick Reference](#quick-reference--all-devices)
-
----
+   <img src="../hardware_images/drager_infinity_c500_1.png" width="450" alt="MDR14 to RJ45 wiring diagram">
