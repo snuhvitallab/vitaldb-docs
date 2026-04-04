@@ -14,9 +14,10 @@ VitalRecorder is a real-time vital signs recording application for Windows, Rasp
 6. [Port Filtering](#port-filtering)
 7. [Recording](#recording)
 8. [Server Upload](#server-upload)
-9. [Command Line Options](#command-line-options)
-10. [Supported Devices](#supported-devices)
-11. [Troubleshooting](#troubleshooting)
+9. [Configuration File (vr.conf)](#configuration-file-vrconf)
+10. [Command Line Options](#command-line-options)
+11. [Supported Devices](#supported-devices)
+12. [Troubleshooting](#troubleshooting)
 
 ---
 
@@ -219,6 +220,256 @@ Data is compressed with zlib before upload.
 ### HL7 Mode
 
 When the `HL7` setting is enabled, VitalRecorder sends room data in HL7 format instead of JSON.
+
+---
+
+## Configuration File (vr.conf)
+
+VitalRecorder stores all settings in a single configuration file called `vr.conf`. This file uses an INI-like format and can be edited manually for headless deployments or batch provisioning.
+
+### File Location
+
+| Platform | Path |
+|----------|------|
+| Windows | `%APPDATA%\VitalRecorder\vr.conf` |
+| Linux | `./vr.conf` > `~/vr.conf` > `/boot/vr.conf` (searched in order) |
+
+- Encoding: UTF-8
+- Use `--conf <path>` to specify an alternate configuration file.
+
+### File Structure
+
+```ini
+# Global settings (before any section)
+KEY=VALUE
+
+# Bed (tab) definition
+[BED/bedname]
+
+# Device under this bed
+[DEV/devicename]
+type=DeviceType
+port=PortSpec
+
+# Filter under this bed
+[FILT/filter_module_name]
+```
+
+**Rules:**
+- One `KEY=VALUE` pair per line.
+- Section headers start with `[`.
+- Blank lines are ignored.
+- `[DEV/...]` and `[FILT/...]` sections belong to the preceding `[BED/...]`.
+- A single `[BED/...]` can contain multiple devices and filters.
+
+### Global Settings
+
+#### General
+
+| Key | Default | Description |
+|-----|---------|-------------|
+| `SAVEDIR` | (system default) | Recording file save directory |
+| `VRCODE` | (auto-generated) | Unique VitalRecorder identification code |
+| `DEBUG` | 0 | Debug mode (0: off, 1: on) |
+| `FILENAME_TEMPLATE` | `%r_%y%m%d_%h%i%s` | Recording filename template |
+
+#### Recording
+
+| Key | Default | Description |
+|-----|---------|-------------|
+| `RECORD_WHEN_START` | 1 | Auto-record on launch (0: off, 1: on) |
+| `CUT_FILE` | 1 | Split file at patient boundaries (0: off, 1: on) |
+| `CUT_HOURLY` | 0 | Split file every hour (0: off, 1: on) |
+| `CUT_BY` | (none) | Signal for file split trigger (e.g., `spo2`, `hr`, `any`) |
+| `PT_WAITING_TIME` | 5 | Patient waiting time in minutes |
+
+#### Server
+
+| Key | Default | Description |
+|-----|---------|-------------|
+| `SERVER_IP` | (none) | VitalDB server address (IP:port) |
+| `UPLOAD_SERVER_IP` | (none) | File upload server address |
+| `MONITOR_SERVER_IP` | (none) | Web monitoring server address |
+| `SEND_WEB` | 1 | Send data to web server (0: off, 1: on) |
+| `CLOUD_UPLOAD` | 0 | Enable cloud upload (0: off, 1: on) |
+
+#### Window
+
+| Key | Default | Description |
+|-----|---------|-------------|
+| `START_MAXIMIZED` | 1 | Start maximized |
+| `START_MINIMIZED` | 0 | Start minimized |
+| `OPTION_MIN_TO_TRAY` | 0 | Minimize to system tray |
+| `OPTION_ALWAYS_ON_TOP` | 0 | Always on top |
+| `PLAY_SOUND` | 1 | Play alarm sounds |
+
+#### Event Presets
+
+Up to 30 event preset labels can be defined with `EVT_TEXT_0` through `EVT_TEXT_29`.
+
+```ini
+EVT_TEXT_0=Induction
+EVT_TEXT_1=Intubation
+EVT_TEXT_2=Incision
+```
+
+### Bed Section
+
+Defines a bed (tab). Multiple beds can be defined in a single configuration file.
+
+```ini
+[BED/OR1]
+```
+
+- The bed name follows `BED/` (e.g., `OR1`, `ICU_BED3`).
+- If omitted, the bed name is auto-generated from VRCODE or the PC hostname.
+
+### Device Section
+
+Devices are added under a `[BED/...]` section.
+
+```ini
+[DEV/devicename]
+type=DeviceType
+port=PortSpec
+```
+
+| Key | Required | Description |
+|-----|----------|-------------|
+| `type` | Yes | Device type (e.g., `BIS`, `Intellivue`, `Solar8000`) |
+| `port` | Yes | Connection port (see Port Formats below) |
+| `company` | No | Manufacturer (e.g., `Nihon Kohden`) |
+| `readonly` | No | Read-only mode (0: off, 1: on) |
+
+#### Port Formats
+
+| Format | Example | Description |
+|--------|---------|-------------|
+| COM port | `COM1`, `COM3` | Windows serial port |
+| TCP/IP | `192.168.1.100:4343` | Network device (IP:port) |
+| Port number | `4343` | TCP server mode on localhost |
+| RPi serial | `F1`-`F4` | Raspberry Pi AMA ports |
+| RPi USB | `LU`, `LU1`-`LU4` | USB Left Upper |
+| RPi USB | `RU`, `RU1`-`RU4` | USB Right Upper |
+
+#### Port Filtering in Config
+
+The port value supports keyword and IP filters (same syntax as described in [Port Filtering](#port-filtering)):
+
+```
+port=PORT#keyword1 keyword2#keyword3@IP_SUFFIX
+```
+
+#### ADC Device Settings
+
+For ADC (Analog-to-Digital Converter) devices, additional per-channel settings are available:
+
+| Key | Description |
+|-----|-------------|
+| `srate` | Sampling rate in Hz |
+| `parname1`, `parname2`, ... | Parameter name for each channel |
+| `gain1`, `gain2`, ... | Voltage-to-physical-unit conversion gain for each channel |
+
+```ini
+[DEV/SNUADC]
+type=SNUADC
+port=COM3
+srate=500
+parname1=ECG
+gain1=1.0
+parname2=ART
+gain2=100.0
+```
+
+### Filter Section
+
+Adds a real-time signal processing filter. Filter definitions are loaded from the filter server.
+
+```ini
+[FILT/filter_module_name]
+```
+
+- The module name must match the `modname` of a filter registered on the server.
+- No additional settings are needed (filter parameters are provided by the server).
+
+### Configuration Examples
+
+#### Single Patient Monitor
+
+```ini
+SAVEDIR=D:\VitalData
+
+[BED/OR1]
+
+[DEV/Solar8000]
+type=Solar8000
+port=COM1
+```
+
+#### Multiple Devices
+
+```ini
+SAVEDIR=D:\VitalData
+VRCODE=OR1_PC
+
+[BED/OR1]
+
+[DEV/Intellivue]
+type=Intellivue
+port=192.168.1.100:4343
+
+[DEV/BIS]
+type=BIS
+port=COM3
+
+[DEV/Primus]
+type=Primus
+port=COM4
+```
+
+#### Multiple Beds
+
+```ini
+SAVEDIR=D:\VitalData
+
+[BED/OR1]
+
+[DEV/Solar8000]
+type=Solar8000
+port=COM1
+
+[BED/OR2]
+
+[DEV/Philips]
+type=Intellivue
+port=192.168.1.101:4343
+```
+
+#### Debug / Test
+
+```ini
+SAVEDIR=C:\Users\lucid\Desktop
+DEBUG=1
+
+[BED/test]
+
+[DEV/NK EGA]
+type=EGA
+company=Nihon Kohden
+port=9001
+```
+
+#### With Filter
+
+```ini
+[BED/OR1]
+
+[DEV/Solar8000]
+type=Solar8000
+port=COM1
+
+[FILT/pleth_spi]
+```
 
 ---
 
