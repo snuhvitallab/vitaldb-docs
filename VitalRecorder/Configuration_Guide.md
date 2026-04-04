@@ -1,110 +1,110 @@
-# VitalRecorder 설정 파일 (vr.conf) 가이드
+# VitalRecorder Configuration File (vr.conf) Guide
 
-VitalRecorder는 `vr.conf` 파일을 통해 장비, 베드, 필터 등의 설정을 관리합니다.
-이 문서는 설정 파일의 구조와 작성 방법을 설명합니다.
-
----
-
-## 목차
-
-1. [파일 위치](#1-파일-위치)
-2. [파일 구조](#2-파일-구조)
-3. [전역 설정](#3-전역-설정)
-4. [베드 섹션](#4-베드-섹션)
-5. [장비 섹션](#5-장비-섹션)
-6. [필터 섹션](#6-필터-섹션)
-7. [명령줄 옵션](#7-명령줄-옵션)
-8. [설정 예시](#8-설정-예시)
+VitalRecorder manages device, bed, and filter settings through a single configuration file called `vr.conf`.
+This document describes the file structure and how to write it.
 
 ---
 
-## 1. 파일 위치
+## Table of Contents
 
-| 플랫폼 | 경로 |
-|---------|------|
+1. [File Location](#1-file-location)
+2. [File Structure](#2-file-structure)
+3. [Global Settings](#3-global-settings)
+4. [Bed Section](#4-bed-section)
+5. [Device Section](#5-device-section)
+6. [Filter Section](#6-filter-section)
+7. [Command Line Options](#7-command-line-options)
+8. [Configuration Examples](#8-configuration-examples)
+
+---
+
+## 1. File Location
+
+| Platform | Path |
+|----------|------|
 | Windows | `%APPDATA%\VitalRecorder\vr.conf` |
-| Linux | `./vr.conf` → `~/vr.conf` → `/boot/vr.conf` (순서대로 탐색) |
+| Linux | `./vr.conf` > `~/vr.conf` > `/boot/vr.conf` (searched in order) |
 
-- 인코딩: UTF-8
-- 명령줄에서 `--conf <경로>` 옵션으로 다른 설정 파일을 지정할 수 있습니다.
+- Encoding: UTF-8
+- Use `--conf <path>` on the command line to specify an alternate configuration file.
 
 ---
 
-## 2. 파일 구조
+## 2. File Structure
 
-INI 형식을 따르며, 전역 설정과 섹션으로 구성됩니다.
+The file follows an INI-like format consisting of global settings and sections.
 
 ```ini
-# 전역 설정 (파일 최상단)
+# Global settings (top of file)
 KEY=VALUE
 
-# 베드 (탭) 정의
-[BED/베드이름]
+# Bed (tab) definition
+[BED/bedname]
 
-# 해당 베드에 속한 장비
-[DEV/장비이름]
-type=장비타입
-port=포트
+# Device under this bed
+[DEV/devicename]
+type=DeviceType
+port=PortSpec
 
-# 해당 베드에 속한 필터
-[FILT/필터모듈이름]
+# Filter under this bed
+[FILT/filter_module_name]
 ```
 
-**규칙:**
-- 한 줄에 하나의 `KEY=VALUE` 쌍
-- 섹션 헤더는 `[` 로 시작
-- 빈 줄은 무시됨
-- `[BED/...]` 아래에 `[DEV/...]`, `[FILT/...]` 섹션이 속함
-- 하나의 `[BED/...]` 에 여러 장비와 필터를 추가할 수 있음
+**Rules:**
+- One `KEY=VALUE` pair per line
+- Section headers start with `[`
+- Blank lines are ignored
+- `[DEV/...]` and `[FILT/...]` sections belong to the preceding `[BED/...]`
+- A single `[BED/...]` can contain multiple devices and filters
 
 ---
 
-## 3. 전역 설정
+## 3. Global Settings
 
-`[BED/...]` 섹션 이전에 작성하는 설정입니다.
+Settings placed before any `[BED/...]` section.
 
-### 기본 설정
+### General
 
-| 키 | 기본값 | 설명 |
-|----|--------|------|
-| `SAVEDIR` | (시스템 기본) | 녹화 파일 저장 디렉토리 |
-| `VRCODE` | (자동 발급) | VitalRecorder 식별 코드 |
-| `DEBUG` | 0 | 디버그 모드 (0: 끔, 1: 켬) |
-| `FILENAME_TEMPLATE` | `%r_%y%m%d_%h%i%s` | 녹화 파일명 템플릿 |
+| Key | Default | Description |
+|-----|---------|-------------|
+| `SAVEDIR` | (system default) | Recording file save directory |
+| `VRCODE` | (auto-generated) | VitalRecorder identification code |
+| `DEBUG` | 0 | Debug mode (0: off, 1: on) |
+| `FILENAME_TEMPLATE` | `%r_%y%m%d_%h%i%s` | Recording filename template |
 
-### 녹화 설정
+### Recording
 
-| 키 | 기본값 | 설명 |
-|----|--------|------|
-| `RECORD_WHEN_START` | 1 | 시작 시 자동 녹화 (0: 끔, 1: 켬) |
-| `CUT_FILE` | 1 | 환자 경계에서 파일 분할 (0: 끔, 1: 켬) |
-| `CUT_HOURLY` | 0 | 매시간 파일 분할 (0: 끔, 1: 켬) |
-| `CUT_BY` | (없음) | 파일 분할 기준 신호 (예: `spo2`, `hr`, `any`) |
-| `PT_WAITING_TIME` | 5 | 환자 대기 시간 (분) |
+| Key | Default | Description |
+|-----|---------|-------------|
+| `RECORD_WHEN_START` | 1 | Auto-record on launch (0: off, 1: on) |
+| `CUT_FILE` | 1 | Split file at patient boundaries (0: off, 1: on) |
+| `CUT_HOURLY` | 0 | Split file every hour (0: off, 1: on) |
+| `CUT_BY` | (none) | Signal for file split trigger (e.g., `spo2`, `hr`, `any`) |
+| `PT_WAITING_TIME` | 5 | Patient waiting time in minutes |
 
-### 서버 설정
+### Server
 
-| 키 | 기본값 | 설명 |
-|----|--------|------|
-| `SERVER_IP` | (없음) | VitalDB 서버 주소 (IP:포트) |
-| `UPLOAD_SERVER_IP` | (없음) | 파일 업로드 서버 주소 |
-| `MONITOR_SERVER_IP` | (없음) | 웹 모니터링 서버 주소 |
-| `SEND_WEB` | 1 | 웹 서버로 데이터 전송 (0: 끔, 1: 켬) |
-| `CLOUD_UPLOAD` | 0 | 클라우드 업로드 (0: 끔, 1: 켬) |
+| Key | Default | Description |
+|-----|---------|-------------|
+| `SERVER_IP` | (none) | VitalDB server address (IP:port) |
+| `UPLOAD_SERVER_IP` | (none) | File upload server address |
+| `MONITOR_SERVER_IP` | (none) | Web monitoring server address |
+| `SEND_WEB` | 1 | Send data to web server (0: off, 1: on) |
+| `CLOUD_UPLOAD` | 0 | Enable cloud upload (0: off, 1: on) |
 
-### 창 설정
+### Window
 
-| 키 | 기본값 | 설명 |
-|----|--------|------|
-| `START_MAXIMIZED` | 1 | 최대화 상태로 시작 |
-| `START_MINIMIZED` | 0 | 최소화 상태로 시작 |
-| `OPTION_MIN_TO_TRAY` | 0 | 최소화 시 트레이로 이동 |
-| `OPTION_ALWAYS_ON_TOP` | 0 | 항상 위에 표시 |
-| `PLAY_SOUND` | 1 | 알람 소리 재생 |
+| Key | Default | Description |
+|-----|---------|-------------|
+| `START_MAXIMIZED` | 1 | Start maximized |
+| `START_MINIMIZED` | 0 | Start minimized |
+| `OPTION_MIN_TO_TRAY` | 0 | Minimize to system tray |
+| `OPTION_ALWAYS_ON_TOP` | 0 | Always on top |
+| `PLAY_SOUND` | 1 | Play alarm sounds |
 
-### 이벤트 프리셋
+### Event Presets
 
-`EVT_TEXT_0` ~ `EVT_TEXT_29` 로 최대 30개의 이벤트 프리셋 텍스트를 지정할 수 있습니다.
+Up to 30 event preset labels can be defined with `EVT_TEXT_0` through `EVT_TEXT_29`.
 
 ```ini
 EVT_TEXT_0=Induction
@@ -114,77 +114,77 @@ EVT_TEXT_2=Incision
 
 ---
 
-## 4. 베드 섹션
+## 4. Bed Section
 
-베드(탭)를 정의합니다. 하나의 설정 파일에 여러 베드를 정의할 수 있습니다.
+Defines a bed (tab). Multiple beds can be defined in a single configuration file.
 
 ```ini
 [BED/OR1]
 ```
 
-- 베드 이름은 `BED/` 뒤에 지정 (예: `OR1`, `ICU_BED3`)
-- 지정하지 않으면 VRCODE 또는 PC 호스트명을 사용하여 자동 생성
+- The bed name follows `BED/` (e.g., `OR1`, `ICU_BED3`)
+- If omitted, the bed name is auto-generated from VRCODE or the PC hostname
 
 ---
 
-## 5. 장비 섹션
+## 5. Device Section
 
-`[BED/...]` 아래에 장비를 추가합니다.
+Devices are added under a `[BED/...]` section.
 
-### 기본 설정
+### Basic Settings
 
 ```ini
-[DEV/장비이름]
-type=장비타입
-port=포트
+[DEV/devicename]
+type=DeviceType
+port=PortSpec
 ```
 
-| 키 | 필수 | 설명 |
-|----|------|------|
-| `type` | O | 장비 타입 (예: `BIS`, `Intellivue`, `Solar8000`) |
-| `port` | O | 연결 포트 (아래 포트 형식 참조) |
-| `company` | | 제조사 (예: `Nihon Kohden`) |
-| `readonly` | | 읽기 전용 모드 (0: 끔, 1: 켬) |
+| Key | Required | Description |
+|-----|----------|-------------|
+| `type` | Yes | Device type (e.g., `BIS`, `Intellivue`, `Solar8000`) |
+| `port` | Yes | Connection port (see Port Formats below) |
+| `company` | No | Manufacturer (e.g., `Nihon Kohden`) |
+| `readonly` | No | Read-only mode (0: off, 1: on) |
 
-### 포트 형식
+### Port Formats
 
-| 형식 | 예시 | 설명 |
-|------|------|------|
-| COM 포트 | `COM1`, `COM3` | Windows 시리얼 포트 |
-| TCP/IP | `192.168.1.100:4343` | 네트워크 장비 (IP:포트) |
-| 포트 번호 | `4343` | localhost TCP 포트 |
-| RPi 시리얼 | `F1`~`F4` | Raspberry Pi AMA 포트 |
-| RPi USB | `LU`, `LU1`~`LU4` | USB Left Upper |
-| RPi USB | `RU`, `RU1`~`RU4` | USB Right Upper |
+| Format | Example | Description |
+|--------|---------|-------------|
+| COM port | `COM1`, `COM3` | Windows serial port |
+| TCP/IP | `192.168.1.100:4343` | Network device (IP:port) |
+| Port number | `4343` | localhost TCP port |
+| RPi serial | `F1`-`F4` | Raspberry Pi AMA ports |
+| RPi USB | `LU`, `LU1`-`LU4` | USB Left Upper |
+| RPi USB | `RU`, `RU1`-`RU4` | USB Right Upper |
 
-### 포트 필터링
+### Port Filtering
 
-포트 값에 키워드/IP 필터를 추가할 수 있습니다.
+Keyword and IP filters can be appended to the port value.
 
 ```
-port=포트#키워드1 키워드2#키워드3@IP접미사
+port=PORT#keyword1 keyword2#keyword3@IP_SUFFIX
 ```
 
-| 구분자 | 설명 |
-|--------|------|
-| `#` | 키워드 OR 그룹 구분 |
-| (공백) | 같은 `#` 그룹 내 AND 조건 |
-| `@` | IP 주소 접미사 필터 |
+| Delimiter | Description |
+|-----------|-------------|
+| `#` | Keyword OR group separator |
+| (space) | AND condition within the same `#` group |
+| `@` | IP address suffix filter |
 
-예시:
-- `COM1#BIS` — COM1에서 "BIS" 키워드 포함 프레임만 수신
-- `4343#HR SpO2#BP` — "HR AND SpO2" 또는 "BP" 포함 프레임
-- `4343@10.1` — IP가 10.1로 끝나는 연결만
+Examples:
+- `COM1#BIS` -- accept only frames containing "BIS" on COM1
+- `4343#HR SpO2#BP` -- "HR AND SpO2" or "BP"
+- `4343@10.1` -- accept only connections from IPs ending in 10.1
 
-### ADC 장비 추가 설정
+### ADC Device Settings
 
-ADC (아날로그-디지털 변환기) 장비일 경우 채널별 설정을 추가합니다.
+For ADC (Analog-to-Digital Converter) devices, per-channel settings are available.
 
-| 키 | 설명 |
-|----|------|
-| `srate` | 샘플링 레이트 (Hz) |
-| `parname1`, `parname2`, ... | 각 채널의 파라미터 이름 |
-| `gain1`, `gain2`, ... | 각 채널의 전압→물리단위 변환 계수 |
+| Key | Description |
+|-----|-------------|
+| `srate` | Sampling rate (Hz) |
+| `parname1`, `parname2`, ... | Parameter name for each channel |
+| `gain1`, `gain2`, ... | Voltage-to-physical-unit conversion gain for each channel |
 
 ```ini
 [DEV/SNUADC]
@@ -199,36 +199,36 @@ gain2=100.0
 
 ---
 
-## 6. 필터 섹션
+## 6. Filter Section
 
-실시간 신호 처리 필터를 추가합니다. 필터 목록은 필터 서버에서 자동으로 로드됩니다.
+Adds a real-time signal processing filter. Filter definitions are loaded from the filter server.
 
 ```ini
-[FILT/필터모듈이름]
+[FILT/filter_module_name]
 ```
 
-- 모듈 이름은 서버에 등록된 필터의 `modname` 값입니다.
-- 추가 설정은 필요하지 않습니다 (필터 정의는 서버에서 제공).
+- The module name must match the `modname` of a filter registered on the server.
+- No additional settings are needed (filter parameters are provided by the server).
 
 ---
 
-## 7. 명령줄 옵션
+## 7. Command Line Options
 
 ```
-vr --conf <경로>         설정 파일 경로 지정
-vr --console             GUI 없이 콘솔 모드로 실행
-vr --debug               콘솔 + 디버그 모드
-vr --debug test.conf     디버그 모드로 지정 설정 파일 사용
-vr --version             버전 정보 출력
-vr --devtypes            지원 장비 타입 목록 출력
-vr --help                도움말 출력
+vr --conf <path>         Specify configuration file path
+vr --console             Run in console mode (no GUI)
+vr --debug               Console + debug mode
+vr --debug test.conf     Debug mode with specified config file
+vr --version             Show version info
+vr --devtypes            List supported device types
+vr --help                Show help
 ```
 
 ---
 
-## 8. 설정 예시
+## 8. Configuration Examples
 
-### 기본 구성: 환자 모니터 1대
+### Basic: Single Patient Monitor
 
 ```ini
 SAVEDIR=D:\VitalData
@@ -240,7 +240,7 @@ type=Solar8000
 port=COM1
 ```
 
-### 여러 장비 구성
+### Multiple Devices
 
 ```ini
 SAVEDIR=D:\VitalData
@@ -261,7 +261,7 @@ type=Primus
 port=COM4
 ```
 
-### 다중 베드 구성
+### Multiple Beds
 
 ```ini
 SAVEDIR=D:\VitalData
@@ -279,7 +279,7 @@ type=Intellivue
 port=192.168.1.101:4343
 ```
 
-### 디버그/테스트용
+### Debug / Test
 
 ```ini
 SAVEDIR=C:\Users\lucid\Desktop
@@ -293,7 +293,7 @@ company=Nihon Kohden
 port=9001
 ```
 
-### 필터 포함 구성
+### With Filter
 
 ```ini
 [BED/OR1]
