@@ -22,14 +22,4 @@ vr_device_name: BSM
 
 **Connection Steps — ECG/ART Waveform:**
 
-1. Plug the **ECG/BP output cable** (from Nihon Kohden) into the ECG/BP OUT port.
-
-   <img src="../hardware_images/nihon_kohden_bsm_3.png" width="450" alt="ECG/BP OUT port connection">
-
-2. Fabricate a **5.5pi Mono to RJ45 cable** per the pin diagram to connect to the ADC.
-
-   <img src="../hardware_images/nihon_kohden_bsm_2.png" width="450" alt="5.5pi Mono to RJ45 pin diagram">
-
-3. Connect the ADC to the PC via USB.
-
-   <img src="../hardware_images/nihon_kohden_bsm_4.png" width="450" alt="ADC connection to PC">
+1. Plug the **ECG/BP output cable** (from Nihon Kohden) into the ECG/BP OUT port.2. Fabricate a **5.5pi Mono to RJ45 cable** per the pin diagram to connect to the ADC.3. Connect the ADC to the PC via USB.

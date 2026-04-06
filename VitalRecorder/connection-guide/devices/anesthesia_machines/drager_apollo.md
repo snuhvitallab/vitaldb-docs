@@ -13,8 +13,4 @@ vr_device_name: Primus
 
 ## Connection Steps
 1. Connect a direct serial cable to **COM1** on the rear.
-2. Connect the other end to the PC via USB-Serial converter.
-
-   <img src="../hardware_images/drager_apollo_1.png" width="450" alt="COM1 port — rear panel">
-
-> If COM1 is already in use, see [When the COM1 Port is Already in Use](#when-the-com1-port-is-already-in-use).
+2. Connect the other end to the PC via USB-Serial converter.> If COM1 is already in use, see [When the COM1 Port is Already in Use](#when-the-com1-port-is-already-in-use).

@@ -19,10 +19,6 @@ vr_device_name: Bx50
    <img src="../hardware_images/ge_carescape_1.png" width="450" alt="Back panel — USB ports">
 
 2. Attach a **Null Modem (F/F)** adapter to the RS-232 end of the converter.
-3. Connect a direct serial cable from the adapter to the PC (or USB-Serial converter on the PC side).
-
-   <img src="../hardware_images/ge_carescape_2.png" width="450" alt="Connection diagram">
-
-> **VRZero note:** The USB cable connecting to VRZero must support handshaking. Compatible cables:
+3. Connect a direct serial cable from the adapter to the PC (or USB-Serial converter on the PC side).> **VRZero note:** The USB cable connecting to VRZero must support handshaking. Compatible cables:
 > - [NETmate KW-525 (0.45M)](http://www.compuzone.co.kr/product/product_detail.htm?ProductNo=374732)
 > - [ATEN UC232A (0.35M)](http://www.compuzone.co.kr/product/product_detail.htm?ProductNo=60189)

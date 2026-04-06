@@ -17,10 +17,8 @@ vr_device_name: TOFScan
 3. Connect the other end **directly** to a USB-Serial converter (no adapter needed).
 4. Connect the USB-Serial converter to the PC.
 
-
 ---
 
 ## Troubleshooting
-
 
 Most problems are hardware-related. Report unresolved issues at [vitaldb.org](https://vitaldb.org).

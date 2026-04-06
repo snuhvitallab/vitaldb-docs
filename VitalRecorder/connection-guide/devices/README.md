@@ -24,7 +24,6 @@
 
 > Find your device below and identify the cable type before connecting. Click the device name to jump to full instructions.
 
-
 ### Patient Monitors
 
 | Device | Cable | Adapter | Port | VR Device Name |
@@ -45,7 +44,6 @@
 | [Nihon Kohden BSM](#nihon-kohden-bsm) | Direct Serial | Null Modem M/F | RS-232C on QI-373P board | `BSM` |
 | [GE Corometrics 170](#ge-corometrics-170) | Direct Serial | None | RS232 Port 1 or 2 | `Coro` |
 
-
 ### Anesthesia Machines
 
 | Device | Cable | Adapter | Port | VR Device Name |
@@ -57,7 +55,6 @@
 | [Maquet Flow-i](#maquet-flow-i) | Direct Serial | Null Modem M/F | Serial port | `Flow-i` |
 | [Maquet Servo-i Ventilator](#maquet-servo-i-ventilator) | Direct Serial | Null Modem M/F | **BOTTOM** RS-232 port | `Servo-i` |
 | [Hamilton G5 Ventilator](#hamilton-g5-ventilator) | Direct Serial | Null Modem M/F | Monitoring Interface 1 or 2 | `Hamilton` |
-
 
 ### Hemodynamic Monitors
 
@@ -72,7 +69,6 @@
 | [Deltex CardioQ](#deltex-cardioq) | Direct Serial | Null Modem **F/F** | Male serial port | `CardioQ` |
 | [LiDCO](#lidco) | Direct Serial | Null Modem M/F | Serial port | `LiDCO` |
 
-
 ### Syringe Pumps
 
 | Device | Cable | Adapter | Port | VR Device Name |
@@ -84,7 +80,6 @@
 | [Bionet Pion TCI](#bionet-pion-tci) | Direct Serial | None | 9-pin port | `Pion` |
 | [Belmont FMS (RI-2)](#belmont-fms-ri-2) | Direct Serial | Null Modem F/F | Serial port (behind vent panel) | `FMS` |
 
-
 ### Brain Monitors
 
 | Device | Cable | Adapter | Port | VR Device Name |
@@ -92,7 +87,6 @@
 | [Medtronic BIS VISTA](#medtronic-bis-vista) | Direct Serial | **None** ⚠ cross cable causes error | Serial port | `VISTA` |
 | [Medtronic BIS A2000](#medtronic-bis-a2000) | Direct Serial | None | 9-pin port | `A2000` |
 | [Medtronic INVOS](#medtronic-invos-cerebrالsomatic-oximetry) | Direct Serial | Null Modem F/F | `\|O\|O\|` port (male connector) | `Invos` |
-
 
 ### Others
 
@@ -108,7 +102,6 @@
 ---
 
 ## Getting Started
-
 
 ### Requirements
 
@@ -139,18 +132,17 @@ There are two types of serial cable. They are **physically identical in appearan
 
 ---
 
-
 ### Cable Types
 
 The images below show the cables and adapters referenced throughout this guide.
 
 #### Direct Serial Cable
 
-<img src="hardware_images/cable_direct.svg" width="600" alt="Direct Serial Cable">
+<img src="hardware_images/cable_direct.svg" width="450" alt="Direct Serial Cable">
 
 #### Null Modem Adapter — F/F (Female / Female)
 
-<img src="hardware_images/cable_null_modem_ff.svg" width="600" alt="Null Modem F/F Adapter">
+<img src="hardware_images/cable_null_modem_ff.svg" width="450" alt="Null Modem F/F Adapter">
 
 | Adapter | Description | Purchase (Korea) |
 |---------|-------------|-----------------|
@@ -159,19 +151,15 @@ The images below show the cables and adapters referenced throughout this guide.
 
 #### Null Modem Adapter — M/F (Male / Female)
 
-<img src="hardware_images/cable_null_modem_mf.svg" width="600" alt="Null Modem M/F Adapter">
+<img src="hardware_images/cable_null_modem_mf.svg" width="450" alt="Null Modem M/F Adapter">
 
 #### USB-Serial Converter
 
-<img src="hardware_images/cable_usb_serial.svg" width="600" alt="USB-Serial Converter">
+<img src="hardware_images/cable_usb_serial.svg" width="450" alt="USB-Serial Converter">
 
 Laptops and tablets typically lack a built-in serial port. A USB-Serial converter creates a virtual COM port and **acts as a direct cable**. Devices that require a cross connection still need a cross gender adapter.
 
-**Recommended:** Netmate 4-port Serial-to-USB Converter (Kangwon Electronics) — creates four COM ports from one USB connection. [Purchase link (Korea)](http://cableguy.com/shop/mall.php?cat=005004003&query=view&no=39206)
-
-<img src="hardware_images/README_1.png" width="600" alt="Netmate 4-port Serial-to-USB Converter">
-
-#### USB Hub
+**Recommended:** Netmate 4-port Serial-to-USB Converter (Kangwon Electronics) — creates four COM ports from one USB connection. [Purchase link (Korea)](http://cableguy.com/shop/mall.php?cat=005004003&query=view&no=39206)#### USB Hub
 
 Use a **powered USB hub** (with its own external power adapter) to prevent power shortage — the most common cause of intermittent data loss.
 

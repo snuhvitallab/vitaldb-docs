@@ -12,5 +12,3 @@ vr_device_name: B1x5M
 ## Connection Steps
 1. Connect a direct serial cable to the serial port **marked in red** on the rear.
 2. Connect the other end to the PC via USB-Serial converter.
-
-   <img src="../hardware_images/ge_b105m_1.png" width="450" alt="Rear panel — serial port location">

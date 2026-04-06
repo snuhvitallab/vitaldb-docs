@@ -22,7 +22,6 @@ vr_device_name: Invos
 
    <img src="../hardware_images/medtronic_invos_2.png" width="450" alt="OUTPUT FORMAT 1">
 
-
 ---
 
 ## Multifunction Monitors
