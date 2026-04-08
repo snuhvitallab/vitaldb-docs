@@ -2,27 +2,23 @@
 
 <!-- meta
 category: Syringe Pump
-manufacturer: B. Braun
-vr_device_name: SpaceCom
+manufacturer: BBraun
 -->
-> **Note:** Configured via a **web interface (SpaceOnline)** over direct LAN connection.
 
-| Cable | Adapter | Port | VR Device Name |
-|-------|---------|------|----------------|
-| Custom 9-pin Mini-DIN ↔ DB-9F | None | Mini-DIN port | `SpaceCom` |
+<img src="../hardware_images/image61.png" width="450" />
 
-## Connection Steps
-1. Fabricate a cable: **Mini-DIN pins 2, 3, 5** → **DB-9F pins 3, 2, 5**.
-2. Connect to the SpaceCom and to the PC via USB-Serial converter.
+A apecial cable is required.Parts can be purchased and manufactured.
 
-## Device Configuration
-1. Connect SpaceCom to PC with a **direct LAN cable**. Set PC IP: `192.168.100.42` / Subnet: `255.255.255.0` / Gateway: `192.168.100.1`.
-2. Open browser → `192.168.100.41` → login: `config` / `config`.
+Make a cable that connects No. 2, No. 3, and No. 5 of 9-pin mini DIN terminal to No. 3, No. 2, and No. 5 of Female 9-pin DSUB terminal.
 
-   <img src="../hardware_images/bbraun_spacecom_2.png" width="450" alt="SpaceOnline — login screen">
+Then you need to change your SpaceCom settings.
 
-3. Navigate to **BCC Protocol settings** and configure as shown.
+SpaceCom provides a web interface (SpaceOnline) for configuration changes. Connect the SpaceCom to your computer with a direct LAN cable to access the web interface. The default IP setting for SpaceCom is 192.168.100.41. Therefore, set the computer IP address to 192.168.100.42 (subnet mask 255.255.255.0 gateway 192.168.100.1). Open a web browser and enter the address 192.168.100.41 to access the web interface. Enter the Configuration menu. The initial user name and password are config, config, respectively.
 
-   <img src="../hardware_images/bbraun_spacecom_1.png" width="200" alt="BCC Protocol settings">
+<img src="../hardware_images/image142.png" width="450" />
 
-4. Press **Save**.
+Enter the BCC Protocol settings submenu and make the settings as shown below.
+
+<img src="../hardware_images/image49.png" width="450" /><img src="../hardware_images/image180.png" width="450" /><img src="../hardware_images/image75.png" width="450" />
+
+Click the Save button to save your changes.

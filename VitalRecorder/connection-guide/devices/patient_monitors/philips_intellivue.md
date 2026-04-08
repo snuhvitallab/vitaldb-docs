@@ -1,66 +1,75 @@
-# Philips Intellivue MP / MX Series
+# Philips Intellivue MP/MX series
 
 <!-- meta
 category: Patient Monitor
 manufacturer: Philips
-vr_device_name: Intellivue
 -->
-> **Note:** Serial communication via the **MIB port** (RJ-45 style). Works regardless of connection to a central station.
 
-| Cable | Adapter | Port | VR Device Name |
-|-------|---------|------|----------------|
-| Custom RJ-45 ↔ DB-9F | None | MIB port | `Intellivue` |
+The Philips Intellivue patient monitor is capable of serial communication via a MIB port that looks like a LAN port. It does not matter whether it is connected to a central monitor or not.
 
-## Connection Steps
-1. Prepare a cable connecting **RJ-45 pins 4, 5, 7** → **DB-9F pins 5, 2, 3**.
+<img src="../hardware_images/image128.png" width="450" />
 
-   <img src="../hardware_images/philips_intellivue_5.png" width="450" alt="RJ-45 to DB-9F custom cable pinout">
+There are several types of MIB ports as shown below. Please note that labels vary depending on the model.
 
-2. Plug the **RJ-45 end** into the MIB port on the monitor.
+<img src="../hardware_images/image165.png" width="450" />
 
-   <img src="../hardware_images/philips_intellivue_4.png" width="450" alt="MIB port location">
+To connect via MIB port, you need to prepare a serial cable to connect RJ-45 terminal 4,5,7 and DB-9 female terminal 5,2,3 respectively. The RJ-45 terminal is connected to the MIB port of the monitor, and the DB-9 female terminal is connected to the PC via USB to Serial Converter.
 
-3. Plug the **DB-9F end** into the PC via USB-Serial converter.
-4. **MX400–550 series only:** Use the Advanced Interface Card (Rx/Tx pins connect differently).
+<img src="../hardware_images/image10.png" width="450" />
 
-   <img src="../hardware_images/philips_intellivue_7.png" width="450" alt="MX400-550 Advanced Interface Card pinout">
+In case of MX400-550 series, communication is possible via the Advanced Interface Card (however, the MX600-800 series must have a MIB board). In this case, note that the Rx and Tx pins are connected differently.
 
-> MX600–800 series: MIB board must be installed.
+<img src="../hardware_images/image66.png" width="450" />
 
-## Device Configuration
-1. Press **Main Setup → Operation Modes → Service**.
+Next, you need to change the settings of the patient monitor.
 
-   <img src="../hardware_images/philips_intellivue_6.png" width="450" alt="Main Setup → Operation Modes → Service">
+Press the "Main Setup" button on the monitor and select "Operation Modes". Then click "Service".
 
-2. Enter service password (default: **`1345`**). Contact manufacturer if this fails.
+<img src="../hardware_images/image90.png" width="450" /><img src="../hardware_images/image132.png" width="450" />
 
-   <img src="../hardware_images/philips_intellivue_8.png" width="450" alt="Password entry screen">
+You must enter a password to enter service mode. The default password is **1345**. If it fails, please contact the manufacturer.
 
-3. Press **Main Setup → Hardware** (press and hold at bottom of menu).
-4. Set **Data Export 1** and **Data Export 2** baud rate to **"Fix 115200"**.
+<img src="../hardware_images/image50.png" width="450" />
 
-   <img src="../hardware_images/philips_intellivue_3.png" width="300" alt="Data Export baud rate settings">
+Then go back to "Main Setup" and you will see a menu called "Hardware" at the bottom. Press and hold this button and set the communication speed to "Fix 115200" for "Data Export 1" and "Data Export 2".
 
-5. Press **Interfaces**.
+<img src="../hardware_images/image7.png" width="450" /><img src="../hardware_images/image187.png" width="450" />
 
-   <img src="../hardware_images/philips_intellivue_1.png" width="450" alt="Interfaces menu">
+Then click “Interfaces”,
 
-6. Verify port **01a** driver is set to **"DtOut1"**. If not, press **Change Driver → DtOut1**.
+<img src="../hardware_images/image112.png" width="450" />
 
-   <img src="../hardware_images/philips_intellivue_2.png" width="450" alt="Port 01a — DtOut1 driver selection">
+<img src="../hardware_images/image91.png" width="450" />
 
-7. **Restart the monitor.**
+Make sure that the driver for port 01a is “DtOut1”. If it is not DtOut1 (e.g. GM or AGM), click the "Change Driver" button at the bottom of the screen and change it to "DtOut1". The number after DtOut may vary depending on the assigned port.
 
-**Optional — Extract ETCO2 Waveform (via IntelliBridge EC10 Module):**
+Changes will not take effect until the monitor is turned off and on.
 
-1. Navigate to **Main Setup → Operating Modes → Config**.
-   - Config password: **71034**
-2. Press the **Setup** button on the **IntelliBridge EC10 module** connected to the anesthesia machine.
-3. On the monitor, select **Setup Device**.
-4. Navigate to **Setup Anesth. Machine → Device Driver → Setup Waves**.
-5. Press **Add** and select **CO2** and **AWP**.
-   - If incorrect waves appear, press **Delete All**, then re-add the correct waves.
-6. Select **Select to change operating mode → monitoring**.
-7. Press **Confirm** to apply the settings.
+Note) In case of MP2 and X2 monitor, serial communication is not available and data acquisition is not possible.
 
-> **Note:** MP2 and X2 monitors do not support serial communication and **cannot be used** with Vital Recorder.
+Lastly, to extract ETCO2 wave, the following steps are required.
+
+Go to “Main Setup” - “Operating Modes” - “Config”.
+
+Password is “71034”.
+
+<img src="../hardware_images/image153.png" width="450" />
+
+Press the setup button on the IntelliBridge EC10 module.
+
+<img src="../hardware_images/image124.png" width="450" />\
+Enter “Setup Device” at the bottom of the monitor.
+
+<img src="../hardware_images/image186.png" width="450" /><img src="../hardware_images/image110.png" width="450" />
+
+Go to “Setup Anesth. Machine” - “Device Driver” - “Setup Waves”. You can add any wave you want with the Add button. Select “CO2”, “AWP”.
+
+(If the wrong wave is generated, delete all of the waves and reset them by pressing the Add button.)
+
+<img src="../hardware_images/image117.png" width="450" />
+
+Go to “Select to change operating mode” - “Monitoring”.
+
+<img src="../hardware_images/image141.png" width="450" />
+
+Press “Confirm” button to apply the changes.

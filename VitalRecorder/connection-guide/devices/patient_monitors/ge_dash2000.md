@@ -1,23 +1,20 @@
-# GE Dash 2000 / 3000 / 4000
+# GE Dash 2000/3000/4000
 
 <!-- meta
 category: Patient Monitor
 manufacturer: GE
-vr_device_name: Dashx000
 -->
-> **Note:** Protocol: **GE Unity Protocol**. Requires a custom cable (DB-9F on one end, RJ-45 on the other) — serial communication runs through the RJ-45 AUX terminal.
 
-| Cable | Adapter | Port | VR Device Name |
-|-------|---------|------|----------------|
-| Custom: DB-9F ↔ RJ-45 | None | RJ-45 AUX terminal | `Dashx000` |
+<img src="../hardware_images/image37.png" width="450" />
 
-## Connection Steps
-1. Fabricate or order a DB-9F ↔ RJ-45 cable per the pinout diagram below.
+Serial communication is performed through the RJ45 connector on the rear AUX terminal. Therefore, a cable with a serial cable terminal (DB9F) on one side and a LAN terminal (RJ-45) on the other side is required.
 
-   <img src="../hardware_images/ge_dash2000_1.png" width="450" alt="DB-9F to RJ-45 pinout">
+You can directly manufacture the cable using a USB serial converter and LAN cable, but it's also an option to request cable manufacturing through internet-based cable fabrication companies. When making a request, you can ask for manufacturing with the wiring shown below.
 
-2. Connect the **RJ-45 end** to the AUX terminal on the rear of the monitor.
+> <img src="../hardware_images/image101.png" width="450" />
 
-   <img src="../hardware_images/ge_dash2000_2.png" width="450" alt="Rear AUX terminal">
+Select “GE :: Dash x000” when adding device in the Vital Recorder program.
 
-3. Connect the **DB-9F end** to the PC via USB-Serial converter.
+When adding equipment in Vital Recorder, select GE::Dash x000.
+
+Note: This protocol is called the GE Unity protocol. GE Solar 8000m, Solar 8000i, Dash 3000, 4000 and 5000 use this protocol.

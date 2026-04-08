@@ -3,25 +3,28 @@
 <!-- meta
 category: Brain Monitor
 manufacturer: Medtronic
-vr_device_name: Invos
 -->
-> **Note:** The INVOS RS-232 port is **male-type** — an F/F adapter is required.
 
-| Cable | Adapter | Port | VR Device Name |
-|-------|---------|------|----------------|
-| Direct Serial | Null Modem F/F | `\|O\|O\|` port (male connector) | `Invos` |
+Connect the cable to the \|O\|O\| port on the back of the device. Since the RS-232 port of INVOS is a male terminal, **“F/F cross gender”** should be used.
 
-## Connection Steps
-1. Attach a **Null Modem (F/F)** adapter to the `|O|O|` male port on the rear.
-2. Connect a direct serial cable from the adapter to the PC via USB-Serial converter.
+<img src="../hardware_images/image67.png" width="450" />
 
-   <img src="../hardware_images/medtronic_invos_1.png" width="450" alt="INVOS — rear |O|O| port">
+<img src="../hardware_images/image15.png" width="450" />
 
-## Device Configuration
-1. Press **Next Menu → Output Select → Digital Output → PC Link → OUTPUT FORMAT 1**.
+You need to go to the next screen to open the settings window. Press the Next Menu button.
 
-   <img src="../hardware_images/medtronic_invos_2.png" width="450" alt="OUTPUT FORMAT 1">
+<img src="../hardware_images/image104.png" width="450" />
 
----
+Press “Output Select”.
 
-## Multifunction Monitors
+<img src="../hardware_images/image71.png" width="450" />
+
+Press “Digital Output”.
+
+<img src="../hardware_images/image47.png" width="450" />
+
+Press “PC Link”.
+
+<img src="../hardware_images/image152.png" width="450" />
+
+Press “OUTPUT FORMAT 1” and finish the setting.

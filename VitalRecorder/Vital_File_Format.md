@@ -1,447 +1,426 @@
-# Vital File Format Specification
+# Introduction
 
-## Introduction
+- The vital file is a file format used in the vital recorder for saving vital signs and waveforms.
 
-- The vital file is a binary file format used by VitalRecorder for saving vital signs and waveforms.
-- It is a single gzip-compressed binary file starting with `1F 8B 08 00`.
-- It contains a header and a body part.
-- Multi-byte variables are encoded using **little-endian** byte order.
-- All data structures are aligned on **1-byte boundaries**.
-  - Caution: Some compilers use 4-byte alignment implicitly. For Visual Studio, use `#pragma pack(push, 1)` / `#pragma pack(pop)`.
+  - It is a single gzip compressed binary file starting with (1F 8B 08 00)
 
----
+  - It contains a header and a body part
 
-## Data Formats
+  - Multi-byte variables are encoded using little-endian
 
-### String
+  - All data structures are arranged in 1-byte units.
 
-- Strings are encoded in UTF-8.
-- A string field consists of a 4-byte length (excluding the length field itself) followed by a character array of the specified length.
-- Caution: The string does **not** include a trailing NULL (`\0`) character.
+    - Caution! Some compilers use 4-byte alignment implicitly.[^1]
 
-### Time
+- Sample vital file can be downloadable from [https://api.vitaldb.net/0001.vital](https://api.vitaldb.net/0001.vital)
 
-- Times are stored in **UTC**.
-- UTC can be converted to local time using the time zone bias (offset) in the header:
-  - `UTC = local_time + tzbias`
-- All time values are represented as the number of seconds since `1970-01-01 00:00:00 UTC` in **IEEE 754 double** format.
-- This is compatible with Unix timestamps and convenient for arithmetic operations.
-- The decimal part represents sub-second precision. Because the Unix timestamp for year 2020 is approximately 1,606,780,800 (requiring 31 bits for the integer part) and IEEE 754 double has 52 bits of fraction, approximately 21 bits remain for sub-second representation, giving roughly **1 microsecond resolution**.
+## Data format
 
----
+- String data format
 
-## Header
+  - Strings are encoded in UTF8
 
-The total length of the header is `10 + headerlen` bytes.
+  - It contains 4-byte length (without length itself) followed by a character array of specified length
 
-The vital file does not include the number or length of tracks in the header. You must parse the body to discover tracks and records. This is because VitalRecorder cannot know when recording will stop, and tracks can be added at any time during recording.
+  - Caution! It does not include the following NULL(\0) character
 
-The header can be extended by increasing `headerlen`. Parsers should use `headerlen` to determine which optional fields are present.
+- Time data format
 
-| Name | Type | Length | Description |
-|------|------|--------|-------------|
-| sign | BYTE[4] | 4 | `"VITA"` |
-| format_ver | DWORD | 4 | File format version, currently `3` |
-| headerlen | WORD | 2 | Header length after this field, currently `27` |
-| tzbias | short | 2 | Time zone bias: the difference, in minutes, between UTC and local time. For example, Korea (UTC+9) uses `-540`. |
-| inst_id | DWORD | 4 | Instance ID assigned when the program starts. Used to verify whether multiple vital files were recorded continuously in the same VitalRecorder session. Files with the same `inst_id` can share track IDs. |
-| prog_ver | DWORD | 4 | VitalRecorder version |
-| dtstart | double | 8 | (optional, headerlen >= 26) File start time as Unix timestamp |
-| dtend | double | 8 | (optional, headerlen >= 26) File end time as Unix timestamp |
-| packed | BYTE | 1 | (optional, headerlen >= 27) `0` = streaming format (default), `1` = packed storage format |
+  - Times are stored in UTC
 
-### Time Zone Conversion Example
+  - UTC can be converted to the local time using time zone bias (offset) in the header part.
 
-```
-time_t t = (time_t)(dt - tzbias * 60);  // UTC -> local time in seconds
-struct tm *ptm = gmtime(&t);            // seconds -> year, month, day, hour, minute, second
-```
+    - UTC = local time + tzbias[^2]
 
-### Packed Mode (packed = 1)
+  - All time data are represented as the number of seconds since 1970/01/01 00:00:00 UTC as a double data format
 
-When `packed` is set to `1`, the file uses packed storage format with these guarantees:
+  - This is compatible with Unix timestamps and convenient for addition and subtraction.
 
-- **WAV tracks**: All waveform records for each track are merged into a single REC. Gaps between consecutive records are filled with NaN samples (see table below). This allows direct sample access by index: `sample_time = trk_dtstart + sample_index / srate`.
-- **NUM/STR tracks**: Records for each track appear consecutively and are sorted by time.
-- **Track grouping**: All RECs belonging to the same track are stored consecutively (track by track).
-- **TRKINFO fields**: Each TRKINFO includes `reclen`, `dtstart`, and `dtend` for the track.
+  - Changing the time to \_\_int64 makes the speed slower because it requires conversion in every operation.
 
-#### NaN Values by Format Type
+  - The decimal point is used to indicate the precision below seconds. (for example, 0.1 means 100 milliseconds)
 
-| Format | NaN Value | Description |
-|--------|-----------|-------------|
-| FMT_FLOAT (1) | NaN | IEEE 754 NaN |
-| FMT_DOUBLE (2) | NaN | IEEE 754 NaN |
-| FMT_CHAR (3) | -128 | signed byte min |
-| FMT_BYTE (4) | 255 | unsigned byte max |
-| FMT_SHORT (5) | -32768 | signed short min |
-| FMT_WORD (6) | 65535 | unsigned short max |
-| FMT_LONG (7) | -2147483648 | signed long min |
-| FMT_DWORD (8) | 4294967295 | unsigned long max |
+  - Because the unix timestamp of year 2020 is 1,606,780,800, 31 bits are enough to express the integer part of it. IEEE 754 double data type has 52 bit for the fraction part, so 21 digits can be used for the representation of sub second time. 2 ^ 20 is about 1 million, so it has about 1 usec resolution.
 
----
+# Header
 
-## Body
+- The total length of the header is 10 + headerlen.
 
-The body is a sequence of packets. Since packet lengths are not constant, there is no way to directly index a specific packet without reading sequentially. However, you can skip unwanted packet types using the `datalen` field.
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Name</th>
+<th style="text-align: center;">Type</th>
+<th style="text-align: center;">Length</th>
+<th style="text-align: center;">Description</th>
+</tr>
+<tr>
+<th style="text-align: center;">sign</th>
+<th style="text-align: center;">BYTE[4]</th>
+<th style="text-align: center;">4</th>
+<th style="text-align: center;">“VITA”</th>
+</tr>
+<tr>
+<th style="text-align: center;">format_ver</th>
+<th style="text-align: center;">DWORD</th>
+<th style="text-align: center;">4</th>
+<th style="text-align: center;">File format version, currently 3</th>
+</tr>
+<tr>
+<th style="text-align: center;">headerlen</th>
+<th style="text-align: center;">WORD</th>
+<th style="text-align: center;">2</th>
+<th style="text-align: center;">header length after this, currently 26</th>
+</tr>
+<tr>
+<th style="text-align: center;">tzbias<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></th>
+<th style="text-align: center;">short</th>
+<th style="text-align: center;">2</th>
+<th style="text-align: center;"><p>time zone bias</p>
+<p>(the difference, in minutes, between UTC time and local time)</p></th>
+</tr>
+<tr>
+<th style="text-align: center;">inst_id</th>
+<th style="text-align: center;">DWORD</th>
+<th style="text-align: center;">4</th>
+<th style="text-align: center;">The instance ID of the program to be issued when the program starts. It is necessary to verify that the location of several vital files are continuously recorded in the same vital recorder execute. If different vital files have the same inst_id, you can use the same track id, even though there is a probability of 1/4.2 billion for collision.</th>
+</tr>
+<tr>
+<th style="text-align: center;">prog_ver</th>
+<th style="text-align: center;">DWORD</th>
+<th style="text-align: center;">4</th>
+<th style="text-align: center;">vital recorder version</th>
+</tr>
+<tr>
+<th style="text-align: center;">dtstart</th>
+<th style="text-align: center;">double</th>
+<th style="text-align: center;">8</th>
+<th style="text-align: center;">The start time of the records in this vital file. It can be zero if it is undetermined.</th>
+</tr>
+<tr>
+<th style="text-align: center;">dtend</th>
+<th style="text-align: center;">double</th>
+<th style="text-align: center;">8</th>
+<th style="text-align: center;">The end time of the records in this vital file. It can be zero if it is undetermined.</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>TIME_ZONE_INFORMATION tzi;</p>
+<p>GetTimeZoneInformation(&amp;tzi);</p>
+<p>return (short) tzi.Bias; // UTC = local time + bias // -540 for Korea<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
-### Packet Structure
+# Body
 
-| Name | Type | Length | Description |
-|------|------|--------|-------------|
-| type | BYTE | 1 | Packet type (see below) |
-| datalen | DWORD | 4 | Length of `data` (excludes `type` and `datalen` fields). For unknown types, skip `datalen` bytes. |
-| data | BYTE[] | datalen | Contents depend on type |
+- Body is a **sequence of packets** as specified below.
 
-### Packet Types
+- Since the length of a packet is not constant, there is no way to directly index a specific packet without reading all packets. However, if you ignore the unwanted packet type and pass it using datalen field, you can read the information you want fairly quickly. (For example, when you want to extract only some track)
 
-| Value | Name | Description |
-|-------|------|-------------|
-| 0 | SAVE_TRKINFO | Track information |
-| 1 | SAVE_REC | Data record (waveform, numeric, or string) |
-| 6 | SAVE_CMD | Command |
-| 9 | SAVE_DEVINFO | Device information |
-| 10 | SAVE_RAW | Raw protocol data (for debugging; contains timestamp, port name, direction flag, and raw bytes) |
+## Packet structure
 
----
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Name</th>
+<th style="text-align: center;">Type</th>
+<th style="text-align: center;">Length</th>
+<th style="text-align: center;">Description</th>
+</tr>
+<tr>
+<th style="text-align: center;">type</th>
+<th style="text-align: center;">BYTE</th>
+<th style="text-align: center;">1</th>
+<th style="text-align: center;"><p>SAVE_DEVINFO = 9</p>
+<p>SAVE_TRKINFO = 0</p>
+<p>SAVE_REC = 1</p>
+<p>SAVE_CMD = 6</p></th>
+</tr>
+<tr>
+<th style="text-align: center;">datalen</th>
+<th style="text-align: center;">DWORD</th>
+<th style="text-align: center;">4</th>
+<th style="text-align: center;"><p>length of <strong>data</strong> (<strong>exclude</strong> type and datalen itself)</p>
+<p>If you meet the type you dont know, please ignore it and skip the datalen bytes.</p></th>
+</tr>
+<tr>
+<th style="text-align: center;">data</th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;">datalen</th>
+<th style="text-align: center;"><p>The contents of data depends on the type</p>
+<p>and are described below.</p></th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
 
-## DEVINFO (type = 9)
+## DEVINFO
 
-Stores device information. Must be saved before the corresponding `devid` is used in any TRKINFO.
+- Structure for device information
 
-- If `devid` is `0`, it indicates VitalRecorder itself (e.g., filter-generated tracks, event markers).
-- A new DEVINFO can appear for the same `devid` within a file; the new values overwrite the previous ones.
-- `devid` and `trkid` are meaningful only within the same file.
-- VitalRecorder assigns the same `devid` to the same device type connected to the same physical port, even across program restarts.
+  - It must be saved before the devid is used.
 
-| Name | Type | Length | Description |
-|------|------|--------|-------------|
-| devid | DWORD | 4 | Device identifier |
-| typename | string | 4+len | Device type (e.g., `BIS`, `Intellivue`) |
-| devname | string | 4+len | Device name |
-| port | string | 4+len | Port information (e.g., `COM1`, `192.168.1.100:4343`). Devices with the same type and port are generally considered the same device. |
+  - If devid is 0, it indicates the vital recorder itself (for example, filter-generated tracks, event markers)
 
----
+- A new DEVINFO can appear for the same device id (devid) in a file. In this case, the new value should overwrite the previous value.
 
-## TRKINFO (type = 0)
+- devid and trkid are meaningful only within the same file.
 
-Stores track information. Must appear before the first REC with the corresponding `trkid`. Records with an unknown `trkid` should be ignored.
+- Even if the program instance is different, the Vital Recorder is implemented with the same devid value if the same kind of equipment is connected to the same physical port.
 
-- Tracks are identified by `trkid`, a 2-byte integer. The numeric value itself has no inherent meaning and may change between program executions.
-- Track display order is determined by order of appearance and the `CMD_TRK_ORDER` command, not by `trkid` value.
-- A track with `devid = 0` and name `EVENT` is treated specially: it is displayed in the event bar rather than as a separate track.
+  - For example, if two BIS devices are connected to COM5 and COM6, the previous devid remains the same even if the program is terminated and then re-executed. (save the devid to the registry)
 
-| Name | Type | Length | Description |
-|------|------|--------|-------------|
-| trkid | WORD | 2 | Track ID |
-| rec_type | BYTE | 1 | `TYPE_WAV = 1`, `TYPE_NUM = 2`, `TYPE_STR = 5` |
-| recfmt | BYTE | 1 | Data format (see below) |
-| name | string | 4+len | Track name |
-| unit | string | 4+len | Unit (e.g., `bpm`, `mmHg`, `mV`) |
-| minval | float | 4 | Display minimum value |
-| maxval | float | 4 | Display maximum value |
-| color | DWORD | 4 | 4-byte ARGB color |
-| srate | float | 4 | Sample rate (Hz), used for WAV tracks |
-| adc_gain | double | 8 | `measured_value = adc_offset + saved_value * adc_gain` |
-| adc_offset | double | 8 | See above |
-| montype | BYTE | 1 | Physiologic meaning of the track (see montype table) |
-| devid | DWORD | 4 | Device ID that created this track |
-| reclen | DWORD | 4 | (optional, packed mode) Total byte length of all REC packets for this track |
-| trk_dtstart | double | 8 | (optional, packed mode) Start time of the first record |
-| trk_dtend | double | 8 | (optional, packed mode) End time of the last record |
-
-### Record Format (recfmt)
-
-| Value | Name | Size | Description |
-|-------|------|------|-------------|
-| 0 | FMT_NULL | 0 | For TYPE_STR |
-| 1 | FMT_FLOAT | 4 | 32-bit IEEE 754 float |
-| 2 | FMT_DOUBLE | 8 | 64-bit IEEE 754 double |
-| 3 | FMT_CHAR | 1 | Signed 8-bit integer |
-| 4 | FMT_BYTE | 1 | Unsigned 8-bit integer |
-| 5 | FMT_SHORT | 2 | Signed 16-bit integer |
-| 6 | FMT_WORD | 2 | Unsigned 16-bit integer |
-| 7 | FMT_LONG | 4 | Signed 32-bit integer |
-| 8 | FMT_DWORD | 4 | Unsigned 32-bit integer |
-
----
-
-## REC (type = 1)
-
-Stores time-stamped data (measured samples, sample arrays, or strings).
-
-| Name | Type | Length | Description |
-|------|------|--------|-------------|
-| infolen | WORD | 2 | Length of the record header, currently `10` |
-| dt | double | 8 | Measurement timestamp (Unix time, UTC) |
-| trkid | WORD | 2 | Track ID |
-| values | BYTE[] | datalen - infolen - 2 | Record-type-specific values (see below) |
-
-### WAV Record Values
-
-Samples continuously measured from time `dt`, stored as an array. The sample rate and data type come from the TRKINFO.
+  - If you intentionally terminate the program and then switch between the two BIS devices and run the program again, the devids may cross each other.
 
 | Name | Type | Length | Description |
-|------|------|--------|-------------|
-| num | DWORD | 4 | Number of samples |
-| vals | recfmt[num] | sizeof(recfmt) * num | Sample data |
+|----|----|----|----|
+| devid | DWORD | 4 | device identifier |
+| typename | string | 4+len | device type |
+| devname | string | 4+len | device name |
+| port | string | 4+len | Information that allows device types such as COM1, COM10, ETH1, and Line Input Mixer to recognize the port to which the device is connected with this information only. If the device type and port are the same, it is generally considered the same device. |
 
-### NUM Record Values
+## TRKINFO
+
+- Structure for track information
+
+- TRKINFO must be appeared before the first record with the track id.
+
+  - Otherwise, the record should be ignored.
+
+- Tracks are separated by trkids, which are 2-byte integers.
+
+  - The numeric value of trkid itself has no meaning and there is no continuity
+
+  - trkids can be changed every time the program is executed.
+
+  - The order of the tracks is not in the order of trkid size, but in the order of appearance and the CMD_ORDER command described later.
+
+- Tracks with a devid of 0 (vital recorder itself) and name of EVENT are treated specially in the vital recorder. It is not displayed on a separate track but displayed in the event bar.
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Name</th>
+<th style="text-align: center;">Type</th>
+<th style="text-align: center;">Length</th>
+<th style="text-align: center;">Description</th>
+</tr>
+<tr>
+<th style="text-align: center;">trkid</th>
+<th style="text-align: center;">WORD</th>
+<th style="text-align: center;">2</th>
+<th style="text-align: center;">track id</th>
+</tr>
+<tr>
+<th style="text-align: center;">rec_type</th>
+<th style="text-align: center;">BYTE</th>
+<th style="text-align: center;">1</th>
+<th style="text-align: center;"><p>TYPE_WAV = 1</p>
+<p>TYPE_NUM = 2</p>
+<p>TYPE_STR = 5</p></th>
+</tr>
+<tr>
+<th style="text-align: center;">recfmt</th>
+<th style="text-align: center;">BYTE</th>
+<th style="text-align: center;">1</th>
+<th style="text-align: center;"><p>FMT_NULL = 0 // for TYPE_STR</p>
+<p>FMT_FLOAT = 1</p>
+<p>FMT_DOUBLE = 2</p>
+<p>FMT_CHAR = 3</p>
+<p>FMT_BYTE = 4</p>
+<p>FMT_SHORT = 5</p>
+<p>FMT_WORD = 6</p>
+<p>FMT_LONG = 7</p>
+<p>FMT_DWORD = 8</p></th>
+</tr>
+<tr>
+<th style="text-align: center;">name</th>
+<th style="text-align: center;">string</th>
+<th style="text-align: center;">4+len</th>
+<th style="text-align: center;"></th>
+</tr>
+<tr>
+<th style="text-align: center;">unit</th>
+<th style="text-align: center;">string</th>
+<th style="text-align: center;">4+len</th>
+<th style="text-align: center;"></th>
+</tr>
+<tr>
+<th style="text-align: center;">mindisp</th>
+<th style="text-align: center;">float</th>
+<th style="text-align: center;">4</th>
+<th style="text-align: center;"></th>
+</tr>
+<tr>
+<th style="text-align: center;">maxdisp</th>
+<th style="text-align: center;">float</th>
+<th style="text-align: center;">4</th>
+<th style="text-align: center;"></th>
+</tr>
+<tr>
+<th style="text-align: center;">color</th>
+<th style="text-align: center;">color</th>
+<th style="text-align: center;">4</th>
+<th style="text-align: center;">4byte ARGB format</th>
+</tr>
+<tr>
+<th style="text-align: center;">srate</th>
+<th style="text-align: center;">float</th>
+<th style="text-align: center;">4</th>
+<th style="text-align: center;">sample rate</th>
+</tr>
+<tr>
+<th style="text-align: center;">adc_gain</th>
+<th style="text-align: center;">double</th>
+<th style="text-align: center;">8</th>
+<th style="text-align: center;">measured_value = adc_offset + saved_value * adc_gain</th>
+</tr>
+<tr>
+<th style="text-align: center;">adc_offset</th>
+<th style="text-align: center;">double</th>
+<th style="text-align: center;">8</th>
+<th style="text-align: center;">measured_value = adc_offset + saved_value * adc_gain</th>
+</tr>
+<tr>
+<th style="text-align: center;">montype</th>
+<th style="text-align: center;">BYTE</th>
+<th style="text-align: center;">1</th>
+<th style="text-align: center;"><p>Specifies the physiologic meaning of the track.</p>
+<p>MON_ECG_WAV = 1,</p>
+<p>MON_ECG_HR = 2,</p>
+<p>MON_ECG_PVC = 3,</p>
+<p>MON_IABP_WAV = 4,</p>
+<p>MON_IABP_SBP = 5,</p>
+<p>MON_IABP_DBP = 6,</p>
+<p>MON_IABP_MBP = 7,</p>
+<p>MON_PLETH_WAV = 8,</p>
+<p>MON_PLETH_HR = 9,</p>
+<p>MON_PLETH_SPO2 = 10,</p>
+<p>MON_RESP_WAV = 11,</p>
+<p>MON_RESP_RR = 12,</p>
+<p>MON_CO2_WAV = 13,</p>
+<p>MON_CO2_RR = 14,</p>
+<p>MON_CO2_CONC = 15,</p>
+<p>MON_NIBP_SBP = 16,</p>
+<p>MON_NIBP_DBP = 17,</p>
+<p>MON_NIBP_MBP = 18,</p>
+<p>MON_BT = 19,</p>
+<p>MON_CVP_WAV = 20,</p>
+<p>MON_CVP_CVP = 21,</p></th>
+</tr>
+<tr>
+<th style="text-align: center;">devid</th>
+<th style="text-align: center;">DWORD</th>
+<th style="text-align: center;">4</th>
+<th style="text-align: center;">Devid of the device that created the track</th>
+</tr>
+<tr>
+<th style="text-align: center;">reclen</th>
+<th style="text-align: center;">DWORD</th>
+<th style="text-align: center;">4</th>
+<th style="text-align: center;">Length of all record packets in byte for the track. It must be zero if the records are not stored sequentially. It can be zero if the information was undetermined or not calculated.</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+
+## REC
+
+- Every record stores time specific measured value(s).
 
 | Name | Type | Length | Description |
-|------|------|--------|-------------|
-| val | recfmt | sizeof(recfmt) | Single numeric value |
+|----|----|----|----|
+| infolen | WORD | 2 | length of header of the record, currently 10 |
+| dt | double | 8 | The time at which the record's value was measured |
+| trkid | WORD | 2 | track id |
+| values | BYTE[] | datalen-infolen-2 | rec_type specific values described below |
 
-### STR Record Values
+- values are different among the track type (NUM, WAV, STR)
 
-| Name | Type | Length | Description |
-|------|------|--------|-------------|
-| unused | DWORD | 4 | Not used |
-| sval | string | 4+len | String value |
+- WAV records
 
----
+- Samples that are continuously measured from the time specified by dt are stored as an array.
 
-## CMD (type = 6)
+- The sample rate and data type are taken from the track information.
 
-Command packets. Unknown commands should be skipped using the packet's `datalen`.
+| Name | Type           | Length              | Description       |
+|------|----------------|---------------------|-------------------|
+| num  | DWORD          | 4                   | number of samples |
+| vals | dat_fmt[num] | sizeof(recfmt)*num | data samples      |
 
-| Name | Type | Length | Description |
-|------|------|--------|-------------|
-| cmd | BYTE | 1 | Command type |
+- NUM records
 
-### CMD_TRK_ORDER (cmd = 5)
+| Name | Type    | Length         | Description |
+|------|---------|----------------|-------------|
+| val  | dat_fmt | sizeof(recfmt) |             |
 
-Defines the display order of tracks.
+- STR records
 
-| Name | Type | Length | Description |
-|------|------|--------|-------------|
-| cnt | WORD | 2 | Number of tracks |
-| trkids | WORD[cnt] | cnt * 2 | Array of track IDs in display order |
+| Name   | Type   | Length | Description |
+|--------|--------|--------|-------------|
+| unused | DWORD  | 4      | not used    |
+| sval   | string | 4+len  |             |
 
-### CMD_RESET_EVENTS (cmd = 6)
+- CMD records
 
-Removes all event markers prior to this command. No additional data.
+  - Currently 2 commands are supported.
 
----
+  - Depending on the cmd, additional data may follow.
 
-## Monitor Type Codes (montype)
+  - Unknown commands should skip over the datalen of the packet.
 
-The `montype` field in TRKINFO specifies the physiologic meaning of the track. This enables applications to identify and display parameters consistently regardless of track naming conventions.
+<table style="width:100%;">
+<thead>
+<tr>
+<th style="text-align: center;">Name</th>
+<th style="text-align: center;">Type</th>
+<th style="text-align: center;">Length</th>
+<th style="text-align: center;">Description</th>
+</tr>
+<tr>
+<th style="text-align: center;">cmd</th>
+<th style="text-align: center;">BYTE</th>
+<th style="text-align: center;">1</th>
+<th style="text-align: center;"><p>CMD_TRK_ORDER = 5</p>
+<p>CMD_RESET_EVENTS = 6</p></th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
 
-### ECG
+- CMD_TRK_ORDER
 
-| Value | Name | Description |
-|-------|------|-------------|
-| 1 | ECG_WAV | ECG waveform |
-| 2 | ECG_HR | Heart rate |
-| 3 | ECG_PVC | PVC count |
+  - Define track order
 
-### Arterial Blood Pressure (Invasive)
+  - The following additional data are shown below.
 
-| Value | Name | Description |
-|-------|------|-------------|
-| 4 | IABP_WAV | ABP waveform |
-| 5 | IABP_SBP | ABP systolic |
-| 6 | IABP_DBP | ABP diastolic |
-| 7 | IABP_MBP | ABP mean |
+| Name   | Type         | Length | Description      |
+|--------|--------------|--------|------------------|
+| cnt    | WORD         | 2      | number of tracks |
+| trkids | WORD [cnt] | cnt*2 | array of trkids  |
 
-### Pulse Oximetry (PLETH)
+- CMD_RESET_EVENTS
 
-| Value | Name | Description |
-|-------|------|-------------|
-| 8 | PLETH_WAV | Pleth waveform |
-| 9 | PLETH_HR | Pulse rate |
-| 10 | PLETH_SPO2 | SpO2 |
+  - Removed all event markers prior to this command
 
-### Respiration
+  - No additional data
 
-| Value | Name | Description |
-|-------|------|-------------|
-| 11 | RESP_WAV | Respiration waveform |
-| 12 | RESP_RR | Respiratory rate |
+[^1]: For visual studio, use the following code
 
-### CO2
+    \#pragma pack (push, 1)
 
-| Value | Name | Description |
-|-------|------|-------------|
-| 13 | CO2_WAV | CO2 waveform |
-| 14 | CO2_RR | CO2 respiratory rate |
-| 15 | CO2_CONC | EtCO2 concentration |
+    struct TRKINFO {... code ...};
 
-### Non-Invasive Blood Pressure
+    \#pragma pack (pop)
 
-| Value | Name | Description |
-|-------|------|-------------|
-| 16 | NIBP_SBP | NIBP systolic |
-| 17 | NIBP_DBP | NIBP diastolic |
-| 18 | NIBP_MBP | NIBP mean |
+[^2]: time_t t = (time_t)(dt - tzbias * 60); // unixtime -> localtime
 
-### Temperature
-
-| Value | Name | Description |
-|-------|------|-------------|
-| 19 | BT | Body temperature |
-
-### Central Venous Pressure
-
-| Value | Name | Description |
-|-------|------|-------------|
-| 20 | CVP_WAV | CVP waveform |
-| 21 | CVP_CVP | CVP value |
-
-### EEG / Brain Monitoring
-
-| Value | Name | Description |
-|-------|------|-------------|
-| 22 | EEG_BIS | BIS index |
-| 23 | EEG_SEF | Spectral Edge Frequency |
-| 24 | EEG_MF | Median Frequency |
-| 25 | EEG_SR | Suppression Ratio |
-| 26 | EEG_EMG | EMG power |
-| 27 | EEG_SQI | Signal Quality Index |
-| 28 | EEG_WAV | EEG waveform |
-
-### Airway
-
-| Value | Name | Description |
-|-------|------|-------------|
-| 29 | AWP_WAV | Airway pressure waveform |
-| 30 | PEEP | PEEP |
-| 31 | PIP | Peak inspiratory pressure |
-| 32 | TV | Tidal volume |
-| 33 | MV | Minute ventilation |
-| 34 | COMPLIANCE | Lung compliance |
-| 35 | RESISTANCE | Airway resistance |
-
-### Anesthetic Agents
-
-| Value | Name | Description |
-|-------|------|-------------|
-| 36 | AGENT1_NAME | Agent 1 name (string) |
-| 37 | AGENT1_CONC | Agent 1 concentration |
-| 38 | AGENT2_NAME | Agent 2 name (string) |
-| 39 | AGENT2_CONC | Agent 2 concentration |
-| 40 | AGENT3_NAME | Agent 3 name (string) |
-| 41 | AGENT3_CONC | Agent 3 concentration |
-
-### Drug Infusion
-
-| Value | Name | Description |
-|-------|------|-------------|
-| 42 | DRUG1_NAME | Drug 1 name (string) |
-| 43 | DRUG1_CE | Drug 1 effect-site concentration |
-| 44 | DRUG1_RATE | Drug 1 infusion rate |
-| 45 | DRUG2_NAME | Drug 2 name (string) |
-| 46 | DRUG2_CE | Drug 2 effect-site concentration |
-| 47 | DRUG2_RATE | Drug 2 infusion rate |
-| 48 | DRUG3_NAME | Drug 3 name (string) |
-| 49 | DRUG3_CE | Drug 3 effect-site concentration |
-| 50 | DRUG3_RATE | Drug 3 infusion rate |
-| 51 | DRUG4_NAME | Drug 4 name (string) |
-| 52 | DRUG4_CE | Drug 4 effect-site concentration |
-| 53 | DRUG4_RATE | Drug 4 infusion rate |
-
-### Cerebral Oximetry
-
-| Value | Name | Description |
-|-------|------|-------------|
-| 54 | RSO2_L | Regional cerebral O2 saturation (left) |
-| 55 | RSO2_R | Regional cerebral O2 saturation (right) |
-
-### Additional EEG
-
-| Value | Name | Description |
-|-------|------|-------------|
-| 56 | ENT_SE | State Entropy |
-| 57 | ENT_RE | Response Entropy |
-| 58 | PSI | Patient State Index |
-| 59 | EEG_SEFL | SEF left |
-| 60 | EEG_SEFR | SEF right |
-| 61 | EEGL_WAV | EEG left waveform |
-| 62 | EEGR_WAV | EEG right waveform |
-
-### Advanced Pulse Oximetry
-
-| Value | Name | Description |
-|-------|------|-------------|
-| 63 | PVI | Pleth Variability Index |
-| 64 | SPHB | SpHb (non-invasive hemoglobin) |
-| 65 | ORI | Oxygen Reserve Index |
-
-### Pulmonary Artery
-
-| Value | Name | Description |
-|-------|------|-------------|
-| 66 | PAP_WAV | PA waveform |
-| 67 | PAP_SBP | PA systolic |
-| 68 | PAP_MBP | PA mean |
-| 69 | PAP_DBP | PA diastolic |
-
-### Femoral Artery
-
-| Value | Name | Description |
-|-------|------|-------------|
-| 70 | FEM_WAV | Femoral artery waveform |
-| 71 | FEM_SBP | Femoral systolic |
-| 72 | FEM_MBP | Femoral mean |
-| 73 | FEM_DBP | Femoral diastolic |
-
-### Intracranial Pressure
-
-| Value | Name | Description |
-|-------|------|-------------|
-| 74 | ICP_WAV | ICP waveform |
-| 75 | ICP | ICP value |
-| 76 | CPP | Cerebral perfusion pressure |
-
-### Neuromuscular Monitoring
-
-| Value | Name | Description |
-|-------|------|-------------|
-| 77 | TOF_RATIO | Train-of-Four ratio |
-| 78 | TOF_CNT | TOF count |
-| 79 | PTC_CNT | Post-tetanic count |
-
-### SKNA (Skin Sympathetic Nerve Activity)
-
-| Value | Name | Description |
-|-------|------|-------------|
-| 80 | ISKNA_WAV | Integrated SKNA waveform |
-| 81 | SKNA_WAV | SKNA waveform |
-| 82 | ASKNA | Average SKNA |
-
-### Miscellaneous
-
-| Value | Name | Description |
-|-------|------|-------------|
-| 83 | ALARM_LEVEL | Alarm level |
-| 84 | ALARM_MSG | Alarm message (string) |
-| 85 | ANII | ANI instantaneous |
-| 86 | ANIM | ANI mean |
-| 87 | HPI | Hypotension Prediction Index |
-| 88 | EEG_QCON | qCON index |
-| 89 | EEG_QNOX | qNOX index |
-| 90 | RRA | Respiratory rate acoustic |
-| 91 | RRA_WAV | RRA waveform |
-
-### Additional Waveforms
-
-| Value | Name | Description |
-|-------|------|-------------|
-| 92 | FLOW_WAV | Flow waveform |
-| 93 | VOLUME_WAV | Volume waveform |
-
-### Fetal Monitoring
-
-| Value | Name | Description |
-|-------|------|-------------|
-| 94 | FETAL_HR | Fetal heart rate |
-| 95 | UACT | Uterine activity |
-
-### Filter Outputs
-
-| Value | Name | Description |
-|-------|------|-------------|
-| 96-111 | FILT1_1 .. FILT8_2 | Filter output channels (8 filters x 2 outputs each) |
-
-> Note: Applications should treat unknown `montype` values gracefully; new types may be added in future versions.
+    tm* ptm = gmtime(&t); // local time (in seconds) → year, month, day, hour, minute, second

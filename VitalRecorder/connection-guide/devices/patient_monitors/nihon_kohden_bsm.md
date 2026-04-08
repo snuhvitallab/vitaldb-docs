@@ -3,23 +3,28 @@
 <!-- meta
 category: Patient Monitor
 manufacturer: Nihon Kohden
-vr_device_name: BSM
 -->
-> **Note:** Available in Vital Recorder **v1.8.16.2 or later**. Requires **QI-373P board** installed in the monitor.
 
-| Cable | Adapter | Port | VR Device Name |
-|-------|---------|------|----------------|
-| Direct Serial (numeric) | Null Modem M/F | RS-232C on QI-373P board | `BSM` |
-| ECG/BP output cable + custom 5.5pi Mono → RJ45 (waveform) | None | ECG/BP OUT port | `BSM` |
+(Available in VitalRecorder 1.8.16.2 or later version.)
 
-**Connection Steps — Numeric Data:**
+<img src="../hardware_images/image193.png" width="450" />
 
-1. Attach a **Null Modem (M/F)** to the serial port on the QI-373P board.
+> To obtain data from the BSM monitor, a QI-373P board must be installed. This board has built-in RS-232C serial port and ECG/BP OUT port. To obtain numeric data, connect a "**Null modem (M/F cross gender)**" to the serial port marked in red, then connect a direct serial cable.
 
-   <img src="../hardware_images/nihon_kohden_bsm_1.png" width="450" alt="QI-373P board — serial port">
+ECG and ART waveform data can be acquired through the ECG/BP output port.
 
-2. Connect a direct serial cable from the adapter to the PC via USB-Serial converter.
+> <img src="../hardware_images/image155.png" width="450" />
 
-**Connection Steps — ECG/ART Waveform:**
+To acquire data through the ECG/BP OUT port, an ECG/BP output cable from Nihon Kohden is required.
 
-1. Plug the **ECG/BP output cable** (from Nihon Kohden) into the ECG/BP OUT port.2. Fabricate a **5.5pi Mono to RJ45 cable** per the pin diagram to connect to the ADC.3. Connect the ADC to the PC via USB.
+> <img src="../hardware_images/image33.png" width="450" />
+
+To input the analog signal from the ECG/BP output cable into an ADC (Analog to Digital Converter), a 5.5pi mono to RJ45 cable must be custom-made.
+
+The pin configuration is shown in the image above.
+
+> <img src="../hardware_images/image54.png" width="450" />
+
+After connecting the 5.5pi Mono to RJ45 cable to the ADC, you can extract ECG/ART waveform data by connecting the ADC to a PC via a USB cable.
+
+In the image above, the SNUADCM was used.

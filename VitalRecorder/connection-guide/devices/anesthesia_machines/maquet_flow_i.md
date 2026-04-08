@@ -3,16 +3,10 @@
 <!-- meta
 category: Anesthesia Machine
 manufacturer: Maquet
-vr_device_name: Flow-i
 -->
-> **Note:** Available in Vital Recorder **v1.8.16.0 or later**. No additional device configuration required.
 
-| Cable | Adapter | Port | VR Device Name |
-|-------|---------|------|----------------|
-| Direct Serial | Null Modem M/F | Serial port — lower right | `Flow-i` |
+The Flow-i does not require any additional configuration on the device.
 
-## Connection Steps
-1. Attach a **Null Modem (M/F)** adapter to the serial port on the lower right of the rear panel.
-2. Connect a direct serial cable from the adapter to the PC via USB-Serial converter.
+<img src="../hardware_images/image176.png" width="450" />
 
-   <img src="../hardware_images/maquet_flow_i_1.png" width="450" alt="Rear panel — serial port">
+For Flow-i, connect “Null modem (M/F cross gender)” and a direct serial cable to the serial port on the lower right side of the back of the device. (Available in Vital Recorder 1.8.16.0 or later version.)

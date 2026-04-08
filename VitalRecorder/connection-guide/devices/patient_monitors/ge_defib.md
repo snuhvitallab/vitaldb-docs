@@ -1,21 +1,12 @@
-# GE Defib Connectors
+# GE Defib connectors
 
 <!-- meta
 category: Patient Monitor
 manufacturer: GE
 -->
-> **Note:** Use when the TRAM-RAC analog port is occupied. ECG and ABP signals available from the **Defib.Sync port** on the front panel.
 
-| Cable | Port | ADC Required |
-|-------|------|--------------|
-| 7-pin DIN (or 8-pin DIN, center cut and modified) | Defib.Sync | Yes |
+If the analog port is used for other purposes, you can receive ECG, ABP from the Defib.Sync port on the front panel in the form of voltage. The pin numbers are as follows, and the voltage output value is the same as the Tram-Rac analog port. Purchase a 7-pin DIN cable (or 8-pin DIN cable is also compatible, then cut the middle of the cable and modify it.
 
-## Connection Steps
-1. Obtain a 7-pin DIN cable (or modify an 8-pin DIN by cutting the center).
-2. Connect to **Defib.Sync** on the front panel per the pin diagram.
+<img src="../hardware_images/image28.png" width="450" />
 
-   <img src="../hardware_images/ge_defib_1.png" width="300" alt="Defib.Sync port — pin diagram">
-
-3. Connect the other end to the ADC, then connect the ADC to the PC via USB.
-
-   <img src="../hardware_images/ge_defib_2.png" width="450" alt="Defib connector wiring reference">
+<img src="../hardware_images/image144.png" width="450" />

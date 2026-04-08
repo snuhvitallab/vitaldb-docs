@@ -3,19 +3,11 @@
 <!-- meta
 category: Syringe Pump
 manufacturer: Bionet
-vr_device_name: Pion
 -->
-> **Note:** When multiple Pion pumps are connected, Vital Recorder identifies each by the number in its device name. A device named **"Pion2"** produces tracks prefixed with **PUMP2**; no number defaults to **PUMP1**.
 
-| Cable | Adapter | Port | VR Device Name |
-|-------|---------|------|----------------|
-| Direct Serial | None | 9-pin port | `Pion` |
+The device communicates through the 9-pin port on the back side, and it requires a direct serial cable.\
+<img src="../hardware_images/image4.png" width="450" />
 
-## Connection Steps
-1. Connect a direct serial cable to the **9-pin port** on the rear.
-2. Connect the other end to the PC via USB-Serial converter.
-3. In Vital Recorder, name the device `Pion1`, `Pion2`, etc. to match the pump number.
+There may be cases where multiple Pion pumps are connected to one VitalRecorder at the same time. VitalRecorder recognizes the first number of Pion pump's equipment name (can be specified when adding device on ViterRecorder) and reflects it in the track name. For example, if the device name is Pion2, the data obtained from it is prefixed with PUMP2. If there is no number, it becomes PUMP1.
 
-   <img src="../hardware_images/bionet_pion_2.png" width="450" alt="Pion TCI — rear panel 9-pin port">
-
-   <img src="../hardware_images/bionet_pion_1.png" width="450" alt="Vital Recorder — Pion device naming">
+<img src="../hardware_images/image175.png" width="450" />

@@ -1,26 +1,14 @@
-# Sentec SDM
+# Sentec: SDM
 
 <!-- meta
 category: Other
 manufacturer: Sentec
-vr_device_name: SDM
 -->
-| Cable | Adapter | Protocol | Baud Rate | VR Device Name |
-|-------|---------|----------|-----------|----------------|
-| USB-Serial Converter | None | SenTecLink | 115200 | `SDM` |
 
-## Connection Steps
-1. Connect a **USB-Serial Converter** directly to the serial port on the rear.
-2. Connect the USB end to the PC.
+Sentec SDM requires a USB Serial Converter to extract data. The converter must be connected to the serial port on the back.
 
-   <img src="../hardware_images/sentec_sdm_2.png" width="300" alt="Sentec SDM — rear serial port">
+<img src="../hardware_images/image80.png" width="450" />
 
-## Device Configuration
-Navigate to **Interfaces → Serial Interface** and configure:
+Go to Interfaces - Serial Interface, and set SenTecLink for Protocol and 115200 for Baud Rate.
 
-| Parameter | Value |
-|-----------|-------|
-| Protocol | SenTecLink |
-| Baud Rate | 115200 |
-
-<img src="../hardware_images/sentec_sdm_1.png" width="450" alt="Serial Interface — SenTecLink + 115200">
+<img src="../hardware_images/image93.png" width="450" />

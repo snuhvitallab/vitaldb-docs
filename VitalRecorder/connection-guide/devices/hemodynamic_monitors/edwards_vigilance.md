@@ -3,32 +3,40 @@
 <!-- meta
 category: Hemodynamic Monitor
 manufacturer: Edwards Lifesciences
-vr_device_name: Vigilance
 -->
-| Cable | Adapter | Port | VR Device Name |
-|-------|---------|------|----------------|
-| Direct Serial | Null Modem M/F | COM1 (or COM2) | `Vigilance` |
 
-## Connection Steps
-1. Attach a **Null Modem (M/F)** to COM1.
-2. Connect a direct serial cable from the adapter to the PC via USB-Serial converter.
+There are two serial ports on the back panel of the Vigilance. This will be explained based on the use of COM1 (either COM1 or COM2 can be used depending on the system configuration). Similar to other Edwards Lifesciences products, connect the **“Null modem(M/F cross gender)”** and then the serial cable.
 
-   <img src="../hardware_images/edwards_vigilance_3.png" width="450" alt="Vigilance — rear COM ports">
+<img src="../hardware_images/image26.png" width="450" />
 
-## Device Configuration
-1. Press **Setup → System Config → Return → Digital Ports**.
+<img src="../hardware_images/image73.png" width="450" />
 
-   <img src="../hardware_images/edwards_vigilance_2.png" width="450" alt="System Config → Digital Ports">
+Press “Setup” button.
 
-2. Configure COM1:
+<img src="../hardware_images/image194.png" width="450" />
 
-   | Parameter | Value |
-   |-----------|-------|
-   | Device | IFMout |
-   | Baud Rate | 9600 |
-   | Parity | None |
-   | Stop Bits | 1 |
-   | Data Bits | 8 |
-   | Flow Control | 2 seconds |
+Select “System Config”.
 
-   <img src="../hardware_images/edwards_vigilance_1.png" width="450" alt="Digital Ports configuration">
+<img src="../hardware_images/image162.png" width="450" />
+
+Select “Return”.
+
+<img src="../hardware_images/image192.png" width="450" />
+
+Select “Digital Ports”.
+
+<img src="../hardware_images/image138.png" width="450" />
+
+If you have decided to use COM1 port in advance, change its settings as shown below.
+
+Device : IFMout
+
+Baud Rate : 9600
+
+Parity : None
+
+Stop Bits : 1
+
+Data Bits : 8
+
+Flow Control : 2 seconds

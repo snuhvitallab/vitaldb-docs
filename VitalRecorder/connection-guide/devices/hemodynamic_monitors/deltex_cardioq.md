@@ -3,28 +3,20 @@
 <!-- meta
 category: Hemodynamic Monitor
 manufacturer: Deltex
-vr_device_name: CardioQ
 -->
-> ⚠️ **Settings cannot be changed while the device is in use on a patient.** Configure using **DEMO mode** before patient connection.
 
-| Cable | Adapter | Port | VR Device Name |
-|-------|---------|------|----------------|
-| Direct Serial | Null Modem **F/F** | Male serial port | `CardioQ` |
+You can not adjust the settings while using the device, so you need to set it up before applying it to the patient. When the setting is completed, you can check whether data is being transferred through the DEMO mode.
 
-## Connection Steps
-1. Attach a **Null Modem (F/F)** to the rear male serial port.
-2. Connect a direct serial cable to the PC via USB-Serial converter.
+There is one Male-type serial port on the back. Connect **“Null modem(F/F cross gender)”** and connect the serial cable.
 
-   <img src="../hardware_images/deltex_cardioq_1.png" width="450" alt="CardioQ — rear serial port">
+<img src="../hardware_images/image125.png" width="450" />
 
-## Device Configuration
-1. At boot, navigate to **General → Patient Monitors → Monitor Setup**.
-2. Select **CardioQ Serial Protocol v2**.
+At boot time, click General> Patient monitors> Monitor Setup, then select CardioQ Serial Protocol v2. After confirming that Baud Rate is set to 57600, No Flow Control (if not, change it) and press the Finished button to exit.
 
-   <img src="../hardware_images/deltex_cardioq_3.png" width="450" alt="CardioQ Serial Protocol v2">
+<img src="../hardware_images/image177.png" width="450" />
 
-3. Verify **Baud Rate = 57600** and **Flow Control = No Flow Control** → **Finished**.
+<img src="../hardware_images/image123.png" width="450" />
 
-   <img src="../hardware_images/deltex_cardioq_2.png" width="450" alt="Baud Rate and Flow Control confirmation">
+<img src="../hardware_images/image182.png" width="450" />
 
-4. Verify data transmission in **DEMO mode** before patient connection.
+<img src="../hardware_images/image189.png" width="450" />

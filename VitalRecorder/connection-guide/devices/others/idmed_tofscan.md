@@ -3,22 +3,8 @@
 <!-- meta
 category: Other
 manufacturer: IDMed
-vr_device_name: TOFScan
 -->
-> **Note:** Requires a **TOF-RS1 cable** available from IDMed. No gender adapter needed.
 
-| Cable | Adapter | VR Device Name |
-|-------|---------|----------------|
-| TOF-RS1 cable (from IDMed) — DB-9F output | None | `TOFScan` |
+<img src="../hardware_images/image184.png" width="450" /><img src="../hardware_images/image134.png" width="450" />
 
-## Connection Steps
-1. Obtain the **TOF-RS1 cable** from IDMed.
-2. Connect one end to the TOFscan.
-3. Connect the other end **directly** to a USB-Serial converter (no adapter needed).
-4. Connect the USB-Serial converter to the PC.
-
----
-
-## Troubleshooting
-
-Most problems are hardware-related. Report unresolved issues at [vitaldb.org](https://vitaldb.org).
+TOFscan requires TOF-RS1 (you can purchase this from IDMed). Connect TOF-RS1 cable directly to the USB-Serial-Converter without a gender.

@@ -2,45 +2,59 @@
 
 <!-- meta
 category: Syringe Pump
-manufacturer: Fresenius Kabi
-vr_device_name: Orchestra
+manufacturer: Fresenius
 -->
-> ⚠️ **A cross (M/F Cross Gender) adapter is required.** Connecting a direct cable causes incorrect communication or hardware damage.
 
-| Cable | Adapter | Port | Protocol | VR Device Name |
-|-------|---------|------|----------|----------------|
-| Direct Serial | Null Modem M/F | RS 232-3 — **rightmost** of three serial ports (Base Primea) | IDMS | `Orchestra` |
+It is somewhat complicated, so please follow along.
 
-## Connection Steps
-1. Attach a **Null Modem (M/F)** to the **RS 232-3** port (rightmost).
-2. Connect a direct serial cable to the PC via USB-Serial converter.
+<img src="../hardware_images/image78.png" width="450" />
 
-   <img src="../hardware_images/fresenius_orchestra_3.png" width="450" alt="Base Primea — RS 232-3 port">
+First turn off the power and turn on the power by pressing the three buttons (the top blue button, the mute button, the power button) at the same time indicated by the red circle.
 
-## Device Configuration
-1. Power off. Hold **top blue button + mute button + power button** simultaneously → enter service mode.
+<img src="../hardware_images/image40.png" width="450" />
 
-   <img src="../hardware_images/fresenius_orchestra_7.png" width="450" alt="Service mode button combination">
+Press the fourth blue button above to select "Serial & ...".
 
-2. Press the **fourth blue button** → **"Serial & ..."**.
+<img src="../hardware_images/image169.png" width="450" />
 
-   <img src="../hardware_images/fresenius_orchestra_6.png" width="450" alt="Serial & ... menu">
+In the "SERIAL PORTS" item, select the second "COM NEW SUP" from the upper right (select by turning the jog dial).
 
-3. In **SERIAL PORTS**, select **COM NEW SUP** (second item, upper right) via jog dial → select **3**.
+Select "3" after the selection.
 
-   <img src="../hardware_images/fresenius_orchestra_5.png" width="450" alt="COM NEW SUP selection">
+Uncheck "Send a frame on every change" of "COMM NEW SUP" on the bottom right and select 1s under "Send every" below.
 
-4. Uncheck **"Send a frame on every change"** for COMM NEW SUP. Set **"Send every" → 1s**.
-5. Power off → power on → press **OPT** button (lower right).
+Press the power button to turn off the power. Then press the power button again to turn on the power.
 
-   <img src="../hardware_images/fresenius_orchestra_4.png" width="300" alt="OPT button">
+<img src="../hardware_images/image68.png" width="450" />
 
-6. Select **CUSTOMIZATION → CODE → `00123`**.
+When the power is on, press the "OPT" button on the bottom right.
 
-   <img src="../hardware_images/fresenius_orchestra_2.png" width="450" alt="Code entry: 00123">
+<img src="../hardware_images/image94.png" width="450" />
 
-7. Select **SERIAL PORTS AND PRINTER → RS-232-3 → IDMS**.
+Select "CUSTOMIZATION".
 
-   <img src="../hardware_images/fresenius_orchestra_1.png" width="450" alt="RS-232-3 → IDMS">
+<img src="../hardware_images/image52.png" width="450" />
 
-8. Confirm **RS 232-3 = IDMS** → **save and exit** → power cycle.
+Turn the jog dial clockwise until "CODE" is selected.
+
+When you are ready to enter the code, enter "00123" using the jog dial.
+
+<img src="../hardware_images/image2.png" width="450" />
+
+You can now select "SERIAL PORTS AND PRINTER".
+
+Rotate the jog dial to select it.
+
+<img src="../hardware_images/image46.png" width="450" />
+
+Select "RS-232-3" and then "IDMS".
+
+<img src="../hardware_images/image167.png" width="450" />
+
+After confirming that the RS 232-3 port is set to IDMS, save and exit.
+
+If any changes are made, they will not take effect until you turn them off again.
+
+<img src="../hardware_images/image60.png" width="450" />
+
+There are several terminals on the right side of the Base Primea (bottom of the Orchestra). We will use the RS 232-3 port on the right end of the three serial ports. Connect **“M/F cross gender”** here and connect a direct serial cable.

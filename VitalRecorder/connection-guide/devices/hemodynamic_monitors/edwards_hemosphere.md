@@ -3,26 +3,30 @@
 <!-- meta
 category: Hemodynamic Monitor
 manufacturer: Edwards Lifesciences
-vr_device_name: Hemosphere
 -->
-> **Note:** Available in Vital Recorder **v1.8.16.4 or later**. Restart the device after changing settings.
 
-| Cable | Adapter | Port | VR Device Name |
-|-------|---------|------|----------------|
-| Direct Serial | Null Modem M/F | Serial port | `Hemosphere` |
+<img src="../hardware_images/image174.png" width="450" />
 
-## Connection Steps
-1. Attach a **Null Modem (M/F)** to the rear serial port.
-2. Connect a direct serial cable to the PC via USB-Serial converter.
+Connect **“Null modem(M/F cross gender)”** and a direct serial cable to the serial port on the back of the device.
 
-   <img src="../hardware_images/edwards_hemosphere_2.png" width="300" alt="Hemosphere — rear serial port">
+<img src="../hardware_images/image24.png" width="450" />
 
-## Device Configuration
-1. Press the **setup button** (bottom left) → **Advanced Setup**. Enter password **`55555555`**.
+Press the setup button at the bottom left of the monitor.<img src="../hardware_images/image27.png" width="450" />
 
-   <img src="../hardware_images/edwards_hemosphere_3.png" width="450" alt="Advanced Setup — password entry">
+Press “Advanced Setup” button.
 
-2. Press **Connectivity → Serial Port Setup**.
-3. Set **Device → IFMout** and **Baud Rate → 9600** → **Restart the device**.
+<img src="../hardware_images/image179.png" width="450" />
 
-   <img src="../hardware_images/edwards_hemosphere_1.png" width="450" alt="IFMout + 9600 baud">
+The default password for the Advanced setup is “55555555”.
+
+<img src="../hardware_images/image133.png" width="450" />
+
+Press “Connectivity”.
+
+<img src="../hardware_images/image35.png" width="450" />
+
+Press “Serial Port Setup”.
+
+<img src="../hardware_images/image168.png" width="450" />
+
+Select “IFMout” for Device and 9600 for Baud Rate. Restart the device to apply the changed settings (Available on Vital Recorder 1.8.16.4 or later).

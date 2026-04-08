@@ -3,21 +3,24 @@
 <!-- meta
 category: Anesthesia Machine
 manufacturer: Hamilton
-vr_device_name: Hamilton
 -->
-> **Note:** Available in Vital Recorder **v1.10.2 or later**. Either Monitoring Interface port (1 or 2) can be used.
 
-| Cable | Adapter | Port | Protocol | VR Device Name |
-|-------|---------|------|----------|----------------|
-| Direct Serial | Null Modem M/F | Monitoring Interface 1 or 2 | Block Protocol | `Hamilton` |
+<img src="../hardware_images/image79.png" width="450" /><img src="../hardware_images/image172.jpg" width="450" /><img src="../hardware_images/image14.png" width="450" />
 
-## Connection Steps
-1. Attach a **Null Modem (M/F)** to either Monitoring Interface port on the rear.
-2. Connect a direct serial cable from the adapter to the PC via USB-Serial converter.## Device Configuration
-> Configuration is only accessible when the device is **not currently operating**.
+> Hamilton G5 is supported on version 1.10.2 or later.
+>
+> The Hamilton G5 device has two RS-232 ports on the back: Monitoring Interface 1 and Monitoring Interface 2. You can connect to either of these ports. Use a null modem (M/F cross gender) and a direct serial cable for the connection. After connecting the cable to the port, you need to enter configuration mode and change the serial settings.
+>
+> <img src="../hardware_images/image76.png" width="450" />
 
-1. Press the two designated buttons **simultaneously** to open the Configuration menu (bottom left of screen).2. Press the two **Test Mode** activation buttons simultaneously to enter Test mode.3. Navigate to **Configuration → Interface**.4. Set the connected port (COM1 or COM2) to **"Block Protocol"**.5. Press **Close → Close/Save**.---
+You can enter Configuration mode when the device is not operating.
 
-## Cardiac Monitors
+> <img src="../hardware_images/image83.png" width="450" />Press these two buttons simultaneously, and the configuration menu will appear at the bottom left corner of the screen.
+>
+> <img src="../hardware_images/image198.png" width="450" />
+>
+> To apply the changes, you need to activate Test mode. <img src="../hardware_images/image160.png" width="450" /> Press these two buttons simultaneously to activate Test mode.
 
-> **Note:** All Edwards Lifesciences devices share the same serial port configuration: **Device = IFMout**, **Baud Rate = 9600**.
+<img src="../hardware_images/image113.png" width="450" />
+
+> Once Test mode is activated, navigate to the Configuration → Interface menu.Change the port (COM1 or COM2) that is connected to the Vital Recorder to the Block protocol. Then, press the Close and Close/Save buttons in order to apply the settings.

@@ -3,31 +3,38 @@
 <!-- meta
 category: Hemodynamic Monitor
 manufacturer: Edwards Lifesciences
-vr_device_name: EV1000
 -->
-> **Note:** Old EV-1000 uses **F/F** adapter. New EV-1000A uses **M/F** adapter.
 
-| Model | Cable | Adapter | Port | VR Device Name |
-|-------|-------|---------|------|----------------|
-| Old EV-1000 | Direct Serial | Null Modem **F/F** | 2nd port from right | `EV1000` |
-| EV-1000A (new) | Direct Serial | Null Modem **M/F** | Serial port | `EV1000` |
+All of Edwards Lifesciences' equipments have the same settings. However, the location of the serial port and the menu configuration may vary depending on the device. Please follow the guidance below to set up your device accordingly.
 
-## Connection Steps
-- **Old EV-1000:** Attach **Null Modem (F/F)** to the second port from the right → connect direct serial cable to PC.
+When connecting the products of Edwards Lifesciences (Vigileo, EV1000A, Vigilance, Vigilance II, Hemosphere, etc) all should be connected using **"Null modem(M/F cross gender)"**. However, old models of EV1000 have different terminals and must be connected using **"Null modem(F/F cross gender)"**.
 
-- **EV-1000A:** Attach **Null Modem (M/F)** to the rear serial port → connect direct serial cable to PC.
+Let’s start with EV-1000 old model. Connect **"Null modem(F/F cross gender)"** and direct serial cable to the second port on the right.
 
-  <img src="../hardware_images/edwards_ev1000_2.png" width="450" alt="EV-1000A — serial port location">
+<img src="../hardware_images/image103.png" width="450" />
 
-## Device Configuration
-1. Press **Settings → Monitor Settings → Serial Port Setup**.
+The new model (1000A) is shown below. Connect using **"Null modem(M/F cross gender)"**.
 
-   <img src="../hardware_images/edwards_ev1000_4.png" width="450" alt="Serial Port Setup">
+<img src="../hardware_images/image57.png" width="450" />
 
-2. Set **Device → IFMout**.
+The settings on the device are as follows.
 
-   <img src="../hardware_images/edwards_ev1000_3.png" width="450" alt="Device = IFMout">
+<img src="../hardware_images/image58.png" width="450" />
 
-3. Set **Baud Rate → 9600**.
+Select “Settings” button.
 
-   <img src="../hardware_images/edwards_ev1000_1.png" width="450" alt="Baud Rate = 9600">
+<img src="../hardware_images/image197.png" width="450" />
+
+Select “Monitor Settings”.
+
+<img src="../hardware_images/image39.png" width="450" />
+
+Select “Serial Port Setup”.
+
+<img src="../hardware_images/image45.png" width="450" />
+
+Set "Device" to "IFMout".
+
+<img src="../hardware_images/image100.png" width="450" />
+
+Set "Baud Rate" to "9600".

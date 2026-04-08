@@ -1,560 +1,991 @@
-# VitalRecorder User Manual
+# Purpose of this document
 
-VitalRecorder is a real-time vital signs recording application for Windows, Raspberry Pi, and Ubuntu. It captures data from over 80 medical devices and stores them in the `.vital` file format.
+This manual explains how to use Vital Recorder, a software that collects and analyzes vital signs data through communication with various medical devices. Please read them in order. It would be appreciated if you inform us of the question and improvement point of use on Forum page.
 
----
+# Device setup
 
-## Table of Contents
+## Add a device
 
-1. [Installation](#installation)
-2. [Quick Start](#quick-start)
-3. [User Interface](#user-interface)
-4. [Adding Devices](#adding-devices)
-5. [Connection Types](#connection-types)
-6. [Port Filtering](#port-filtering)
-7. [Recording](#recording)
-8. [Server Upload](#server-upload)
-9. [Configuration File (vr.conf)](#configuration-file-vrconf)
-10. [Command Line Options](#command-line-options)
-11. [Supported Devices](#supported-devices)
-12. [Troubleshooting](#troubleshooting)
+The first thing to do after installing Vital Recorder is to add medical devices, which you want to acquire data from. You can add a device by clicking <img src="images/user_manual/image9.png" width="450" /> button on the Devices tab.
 
----
+<img src="images/user_manual/image14.png" width="450" />
 
-## Installation
+NOTE: If the Device tab is not visible, press Ctrl + D or click the Show Device tab button.
 
-### Windows
+<img src="images/user_manual/image2.png" width="450" />
 
-Download and install from the Microsoft Store:
-- Store URL: https://apps.microsoft.com/detail/9MVBQL8R0TFL
+The list of medical devices supported by Vital Recorder (version 1.8 and higher) is as follows.
 
-Or download the MSI installer or MSIX package from the release page.
+## Supported Medical Devices
 
-### Raspberry Pi / Ubuntu
+- Analog to Digital Converter (ADC)
 
-Download the platform-specific binary (`pivr64` or `ubuntu64`) from the release page and run it directly.
+  - SNUH: SNUADC (custom ADC)
 
----
+  - DataQ: DI-149
 
-## Quick Start
+  - DataQ: DI-155
 
-1. Launch VitalRecorder.
-2. Click the **Add Device** button to add a medical device.
-3. Select the device type (e.g., `Medtronic : BIS`, `Philips : Intellivue`).
-4. Choose the connection port (COM port, IP address, or port number).
-5. Click **OK**. VitalRecorder will begin communicating with the device.
-6. Click **Record** to start recording data.
+  - DataQ: DI-1100
 
----
+  - DataQ: DI-1120
 
-## User Interface
+  - National Instruments: USB-6008
 
-VitalRecorder uses a tab-based interface. Each tab represents a "room" or "bed" and can have multiple devices attached.
+  - Line In (record the Line In connector voltage of the computer sound card)
 
-- **Tracks**: Each device generates one or more tracks (e.g., HR, SpO2, BIS). Tracks are displayed as waveforms or numeric values.
-- **Events**: You can add event markers during recording.
-- **Monitor**: A configurable monitor panel displays selected parameters in large text.
+- Patient monitor
 
-### Bed Name
+  - GE: Solar 8000
 
-Each tab can have a **bed name** assigned. This is used for:
-- Identifying the room when uploading data to a server.
-- Separating multi-bed data from HL7 gateway devices.
+  - GE: Dash 2500-4000
 
----
+  - GE: MPS
 
-## Adding Devices
+  - GE: Bx50
 
-Go to **Add Device** and select from the device groups:
+  - Philips: Intellivue series
 
-| Group | Examples |
-|-------|----------|
-| VitalDB devices | SNUADC, SNUADCM, BUTTON, VitalBOLUS |
-| Analog to digital converter | DataQ DI-149, DI-155, DI-245, DI-1100, DI-1120 |
-| Patient monitor | Philips Intellivue, GE Solar/Dash/Bx50, Nihon Kohden, Mindray HL7, MEKICS |
-| Multifunction monitor | Masimo Radical-7/Root, Sentec SDM |
-| Anesthesia machine | Draeger Primus/Zeus/Fabius, GE Datex-Ohmeda Aisys/Avance |
-| Mechanical ventilator | Maquet SERVO-i/s/U, Hamilton MR1/C2/C6/T1 |
-| Drug infusor | Fresenius Agilia/Primea/PCBM, BBraun SpaceCom/HL7, Daiwha, Pion |
-| Brain monitor | Medtronic BIS/VISTA/INVOS, Fresenius Conox, OBELAB NirsitON |
-| Neuromuscular monitor | TwitchView, TOFScan, TOFcuff |
-| Fluid infusor | Belmont FMS 2000 |
-| Cardiac monitor | Edwards Hemosphere/Vigilance/EV1000/Vigileo, Getinge PulsioFlex |
-| Fetal monitor | GE Corometrics 250cx |
+- Multifunction monitor
 
----
+  - Masimo: Root
 
-## Connection Types
+- Anesthesia machine
 
-### RS-232 (Serial / COM Port)
+  - Drager: anesthesia machines
 
-Most devices use RS-232 serial communication via a physical COM port or USB-to-Serial adapter.
+  - GE: Datex-Ohmeda anesthesia machines
 
-- Select the COM port number (e.g., `COM3`).
-- Baud rate and other serial parameters are automatically configured per device type.
-- Install the USB-to-Serial driver before connecting.
+- Drug infuser
 
-### TCP (Network)
+  - Fresenius Kabi: Orchestra
 
-For network-connected devices. VitalRecorder can act as either a TCP **client** or **server**.
+  - Fresenius Kabi: Agilia
 
-- **Client mode**: Enter the device's IP address and port as `IP:PORT` (e.g., `192.168.1.100:9001`).
-- **Server mode**: Enter only the port number (e.g., `2575`). VitalRecorder listens and waits for the device to connect.
+  - BBraun: SpaceCom
 
-HL7 devices (Mindray HL7, Nihon Kohden HL7GW, BBraun HL7) typically use server mode with MLLP framing.
+  - Bionet: Pion TCI
 
-### UDP (Network)
+- Brain monitor/ Depth of anesthesia monitor
 
-Some devices broadcast data via UDP.
+  - Covidien: BIS
 
-- Enter the port number to listen on.
+  - Covidien: A2000
 
-### BLE (Bluetooth Low Energy)
+  - Covidien: Invos
 
-For wireless sensors such as Movesense.
+  - Inbody: PLEM100
 
-- Requires Windows 10+ with Bluetooth 4.0 adapter.
-- The device must be in pairing mode.
+  - BrainU: CAI
 
----
+  - Mdoloris Medical Systems: ANI monitor
 
-## Port Filtering
+- Neuromuscular monitor
 
-When connecting TCP/UDP devices, you can append filters to the port string to selectively accept connections or messages.
+  - BlinkDC: TwitchView
 
-### Format
+  - IDMed: TOFScan
 
-```
-PORT#KEYWORD@IP_ADDRESS
-```
+- Fluid infuser
 
-All parts except PORT are optional.
+  - Belmont: FMS2000
 
-### Keyword Filter (`#`)
+- Cardiac monitor
 
-Filters incoming messages by searching for a keyword string within the message content. Messages that do not contain the keyword are silently discarded.
+  - Edwards Lifesciences: Vigilance
 
-```
-2575#BED-001
-```
+  - Edwards Lifesciences: Vigileo
 
-This listens on port 2575 and only processes messages containing `BED-001`. This is useful when a single HL7 gateway (e.g., DoseLink, Mindray Gateway) sends data for multiple beds over one connection.
+  - Edwards Lifesciences: EV-1000
 
-### IP Filter (`@`)
+  - Edwards Lifesciences: HemoSphere
 
-Filters incoming TCP connections by source IP address. Connections from other IP addresses are rejected at the TCP accept stage.
+  - Edwards Lifesciences: ClearSight
 
-```
-2575@192.168.100.22
-```
+  - Deltex: CardioQ
 
-This listens on port 2575 and only accepts connections from `192.168.100.22`.
+- ETC
 
-### Combined
+  - Demo (generates demo signals including waveforms and numeric data)
 
-```
-2575#BED-001@192.168.100.22
-```
+  - Laxtha : LXD
 
-This listens on port 2575, only accepts connections from `192.168.100.22`, and only processes messages containing `BED-001`.
+  - SNUH : SKNA
 
-### Use Cases
+  - MELAB : SNUPATCH
 
-- **BBraun DoseLink**: When DoseLink's Endpoint Filtering is enabled, use `#` to filter by pump serial or bed identifier.
-- **Mindray HL7 Gateway**: Multiple beds sharing one gateway port can be separated using the bed name keyword.
-- **Multiple DoseLink servers**: Use `@` to distinguish which DoseLink server should connect to which VitalRecorder tab.
+  - MELAB : SNUEEG
 
----
+If you click <img src="images/user_manual/image9.png" width="450" /> button, the following dialog box appears. You can add any kind of equipment here. In this guide we will add the DI-149 from DataQ, an analog to digital converter.
 
-## Recording
+CAUTION: Before adding a device, the device driver must be installed and the device connected. For details on how to connect the device, refer to the Hardware Connection Guide.
 
-### Automatic Recording
+<img src="images/user_manual/image25.png" width="450" />
 
-By default, VitalRecorder starts recording automatically when it launches (`RECORD_WHEN_START` setting).
+If you select DataQ: DI-149 in the Device Type list on the left, the detailed setting window appears on the right. The detailed setting window differs slightly depending on the equipment type.
 
-### File Format
+Since the DI-149 is an ADC device, it has a lot of detailed settings.
 
-Recordings are saved as `.vital` files, a compressed binary format with track-based organization.
+First, specify the Sampling Frequency. Sampling Frequency means how many samples are read per second. If you specify 100 Hz, 100 samples are read in one second. For general monitoring purposes, a sampling frequency of 100Hz is sufficient. 500 Hz is sufficient for P-wave or T-wave analysis. Sampling Frequency is the most important factor that affects the size of stored files and CPU usage, so it is recommended that you choose carefully. The value we are using on our team is 500Hz.
 
-### Save Directory
+Sampling Frequency can also be entered directly. In addition, the maximum possible Sampling Frequency for each ADC is different and may vary depending on the number of channels to be used. However, the Vital Recorder automatically recognizes it and adjusts it to the possible values.
 
-Configure the save directory in Settings. The default is the user's Documents folder.
+<img src="images/user_manual/image21.png" width="450" />
 
-### Filename Template
+Next, you need to specify the name and conversion factor for each channel in the ADC. This part is specified in the channel input window under Preset. The number of lists depends on the number of channels in the ADC equipment. In most cases, it is recommended to use Presets. If you do not have a Preset, or if you have a specific reason for changing it, you can enter this value manually. You can select the kind of physical quantity to be transferred according to the track type and input the Voltage to Physical Unit conversion value.
 
-The filename is generated from a template. Default: `%r_%y%m%d_%h%i%s`
+Now you're done. Press OK button to add equipment
 
-| Code | Meaning |
-|------|---------|
-| `%r` | Room/bed name |
-| `%y` | Year (4 digits) |
-| `%m` | Month (2 digits) |
-| `%d` | Day (2 digits) |
-| `%h` | Hour (2 digits) |
-| `%i` | Minute (2 digits) |
-| `%s` | Second (2 digits) |
+<img src="images/user_manual/image27.png" width="450" />
 
----
+The added device is shown on the Devices tab and will not disappear from the list after exiting and restarting the Vital Recorder program. The Vital Recorder always attempts to connect to the devices on the Devices tab and displays the incoming data on the track. If the device is disconnected or data is not passed from the device for some time, the connection is automatically resumed.
 
-## Server Upload
+# Recording and storing
 
-VitalRecorder can upload data in real-time to a VitalServer instance via WebSocket.
+## Save to local storage
 
-### Settings
+If the "Start Recording" button is pressed while data is being input from the device, recording and saving will start
 
-| Setting | Description |
-|---------|-------------|
-| `SERVER_IP` | VitalServer IP address or hostname |
-| `SEND_WEB` | Enable/disable server upload (`1` or `0`) |
-| `CLOUD_UPLOAD` | Enable/disable cloud upload (`1` or `0`) |
-| `VRCODE` | Unique identifier for this VitalRecorder instance |
+<img src="images/user_manual/image15.png" width="450" />
 
-### What Gets Uploaded
+A dialog box asking for the save folder appears on the first save. The specified path will continue to be used thereafter and can be viewed and changed in the Recording tab of the Settings dialog box.
 
-- **Version, OS, architecture** of the VitalRecorder instance.
-- **Configuration** and **supported device types** (sent once on first successful upload after boot).
-- **Room data**: bed name, device list, track values, and waveforms for each tab.
+<img src="images/user_manual/image29.png" width="450" />
 
-Data is compressed with zlib before upload.
+If you click the Record button, "Date_Time.vital" file will be created in the specified folder. The file name is automatically created and cannot be changed during recording.
 
-### HL7 Mode
+NOTE: During recording, the recording button and the recording time display at the top of the program turn red.
 
-When the `HL7` setting is enabled, VitalRecorder sends room data in HL7 format instead of JSON.
+<img src="images/user_manual/image20.png" width="450" />
 
----
+##
 
-## Configuration File (vr.conf)
+## File Management
 
-VitalRecorder stores all settings in a single configuration file called `vr.conf`. This file uses an INI-like format and can be edited manually for headless deployments or batch provisioning.
+### Load a file
 
-### File Location
+You can load the saved file by pressing the Open File button on the toolbar.
 
-| Platform | Path |
-|----------|------|
-| Windows | `%APPDATA%\VitalRecorder\vr.conf` |
-| Linux | `./vr.conf` > `~/vr.conf` > `/boot/vr.conf` (searched in order) |
+If you press the Open File with channel selection button, you can read only certain tracks from inside the file. This is useful when you have saved all the cases and extracted specific tracks such as ECG or PLETH.
 
-- Encoding: UTF-8
-- Use `--conf <path>` to specify an alternate configuration file.
+### Merge files
 
-### File Structure
+In Vital Recorder, it is convenient to split and create separate files for each patient by using "Split file based on SpO2 and HR input" function. However, if signal is interrupted in the middle, several files may be created in one case.
 
-```ini
-# Global settings (before any section)
-KEY=VALUE
+With this feature, you can combine several fragments of a file into a single case.
 
-# Bed (tab) definition
-[BED/bedname]
+To take advantage of this feature, just drag and drop several fragmented files into the program's track window at once.
 
-# Device under this bed
-[DEV/devicename]
-type=DeviceType
-port=PortSpec
+##
 
-# Filter under this bed
-[FILT/filter_module_name]
-```
+\
+-
 
-**Rules:**
-- One `KEY=VALUE` pair per line.
-- Section headers start with `[`.
-- Blank lines are ignored.
-- `[DEV/...]` and `[FILT/...]` sections belong to the preceding `[BED/...]`.
-- A single `[BED/...]` can contain multiple devices and filters.
+# Event marker
 
-### Global Settings
+Event markers can be added during recording or at a later time.
 
-#### General
+## Open the Events tab
 
-| Key | Default | Description |
-|-----|---------|-------------|
-| `SAVEDIR` | (system default) | Recording file save directory |
-| `VRCODE` | (auto-generated) | Unique VitalRecorder identification code |
-| `DEBUG` | 0 | Debug mode (0: off, 1: on) |
-| `FILENAME_TEMPLATE` | `%r_%y%m%d_%h%i%s` | Recording filename template |
+You can open the Event tab with <img src="images/user_manual/image30.png" width="450" /> button.
 
-#### Recording
+<img src="images/user_manual/image19.png" width="450" />
 
-| Key | Default | Description |
-|-----|---------|-------------|
-| `RECORD_WHEN_START` | 1 | Auto-record on launch (0: off, 1: on) |
-| `CUT_FILE` | 1 | Split file at patient boundaries (0: off, 1: on) |
-| `CUT_HOURLY` | 0 | Split file every hour (0: off, 1: on) |
-| `CUT_BY` | (none) | Signal for file split trigger (e.g., `spo2`, `hr`, `any`) |
-| `PT_WAITING_TIME` | 5 | Patient waiting time in minutes |
+## Add events
 
-#### Server
+There are five ways to add events from the Vital Recorder.
 
-| Key | Default | Description |
-|-----|---------|-------------|
-| `SERVER_IP` | (none) | VitalDB server address (IP:port) |
-| `UPLOAD_SERVER_IP` | (none) | File upload server address |
-| `MONITOR_SERVER_IP` | (none) | Web monitoring server address |
-| `SEND_WEB` | 1 | Send data to web server (0: off, 1: on) |
-| `CLOUD_UPLOAD` | 0 | Enable cloud upload (0: off, 1: on) |
+1.  press Enter key **during recording** to add an event at the current time.
 
-#### Window
+> <img src="images/user_manual/image5.png" width="450" />
 
-| Key | Default | Description |
-|-----|---------|-------------|
-| `START_MAXIMIZED` | 1 | Start maximized |
-| `START_MINIMIZED` | 0 | Start minimized |
-| `OPTION_MIN_TO_TRAY` | 0 | Minimize to system tray |
-| `OPTION_ALWAYS_ON_TOP` | 0 | Always on top |
-| `PLAY_SOUND` | 1 | Play alarm sounds |
+2.  Click on the desired spot of the EVENTS track.
 
-#### Event Presets
+> <img src="images/user_manual/image32.png" width="450" />
 
-Up to 30 event preset labels can be defined with `EVT_TEXT_0` through `EVT_TEXT_29`.
+3.  Click <img src="images/user_manual/image10.png" width="450" /> button on the Events tab.
 
-```ini
-EVT_TEXT_0=Induction
-EVT_TEXT_1=Intubation
-EVT_TEXT_2=Incision
-```
+> <img src="images/user_manual/image13.png" width="450" />
 
-### Bed Section
+4.  Use <img src="images/user_manual/image3.png" width="450" /> function, with which you can set shortcut keys (0-29 number keys).
 
-Defines a bed (tab). Multiple beds can be defined in a single configuration file.
+    1.  Click <img src="images/user_manual/image3.png" width="450" /> button on the Events tab, then the following pop-up window will show up.
 
-```ini
-[BED/OR1]
-```
+    2.  Set event names like the image below and then click OK. Then, you can add events by pressing number keys. For example, an event “VITALLAB” will be added if number 3 key is pressed with the settings in the image below.
 
-- The bed name follows `BED/` (e.g., `OR1`, `ICU_BED3`).
-- If omitted, the bed name is auto-generated from VRCODE or the PC hostname.
+> <img src="images/user_manual/image22.png" width="450" /><img src="images/user_manual/image28.png" width="450" />
 
-### Device Section
+5.  Use batch recording & bulk
 
-Devices are added under a `[BED/...]` section.
+> *time*
+>
+> *Event recording*
+>
+> *time*
+>
+> *Event recording*
+>
+> Print the record like the above format in the text window of the Events tab. The format of the time is automatically normalized and changed to a unified format.
+>
+> Click the Apply button afterwards to confirm that events are added to the event track in bulk.
+>
+> You can move the location of the event marker by dragging it, or double-click it to edit the event.
+>
+> You can also edit them in bulk.
 
-```ini
-[DEV/devicename]
-type=DeviceType
-port=PortSpec
-```
+#
 
-| Key | Required | Description |
-|-----|----------|-------------|
-| `type` | Yes | Device type (e.g., `BIS`, `Intellivue`, `Solar8000`) |
-| `port` | Yes | Connection port (see Port Formats below) |
-| `company` | No | Manufacturer (e.g., `Nihon Kohden`) |
-| `readonly` | No | Read-only mode (0: off, 1: on) |
+# Options and Settings
 
-#### Port Formats
+Vital Recorder has several setting options. You can open the Settings page by clicking a cog button.
 
-| Format | Example | Description |
-|--------|---------|-------------|
-| COM port | `COM1`, `COM3` | Windows serial port |
-| TCP/IP | `192.168.1.100:4343` | Network device (IP:port) |
-| Port number | `4343` | TCP server mode on localhost |
-| RPi serial | `F1`-`F4` | Raspberry Pi AMA ports |
-| RPi USB | `LU`, `LU1`-`LU4` | USB Left Upper |
-| RPi USB | `RU`, `RU1`-`RU4` | USB Right Upper |
+<img src="images/user_manual/image8.png" width="450" />
 
-#### Port Filtering in Config
+<img src="images/user_manual/image1.png" width="450" />
 
-The port value supports keyword and IP filters (same syntax as described in [Port Filtering](#port-filtering)):
+## Configuration File
 
-```
-port=PORT#keyword1 keyword2#keyword3@IP_SUFFIX
-```
+<img src="images/user_manual/image18.png" width="450" />
 
-#### ADC Device Settings
+- Pencil button opens the configuration file, vr.conf.
 
-For ADC (Analog-to-Digital Converter) devices, additional per-channel settings are available:
+- Folder button opens the location where vr.conf is stored. By default, the folder path is C:\Users\Username\AppData\Roaming\VitalRecorder.
 
-| Key | Description |
-|-----|-------------|
-| `srate` | Sampling rate in Hz |
-| `parname1`, `parname2`, ... | Parameter name for each channel |
-| `gain1`, `gain2`, ... | Voltage-to-physical-unit conversion gain for each channel |
+On-premise Vitalserver requires vr.conf editing. You can open and edit vr.conf with Notepad or any text editing program as shown below.
 
-```ini
-[DEV/SNUADC]
-type=SNUADC
-port=COM3
-srate=500
-parname1=ECG
-gain1=1.0
-parname2=ART
-gain2=100.0
-```
+<img src="images/user_manual/image6.png" width="450" />
 
-### Filter Section
+All rows are of the form Variable=Value, which can be divided into sections of the form [bedname/equipment name].
 
-Adds a real-time signal processing filter. Filter definitions are loaded from the filter server.
+Below is a list of recognized configuration variables. Other variables are ignored.
 
-```ini
-[FILT/filter_module_name]
-```
+- SERVER_IP: To connect VitalRecorder to Vitalserver, SERVER_IP value is required. As shown above, it should be a form of VITALSERVER_IP_OR_DOMAIN:PORT. The variables below overwrite specific server IP addresses.
 
-- The module name must match the `modname` of a filter registered on the server.
-- No additional settings are needed (filter parameters are provided by the server).
+  - ADT_SERVER_IP: server that receives the admission-discharge-transfer information
 
-### Configuration Examples
+  - MONITOR_SERVER_IP: server that receives the (real-time) web monitoring data
 
-#### Single Patient Monitor
+  - UPLOAD_SERVER_IP: server that receives vital files.
 
-```ini
-SAVEDIR=D:\VitalData
+  - FILTER_SERVER_IP: server for python filter
 
-[BED/OR1]
+- SAVEDIR: Folder to save the vital files
 
-[DEV/Solar8000]
-type=Solar8000
-port=COM1
-```
+- FILENAME_TEMPLATE: template for the filename. default is %y%m%d\\%r\_%y%m%d\_%h%i%s
 
-#### Multiple Devices
+  - %p: patient ID
 
-```ini
-SAVEDIR=D:\VitalData
-VRCODE=OR1_PC
+  - %r: bed name
 
-[BED/OR1]
+  - %Y: year (4 digits)
 
-[DEV/Intellivue]
-type=Intellivue
-port=192.168.1.100:4343
+  - %y: year (2 digits)
 
-[DEV/BIS]
-type=BIS
-port=COM3
+  - %m: month (00-12)
 
-[DEV/Primus]
-type=Primus
-port=COM4
-```
+  - %d: date (01-31)
 
-#### Multiple Beds
+  - %h: hour (00-59)
 
-```ini
-SAVEDIR=D:\VitalData
+  - %i: minute (00-59)
 
-[BED/OR1]
+  - %s: second (00-59)
 
-[DEV/Solar8000]
-type=Solar8000
-port=COM1
+- VRCODE: VR code
 
-[BED/OR2]
+- SHOW_DSA: Whether to display density spectral arrays (DSA) in ECG and EEG tracks
 
-[DEV/Philips]
-type=Intellivue
-port=192.168.1.101:4343
-```
+**After editing the vr.conf file in the other editor (eg. NotePad), please DO NOT click OK or Apply on the Setting Dialog, but Cancel or Close (X) the dialog.** Otherwise, VR will reset the configuration file. Close All the VR windows and restart VR to apply the change.
 
-#### Debug / Test
+## General Setting
 
-```ini
-SAVEDIR=C:\Users\lucid\Desktop
-DEBUG=1
+<img src="images/user_manual/image16.png" width="450" />
 
-[BED/test]
+You can easily change Settings by clicking the OR, PACU, or ICU button.
 
-[DEV/NK EGA]
-type=EGA
-company=Nihon Kohden
-port=9001
-```
+### OR button
 
-#### With Filter
+- Stop recording when SpO2 and HR parameter are not inputted for 5 minutes
 
-```ini
-[BED/OR1]
+- Start recording automatically when VitalRecorder starts
 
-[DEV/Solar8000]
-type=Solar8000
-port=COM1
+- Play sound when adding an event during recording
 
-[FILT/pleth_spi]
-```
+- The Display of VitalRecorder will start maximized
 
----
+### PACU button
 
-## Command Line Options
+- Stop recording when SpO2 and HR parameter are not inputted for 2 minutes
 
-```
-vital.exe [options] [filename]
-```
+- Start recording automatically when VitalRecorder starts
 
-| Option | Description |
-|--------|-------------|
-| `--version`, `-v` | Show version number |
-| `--devtypes`, `-d` | List all supported device types |
-| `--console`, `-c` | Run in console mode (no GUI) |
-| `--demo` | Run in console mode with a demo device |
-| `--upgrade`, `-u` | Upgrade to the latest version |
-| `-u1.18.0` | Upgrade to a specific version |
-| `--help`, `-h` | Show help |
-| `filename.vital` | Open a `.vital` file for playback |
+- The Display of VitalRecorder will start minimized
 
-### Console Mode
+### ICU button
 
-Console mode (`--console` or `-c`) runs VitalRecorder without the GUI. This is useful for headless deployments on Raspberry Pi or Ubuntu servers. Devices are loaded from the saved configuration.
+- Cut file every hour (create a new file every hour)
 
-### Debug Mode
+- Start recording automatically when program starts
 
-Enable the `DEBUG` setting to log raw protocol data to the `.vital` file. This is useful for troubleshooting device communication issues.
+- The Display of VitalRecorder will start minimized
 
----
+## Management Setting
 
-## Supported Devices
+<img src="images/user_manual/image17.png" width="450" />
 
-For the complete list of supported devices with connection details and parameters, see [Supported Devices](../VitalRecorder/Supported_Devices.md).
+## Display Setting
 
-### Quick Reference: Common Devices
+<img src="images/user_manual/image12.png" width="450" />
 
-| Device | Connection | Port Setting |
-|--------|-----------|-------------|
-| Philips Intellivue | RS-232 | COM port, 115200 baud |
-| GE Solar 8000 | RS-232 | COM port, 9600 baud |
-| Nihon Kohden (Serial) | RS-232 | COM port, 9600 baud |
-| Nihon Kohden (HL7GW) | TCP Server | Port 9001 |
-| Nihon Kohden (EGA) | UDP | Port number |
-| Mindray (HL7) | TCP Server | Port 10000 |
-| Draeger (Medibus) | RS-232 | COM port, 9600 baud (8N2) |
-| GE Datex-Ohmeda | RS-232 | COM port, 19200 baud (7E1) |
-| Medtronic BIS | RS-232 | COM port, 57600 baud |
-| BBraun SpaceCom | RS-232 | COM port, 9600 baud |
-| BBraun HL7 (DoseLink) | TCP Server | Port 2575 |
-| Masimo Radical-7 | RS-232 | COM port, 9600 baud |
-| Edwards Hemosphere | RS-232 | COM port, 9600 baud |
-| Hamilton ventilator | RS-232 | COM port, 38400 baud |
+- Start maximized: Set the program to run maximized.
 
----
+- Start minimized: Set the program to run minimized.
 
-## Troubleshooting
+- Always on top: Always set the program to the top level window.
 
-### Device Not Connecting
+- Minimize to tray icon: makes it a tray icon when minimizing the program.
 
-1. **RS-232**: Verify the correct COM port is selected. Check Device Manager for the port number. Ensure the USB-to-Serial driver is installed.
-2. **TCP Server mode**: Check that the firewall allows incoming connections on the specified port.
-3. **TCP Client mode**: Verify the device IP address is reachable (`ping` test).
+<img src="images/user_manual/image23.png" width="450" /> <img src="images/user_manual/image33.png" width="450" />
 
-### No Data Displayed
+- The tray icon is normally a black stationary icon, but it is displayed as a red animation icon during recording.
 
-- Some devices require specific configuration on the device side (e.g., enabling RS-232 output in Draeger Service menu, activating MIB output on Philips Intellivue).
-- Check that the baud rate and serial parameters match the device settings.
-- Enable `DEBUG` mode and check the raw data log to verify communication.
+# Exploring the data
 
-### Multiple Devices on Same Port
+To move a track in the Vital Recorder, it's easiest to drag the track with your mouse.
 
-For HL7 devices sharing a single gateway port, use the [Port Filtering](#port-filtering) feature with `#` keyword to separate beds.
+To navigate a track, scroll the mouse wheel **in the track list**.
 
-### BBraun HL7 Multi-Pump
+To zoom in and out on the track's data, scroll the mouse wheel **in the track window**.
 
-BBraun DoseLink sends data for multiple pumps over a single TCP connection. VitalRecorder automatically identifies each pump using the serial number in OBX-18 (Equipment Instance Identifier) and maps them to PUMP1 through PUMP8.
+## Set range
 
-If pumps are not being separated correctly:
-- Enable `DEBUG` mode and capture a `.vital` file.
-- Check the raw HL7 messages for OBX-18 values.
-- When using DoseLink Endpoint Filtering, use `#` keyword filter if needed.
+By dragging the time display area of the Vital Recorder, you can set the time range for track editing.
 
-### Server Upload Not Working
+The start and end markers of the selected time range can be moved by dragging again.
 
-- Verify `SERVER_IP` is set correctly.
-- Check that `SEND_WEB` is set to `1`.
-- Ensure network connectivity to the server.
-- Configuration and device type list are sent on the first successful upload after boot. If VitalRecorder boots without any active devices, the initial upload may be deferred until a device connects.
+NOTE: Setting the time range and editing tracks **only work with recorded files (.vital)**. You CANNOT edit the current recording case.
+
+<img src="images/user_manual/image4.png" width="450" />
+
+## Edit tracks
+
+Select the time zone and right click, then a popup menu will appear.
+
+- “Save As” on the pop-up menu, only the selected time zone can be saved as a separate file. This function is useful for storing some of the cases separately in the study.
+
+- “Copy Values to clipboard” copies selected data to the clipboard as text form. These values can be pasted into Excel, Notepad, R programs, etc.
+
+- “Delete” will erase the data from selected area
+
+- “Crop” leaves the corresponding area.
+
+- “Set track height” changes the height of the track, and the track will look bigger.
+
+<img src="images/user_manual/image24.png" width="450" />
+
+# Filters
+
+Vital Recorder has powerful scripting capabilities. The data read in the Vital Recorder can be programmed and analyzed using the JavaScript language, a scripting language. Since the Vital Recorder is installed with various filters and the source code of the filter can be checked directly, it is possible to apply various algorithms to your data.
+
+Please refer to the following document for how to make the filter.
+
+: Making custom filters for Vital Recorder
+
+## Using filters
+
+Open the saved vital file and click <img src="images/user_manual/image7.png" width="450" /> “Show Filter” button to go to the Filters tab (If you open a file without an event, it will be automatically moved to the Filters tab).
+
+<img src="images/user_manual/image31.png" width="450" />
+
+<img src="images/user_manual/image26.png" width="450" />
+
+Various filters are listed. Let's calculate the Pulse Transit Time (PTT).
+
+The ECG and PLETH tracks are automatically selected in the input track. This is automatically selected because it has the same track name as the variable name (ecg, pleth) entered by the filter creator. If there is no such track, you can manually select the track
+
+The output variables specified by the filter creator are displayed. For PTT filters, these values are Pulse Transit Time variables. You cannot output to an existing track name, so you can modify the track name here.
+
+Press the OK button, then
+
+<img src="images/user_manual/image11.png" width="450" />
+
+Pulse Transit Time is output to the new track.
+
+# Vital File Format
+
+## Introduction
+
+- The vital file is a file format used in vital recorder for saving vital signs and waveforms
+
+  - It is a single gzip compressed binary file starts with (1F 8B 08 00)
+
+  - It contains a header and a body part
+
+  - Multi-byte variables are encoded using littlen-endian
+
+  - All data structures are arranged in 1-byte units.
+
+    - Caution! Some compilers use 4 byte alignment implicitly.[^1]
+
+##
+
+## Data format
+
+- String data format
+
+  - Strings are encoded in UTF8
+
+  - It contains 4 byte length (without length itself) followed by character array of specified length
+
+  - Caution! It does not include the following NULL(\0) character
+
+- Time data format
+
+  - Ttimes are stored in UTC
+
+  - UTC can be converted to the local time using time zone bias (offset) in the header part.
+
+    - UTC = local time + tzbias[^2]
+
+  - All time data are represented as the number of seconds since 1970/01/01 00:00:00 UTC as a double data format
+
+  - This is compatible with Unix timestamps and convenient for addition and subtraction.
+
+  - Changing the time to \_\_int64 makes the speed slower because it require conversion in every operation.
+
+  - The decimal point is used to indicate the precision below seconds. (for example 0.1 means 100 milliseconds)
+
+  - Because the unix timestamp of year 2020 is 1,606,780,800, 31 bits are enough to express integer part of it. IEEE 754 double data type has 52 bit for fraction part, so 21 digits can be used for the representation of sub second time. 2 ^ 20 is about 1 million, so it has about 1 usec resolution.
+
+##
+
+## Header
+
+- The total length of the header is 10 + headerlen.
+
+- The vital file does not include the number or length of tracks in the header, you must parse the file to get the number of tracks or records. This limitation is because vital recorder can not know when recording will stop and you can add tracks at any time while vital files are storing.
+
+| Name | Type | Length | Description |
+|----|----|----|----|
+| sign | BYTE[4] | 4 | “VITA” |
+| format_ver | DWORD | 4 | File format version, currently 3 |
+| headerlen | WORD | 2 | header length after this, currently 10 |
+| tzbias[^3] | short | 2 | time zone bias (the difference, in minutes, between UTC time and local time) |
+| inst_id | DWORD | 4 | The instance ID of the program to be issued when the program starts. It is necessary to verify that the location of several vital files are continuously recorded in the same vital recorder execute. If different vital files have the same inst_id, you can use the same track id, even though there is a probability of 1/4.2 billion for collision. |
+| prog_ver | DWORD | 4 | vital recorder version |
+
+##
+
+## Body
+
+- Body is a sequence of packets as specified below.
+
+- Since the length of a packet is not constant, there is no way to directly index a specific packet without reading all packets. However, if you ignore the unwanted packet type and pass it using datalen field, you can read the information you want fairly quickly. (For example, when you want to extract only some track)
+
+### Packet structure
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Length</th>
+<th>Description</th>
+</tr>
+<tr>
+<th>type</th>
+<th>BYTE</th>
+<th>1</th>
+<th><p>SAVE_DEVINFO = 9</p>
+<p>SAVE_TRKINFO = 0</p>
+<p>SAVE_REC = 1</p>
+<p>SAVE_CMD = 6</p></th>
+</tr>
+<tr>
+<th>datalen</th>
+<th>DWORD</th>
+<th>4</th>
+<th><p>length of <strong>data</strong> (<strong>exclude</strong> type and datalen itself)</p>
+<p>If you meet the type you dont know, please ignore it and skip the datalen bytes.</p></th>
+</tr>
+<tr>
+<th>data</th>
+<th></th>
+<th>datalen</th>
+<th>The contents of data depends on the type and are described below.</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+
+### DEVINFO
+
+- Structure for device information
+
+  - It must be saved before the devid is used.
+
+  - If devid is 0, it indicates the vital recorder itself (for example, filter-generated tracks, event markers)
+
+- A new DEVINFO can appear for the same device id (devid) in a file. In this case, the new value should overwrites the previous value.
+
+- devid and trkid are meaningful only within the same file.
+
+- Even if the program instance is different, the Vital Recorder is implemented with the same devid value if the same kind of equipment is connected to the same physical port.
+
+  - For example, if two BIS devices are connected to COM5 and COM6, the previous devid remains the same even if the program is terminated and then re-executed. (save the devid to the registry)
+
+  - If you intentionally terminate the program and then switch between the two BIS devices and run the program again, the devids may cross each other.
+
+| Name | Type | Length | Description |
+|----|----|----|----|
+| devid | DWORD | 4 | device identifier |
+| typename | string | 4+len | device type |
+| devname | string | 4+len | device name |
+| port | string | 4+len | Information that allows device types such as COM1, COM10, ETH1, and Line Input Mixer to recognize the port to which the device is connected with this information only. If the device type and port are the same, it is generally considered the same device. |
+
+### TRKINFO
+
+- Structure for track information
+
+- TRKINFO must be appeared before the first record with the track id.
+
+  - Otherwise, the record should be ignored.
+
+- Tracks are separated by trkids, which are 2-byte integers.
+
+  - The numeric value of trkid itself has no meaning and there is no continuity
+
+  - trkids can be changed every time the program is executed.
+
+  - The order of the tracks is not in the order of trkid size, but in the order of appearance and the CMD_ORDER command described later.
+
+- Tracks with a devid of 0 (vital recorder itself) and name of EVENT are treated specially in the vital recorder. It is not displayed on a separate track but displayed in the event bar.
+
+<table style="width:100%;">
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Length</th>
+<th>Description</th>
+</tr>
+<tr>
+<th>trkid</th>
+<th>WORD</th>
+<th>2</th>
+<th>track id</th>
+</tr>
+<tr>
+<th>rec_type</th>
+<th>BYTE</th>
+<th>1</th>
+<th><p>TYPE_WAV = 1</p>
+<p>TYPE_NUM = 2</p>
+<p>TYPE_STR = 5</p></th>
+</tr>
+<tr>
+<th>recfmt</th>
+<th>BYTE</th>
+<th>1</th>
+<th><p>FMT_NULL = 0 // for TYPE_STR</p>
+<p>FMT_FLOAT = 1</p>
+<p>FMT_DOUBLE = 2</p>
+<p>FMT_CHAR = 3</p>
+<p>FMT_BYTE = 4</p>
+<p>FMT_SHORT = 5</p>
+<p>FMT_WORD = 6</p>
+<p>FMT_LONG = 7</p>
+<p>FMT_DWORD = 8</p></th>
+</tr>
+<tr>
+<th>name</th>
+<th>string</th>
+<th>4+len</th>
+<th></th>
+</tr>
+<tr>
+<th>unit</th>
+<th>string</th>
+<th>4+len</th>
+<th></th>
+</tr>
+<tr>
+<th>mindisp</th>
+<th>float</th>
+<th>4</th>
+<th></th>
+</tr>
+<tr>
+<th>maxdisp</th>
+<th>float</th>
+<th>4</th>
+<th></th>
+</tr>
+<tr>
+<th>color</th>
+<th>color</th>
+<th>4</th>
+<th>4byte ARGB format</th>
+</tr>
+<tr>
+<th>srate</th>
+<th>float</th>
+<th>4</th>
+<th>sample rate</th>
+</tr>
+<tr>
+<th>adc_gain</th>
+<th>double</th>
+<th>8</th>
+<th>measured_value = adc_offset + saved_value * adc_gain</th>
+</tr>
+<tr>
+<th>adc_offset</th>
+<th>double</th>
+<th>8</th>
+<th>measured_value = adc_offset + saved_value * adc_gain</th>
+</tr>
+<tr>
+<th>montype</th>
+<th>BYTE</th>
+<th>1</th>
+<th><p>Specifies the physiologic meaning of the track.</p>
+<p>MON_ECG_WAV = 1,</p>
+<p>MON_ECG_HR = 2,</p>
+<p>MON_ECG_PVC = 3,</p>
+<p>MON_IABP_WAV = 4,</p>
+<p>MON_IABP_SBP = 5,</p>
+<p>MON_IABP_DBP = 6,</p>
+<p>MON_IABP_MBP = 7,</p>
+<p>MON_PLETH_WAV = 8,</p>
+<p>MON_PLETH_HR = 9,</p>
+<p>MON_PLETH_SPO2 = 10,</p>
+<p>MON_RESP_WAV = 11,</p>
+<p>MON_RESP_RR = 12,</p>
+<p>MON_CO2_WAV = 13,</p>
+<p>MON_CO2_RR = 14,</p>
+<p>MON_CO2_CONC = 15,</p>
+<p>MON_NIBP_SBP = 16,</p>
+<p>MON_NIBP_DBP = 17,</p>
+<p>MON_NIBP_MBP = 18,</p>
+<p>MON_BT = 19,</p>
+<p>MON_CVP_WAV = 20,</p>
+<p>MON_CVP_CVP = 21,</p></th>
+</tr>
+<tr>
+<th>devid</th>
+<th>DWORD</th>
+<th>4</th>
+<th>Devid of the device that created the track</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+
+### REC
+
+- Every record stores time specific data (measured sample, sample list, string).
+
+| Name | Type | Length | Description |
+|----|----|----|----|
+| infolen | WORD | 2 | length of header of the record, currently 10 |
+| dt | double | 8 | The time at which the record's value was measured |
+| trkid | WORD | 2 | track id |
+| values | BYTE[] | datalen-infolen-2 | rec_type specific values described below |
+
+- values are different among the track type (NUM, WAV, STR)
+
+- WAV records
+
+<!-- -->
+
+- Samples that are continuously measured from the time specified by dt are stored as an array.
+
+- The sample rate and data type are taken from the track information.
+
+| Name | Type           | Length              | Description       |
+|------|----------------|---------------------|-------------------|
+| num  | DWORD          | 4                   | number of samples |
+| vals | dat_fmt[num] | sizeof(recfmt)*num | data samples      |
+
+- NUM records
+
+| Name | Type    | Length         | Description |
+|------|---------|----------------|-------------|
+| val  | dat_fmt | sizeof(recfmt) |             |
+
+- STR records
+
+| Name   | Type   | Length | Description |
+|--------|--------|--------|-------------|
+| unused | DWORD  | 4      | not used    |
+| sval   | string | 4+len  |             |
+
+- CMD records
+
+  - Currently 2 commands are supported.
+
+  - Depending on the cmd, additional data may follow.
+
+  - Unknown commands should skip over the datalen of the packet.
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Length</th>
+<th>Description</th>
+</tr>
+<tr>
+<th>cmd</th>
+<th>BYTE</th>
+<th>1</th>
+<th><p>CMD_ORDER = 5</p>
+<p>CMD_RESET_EVENTS = 6</p></th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+
+- CMD_TRK_ORDER
+
+  - Define track order
+
+  - The following additional data are shown below.
+
+| Name   | Type         | Length | Description      |
+|--------|--------------|--------|------------------|
+| cnt    | WORD         | 2      | number of tracks |
+| trkids | WORD [cnt] | cnt*2 | array of trkids  |
+
+- CMD_RESET_EVENTS
+
+  - Removed all event markers prior to this command
+
+  - No additional data
+
+# Vital File Utilities
+
+In the folder below you will find small utility programs to help you use vital files.
+
+C:\Program Files\Vital Recorder\utilities
+
+The sequence of analysis for files recorded with the Vital Recorder is as follows: First, open the file to check the track information, and save some tracks needed for research in a format that can be read by an analysis program such as excel or R (* .csv).
+
+The vital file utility programs allow you to automate this task for many files.
+
+The vital file utility is installed with the Vital Recorder. There are currently three types of vital file utilities.
+
+- vital_list : Creates a list of vital files in the current folder and displays summarized information
+
+- vital_trks : Extract track information from vital file
+
+- vital_recs : Extract the actual records inside the vital file
+
+The output of the vital file utility is output in the standard format of the operating system in the form of csv. Thus, you can get the output by using a pipe in a shell script or using shell command execution functions in various programming languages.
+
+## vital_list
+
+- vital_list [Path name]
+
+- Search the destination path to subdirectory level to list all vital files and extract summary information
+
+- When path name is not specified, it is designated as current directory
+
+- Output field: filename, path, dtstart, dtend, length, gas, drug1, drug2, abp, cvp, co, bis
+
+- It internally uses vital_trks utility, so it must be in the same path at execution time
+
+## vital_trks
+
+- Execution: vital_trks [File name]
+
+- Purpose: Extraction of equipment list and track list
+
+- The lines beginning with \# in the first part are the header
+
+- The header is used to output the attributes of the entire vital file in \# variable name and value format, and extracts dgmt, dtstart, and dtend at present.
+
+- The first line that does not begin with \# is the variable name and contains the followings: tname, tid, dname, did, rectype(wav/num/str), srate(wav), minval(num), maxval(num), firstval(str)
+
+- The following rows are data
+
+- Execution examples
+
+> vital_trks example.vital
+
+\#dgmt,-9.000000
+
+\#dtstart,1469504477.345400
+
+\#dtend,1469508718.631351
+
+tname,tid,dname,did,rectype,dtstart,dtend,srate,minval,maxval,firstval
+
+EEG1_WAV,1,BIS,1047396353,WAV,1469504477.345400,1469508717.880400,128.000000,,,
+
+EEG2_WAV,2,BIS,1047396353,WAV,1469504477.345400,1469508717.880400,128.000000,,,
+
+CO2,3,Primus,1116864513,WAV,1469504477.951400,1469508718.271569,62.500000,,,
+
+AWP,4,Primus,1116864513,WAV,1469504477.951400,1469508718.271569,62.500000,,,
+
+ECG,5,SNUADC,1700790273,WAV,1469504477.635396,1469508718.631351,100.000000,,,
+
+CVP,6,SNUADC,1700790273,WAV,1469504477.635396,1469508718.631351,100.000000,,,
+
+ART1,7,SNUADC,1700790273,WAV,1469504477.635396,1469508718.631351,100.000000,,,
+
+ECG_II,8,SNUADC,1700790273,WAV,1469504477.635396,1469508718.631351,100.000000,,,
+
+ECG_V5,9,SNUADC,1700790273,WAV,1469504477.635396,1469508718.631351,100.000000,,,
+
+RESP,10,SNUADC,1700790273,WAV,1469504477.635396,1469508718.631351,100.000000,,,
+
+PLETH,11,SNUADC,1700790273,WAV,1469504477.635396,1469508718.631351,100.000000,,,
+
+SR_1,12,BIS,1047396353,NUM,1469504478.144400,1469508134.144400,,0.000000,0.000000,
+
+SEF_1,13,BIS,1047396353,NUM,1469504478.144400,1469508134.144400,,13.480000,23.910000,
+
+BIS_1,14,BIS,1047396353,NUM,1469504478.144400,1469508717.144400,,0.000000,76.400002,
+
+AMP_1,15,BIS,1047396353,NUM,1469504478.144400,1469508134.144400,,62.669998,68.720001,
+
+BIT_1,16,BIS,1047396353,STR,1469504478.144400,1469508717.144400,,,,0848
+
+EMG_1,17,BIS,1047396353,NUM,1469504478.144400,1469508134.144400,,21.100000,71.650002,
+
+SQI_1,18,BIS,1047396353,NUM,1469504478.144400,1469508717.144400,,0.000000,100.000000,
+
+BIS_2,19,BIS,1047396353,NUM,1469504478.144400,1469508717.144400,,0.000000,0.000000,
+
+BIT_2,20,BIS,1047396353,STR,1469504478.144400,1469508717.144400,,,,ffff8000
+
+...
+
+PUMP1_DRUG,145,Orchestra,1682243585,STR,1469504481.572400,1469508253.775400,,,,PROPOFOL
+
+PUMP1_RATE,146,Orchestra,1682243585,NUM,1469504481.573400,1469508253.775400,,0.000000,311.625000,
+
+PUMP1_VOL,147,Orchestra,1682243585,NUM,1469504481.573400,1469508253.775400,,37.784000,54.127998,
+
+PUMP1_REMAIN,148,Orchestra,1682243585,NUM,1469504481.574400,1469508253.775400,,0.000000,51.500000,
+
+PUMP1_PRES,149,Orchestra,1682243585,NUM,1469504481.574400,1469508253.775400,,0.000000,50.000000,
+
+PUMP1_CONC,150,Orchestra,1682243585,NUM,1469504481.574400,1469508253.775400,,20.000000,20.000000,
+
+PUMP1_CP,151,Orchestra,1682243585,NUM,1469504481.575400,1469508253.775400,,1.088000,3.933000,
+
+PUMP1_CE,152,Orchestra,1682243585,NUM,1469504481.575400,1469508253.775400,,1.111000,3.501000,
+
+PUMP1_CT,153,Orchestra,1682243585,NUM,1469504481.575400,1469508253.775400,,0.000000,3.500000,
+
+PUMP2_DRUG,154,Orchestra,1682243585,STR,1469504481.575400,1469508253.871400,,,,REMIFENTANIL
+
+PUMP2_RATE,155,Orchestra,1682243585,NUM,1469504481.576400,1469508253.871400,,0.000000,244.858002,
+
+PUMP2_VOL,156,Orchestra,1682243585,NUM,1469504481.577400,1469508253.871400,,17.954000,67.764999,
+
+PUMP2_REMAIN,157,Orchestra,1682243585,NUM,1469504481.577400,1469508253.871400,,0.000000,48.200001,
+
+PUMP2_PRES,158,Orchestra,1682243585,NUM,1469504481.578400,1469508253.871400,,0.000000,230.000000,
+
+PUMP2_CONC,159,Orchestra,1682243585,NUM,1469504481.578400,1469508253.871400,,20.000000,20.000000,
+
+PUMP2_CP,160,Orchestra,1682243585,NUM,1469504481.578400,1469508253.871400,,0.404000,6.007000,
+
+PUMP2_CE,161,Orchestra,1682243585,NUM,1469504481.578400,1469508253.871400,,0.470000,4.504000,
+
+PUMP2_CT,162,Orchestra,1682243585,NUM,1469504481.579400,1469508253.871400,,0.000000,4.500000,
+
+## vital_recs
+
+- Execution: vital_recs.exe [File name] [Track name] [Time interval]
+
+- Purpose: Extract data from a specific track
+
+- When extracting multiple tracks at once, separated by commas
+
+- If you want to specify the device name, specify it as the device name/track name. If the device name contains spaces, enclose the [Track Name] field itself in quotes ( "), for example vital_recs.exe example.vital " Solar 8000M/HR " 1.
+
+- Time interval is 1 second when not specified
+
+- Blank values are treated as blank and duplicate values are treated as first values. Therefore, it should be extracted above the maximum sampling rate of the track. Otherwise sample loss occurs..
+
+- The first line is the header and it is as follows: timestamp, first track name, second track name, third track name, ...
+
+- Execution examples
+
+> vital_recs example.vital ECG,HR
+
+timestamp,ECG,HR
+
+1469472077.635396,-4.956260
+
+1469472137.635396,-0.167093,67.000000
+
+1469472197.635396,0.010649,66.000000
+
+1469472257.635396,0.237764,66.000000
+
+1469472317.635396,0.297011,68.000000
+
+1469472377.635396,-0.028849,68.000000
+
+1469472437.635396,-0.018975,75.000000
+
+1469472497.635396,0.079771,78.000000
+
+1469472557.635396,-0.018975,79.000000
+
+1469472617.635396,0.000774,72.000000
+
+1469472677.635396,0.030398,72.000000
+
+1469472737.635396,0.188391,69.000000
+
+1469472797.635396,0.010649,68.000000
+
+1469472857.635396,0.050147,70.000000
+
+1469472917.635396,0.148893,69.000000
+
+1469472977.635396,0.079771,69.000000
+
+1469473037.635396,-0.097971,68.000000
+
+1469473097.635396,1.027730,68.000000
+
+1469473157.635396,-0.186843,83.000000
+
+1469473217.635396,-0.028849,75.000000
+
+1469473277.635396,0.208140,75.000000
+
+1469473337.635396,0.060022,71.000000
+
+...
+
+[^1]: For visual studio, use the following code
+
+    \#pragma pack (push, 1)
+
+    struct TRKINFO {... code ...};
+
+    \#pragma pack (pop)
+
+[^2]: time_t t = (time_t)(dt - tzbias * 60); // unixtime -> localtime
+
+    tm* ptm = gmtime(&t); // local time (in seconds) → year, month, day, hour, minute, second
+
+[^3]: TIME_ZONE_INFORMATION tzi;
+
+    GetTimeZoneInformation(&tzi);
+
+    return (short) tzi.Bias; // UTC = local time + bias // -540 for Korea

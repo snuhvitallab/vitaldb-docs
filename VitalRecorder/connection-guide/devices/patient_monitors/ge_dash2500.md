@@ -3,27 +3,42 @@
 <!-- meta
 category: Patient Monitor
 manufacturer: GE
-vr_device_name: Dash2500
 -->
-> **Note:** Protocol: **GE Dinamap Protocol**.
 
-| Cable | Adapter | Port | VR Device Name |
-|-------|---------|------|----------------|
-| Direct Serial | None | Host Comm Port | `Dash2500` |
+<img src="../hardware_images/image48.png" width="450" />
 
-## Connection Steps
-1. Connect a direct serial cable to **"Host Comm Port"** on the rear.
-2. Connect the other end to the PC via USB-Serial converter.
+Likewise, a direct serial cable is used. Plug it into the “Host Comm Port” on the back.
 
-   <img src="../hardware_images/ge_dash2500_1.png" width="450" alt="Rear panel — Host Comm Port">
+If communication is not established, set the following in the monitor.
 
-**Device Configuration** *(only if communication is not established):*
+1\. Turn the Trim Knob to open the Main Menu
 
-1. Turn the Trim Knob → **Main Menu**.
-2. Select **Other System Setting → Go to Config Mode → Yes**. Device reboots.
-3. Enter code **`2508`** → **Done**.
-4. Select **Configuration Menu → Other System Settings → Config HostComm**.
-5. Select **Remote Access → Serial 2**.
-6. Select **Serial 2 Setup → ASCII cmd → 9600 baud** (default).
-7. Select **Go to Previous Menu → Save Default Changes**.
-8. Select **Exit Configuration Mode → Yes**. Device reboots.
+2\. Select “other system setting”
+
+3\. Select “go to config mode” and select “yes”
+
+4\. Enter “2508” and select “done”
+
+5\. Device rebooted
+
+6\. Turn the Trim Knob to select the “Configuration Menu”
+
+7\. Select “other system settings”
+
+8\. Select “Config HostComm”
+
+9\. Select “remote access” and select “Serial 2”
+
+10\. Select “Serial 2 setup” and select “ASCII cmd”, “9600 baud” (default)
+
+11\. Select “go to previous menu”
+
+12\. Choose “save default changes”
+
+13\. Select “exit configuration mode” and select “yes”
+
+14\. Device rebooted
+
+Select “GE :: Dash 2500” when adding device in the Vital Recorder program.
+
+Note: This protocol is called the GE Dinamap protocol and is only used with the Dash 2500.
