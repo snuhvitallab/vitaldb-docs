@@ -148,7 +148,8 @@ Connected via USB; recognized as a VirtualCOM port after driver installation.
 | Agilia / Link+ | Fresenius Kabi | RS-232 | 115200 baud | Infusion volume, rate, alarm status |
 | Primea (Orchestra) | Fresenius Kabi | RS-232 | 19200 baud | Infusion volume, rate, alarm status |
 | PCBM | Fresenius Kabi | RS-232 | 19200 baud (7,2) | Multi-module pump status (ENQ/ACK protocol) |
-| SpaceCom | BBraun | RS-232 | 9600 baud | Infusion volume, rate, drug name |
+| SpaceCom | BBraun | RS-232 | 9600 baud | Drug name, rate (mL/h), dose rate, volume, concentration, pressure, TCI, bolus, syringe, weight, infusion time |
+| DoseLink (HL7) | BBraun | TCP (MLLP) | HL7 v2.6, port configurable | Drug name, rate (mL/h), dose rate (with auto unit), volume, VTBI, drug amounts, concentration, pressure, syringe, weight, infusion time, delivery status |
 | DS-5000 | Daiwha | RS-232 | 57600 baud | Infusion volume, rate |
 | Pion | Bionet | RS-232 | 115200 baud | Infusion volume, rate |
 | Link 4 | -- | RS-232 | -- | 4-channel linked pump status |
