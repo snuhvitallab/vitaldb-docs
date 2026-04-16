@@ -3,7 +3,7 @@
 <!-- meta
 category: Patient Monitor
 manufacturer: GE
-vr_device_name: 41
+vr_device_name: Coro
 -->
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|
@@ -14,7 +14,10 @@ vr_device_name: 41
 2. Connect the other end to the PC via USB-Serial converter.
 
 ## Device Configuration
-> To enter setup mode: hold the **setup button (clock/calendar icon)** while pressing the power button. Keep holding throughout the setup process.1. Use the **UA Reference button** to activate settings for FHR or UA display.2. Set values using the **volume button**:
+> To enter setup mode: hold the **setup button (clock/calendar icon)** while pressing the power button. Keep holding throughout the setup process.
+
+1. Use the **UA Reference button** to activate settings for FHR or UA display.
+2. Set values using the **volume button**:
 
    | Port | Setting | FHR Display | UA Display |
    |------|---------|-------------|------------|
@@ -22,7 +25,3 @@ vr_device_name: 41
    | RS232 Port 1 | Baud rate | `40` | `96` |
    | RS232 Port 2 | Communication mode | `31` | `5` |
    | RS232 Port 2 | Baud rate | `41` | `96` |
-
----
-
-## Anesthesia Machines

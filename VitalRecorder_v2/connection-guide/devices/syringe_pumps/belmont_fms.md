@@ -17,7 +17,3 @@ vr_device_name: FMS
 3. Connect a direct serial cable from the adapter to the PC via USB-Serial converter.
 
    <img src="../hardware_images/belmont_fms_1.png" width="450" alt="Lower vent panel — hidden serial port">
-
----
-
-## Cerebral Monitors
