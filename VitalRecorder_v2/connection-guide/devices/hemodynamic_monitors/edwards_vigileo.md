@@ -5,6 +5,8 @@ category: Hemodynamic Monitor
 manufacturer: Edwards Lifesciences
 vr_device_name: Vigileo
 -->
+> **Note:** Serial port configuration is required before use. See Device Configuration below.
+
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|
 | Direct Serial | Null Modem M/F | Serial port | `Vigileo` |

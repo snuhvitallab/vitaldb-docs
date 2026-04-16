@@ -5,6 +5,8 @@ category: Hemodynamic Monitor
 manufacturer: LiDCO
 vr_device_name: LiDCO
 -->
+> **Note:** Serial communication must be enabled on the device. See Device Configuration below.
+
 | Cable | Adapter | Port | Baud Rate | VR Device Name |
 |-------|---------|------|-----------|----------------|
 | Direct Serial | Null Modem M/F | Serial port | 57600 | `LiDCO` |

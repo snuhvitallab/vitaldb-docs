@@ -5,6 +5,8 @@ category: Patient Monitor
 manufacturer: GE
 vr_device_name: Bx50
 -->
+> **Note:** No additional device configuration required.
+
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|
 | Direct Serial | Null Modem F/F | Port X8 | `Bx50` |

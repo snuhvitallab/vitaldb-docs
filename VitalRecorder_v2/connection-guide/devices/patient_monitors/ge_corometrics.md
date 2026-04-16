@@ -5,6 +5,8 @@ category: Patient Monitor
 manufacturer: GE
 vr_device_name: Coro
 -->
+> **Note:** Requires device configuration via setup mode. See Device Configuration below.
+
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|
 | Direct Serial | None | RS232 Port 1 or 2 | `Coro` |

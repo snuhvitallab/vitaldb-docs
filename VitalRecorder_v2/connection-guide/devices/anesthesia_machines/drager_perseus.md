@@ -5,6 +5,8 @@ category: Anesthesia Machine
 manufacturer: Drager
 vr_device_name: MedibusX
 -->
+> **Note:** Password-protected interface configuration required. See Device Configuration below.
+
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|
 | Direct Serial | Null Modem F/F | COM1 or COM2 | `MedibusX` |

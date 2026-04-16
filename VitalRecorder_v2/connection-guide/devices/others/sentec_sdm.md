@@ -5,6 +5,8 @@ category: Other
 manufacturer: Sentec
 vr_device_name: SDM
 -->
+> **Note:** Protocol and baud rate must be configured on the device. See Device Configuration below.
+
 | Cable | Adapter | Protocol | Baud Rate | VR Device Name |
 |-------|---------|----------|-----------|----------------|
 | USB-Serial Converter | None | SenTecLink | 115200 | `SDM` |

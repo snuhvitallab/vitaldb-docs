@@ -5,6 +5,8 @@ category: Hemodynamic Monitor
 manufacturer: Edwards Lifesciences
 vr_device_name: Vigilance
 -->
+> **Note:** Digital port configuration is required before use. See Device Configuration below.
+
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|
 | Direct Serial | Null Modem M/F | COM1 (or COM2) | `Vigilance` |
