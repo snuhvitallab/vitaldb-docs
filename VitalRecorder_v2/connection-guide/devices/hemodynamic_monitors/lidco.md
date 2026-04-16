@@ -11,7 +11,9 @@ vr_device_name: LiDCO
 
 ## Connection Steps
 1. Attach a **Null Modem (M/F)** to the rear serial port.
-2. Connect a direct serial cable to the PC via USB-Serial converter.## Device Configuration
+2. Connect a direct serial cable to the PC via USB-Serial converter.
+
+## Device Configuration
 Navigate to **Settings → Communications → Serial** and configure:
 
 | Parameter | Value |
@@ -22,6 +24,4 @@ Navigate to **Settings → Communications → Serial** and configure:
 | Data Bits | 8 |
 | Parity | None |
 | Average | Never |
-| Observation | Beat-to-beat |---
-
-## Infusion Pumps
+| Observation | Beat-to-beat |

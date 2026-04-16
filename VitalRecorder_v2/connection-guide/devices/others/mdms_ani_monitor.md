@@ -21,7 +21,3 @@ vr_device_name: ANIMonitor2
    <img src="../hardware_images/mdms_ani_monitor_1.jpg" width="450" alt="Serial port — right side">
 
 3. Connect the USB end to the PC.
-
----
-
-## Neuromuscular Monitors

@@ -21,7 +21,3 @@ vr_device_name: Invos
 1. Press **Next Menu → Output Select → Digital Output → PC Link → OUTPUT FORMAT 1**.
 
    <img src="../hardware_images/medtronic_invos_2.png" width="450" alt="OUTPUT FORMAT 1">
-
----
-
-## Multifunction Monitors

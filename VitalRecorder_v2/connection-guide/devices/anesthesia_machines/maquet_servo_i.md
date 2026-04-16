@@ -13,5 +13,6 @@ vr_device_name: Servo-i
 | Direct Serial | Null Modem M/F | **BOTTOM** RS-232 port | `Servo-i` |
 
 ## Connection Steps
-1. Identify the **BOTTOM RS-232 port** on the device.2. Attach a **Null Modem (M/F)** adapter to this port.
+1. Identify the **BOTTOM RS-232 port** on the device.
+2. Attach a **Null Modem (M/F)** adapter to this port.
 3. Connect a direct serial cable from the adapter to the PC via USB-Serial converter.
