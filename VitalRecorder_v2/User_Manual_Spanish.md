@@ -191,18 +191,22 @@ Cuando una unica pasarela HL7 (Mindray eGateway, BBraun DoseLink, Nihon Kohden H
 
 1. **Solo una pestana vincula** el puerto TCP (la pestana *primaria*); las demas pestanas que usan el mismo puerto y tipo de dispositivo pasan automaticamente a ser suscriptoras pasivas. Esto elimina la carrera de Windows `SO_REUSEADDR` que antes obligaba a hacer clic en "Add device" tras cada reinicio.
 
-2. **Enrutamiento por nombre de cama (recomendado)** — establezca el Nombre de Cama de cada pestana igual al identificador que envia la pasarela; no hace falta configurar ningun filtro de puerto:
+2. **Enrutamiento por nombre de cama (recomendado, tiene prioridad sobre el filtro por palabra clave)** — establezca el Nombre de Cama de cada pestana igual a **cualquier** identificador que envia la pasarela; no hace falta configurar ningun filtro de puerto:
    - **Mindray**: ID de cama de `PV1-3` (p. ej. `SU-1`, `BED-001`)
    - **Nihon Kohden**: campo JSON `deviceId` o prefijo MFER de 12 bytes
-   - **BBraun**: cualquier token no vacio separado por `~` del OBX `MDC_ATTR_LOCATION` (p. ej. `Forskning`, `Bord4`, `Anilab`)
+   - **BBraun**: **cualquier** token no vacio separado por `~` del OBX `MDC_ATTR_LOCATION` (p. ej. `Forskning`, `Bord4`, `Anilab`, `Operasjon`)
 
-3. **Enrutamiento por palabra clave (alternativa)** — cuando el Nombre de Cama no puede coincidir directamente con el identificador de la pasarela, use la sintaxis `puerto#palabra_clave` descrita arriba.
+   Si varias pestanas pudieran coincidir con la misma trama (p. ej. existen tanto `Forskning` como `Bord4` y la LOCATION de la trama es `Forskning~Operasjon~Bord4~Anilab~~~~~Bord4`), **gana el token mas especifico**. Los tokens se comprueban en orden inverso, de modo que `Bord4` (el nombre corto al final de LOCATION) prevalece sobre `Forskning` (la etiqueta departamental al inicio). Cada trama se entrega a una sola pestana.
 
-4. **Creacion automatica de pestana** — si ninguna pestana coincide y la trama trae un identificador de cama, se crea una pestana nueva con ese nombre.
+3. **Enrutamiento por palabra clave (alternativa)** — cuando el Nombre de Cama no puede coincidir directamente con el identificador de la pasarela, use la sintaxis `puerto#palabra_clave` descrita arriba. Solo se aplica si no hay coincidencia por nombre de cama.
+
+4. **Creacion automatica de pestana** — si ninguna pestana coincide y la trama trae un identificador de cama, se crea una pestana nueva con el **token mas especifico** (el ultimo no vacio). Esto evita la perdida de paquetes durante la configuracion inicial.
 
 5. **Recuperacion automatica tras reinicio** — al reiniciar VitalRecorder, todas las pestanas restablecen la relacion primario/suscriptor en unos 15 segundos sin intervencion manual.
 
-En BBraun DoseLink una trama HL7 representa un rack (una cama); las multiples bombas del rack se envian como bloques VMD dentro de la trama y se registran en pistas separadas (PUMP1, PUMP2, ...) de la misma pestana.
+En BBraun DoseLink una trama HL7 representa un rack (una cama); las multiples bombas del rack se envian como bloques VMD dentro de la trama y se registran en pistas separadas (PUMP1 ... PUMP16) de la misma pestana.
+
+> **Aviso 1.18.23 para Windows no ingles** — las versiones anteriores sufrian un problema del C runtime de Windows: en idiomas con `,` como separador decimal (noruego, aleman, frances, etc.) las velocidades de infusion menores que 1.0 mL/h se registraban como 0. Desde 1.18.23 el parseo numerico siempre usa `.` como separador decimal, independientemente de la configuracion regional de Windows. El limite de bombas BBraun por dispositivo se amplio de 8 a 16.
 
 ### Reenvio de Tramas
 

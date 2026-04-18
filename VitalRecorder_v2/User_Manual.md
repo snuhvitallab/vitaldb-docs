@@ -170,18 +170,22 @@ When a single HL7 gateway (Mindray eGateway, BBraun DoseLink, Nihon Kohden HL7GW
 
 1. **Only one tab binds** the TCP port (the *primary*); all other tabs using the same port and device type automatically become passive subscribers. This eliminates the Windows `SO_REUSEADDR` race that previously required a manual "Add device" click on every restart.
 
-2. **Bed-name routing (preferred)** — set each tab's Bed Name to match the identifier the gateway sends. No port filter is needed:
+2. **Bed-name routing (preferred, takes priority over keyword filter)** — set each tab's Bed Name to match any identifier the gateway sends. No port filter is needed:
    - **Mindray**: `PV1-3` bed ID (e.g. `SU-1`, `BED-001`)
    - **Nihon Kohden**: `deviceId` JSON field or the 12-byte MFER prefix
-   - **BBraun**: any non-empty token from the `~`-separated `MDC_ATTR_LOCATION` OBX (e.g. `Forskning`, `Bord4`, `Anilab`)
+   - **BBraun**: any non-empty token from the `~`-separated `MDC_ATTR_LOCATION` OBX (e.g. `Forskning`, `Bord4`, `Anilab`, `Operasjon`)
 
-3. **Keyword-filter routing (fallback)** — when the Bed Name cannot match the gateway identifier directly, use the `port#keyword` syntax described above.
+   If multiple tabs could match the same frame (e.g. both `Forskning` and `Bord4` tabs exist and the frame's LOCATION is `Forskning~Operasjon~Bord4~Anilab~~~~~Bord4`), **the more specific token wins**. Tokens are tried in reverse order, so `Bord4` (last `~`-repetition, conventionally the display short-name) beats `Forskning` (first repetition, a broader department label). Only one tab receives any given frame.
 
-4. **Automatic tab creation** — if no tab matches and the frame carries a bed identifier, a new tab is created with that name.
+3. **Keyword-filter routing (fallback)** — when the Bed Name cannot match the gateway identifier directly, use the `port#keyword` syntax described above. Applied only if bed-name routing finds no match.
+
+4. **Automatic tab creation** — if no existing tab matches and the frame carries a bed identifier, a new tab is created using the most specific (last non-empty) token. This prevents packet loss during first-time setup.
 
 5. **Restart auto-recovery** — on VitalRecorder restart, all tabs reestablish their primary/subscriber relationship within ~15 seconds without any manual intervention.
 
-For BBraun DoseLink specifically, one HL7 frame represents one rack (one bed); multiple pumps in the rack are carried as VMD blocks within that frame and are recorded on separate tracks (PUMP1, PUMP2, ...) inside the same tab.
+For BBraun DoseLink specifically, one HL7 frame represents one rack (one bed); multiple pumps in the rack are carried as VMD blocks within that frame and are recorded on separate tracks (PUMP1 … PUMP16) inside the same tab.
+
+> **1.18.23 notes for non-English Windows** — earlier versions were affected by a Windows C-runtime issue where infusion rates below 1.0 mL/h were recorded as 0 on locales that use `,` as the decimal separator (Norwegian, German, French, etc.). VitalRecorder 1.18.23 forces numeric parsing to always accept `.` as the decimal separator, regardless of Windows regional settings. BBraun pump limit was also raised from 8 to 16 pumps per device.
 
 ---
 
