@@ -185,6 +185,25 @@ Esto escucha en el puerto 2575, solo acepta conexiones desde `192.168.100.22` y 
 - **Mindray HL7 Gateway**: Multiples camas que comparten un unico puerto de gateway pueden separarse usando la palabra clave del nombre de cama.
 - **Multiples servidores DoseLink**: Use `@` para distinguir que servidor DoseLink debe conectarse a que pestana de VitalRecorder.
 
+### Enrutamiento Multicama para Pasarelas HL7
+
+Cuando una unica pasarela HL7 (Mindray eGateway, BBraun DoseLink, Nihon Kohden HL7GW) envia datos de varias camas por una sola conexion TCP, VitalRecorder enruta automaticamente cada trama a la pestana correcta:
+
+1. **Solo una pestana vincula** el puerto TCP (la pestana *primaria*); las demas pestanas que usan el mismo puerto y tipo de dispositivo pasan automaticamente a ser suscriptoras pasivas. Esto elimina la carrera de Windows `SO_REUSEADDR` que antes obligaba a hacer clic en "Add device" tras cada reinicio.
+
+2. **Enrutamiento por nombre de cama (recomendado)** — establezca el Nombre de Cama de cada pestana igual al identificador que envia la pasarela; no hace falta configurar ningun filtro de puerto:
+   - **Mindray**: ID de cama de `PV1-3` (p. ej. `SU-1`, `BED-001`)
+   - **Nihon Kohden**: campo JSON `deviceId` o prefijo MFER de 12 bytes
+   - **BBraun**: cualquier token no vacio separado por `~` del OBX `MDC_ATTR_LOCATION` (p. ej. `Forskning`, `Bord4`, `Anilab`)
+
+3. **Enrutamiento por palabra clave (alternativa)** — cuando el Nombre de Cama no puede coincidir directamente con el identificador de la pasarela, use la sintaxis `puerto#palabra_clave` descrita arriba.
+
+4. **Creacion automatica de pestana** — si ninguna pestana coincide y la trama trae un identificador de cama, se crea una pestana nueva con ese nombre.
+
+5. **Recuperacion automatica tras reinicio** — al reiniciar VitalRecorder, todas las pestanas restablecen la relacion primario/suscriptor en unos 15 segundos sin intervencion manual.
+
+En BBraun DoseLink una trama HL7 representa un rack (una cama); las multiples bombas del rack se envian como bloques VMD dentro de la trama y se registran en pistas separadas (PUMP1, PUMP2, ...) de la misma pestana.
+
 ### Reenvio de Tramas
 
 Cuando se recibe un mensaje que no coincide con el filtro de palabras clave, VitalRecorder lo reenvia automaticamente a otros dispositivos en otras pestanas que estan escuchando en el mismo puerto. Si no hay ninguna pestana coincidente y el mensaje contiene un identificador de cama (por ejemplo, un segmento PV1 de HL7), se crea automaticamente una nueva pestana con ese nombre de cama.

@@ -164,6 +164,25 @@ This listens on port 2575, only accepts connections from `192.168.100.22`, and o
 - **Mindray HL7 Gateway**: Multiple beds sharing one gateway port can be separated using the bed name keyword.
 - **Multiple DoseLink servers**: Use `@` to distinguish which DoseLink server should connect to which VitalRecorder tab.
 
+### Multi-Bed HL7 Gateway Routing
+
+When a single HL7 gateway (Mindray eGateway, BBraun DoseLink, Nihon Kohden HL7GW) delivers data for several beds over one TCP connection, VitalRecorder routes each frame to the correct tab automatically:
+
+1. **Only one tab binds** the TCP port (the *primary*); all other tabs using the same port and device type automatically become passive subscribers. This eliminates the Windows `SO_REUSEADDR` race that previously required a manual "Add device" click on every restart.
+
+2. **Bed-name routing (preferred)** — set each tab's Bed Name to match the identifier the gateway sends. No port filter is needed:
+   - **Mindray**: `PV1-3` bed ID (e.g. `SU-1`, `BED-001`)
+   - **Nihon Kohden**: `deviceId` JSON field or the 12-byte MFER prefix
+   - **BBraun**: any non-empty token from the `~`-separated `MDC_ATTR_LOCATION` OBX (e.g. `Forskning`, `Bord4`, `Anilab`)
+
+3. **Keyword-filter routing (fallback)** — when the Bed Name cannot match the gateway identifier directly, use the `port#keyword` syntax described above.
+
+4. **Automatic tab creation** — if no tab matches and the frame carries a bed identifier, a new tab is created with that name.
+
+5. **Restart auto-recovery** — on VitalRecorder restart, all tabs reestablish their primary/subscriber relationship within ~15 seconds without any manual intervention.
+
+For BBraun DoseLink specifically, one HL7 frame represents one rack (one bed); multiple pumps in the rack are carried as VMD blocks within that frame and are recorded on separate tracks (PUMP1, PUMP2, ...) inside the same tab.
+
 ---
 
 ## Recording

@@ -185,6 +185,25 @@ PORT#KEYWORD@IP_ADDRESS
 - **Mindray HL7 Gateway**：共享同一网关端口的多个床位可通过床位名称关键字进行分离。
 - **多台 DoseLink 服务器**：使用 `@` 区分哪台 DoseLink 服务器连接到哪个 VitalRecorder 选项卡。
 
+### 多床位 HL7 网关路由
+
+当单个 HL7 网关（Mindray eGateway、BBraun DoseLink、Nihon Kohden HL7GW）通过一条 TCP 连接传送多个床位的数据时，VitalRecorder 会自动将每帧数据路由到正确的选项卡：
+
+1. **只有一个选项卡绑定** TCP 端口（主选项卡），使用同一端口和同一设备类型的其他选项卡会自动成为被动订阅者。这从根本上消除了之前重启时需要手动点击 "Add device" 的 Windows `SO_REUSEADDR` 竞争问题。
+
+2. **基于床位名称的路由（推荐）** — 将每个选项卡的床位名称设置为与网关发送的标识符一致，无需端口过滤设置：
+   - **Mindray**：`PV1-3` 床位 ID（例如 `SU-1`、`BED-001`）
+   - **Nihon Kohden**：`deviceId` JSON 字段或 12 字节 MFER 前缀
+   - **BBraun**：`MDC_ATTR_LOCATION` OBX 中 `~` 分隔的任一非空令牌（例如 `Forskning`、`Bord4`、`Anilab`）
+
+3. **关键字过滤路由（备用）** — 当床位名称无法直接匹配网关标识符时，使用上述 `端口#关键字` 语法。
+
+4. **自动创建选项卡** — 若没有选项卡匹配且帧中含床位标识符，则以该标识符自动新建选项卡。
+
+5. **重启自动恢复** — 重启 VitalRecorder 后约 15 秒内，所有选项卡自动重新建立主/订阅者关系，无需手动点击 "Add device" 或 "Recording"。
+
+对于 BBraun DoseLink，一个 HL7 帧代表一个 rack（即一个床位）；rack 内的多个泵以 VMD 块形式包含在帧中，并被记录到同一选项卡的不同轨道（PUMP1、PUMP2 ...）。
+
 ### 帧转发
 
 当接收到与关键字过滤不匹配的消息时，VitalRecorder 会自动将其转发给在同一端口上监听的其他选项卡的设备。如果没有匹配的选项卡，且消息中包含床位标识符（例如 HL7 PV1 段），则会自动创建以该床位名称命名的新选项卡。
