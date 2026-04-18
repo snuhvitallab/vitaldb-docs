@@ -140,6 +140,31 @@ Now you're done. Press OK button to add equipment
 
 The added device is shown on the Devices tab and will not disappear from the list after exiting and restarting the Vital Recorder program. The Vital Recorder always attempts to connect to the devices on the Devices tab and displays the incoming data on the track. If the device is disconnected or data is not passed from the device for some time, the connection is automatically resumed.
 
+## Multi-bed setup for HL7 gateways (Mindray, BBraun, Nihon Kohden)
+
+Hospital HL7 gateways (Mindray eGateway, BBraun DoseLink, Nihon Kohden HL7 Gateway) typically deliver data for **multiple beds over a single TCP connection**. Vital Recorder 1.18.22 and later automatically route each incoming frame to the correct tab based on the bed identifier embedded in the frame, without any manual intervention on restart.
+
+### Recommended configuration
+
+1. **Create one tab per bed** and set each tab's **Bed Name** to match the identifier the gateway sends.
+   - Mindray eGateway: the bed ID in `PV1-3` (e.g. `SU-1`, `BED-001`).
+   - Nihon Kohden HL7GW: the `deviceId` JSON field or the 12-byte MFER prefix.
+   - BBraun DoseLink: any non-empty value from the `~`-separated `MDC_ATTR_LOCATION` field (e.g. department name like `Forskning`/`Kurs`, table name like `Bord4`, or facility name like `Anilab`).
+2. **Add the same HL7 device on the same TCP port** (e.g. 10000 for Mindray, 5000 for BBraun) to every tab. Vital Recorder will let only one tab bind the port (the primary) and automatically turn the others into passive subscribers that receive forwarded frames.
+3. **Disable any location filter on the gateway side** so that all bed data reaches Vital Recorder — Vital Recorder will distribute it internally.
+
+### Advanced routing
+
+If the Bed Name cannot match the gateway's identifier directly, use the legacy port-filter syntax to route by keyword: set the port to `<port>#<keyword>` (e.g. `10000#Bord4` or `5000#Forskning Bord4` for an AND match). Multiple OR groups can be combined with additional `#` delimiters. The keyword search is a substring match against the entire HL7 frame, so any value that appears in `MDC_ATTR_LOCATION`, `PV1-3`, or any other segment field works.
+
+### Restart behaviour
+
+When Vital Recorder is closed and reopened, all tabs that share the port automatically re-establish their primary/subscriber relationship within a few seconds. No manual "Add device" or "Recording" click is required per tab. Each tab's original Bed Name and port settings are preserved across restarts.
+
+### BBraun DoseLink specifics
+
+BBraun DoseLink places multiple pumps (VMD blocks) inside a single frame for one rack. One frame still represents one bed; the multiple pumps are different channels at that bed. Configure one tab per rack location and all pumps in that rack will be recorded into the same tab, each on its own set of tracks (PUMP1, PUMP2, ...).
+
 # Recording and storing
 
 ## Save to local storage
