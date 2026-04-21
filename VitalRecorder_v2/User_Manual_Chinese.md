@@ -206,18 +206,18 @@ PORT#KEYWORD@IP_ADDRESS
 
 对于 BBraun DoseLink，一个 HL7 帧代表一个 rack（即一个床位）；rack 内的多个泵以 VMD 块形式包含在帧中，并被记录到同一选项卡的不同轨道（PUMP1 … PUMP16）。
 
-#### BBraun 精简显示模式（1.18.29+）
+#### Monitor View 的泵显示（1.18.30+）
 
-当多个泵同时运行时，为减少界面杂乱，可在 `vr.conf` 的 BBraun 设备段中添加 `minimal=1`。每个泵仅注册三个关键轨道 — `PUMP{N}_DRUG`（药物名称）、`PUMP{N}_RATE`（注射速度, mL/h）、`PUMP{N}_VOL`（累计注射量, mL）— 其余字段（压力、浓度、剂量速率、注射器、bolus、注射时间、患者体重、drug library、care area 等）不在显示和记录中出现。自动创建的床位选项卡会继承主选项卡的该设置。
+Monitor View 现可同时显示 **最多 8 个泵**（此前为 4 个）。每个泵槽显示药物名称和一个大值：
 
-```ini
-[DEV/BBraun HL7]
-type=BBraun : HL7
-port=5000
-minimal=1
-```
+- **TCI 泵（提供 effect-site concentration, CE）** — 槽位显示 `CE` + 药物名称（行为不变）。
+- **非 TCI 泵（多数 BBraun / Fresenius 配置）** — 槽位显示 `RATE`（mL/h）+ 药物名称，累计注射量 (`VOL`, mL) 以小号灰色文本显示在槽位右上角。
 
-BBraun HL7（DoseLink）和 BBraun SpaceCom（RS-232）均支持此选项。
+所有其他泵字段（压力、浓度、剂量速率、注射器、bolus、注射时间、患者体重、drug library、care area 等）仍然 **记录到 `.vital` 文件**并在默认轨道视图中可见 — 只有 Monitor View 做精简，用于保持运行中实验的简洁显示。
+
+支持的设备：BBraun SpaceCom/HL7, Fresenius Agilia/Primea/PCBM, Daiwha, Pion。无需配置 — 这是默认布局。
+
+> 1.18.29 引入的 `minimal=1` vr.conf 选项在 1.18.30 中移除：该选项也会从 `.vital` 文件中跳过额外字段（无法事后恢复）。1.18.30 的 Monitor View 重新设计保留了所有记录数据。
 
 > **1.18.23 非英文 Windows 用户提示** — 旧版本在 `,` 作为小数点分隔符的地区（挪威语、德语、法语等）的 Windows 上，低于 1.0 mL/h 的注射速度会被记录为 0（C 运行时问题）。1.18.23 起强制数字解析始终使用 `.` 作为小数点分隔符，不受 Windows 区域设置影响。BBraun 每台设备的泵数量上限也从 8 提升至 16。
 
