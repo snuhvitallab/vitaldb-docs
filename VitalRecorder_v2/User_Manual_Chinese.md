@@ -206,6 +206,19 @@ PORT#KEYWORD@IP_ADDRESS
 
 对于 BBraun DoseLink，一个 HL7 帧代表一个 rack（即一个床位）；rack 内的多个泵以 VMD 块形式包含在帧中，并被记录到同一选项卡的不同轨道（PUMP1 … PUMP16）。
 
+#### BBraun 精简显示模式（1.18.29+）
+
+当多个泵同时运行时，为减少界面杂乱，可在 `vr.conf` 的 BBraun 设备段中添加 `minimal=1`。每个泵仅注册三个关键轨道 — `PUMP{N}_DRUG`（药物名称）、`PUMP{N}_RATE`（注射速度, mL/h）、`PUMP{N}_VOL`（累计注射量, mL）— 其余字段（压力、浓度、剂量速率、注射器、bolus、注射时间、患者体重、drug library、care area 等）不在显示和记录中出现。自动创建的床位选项卡会继承主选项卡的该设置。
+
+```ini
+[DEV/BBraun HL7]
+type=BBraun : HL7
+port=5000
+minimal=1
+```
+
+BBraun HL7（DoseLink）和 BBraun SpaceCom（RS-232）均支持此选项。
+
 > **1.18.23 非英文 Windows 用户提示** — 旧版本在 `,` 作为小数点分隔符的地区（挪威语、德语、法语等）的 Windows 上，低于 1.0 mL/h 的注射速度会被记录为 0（C 运行时问题）。1.18.23 起强制数字解析始终使用 `.` 作为小数点分隔符，不受 Windows 区域设置影响。BBraun 每台设备的泵数量上限也从 8 提升至 16。
 
 ### 帧转发

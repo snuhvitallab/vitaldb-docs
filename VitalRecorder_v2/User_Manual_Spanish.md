@@ -206,6 +206,19 @@ Cuando una unica pasarela HL7 (Mindray eGateway, BBraun DoseLink, Nihon Kohden H
 
 En BBraun DoseLink una trama HL7 representa un rack (una cama); las multiples bombas del rack se envian como bloques VMD dentro de la trama y se registran en pistas separadas (PUMP1 ... PUMP16) de la misma pestana.
 
+#### Modo de pantalla minima BBraun (1.18.29+)
+
+Para reducir el desorden visual cuando hay varias bombas activas simultaneamente, anada `minimal=1` a la seccion del dispositivo BBraun en `vr.conf`. Solo se registran las tres pistas esenciales por bomba — `PUMP{N}_DRUG` (nombre del farmaco), `PUMP{N}_RATE` (velocidad de infusion, mL/h) y `PUMP{N}_VOL` (volumen infundido, mL); el resto de los campos (presion, concentracion, velocidad de dosis, jeringa, bolo, tiempo de infusion, peso del paciente, drug library, care area, etc.) se omiten de la visualizacion y del archivo grabado. Las pestanas de cama creadas automaticamente heredan esta configuracion de la pestana primaria.
+
+```ini
+[DEV/BBraun HL7]
+type=BBraun : HL7
+port=5000
+minimal=1
+```
+
+Tanto BBraun HL7 (DoseLink) como BBraun SpaceCom (RS-232) soportan esta opcion.
+
 > **Aviso 1.18.23 para Windows no ingles** — las versiones anteriores sufrian un problema del C runtime de Windows: en idiomas con `,` como separador decimal (noruego, aleman, frances, etc.) las velocidades de infusion menores que 1.0 mL/h se registraban como 0. Desde 1.18.23 el parseo numerico siempre usa `.` como separador decimal, independientemente de la configuracion regional de Windows. El limite de bombas BBraun por dispositivo se amplio de 8 a 16.
 
 ### Reenvio de Tramas

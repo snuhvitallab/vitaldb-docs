@@ -185,6 +185,19 @@ When a single HL7 gateway (Mindray eGateway, BBraun DoseLink, Nihon Kohden HL7GW
 
 For BBraun DoseLink specifically, one HL7 frame represents one rack (one bed); multiple pumps in the rack are carried as VMD blocks within that frame and are recorded on separate tracks (PUMP1 … PUMP16) inside the same tab.
 
+#### BBraun minimal display mode (1.18.29+)
+
+To reduce screen clutter when many pumps are active simultaneously, add `minimal=1` to the BBraun device section in `vr.conf`. Only the three essential tracks per pump — `PUMP{N}_DRUG` (drug name), `PUMP{N}_RATE` (infusion rate, mL/h), and `PUMP{N}_VOL` (infused volume, mL) — are registered; all other fields (pressure, concentration, dose rate, syringe, bolus, delivery time, patient weight, drug library, care area, etc.) are omitted from the display and the recorded file. Auto-created bed tabs inherit this setting from the primary tab.
+
+```ini
+[DEV/BBraun HL7]
+type=BBraun : HL7
+port=5000
+minimal=1
+```
+
+Both BBraun HL7 (DoseLink) and BBraun SpaceCom (RS-232) support this option.
+
 > **1.18.23 notes for non-English Windows** — earlier versions were affected by a Windows C-runtime issue where infusion rates below 1.0 mL/h were recorded as 0 on locales that use `,` as the decimal separator (Norwegian, German, French, etc.). VitalRecorder 1.18.23 forces numeric parsing to always accept `.` as the decimal separator, regardless of Windows regional settings. BBraun pump limit was also raised from 8 to 16 pumps per device.
 
 ---
