@@ -92,6 +92,36 @@ Settings placed before any `[BED/...]` section.
 | `SEND_WEB` | 1 | Send data to web server (0: off, 1: on) |
 | `CLOUD_UPLOAD` | 0 | Enable cloud upload (0: off, 1: on) |
 
+### TLS / Certificate Trust
+
+VitalRecorder verifies the server TLS certificate for all HTTPS uploads and WebSocket
+monitoring connections. By default the system trust store is used (Windows certificate
+store / `/etc/ssl/certs` on Linux / macOS keychain), which covers every public CA and
+any internal CA your hospital IT has already deployed through Group Policy or `update-ca-trust`.
+
+Use the keys below only when the default behavior is not sufficient.
+
+| Key | Default | Description |
+|-----|---------|-------------|
+| `TLS_EXTRA_CA` | (none) | Absolute path to an additional CA bundle file (PEM). Added to the trust store on Linux/macOS (OpenSSL/curl). On Windows the system certificate store is used — install the hospital CA there instead; this key has no effect under WinInet. |
+| `TLS_INSECURE` | 0 | `1` disables peer and hostname verification entirely. For isolated test networks only. A warning is emitted to the TRACE log on startup. **Do not use in production.** |
+
+**Typical scenarios**
+
+- *Public network, no middlebox* — no change needed. The bundled operating-system CA list already trusts `vitaldb.net`.
+- *Hospital SSL-inspection proxy (Zscaler, Palo Alto, Blue Coat, …)* — have the hospital IT team install the proxy's root CA into the Windows certificate store (Group Policy distribution is the normal path). No code or `vr.conf` change is needed on Windows. On Linux/macOS/Raspberry Pi builds, point `TLS_EXTRA_CA` at the PEM file provided by IT.
+- *Fully air-gapped test bench* — set `TLS_INSECURE=1` to bypass verification. Revert to `0` before returning the device to clinical use.
+
+```ini
+# Example — Linux recorder behind a hospital proxy
+TLS_EXTRA_CA=/etc/vitalrecorder/hospital-root-ca.pem
+```
+
+```ini
+# Example — temporary debug on an isolated network (NOT for production)
+TLS_INSECURE=1
+```
+
 ### Window
 
 | Key | Default | Description |

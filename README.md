@@ -26,6 +26,7 @@ Documentation for **VitalDB** and **VitalRecorder** — a medical biosignal reco
 ### VitalRecorder
 - [Getting Started](VitalRecorder/Getting_Started.md) — Installation and first-time setup
 - [User Manual](VitalRecorder/User_Manual.md) — Full feature reference
+- [Configuration Guide](VitalRecorder_v2/Configuration_Guide.md) — `vr.conf` reference (devices, server, TLS)
 - [Hardware Connection Guide](VitalRecorder/connection-guide/devices/README.md) — Per-device connection instructions (44 devices)
 - [Supported Devices & Parameters](VitalRecorder/Vital_File_Format.md)
 - [VitalRecorder Zero](VitalRecorder/User_Manual_Zero.md) — Raspberry Pi / embedded version
