@@ -27,6 +27,18 @@ This document describes the file structure and how to write it.
 
 - Encoding: UTF-8
 - Use `--conf <path>` on the command line to specify an alternate configuration file.
+- Use `--conf -` to read the configuration from standard input (no file needed). In this mode, settings are treated as read-only — VitalRecorder will not write back to any `.conf` file, so the original on-disk configuration is preserved. Useful for ad-hoc tests and containerized runs.
+
+```bash
+# Run with a piped-in config (Git Bash / Linux shell)
+./Vital.exe --console --conf - <<'EOF'
+SAVEDIR=/tmp/vr_out
+[BED/TEST]
+[DEV/BIS]
+type=BIS
+port=127.0.0.1:4343
+EOF
+```
 
 ---
 
@@ -94,32 +106,34 @@ Settings placed before any `[BED/...]` section.
 
 ### TLS / Certificate Trust
 
-VitalRecorder verifies the server TLS certificate for all HTTPS uploads and WebSocket
-monitoring connections. By default the system trust store is used (Windows certificate
-store / `/etc/ssl/certs` on Linux / macOS keychain), which covers every public CA and
-any internal CA your hospital IT has already deployed through Group Policy or `update-ca-trust`.
+VitalRecorder can verify the server TLS certificate for all HTTPS uploads and WebSocket
+monitoring connections, or it can accept any certificate (legacy behavior).
 
-Use the keys below only when the default behavior is not sufficient.
+> **Note for the 1.x line:** the default is `TLS_INSECURE=1` (verification off). Many hospital
+> deployments use private/self-signed CAs that are not installed system-wide, so forcing
+> verification would break existing uploads. Sites that do have a trusted CA chain can opt
+> in by setting `TLS_INSECURE=0`. Vital Recorder 2.0 is planned to flip this default.
 
 | Key | Default | Description |
 |-----|---------|-------------|
-| `TLS_EXTRA_CA` | (none) | Absolute path to an additional CA bundle file (PEM). Added to the trust store on Linux/macOS (OpenSSL/curl). On Windows the system certificate store is used — install the hospital CA there instead; this key has no effect under WinInet. |
-| `TLS_INSECURE` | 0 | `1` disables peer and hostname verification entirely. For isolated test networks only. A warning is emitted to the TRACE log on startup. **Do not use in production.** |
+| `TLS_INSECURE` | 1 | `1` skips peer and hostname verification (1.x default — preserves compatibility with private/self-signed hospital certificates). `0` enables full TLS verification using the system trust store (and `TLS_EXTRA_CA` if provided). |
+| `TLS_EXTRA_CA` | (none) | Absolute path to an additional CA bundle file (PEM). Added to the trust store on Linux/macOS (OpenSSL/curl). On Windows the system certificate store is used — install the hospital CA there instead; this key has no effect under WinInet. Only applies when `TLS_INSECURE=0`. |
 
 **Typical scenarios**
 
-- *Public network, no middlebox* — no change needed. The bundled operating-system CA list already trusts `vitaldb.net`.
-- *Hospital SSL-inspection proxy (Zscaler, Palo Alto, Blue Coat, …)* — have the hospital IT team install the proxy's root CA into the Windows certificate store (Group Policy distribution is the normal path). No code or `vr.conf` change is needed on Windows. On Linux/macOS/Raspberry Pi builds, point `TLS_EXTRA_CA` at the PEM file provided by IT.
-- *Fully air-gapped test bench* — set `TLS_INSECURE=1` to bypass verification. Revert to `0` before returning the device to clinical use.
+- *Existing hospital deployment (private CA, unchanged)* — keep the default. No change in 1.x needed.
+- *Public internet, valid public CA (vitaldb.net)* — set `TLS_INSECURE=0`. The system CA store already trusts the server; no other setup required.
+- *Hospital SSL-inspection proxy (Zscaler, Palo Alto, Blue Coat, …) on secure mode* — set `TLS_INSECURE=0` and have the hospital IT team install the proxy's root CA into the Windows certificate store (Group Policy distribution is the normal path). On Linux/macOS/Raspberry Pi builds, point `TLS_EXTRA_CA` at the PEM file provided by IT.
 
 ```ini
-# Example — Linux recorder behind a hospital proxy
+# Example — enable TLS verification, using a hospital-provided CA bundle on Linux/RPi
+TLS_INSECURE=0
 TLS_EXTRA_CA=/etc/vitalrecorder/hospital-root-ca.pem
 ```
 
 ```ini
-# Example — temporary debug on an isolated network (NOT for production)
-TLS_INSECURE=1
+# Example — enable TLS verification using only the Windows system certificate store
+TLS_INSECURE=0
 ```
 
 ### Window
