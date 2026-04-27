@@ -30,9 +30,28 @@ Download and install from the Microsoft Store:
 
 Or download the MSI installer or MSIX package from the release page.
 
-### Raspberry Pi / Ubuntu
+### Linux (Desktop, AppImage)
 
-Download the platform-specific binary (`pivr64` or `ubuntu64`) from the release page and run it directly.
+Download the AppImage (`VitalRecorder-*-x86_64.AppImage`) from the release page, mark it executable, and run it:
+
+```bash
+chmod +x VitalRecorder-*-x86_64.AppImage
+./VitalRecorder-*-x86_64.AppImage
+```
+
+Tested on Ubuntu 22.04 and later. Works on most modern Linux distributions (Fedora, Debian 12+) without additional setup — Qt6 is bundled inside the AppImage.
+
+For serial / USB device access (`/dev/ttyUSB*`, `/dev/ttyACM*`), add your user to the `dialout` group once:
+
+```bash
+sudo usermod -aG dialout $USER
+```
+
+Log out and back in for the group change to take effect.
+
+### Raspberry Pi / Headless Linux
+
+For unattended server-style recording without a GUI, download the platform-specific console binary (`pivr64` for Raspberry Pi ARM64 or `ubuntu64` for Ubuntu x64) from the release page and run it directly.
 
 ---
 

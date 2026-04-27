@@ -30,9 +30,28 @@ Microsoft Store에서 다운로드하여 설치합니다:
 
 또는 릴리스 페이지에서 MSI 설치 파일이나 MSIX 패키지를 다운로드하여 설치합니다.
 
-### Raspberry Pi / Ubuntu
+### Linux (데스크탑, AppImage)
 
-릴리스 페이지에서 플랫폼별 바이너리(`pivr64` 또는 `ubuntu64`)를 다운로드하여 직접 실행합니다.
+릴리스 페이지에서 AppImage(`VitalRecorder-*-x86_64.AppImage`)를 다운로드한 뒤, 실행 권한을 부여하고 실행합니다:
+
+```bash
+chmod +x VitalRecorder-*-x86_64.AppImage
+./VitalRecorder-*-x86_64.AppImage
+```
+
+Ubuntu 22.04 이상에서 검증되었으며, 최신 Linux 배포판(Fedora, Debian 12+ 등) 대부분에서 추가 설치 없이 동작합니다. Qt6 런타임은 AppImage 안에 동봉되어 있습니다.
+
+시리얼/USB 장비(`/dev/ttyUSB*`, `/dev/ttyACM*`) 접근이 필요한 경우, 사용자 계정을 `dialout` 그룹에 한 번 추가하세요:
+
+```bash
+sudo usermod -aG dialout $USER
+```
+
+그룹 변경을 적용하려면 로그아웃 후 다시 로그인합니다.
+
+### Raspberry Pi / 헤드리스 Linux
+
+GUI 없이 서버 형태로 무인 녹화를 수행하려면, 릴리스 페이지에서 플랫폼별 콘솔 바이너리(Raspberry Pi ARM64 는 `pivr64`, Ubuntu x64 는 `ubuntu64`)를 다운로드하여 직접 실행합니다.
 
 ---
 
