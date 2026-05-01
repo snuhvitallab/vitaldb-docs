@@ -150,16 +150,32 @@ Hospital HL7 gateways (Mindray eGateway, BBraun DoseLink, Nihon Kohden HL7 Gatew
    - Mindray eGateway: the bed ID in `PV1-3` (e.g. `SU-1`, `BED-001`).
    - Nihon Kohden HL7GW: the `deviceId` JSON field or the 12-byte MFER prefix.
    - BBraun DoseLink: any non-empty value from the `~`-separated `MDC_ATTR_LOCATION` field (e.g. department name like `Forskning`/`Kurs`, table name like `Bord4`, or facility name like `Anilab`).
-2. **Add the same HL7 device on the same TCP port** (e.g. 10000 for Mindray, 5000 for BBraun) to every tab. Vital Recorder will let only one tab bind the port (the primary) and automatically turn the others into passive subscribers that receive forwarded frames.
+2. **Add the same HL7 device on the same TCP port** (e.g. 10000 for Mindray, 5000 for BBraun) to every tab. Vital Recorder shares the listen socket between all tabs subscribed to that port — incoming frames are parsed once and routed to the matching tab by Bed Name.
 3. **Disable any location filter on the gateway side** so that all bed data reaches Vital Recorder — Vital Recorder will distribute it internally.
 
 ### Advanced routing
 
-If the Bed Name cannot match the gateway's identifier directly, use the legacy port-filter syntax to route by keyword: set the port to `<port>#<keyword>` (e.g. `10000#Bord4` or `5000#Forskning Bord4` for an AND match). Multiple OR groups can be combined with additional `#` delimiters. The keyword search is a substring match against the entire HL7 frame, so any value that appears in `MDC_ATTR_LOCATION`, `PV1-3`, or any other segment field works.
+If the Bed Name cannot match the gateway's identifier directly, use the port-filter syntax to route by keyword: set the port to `<port>#<keyword>` (e.g. `10000#Bord4` or `5000#Forskning Bord4` for an AND match). Multiple OR groups can be combined with additional `#` delimiters. The keyword search is a substring match against the entire HL7 frame, so any value that appears in `MDC_ATTR_LOCATION`, `PV1-3`, or any other segment field works.
 
-### Restart behaviour
+### Connection states and restart behaviour
 
-When Vital Recorder is closed and reopened, all tabs that share the port automatically re-establish their primary/subscriber relationship within a few seconds. No manual "Add device" or "Recording" click is required per tab. Each tab's original Bed Name and port settings are preserved across restarts.
+Each device shows one of three connection states next to its name:
+
+- **off** — closed, not bound to the port
+- **con** — listening / connected at the TCP level but no application data has arrived yet (e.g. the gateway has connected but the patient is not yet attached, or polling responses are flowing but no measurements)
+- **on** — application data is actively flowing (a record has been received)
+
+When Vital Recorder is closed and reopened, all tabs sharing the same port reconnect within a few seconds — no manual "Add device" or "Recording" click is required per tab. Bed Name and port settings persist across restarts.
+
+If a network bridge (e.g. WiFi serial bridge / VRN) drops and reconnects, the listen socket stays open across the gap and the new connection is accepted immediately on the same tab. The state simply flickers `on → con → on` without log churn.
+
+### Multiple TCP clients on one port
+
+Vital Recorder accepts multiple TCP client connections on the same port:
+
+- **By IP filter** — register one tab per source IP using `<port>@<ip>` (most explicit, recommended for split monitor setups).
+- **By keyword** — register one tab per bed identifier using `<port>#<keyword>` (recommended when one gateway delivers many beds).
+- **Multiple catch-all tabs** — registering several tabs on the same port without filters lets each tab hold one independent TCP connection. New connections beyond the catch-all count perform a takeover of the oldest catch-all (rather than being rejected), which matches the typical monitor-reboot reconnect pattern.
 
 ### BBraun DoseLink specifics
 
