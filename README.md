@@ -13,8 +13,7 @@ Documentation for **VitalDB** and **VitalRecorder** — a medical biosignal reco
 | [General](General/README.md) | About VitalLab, publications, terms and conditions |
 | [Open Dataset](OpenDataset/README.md) | VitalDB open dataset for surgical biosignal research |
 | [Web Monitoring](WebMonitoring/README.md) | Browser-based real-time patient monitoring |
-| [VitalRecorder](VitalRecorder/README.md) | Hardware recorder — setup, user manuals, device connection guides |
-| [VitalRecorder (Legacy)](VitalRecorder_v2/README.md) | Legacy hand-edited docs — Configuration Guide, Supported Devices, HL7 Spec, User Manuals (ZH/ES) |
+| [VitalRecorder](VitalRecorder/README.md) | Legacy hand-edited docs — Configuration Guide, Supported Devices, HL7 Spec, User Manuals (ZH/ES) |
 | [API](API/README.md) | Python library and Web API reference |
 | [Vitalserver](Vitalserver/README.md) | On-premise VitalDB server setup and operation |
 | [My Files](MyFiles/File_Download_Guide.md) | Downloading and managing recorded files |
@@ -24,13 +23,11 @@ Documentation for **VitalDB** and **VitalRecorder** — a medical biosignal reco
 ## Quick Links
 
 ### VitalRecorder
-- [Getting Started](VitalRecorder/Getting_Started.md) — Installation and first-time setup
 - [User Manual](VitalRecorder/User_Manual.md) — Full feature reference
-- [Configuration Guide](VitalRecorder_v2/Configuration_Guide.md) — `vr.conf` reference (devices, server, TLS)
+- [Configuration Guide](VitalRecorder/Configuration_Guide.md) — `vr.conf` reference (devices, server, TLS)
 - [Hardware Connection Guide](VitalRecorder/connection-guide/devices/README.md) — Per-device connection instructions (44 devices)
-- [Supported Devices & Parameters](VitalRecorder/Vital_File_Format.md)
-- [VitalRecorder Zero](VitalRecorder/User_Manual_Zero.md) — Raspberry Pi / embedded version
-- [VitalConnect](VitalRecorder/VitalConnect.md) — Network connectivity module
+- [Supported Devices & Parameters](VitalRecorder/Supported_Devices.md)
+- [Vital File Format](VitalRecorder/Vital_File_Format.md)
 
 ### API
 - [Python Library](API/Python_Library.md) — `pip install vitaldb`
@@ -47,9 +44,7 @@ Documentation for **VitalDB** and **VitalRecorder** — a medical biosignal reco
 
 | Document | EN | KO | ZH | ES |
 |----------|----|----|----|----|
-| Getting Started | [EN](VitalRecorder/Getting_Started.md) | [KO](VitalRecorder/Getting_Started_Korean.md) | — | — |
-| VitalConnect | [EN](VitalRecorder/VitalConnect.md) | [KO](VitalRecorder/VitalConnect_Korean.md) | — | — |
-| Intellivue Ventilator Settings | [EN](VitalRecorder/Intellivue_Ventilator_Settings.md) | [KO](VitalRecorder/Intellivue_Ventilator_Settings_Korean.md) | — | — |
-| Hardware Connection Guide | [EN](VitalRecorder/connection-guide/devices/README.md) | [KO](VitalRecorder/connection-guide/Hardware_Connection_Guide_Korean.md) | — | — |
+| User Manual | [EN](VitalRecorder/User_Manual.md) | [KO](VitalRecorder/User_Manual_Korean.md) | [ZH](VitalRecorder/User_Manual_Chinese.md) | [ES](VitalRecorder/User_Manual_Spanish.md) |
+| Hardware Connection Guide | [EN](VitalRecorder/connection-guide/devices/README.md) | — | — | — |
 | Web Monitoring Guide | [EN](WebMonitoring/User_Guide.md) | [KO](WebMonitoring/User_Guide_Korean.md) | — | — |
 | Vitalserver User Manual | [EN](Vitalserver/User_Manual.md) | [KO](Vitalserver/User_Manual_Korean.md) | — | — |

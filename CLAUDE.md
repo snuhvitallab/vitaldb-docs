@@ -16,17 +16,14 @@ OpenDataset/                        # Open dataset overview
 WebMonitoring/                      # Web-based monitoring guide
 MyFiles/                            # File download guide
 
-VitalRecorder/                      # Primary docs (converted from docx)
+VitalRecorder/                      # Primary docs (hand-edited)
 ├── README.md                       # Section index
-├── Getting_Started*.md             # EN + KO
-├── User_Manual*.md                 # EN (Zero variant also here)
-├── VitalConnect*.md                # EN + KO
-├── Intellivue_Ventilator_Settings*.md  # EN + KO
-├── Vital_File_Format.md
-├── images/                         # Per-doc image folders (docx-extracted)
+├── User_Manual*.md                 # EN / KO / ZH / ES
+├── Configuration_Guide.md          # vr.conf reference
+├── Supported_Devices.md            # Device & parameter list
+├── Vital_File_Format.md            # Binary .vital format spec
+├── VitalServer_HL7_v2_Spec.md      # HL7 v2 upload protocol
 └── connection-guide/
-    ├── README.md                   # Intro + cable types + troubleshooting
-    ├── Hardware_Connection_Guide_Korean.md
     └── devices/
         ├── README.md               # Quick-reference table (all 44 devices)
         ├── anesthesia_machines/
@@ -40,7 +37,6 @@ VitalRecorder/                      # Primary docs (converted from docx)
 API/                                # Python library + Web API docs
 Vitalserver/                        # On-premise server setup
 
-VitalRecorder_v2/                   # Legacy hand-edited docs (keep, do not modify)
 googledrive_webdocs/                # Original docx source files (legacy, archive)
 scripts/                            # Conversion and cleanup scripts
 ```
@@ -88,4 +84,4 @@ When adding a new device:
 - **Image sizing**: Use `<img src="..." width="450">` for inline images (HTML img tag, not `![]()`)
 - **GFM only**: GitHub-Flavored Markdown — no pandoc-specific `{width=...}` attributes
 - **Disclaimer** in device README: "not responsible for connection errors; follow manufacturer manual" — preserve in `connection-guide/devices/README.md`
-- `VitalRecorder_v2/` is frozen (legacy hand-edited) — do not modify; `VitalRecorder/` is the active folder
+- `VitalRecorder/` is the active folder — all edits go here

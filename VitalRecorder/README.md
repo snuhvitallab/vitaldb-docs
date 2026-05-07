@@ -1,6 +1,4 @@
-# VitalRecorder (Legacy)
-
-> **Note:** This folder contains the legacy hand-edited documentation. The active documentation converted from the original source files is in [`VitalRecorder/`](../VitalRecorder/README.md).
+# VitalRecorder
 
 ## Documents
 
