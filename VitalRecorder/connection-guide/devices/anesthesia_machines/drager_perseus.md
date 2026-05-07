@@ -2,21 +2,20 @@
 
 <!-- meta
 category: Anesthesia Machine
-manufacturer: GE
+manufacturer: Drager
+vr_device_name: MedibusX
 -->
+> **Note:** Password-protected interface configuration required. See Device Configuration below.
 
-For the Perseus, connect a "null modem (F/F cross-gender)" adapter first, then connect the direct serial cable.
+| Cable | Adapter | Port | VR Device Name |
+|-------|---------|------|----------------|
+| Direct Serial | Null Modem F/F | COM1 or COM2 | `MedibusX` |
 
-<img src="../hardware_images/image95.png" width="450" />
+## Connection Steps
+1. Attach a **Null Modem (F/F)** adapter to the serial port.
+2. Connect a direct serial cable from the adapter to the PC via USB-Serial converter.
 
-Enter service mode by selecting System Settings > System Menu. The password is 0000.
-
-<img src="../hardware_images/image43.png" width="450" />
-
-Then, select the Interface Configuration menu.
-
-<img src="../hardware_images/image44.png" width="450" />
-
-For either COM1 or COM2—whichever port is connected—set the protocol to MEDIBUS and the baud rate to 9600.
-
-<img src="../hardware_images/image115.png" width="450" />
+## Device Configuration
+1. Navigate to **System Settings → System Menu**. Enter password **`0000`**.
+2. Select **Interface Configuration**.
+3. For the connected port (COM1 or COM2), set **Protocol → MEDIBUS** and **Baud Rate → 9600**.

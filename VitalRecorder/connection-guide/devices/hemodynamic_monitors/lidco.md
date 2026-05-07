@@ -3,18 +3,27 @@
 <!-- meta
 category: Hemodynamic Monitor
 manufacturer: LiDCO
+vr_device_name: LiDCO
 -->
+> **Note:** Serial communication must be enabled on the device. See Device Configuration below.
 
-There is one serial port on the back.Connect **“Null modem (M/F cross gender)”** and a direct serial cable to the serial port on the back of the device.
+| Cable | Adapter | Port | Baud Rate | VR Device Name |
+|-------|---------|------|-----------|----------------|
+| Direct Serial | Null Modem M/F | Serial port | 57600 | `LiDCO` |
 
-<img src="../hardware_images/image86.png" width="450" />
+## Connection Steps
+1. Attach a **Null Modem (M/F)** to the rear serial port.
+2. Connect a direct serial cable to the PC via USB-Serial converter.
 
-Set as shown below.
+## Device Configuration
+Navigate to **Settings → Communications → Serial** and configure:
 
-Settings > Communications > Serial > LiDCOserial Enabled
-
-Baud rate 57600, Stop Bits 1, Data bits 8, Parity None (defaults)
-
-Average Never, Observation beat-to-beat.
-
-<img src="../hardware_images/image183.png" width="450" />
+| Parameter | Value |
+|-----------|-------|
+| LiDCO Serial | Enabled |
+| Baud Rate | 57600 |
+| Stop Bits | 1 |
+| Data Bits | 8 |
+| Parity | None |
+| Average | Never |
+| Observation | Beat-to-beat |

@@ -3,26 +3,24 @@
 <!-- meta
 category: Hemodynamic Monitor
 manufacturer: Edwards Lifesciences
+vr_device_name: Vigileo
 -->
+> **Note:** Serial port configuration is required before use. See Device Configuration below.
 
-<img src="../hardware_images/image158.png" width="450" />
+| Cable | Adapter | Port | VR Device Name |
+|-------|---------|------|----------------|
+| Direct Serial | Null Modem M/F | Serial port | `Vigileo` |
 
-There is one serial port on the back. Connect **“Null modem(M/F cross gender)”** and connect the serial cable.
+## Connection Steps
+1. Attach a **Null Modem (M/F)** to the rear serial port.
+2. Connect a direct serial cable to the PC via USB-Serial converter.
 
-<img src="../hardware_images/image106.png" width="450" />
+   <img src="../hardware_images/edwards_vigileo_2.png" width="450" alt="Vigileo — rear serial port">
 
-Selecting an empty space at the bottom left of the screen will enter the setup menu.
+## Device Configuration
+1. Tap an **empty space at the bottom left** of the screen to open the setup menu.
+2. Select **Serial Port Setup → IFMout** (Device field).
 
-<img src="../hardware_images/image62.png" width="450" />
+   <img src="../hardware_images/edwards_vigileo_1.png" width="450" alt="Device = IFMout">
 
-Select “Serial Port Setup”.
-
-<img src="../hardware_images/image64.png" width="450" />
-
-Select "IFMout" in "Device".
-
-<img src="../hardware_images/image11.png" width="450" />
-
-Select "9600" in "Baud Rate".
-
-Select "Return" and exit.
+3. Select **9600** (Baud Rate field) → **Return** → exit.

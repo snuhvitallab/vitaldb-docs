@@ -3,28 +3,27 @@
 <!-- meta
 category: Brain Monitor
 manufacturer: Medtronic
+vr_device_name: A2000
 -->
+> **Note:** Supports **2-channel 256Hz EEG** acquisition. Similar to BIS VISTA.
 
-Medtronic BIS A2000 is similar to BIS Vista, but BIS A2000 can obtain 2-channel 256Hz EEG.
+| Cable | Adapter | Port | Protocol | VR Device Name |
+|-------|---------|------|----------|----------------|
+| Direct Serial | None | 9-pin port | Binary | `A2000` |
 
-<img src="../hardware_images/image12.png" width="450" />
+## Connection Steps
+1. Connect a **direct serial cable** to the 9-pin port on the rear.
+2. Connect the other end to the PC via USB-Serial converter.
 
-Connect a direct cable to the 9-pin port on the back of the device, and the setup method is as follows:
+   <img src="../hardware_images/medtronic_bis_a2000_1.png" width="450" alt="BIS A2000 — rear 9-pin port">
 
-<img src="../hardware_images/image99.png" width="450" />
+## Device Configuration
+1. Press **Menu → Advanced Setup → Diagnostic Menu → System Configuration Menu**.
 
-Press the menu button and select Advanced Setup.
+   <img src="../hardware_images/medtronic_bis_a2000_3.png" width="450" alt="System Configuration Menu">
 
-<img src="../hardware_images/image163.png" width="450" />
+2. Under **Serial Port Protocol**, select **Binary**.
 
-Press Diagnostic Menu.
+   <img src="../hardware_images/medtronic_bis_a2000_2.png" width="450" alt="Serial Port Protocol = Binary">
 
-<img src="../hardware_images/image74.png" width="450" />
-
-Press System Configuration Menu.
-
-<img src="../hardware_images/image178.png" width="450" />
-
-On Serial Port Protocol, choose Binary and press “Return To Diagnostic Menu” - “Return to Advanced Setup Menu”
-
-\- “Save Settings”.
+3. Press **Return To Diagnostic Menu → Return to Advanced Setup Menu → Save Settings**.

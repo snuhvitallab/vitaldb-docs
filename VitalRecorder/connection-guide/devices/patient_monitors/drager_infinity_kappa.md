@@ -2,27 +2,27 @@
 
 <!-- meta
 category: Patient Monitor
-manufacturer: GE
+manufacturer: Drager
+vr_device_name: Infinity
 -->
+> **Note:** Numeric data is recorded every 2 seconds. **Waveform data cannot be extracted** via the Mini-D interface — use the optional X10 Analog/Sync port for waveform output.
 
-<img src="../hardware_images/image70.png" width="450" />
+| Cable | Adapter | Port | VR Device Name |
+|-------|---------|------|----------------|
+| Mini-D cable (Drager part #5206421) | None | X5 or X3 of docking station | `Infinity` |
 
-This series monitor communicates via module, monitor, or Mini-D cable of X5 or X3 of docking station. Cables can be manufactured as shown below or ordered through distributors. (drager part number 5206441 export protocol cable)
+## Connection Steps
 
-<img src="../hardware_images/image147.png" width="450" />
+1. Connect the **Mini-D cable** (Drager part #5206421) to the **X5 or X3** port on the docking station.
+2. Connect the other end to the PC via USB-Serial converter.
 
-In Vital Recorder, communication is possible by adding an Infinity monitor, and most numeric data can be recorded every 2 seconds, but waveform data cannot be extracted.
+**Waveform Data (Optional):**
 
-To extract waveform data, you will need to connect to the X10 Analog/Sync port.
+Connect to the **X10 Analog/Sync port** (Drager part #4314618) using the analog/sync cable.
 
-(DRAGER part number 4314618)
-
-<img src="../hardware_images/image150.png" width="450" />
-
-12: CH1 (+)
-
-13: CH1 (-)
-
-7: CH2 (+)
-
-6: CH2 (-)
+| Pin | Signal |
+|-----|--------|
+| 12 | CH1 (+) |
+| 13 | CH1 (−) |
+| 7 | CH2 (+) |
+| 6 | CH2 (−) |

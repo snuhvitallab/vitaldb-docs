@@ -3,20 +3,25 @@
 <!-- meta
 category: Anesthesia Machine
 manufacturer: GE
+vr_device_name: Datex-Ohmeda
 -->
+> **Note:** Protocol: **GE Ohmeda Serial Protocol**. Compatible with: Aespire, Aespire View, Aestiva, Avance, Avance CS2, Aisys, Aisys CS2, Carestation 620/650/650c.
 
-The Datex-Ohmeda anesthesia machine is connected using the 15-pin connector (Female) that comes out when you open the back cover. The 15-pin connector has the same height as the 9-pin connector used for typical serial communications, but it is longer.
+| Cable | Adapter | Port | VR Device Name |
+|-------|---------|------|----------------|
+| Custom 9-pin ↔ 15-pin serial | None | 15-pin connector (under cover) | `Datex-Ohmeda` |
 
-<img src="../hardware_images/image170.png" width="450" />
+## Connection Steps
+1. Open the **back cover** of the anesthesia machine to expose the 15-pin connector.
 
-Since the usual Serial To USB connector has a 9 pin male port, we need to make a cable that changes it to a 15 pin male connector.
+   <img src="../hardware_images/ge_datex_ohmeda_1.png" width="300" alt="Rear panel — 15-pin connector">
 
-<img src="../hardware_images/image77.png" width="450" />
+2. Connect the **custom 9-pin to 15-pin cable** to the connector.
 
-If the anesthesia machine is not connected to the patient monitor, no further setup is required.
+   <img src="../hardware_images/ge_datex_ohmeda_3.png" width="300" alt="Custom 9-pin to 15-pin cable">
 
-However, if the Datex-Ohmeda 15 pin port is already used to transmit information such as CO2 curve, airway pressure curve, etc., from the anesthesia machine to the patient monitor, the following Y-cable for data peeping should be made and used to extract information without disturbing the existing data communication. In this case, you must select the "Read only mode" option when adding a device in the Vital Recorder program.
+3. Connect the 9-pin end to the PC via USB-Serial converter.
 
-<img src="../hardware_images/image55.png" width="450" />
+> If the 15-pin port is already in use, fabricate a **Y-cable** and enable **"Read Only Mode"** in Vital Recorder.
 
-Note: This protocol is called the GE Ohmeda Serial protocol and is used by Aespire, Aespire View, Aestiva, Avance, Avance CS2, Aisys, Aisys CS2 and Carestation 620/650/650c.
+<img src="../hardware_images/ge_datex_ohmeda_2.png" width="450" alt="Y-cable for data peeping">
