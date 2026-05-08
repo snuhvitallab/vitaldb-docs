@@ -471,6 +471,8 @@ Agrega un filtro de procesamiento de senales en tiempo real. Las definiciones de
 - El nombre del modulo debe coincidir con el `modname` de un filtro registrado en el servidor.
 - No se necesitan configuraciones adicionales (los parametros del filtro son proporcionados por el servidor).
 
+**Agregar filtros mediante la GUI** — En el menu Filters de una cama, elija Add. El cuadro de dialogo muestra todos los filtros disponibles en el servidor de filtros local de Python. Desde la version 1.18.37, VitalRecorder descarga automaticamente en el primer uso un runtime reducido de Python 3.11 (~27 MB), reemplazando el paquete de 121 MB basado en `pyvital`. Los filtros basicos de ECG / PPG / EEG (HRV, MTWA, deteccion de QRS, FFT, etc.) vienen preinstalados y funcionan de inmediato. Los filtros que requieren runtimes de aprendizaje profundo (HPI, detector de ruido de latidos, clasificador de ritmo, SV dlapco) estan detras de un boton **Install ML filters** — al pulsarlo se ejecuta `pip install openvital[all]` de forma silenciosa (sin ventana de comandos) y descarga PyTorch / TensorFlow solo cuando es necesario. Reinicie VitalRecorder despues de la instalacion para que los nuevos filtros aparezcan en la lista.
+
 ### Ejemplos de Configuracion
 
 #### Monitor de Paciente Unico

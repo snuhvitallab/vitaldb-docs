@@ -471,6 +471,8 @@ gain2=100.0
 - 模块名称必须与服务器上注册的过滤器的 `modname` 一致。
 - 无需额外设置（过滤器参数由服务器提供）。
 
+**通过 GUI 添加过滤器** — 在床位的 Filters 菜单中选择 Add，对话框会列出本地 Python 过滤器服务器中所有可用的过滤器。从 1.18.37 起，VitalRecorder 在首次使用时自动下载约 27 MB 的精简 Python 3.11 运行时，取代之前基于 `pyvital` 的 121 MB 包。基础 ECG / PPG / EEG 过滤器（HRV、MTWA、QRS 检测、FFT 等）已预装并可立即使用。需要深度学习运行时的过滤器（HPI、心搏噪声检测器、节律分类器、dlapco SV）位于 **Install ML filters** 按钮之后——点击该按钮会在不显示命令窗口的情况下静默执行 `pip install openvital[all]`，仅在需要时下载 PyTorch / TensorFlow。安装完成后请重启 VitalRecorder，新过滤器会出现在列表中。
+
 ### 配置示例
 
 #### 单个患者监护仪

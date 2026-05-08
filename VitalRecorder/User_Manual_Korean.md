@@ -467,6 +467,8 @@ gain2=100.0
 - 모듈명은 서버에 등록된 필터의 `modname`과 일치해야 합니다.
 - 추가 설정은 불필요합니다 (필터 파라미터는 서버에서 제공).
 
+**GUI 에서 필터 추가** — 침상의 Filters 메뉴에서 Add 를 누르면, 로컬 Python 필터 서버에 등록된 모든 필터가 다이얼로그에 나열됩니다. 1.18.37 부터는 ~27 MB 슬림 Python 3.11 런타임을 첫 사용 시 VitalRecorder 가 자동 다운로드하며, 이전의 `pyvital` 기반 121 MB 번들을 대체합니다. 기본 ECG / PPG / EEG 필터 (HRV, MTWA, QRS 검출, FFT 등) 는 미리 설치되어 즉시 사용 가능합니다. 딥러닝 런타임이 필요한 필터 (HPI, beat noise detector, 리듬 분류기, dlapco SV) 는 **Install ML filters** 버튼 뒤에 숨겨져 있어, 클릭하면 명령창 없이 `pip install openvital[all]` 가 자동 실행되어 PyTorch / TensorFlow 를 필요할 때만 받습니다. 설치 완료 후 VitalRecorder 를 재시작하면 새 필터가 목록에 나타납니다.
+
 ### 설정 예시
 
 #### 단일 환자 감시 장치

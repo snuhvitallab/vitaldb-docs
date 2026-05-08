@@ -447,6 +447,8 @@ Adds a real-time signal processing filter. Filter definitions are loaded from th
 - The module name must match the `modname` of a filter registered on the server.
 - No additional settings are needed (filter parameters are provided by the server).
 
+**Adding filters via the GUI** — Open a bed's Filters menu and choose Add. The dialog lists all filters available on the local Python filter server. From 1.18.37 onward this is a slim Python 3.11 runtime (~27 MB) that VitalRecorder downloads automatically on first use, replacing the older `pyvital`-based 121 MB bundle. Basic ECG / PPG / EEG filters (HRV, MTWA, QRS detection, FFT, etc.) are pre-installed and work immediately. Filters that require deep-learning runtimes (HPI, beat noise detector, rhythm classifier, dlapco SV) are gated behind an **Install ML filters** button — clicking it silently runs `pip install openvital[all]` (no command-prompt window appears) and pulls PyTorch / TensorFlow only when needed. Restart VitalRecorder after the install completes for the new filters to appear.
+
 ### Configuration Examples
 
 #### Single Patient Monitor

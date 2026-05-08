@@ -254,6 +254,8 @@ Adds a real-time signal processing filter. Filter definitions are loaded from th
 - The module name must match the `modname` of a filter registered on the server.
 - No additional settings are needed (filter parameters are provided by the server).
 
+**Filter runtime (1.18.37+)** — VitalRecorder downloads a slim Python 3.11 runtime (~27 MB) on first filter use, replacing the previous 121 MB `pyvital`-based bundle. The local server is provided by [openvital](https://github.com/vitaldb/openvital) (numpy + stdlib `http.server`, no async/web framework deps). Basic ECG / PPG / EEG filters work out of the box; ML-heavy filters (HPI, beat noise detector, rhythm classifier, dlapco SV) are gated behind the **Install ML filters** button in the Add Filter dialog, which runs `pip install openvital[all]` silently (no command window) and pulls PyTorch / TensorFlow only on demand.
+
 ---
 
 ## 7. Command Line Options
