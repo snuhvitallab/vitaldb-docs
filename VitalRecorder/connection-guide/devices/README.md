@@ -179,7 +179,7 @@ Cables under 10 meters do not risk signal degradation. Use shielded cables in OR
 
 ## Troubleshooting
 
-Common problems and fixes are documented in [`troubleshooting.md`](troubleshooting.md).
+Common problems and fixes are documented in [`troubleshooting`](troubleshooting.md).
 
 Quick reference:
 
