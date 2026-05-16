@@ -241,6 +241,35 @@ parname2=ART
 gain2=100.0
 ```
 
+### S5 / Datex Device Settings (GE Solar / Bx50 / B1x5M / Canvas)
+
+Devices that use the Datex DRI protocol (`S5`, `Solar8000`, `Bx50`, `B1x5M`, `Canvas`) support per-device options to choose which waveforms are requested from the monitor.
+
+| Key | Description |
+|-----|-------------|
+| `wavs` | Comma-separated list of waveforms to request (up to 8) |
+| `waveonly` | `1` = waveforms only, no numeric values; `0` = both (default) |
+
+Available waveform names: `ECG1`, `ECG2`, `PLETH` (alias `PPG`), `CO2`, `O2`, `N2O`, `AWP`, `IABP1`–`IABP8`, `EEG1`, `EEG2`, `EEGBIS`, `EEGENT`, `EEGENT400`.
+
+> **Invasive arterial pressure (ART) waveform:** Use `IABP1` — `ART` and `INVP1` are not recognized. The first invasive pressure channel (commonly labeled **ART** on the monitor screen) is mapped to `IABP1`.
+
+**Default waveforms when `wavs` is not set:**
+
+| Device | Default waveforms |
+|--------|-------------------|
+| `B1x5M` (B105M / B115M / B125M) | `ECG1, PLETH` only — the B1x5M family cannot keep up with the full S5 stream, so the default is intentionally reduced |
+| All other S5 / Solar8000 / Bx50 / Canvas | `ECG1, PLETH, IABP1, CO2, AWP` |
+
+If you need additional waveforms on a B1x5M (e.g., invasive arterial pressure), list them explicitly:
+
+```ini
+[DEV/B1x5M]
+type=B1x5M
+port=LU
+wavs=ECG1,PLETH,IABP1,CO2,AWP
+```
+
 ---
 
 ## 6. Filter Section

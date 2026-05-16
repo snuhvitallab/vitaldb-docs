@@ -460,6 +460,35 @@ parname2=ART
 gain2=100.0
 ```
 
+#### Configuracion de Dispositivos S5 / Datex (GE Solar / Bx50 / B1x5M / Canvas)
+
+Los dispositivos que usan el protocolo Datex DRI (`S5`, `Solar8000`, `Bx50`, `B1x5M`, `Canvas`) admiten opciones por dispositivo para seleccionar que formas de onda solicitar al monitor.
+
+| Clave | Descripcion |
+|-------|-------------|
+| `wavs` | Lista de formas de onda a solicitar (separadas por coma, hasta 8) |
+| `waveonly` | `1` = solo formas de onda, sin valores numericos; `0` = ambos (predeterminado) |
+
+Nombres de forma de onda disponibles: `ECG1`, `ECG2`, `PLETH` (alias `PPG`), `CO2`, `O2`, `N2O`, `AWP`, `IABP1`–`IABP8`, `EEG1`, `EEG2`, `EEGBIS`, `EEGENT`, `EEGENT400`.
+
+> **Forma de onda de presion arterial invasiva (ART):** Use `IABP1` — `ART` e `INVP1` no se reconocen. El primer canal de presion invasiva (etiquetado normalmente como **ART** en la pantalla del monitor) se mapea a `IABP1`.
+
+**Formas de onda predeterminadas cuando `wavs` no esta definido:**
+
+| Dispositivo | Formas de onda predeterminadas |
+|-------------|-------------------------------|
+| `B1x5M` (B105M / B115M / B125M) | Solo `ECG1, PLETH` — la familia B1x5M no puede mantener el ritmo del flujo S5 completo, por lo que el valor predeterminado se reduce intencionalmente |
+| Resto de S5 / Solar8000 / Bx50 / Canvas | `ECG1, PLETH, IABP1, CO2, AWP` |
+
+Si necesita formas de onda adicionales en un B1x5M (por ejemplo, presion arterial invasiva), listelas explicitamente:
+
+```ini
+[DEV/B1x5M]
+type=B1x5M
+port=LU
+wavs=ECG1,PLETH,IABP1,CO2,AWP
+```
+
 ### Seccion de Filtro
 
 Agrega un filtro de procesamiento de senales en tiempo real. Las definiciones de filtros se cargan desde el servidor de filtros.

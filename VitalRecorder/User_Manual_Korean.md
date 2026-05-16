@@ -456,6 +456,35 @@ parname2=ART
 gain2=100.0
 ```
 
+#### S5 / Datex 장비 설정 (GE Solar / Bx50 / B1x5M / Canvas)
+
+Datex DRI 프로토콜을 사용하는 장비 (`S5`, `Solar8000`, `Bx50`, `B1x5M`, `Canvas`) 는 모니터에서 요청할 파형을 장비별로 선택할 수 있습니다.
+
+| 키 | 설명 |
+|----|------|
+| `wavs` | 요청할 파형 목록 (콤마 구분, 최대 8개) |
+| `waveonly` | `1` = 파형만, 숫자값 제외; `0` = 둘 다 (기본값) |
+
+사용 가능한 파형명: `ECG1`, `ECG2`, `PLETH` (별칭 `PPG`), `CO2`, `O2`, `N2O`, `AWP`, `IABP1`–`IABP8`, `EEG1`, `EEG2`, `EEGBIS`, `EEGENT`, `EEGENT400`.
+
+> **동맥압(ART) 파형:** `IABP1` 을 사용합니다 — `ART` 나 `INVP1` 은 인식되지 않습니다. 모니터 화면에 **ART** 로 표시되는 첫 번째 침습 압력 채널이 `IABP1` 로 매핑됩니다.
+
+**`wavs` 미설정 시 기본 파형:**
+
+| 장비 | 기본 파형 |
+|------|-----------|
+| `B1x5M` (B105M / B115M / B125M) | `ECG1, PLETH` 만 — B1x5M 계열은 전체 S5 스트림을 따라가지 못해 기본값이 의도적으로 축소되어 있습니다 |
+| 그 외 S5 / Solar8000 / Bx50 / Canvas | `ECG1, PLETH, IABP1, CO2, AWP` |
+
+B1x5M 에서 추가 파형 (예: 동맥압) 이 필요하면 명시적으로 나열합니다:
+
+```ini
+[DEV/B1x5M]
+type=B1x5M
+port=LU
+wavs=ECG1,PLETH,IABP1,CO2,AWP
+```
+
 ### 필터 섹션
 
 실시간 신호 처리 필터를 추가합니다. 필터 정의는 필터 서버에서 로드됩니다.

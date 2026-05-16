@@ -460,6 +460,35 @@ parname2=ART
 gain2=100.0
 ```
 
+#### S5 / Datex 设备设置（GE Solar / Bx50 / B1x5M / Canvas）
+
+使用 Datex DRI 协议的设备（`S5`、`Solar8000`、`Bx50`、`B1x5M`、`Canvas`）支持按设备选择要从监护仪请求的波形。
+
+| 键 | 说明 |
+|----|------|
+| `wavs` | 要请求的波形列表（逗号分隔，最多 8 个） |
+| `waveonly` | `1` = 仅波形，无数值；`0` = 两者都有（默认） |
+
+可用波形名称：`ECG1`、`ECG2`、`PLETH`（别名 `PPG`）、`CO2`、`O2`、`N2O`、`AWP`、`IABP1`–`IABP8`、`EEG1`、`EEG2`、`EEGBIS`、`EEGENT`、`EEGENT400`。
+
+> **有创动脉压（ART）波形：** 请使用 `IABP1` — `ART` 和 `INVP1` 不被识别。监护仪屏幕上显示为 **ART** 的第一个有创压力通道映射为 `IABP1`。
+
+**未设置 `wavs` 时的默认波形：**
+
+| 设备 | 默认波形 |
+|------|----------|
+| `B1x5M`（B105M / B115M / B125M） | 仅 `ECG1, PLETH` — B1x5M 系列无法处理完整的 S5 数据流，因此默认值经过有意减少 |
+| 其他 S5 / Solar8000 / Bx50 / Canvas | `ECG1, PLETH, IABP1, CO2, AWP` |
+
+如需在 B1x5M 上获取额外波形（例如有创动脉压），请显式列出：
+
+```ini
+[DEV/B1x5M]
+type=B1x5M
+port=LU
+wavs=ECG1,PLETH,IABP1,CO2,AWP
+```
+
 ### 过滤器节
 
 添加实时信号处理过滤器。过滤器定义从过滤器服务器加载。
