@@ -8,11 +8,11 @@ If you are working with VitalDB datasets, the following paper will alleviate the
 
 - Lee HC, Park Y, Yoon SB, Yang SM, Park D, Jung CW. VitalDB, a high-fidelity multi-parameter vital signs database in surgical patients. Sci Data. 2022 Jun 8;9(1):279. [DOI: 10.1038/s41597-022-01411-5](https://doi.org/10.1038/s41597-022-01411-5).
 
-## Publications
+# Publications
 
 The following articles were conducted using Vital Recorder or cited Vital Recorder papers in the text.
 
-### 2021
+## 2021
 
 - Kim et al. Frontal electroencephalogram activity during emergence from general anaesthesia in children with and without emergence delirium. British Journal of Anaesthesia 2021 January. [DOI:10.1016/j.bja.2020.07.060](https://doi.org/10.1016/j.bja.2020.07.060)
 
@@ -64,7 +64,7 @@ The following articles were conducted using Vital Recorder or cited Vital Record
 
 - Shin et al. Joint Behavioral Cloning and Reinforcement Learning Method for Propofol and Remifentanil Infusion in Anesthesia. [2021 International Conference on Information Networking (ICOIN)](https://ieeexplore.ieee.org/xpl/conhome/9333828/proceeding) 02 February. [DOI: 10.1109/ICOIN50884.2021.9333933](https://ieeexplore.ieee.org/document/9333933)
 
-### 2020
+## 2020
 
 - Park et al. Intraoperative Arterial Pressure Variability and Postoperative Acute Kidney Injury. CJASN 2020. [DOI: 10.2215/CJN.06620619](https://cjasn.asnjournals.org/content/15/1/35)
 
@@ -116,7 +116,7 @@ The following articles were conducted using Vital Recorder or cited Vital Record
 
 - [Smith](https://ses.library.usyd.edu.au/browse?value=Smith,%20Ross%20Francis&type=author) et al. Comparison of Response Times of Anaesthetists to a Simulated Triple Low Event. University of Sydney 2020
 
-### 2019
+## 2019
 
 - Koo et al. Microvolt T-wave alternans at the end of surgery is associated with postoperative mortality in cardiac surgery patients. Scientific reports 2019. DOI: [DOI: 10.1038/s41598-019-53760-8](https://www.nature.com/articles/s41598-019-53760-8)
 
@@ -146,7 +146,7 @@ The following articles were conducted using Vital Recorder or cited Vital Record
 
 - Choi et al. Sugammadex associated profound bradycardia and sustained hypotension in patient with the slow recovery of neuromuscular blockade: A case report. Anesthesia and Pain Medicine 2019
 
-### 2018
+## 2018
 
 - Lee and Jung. Anesthesia research in the artificial intelligence era. Anesth Pain Med 2018. [DOI: 10.1016/j.urolonc.2013.09.012](http://www.anesth-pain-med.org/journal/view.html?doi=10.17085/apm.2018.13.3.248)
 
