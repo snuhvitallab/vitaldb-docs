@@ -1,12 +1,12 @@
 # VitalLab
 
-### *Faculty*
+## Faculty
 
 **Chul-Woo Jung, MD, PhD** (Professor)
 
 **Hyung-Chul Lee, MD, PhD** (Assistant Professor)
 
-### *Graduate Students*
+## Graduate Students
 
 **Seong Mi Yang, MD**
 
@@ -14,11 +14,13 @@
 
 **Hojong Lee, MD**
 
-### *Members*
+## Members
 
 **Eunsun Rachel Lee** (Research Scientist)
 
-### *Previous Members*
+**Dayeon Sim** (Clinical Research Nurse)
+
+## Previous Members
 
 **Min-Geun Kim** (Research Scientist)
 
