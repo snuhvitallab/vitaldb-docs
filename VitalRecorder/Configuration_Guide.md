@@ -83,6 +83,7 @@ Settings placed before any `[BED/...]` section.
 | `VRCODE` | (auto-generated) | VitalRecorder identification code |
 | `DEBUG` | 0 | Debug mode (0: off, 1: on) |
 | `FILENAME_TEMPLATE` | `%r_%y%m%d_%h%i%s` | Recording filename template |
+| `AUTO_DETECT` | 0 | Detect serial devices automatically (0: off, 1: on). See [Automatic Device Detection](#automatic-device-detection) |
 
 ### Recording
 
@@ -200,6 +201,49 @@ port=PortSpec
 | RPi serial | `F1`-`F4` | Raspberry Pi AMA ports |
 | RPi USB | `LU`, `LU1`-`LU4` | USB Left Upper |
 | RPi USB | `RU`, `RU1`-`RU4` | USB Right Upper |
+
+### Automatic Device Detection
+
+Setting `AUTO_DETECT=1` in the global settings lets VitalRecorder work out what is
+connected to each serial port on its own, so you do not have to write a `[DEV/...]`
+section for serial devices at all.
+
+```ini
+AUTO_DETECT=1
+
+[BED/OR1]
+# no [DEV/...] needed for serial devices - they are found and recorded automatically
+```
+
+**Devices you list explicitly always win.** A port named in a `[DEV/...]` section is
+never touched by detection, so you can leave some devices declared and let the rest be
+found. This also means you can turn detection on for an existing configuration without
+changing anything else.
+
+Detection runs continuously in the background. A device that is switched on later, or
+moved to a different port, is picked up within a couple of minutes without a restart.
+
+**Supported so far:** Philips IntelliVue, Dräger (Medibus and Medibus.X — Primus,
+Atlan, and others), GE/Datex-Ohmeda S/5, Masimo Radical-7/Root, Daiwha DS-5000,
+Fresenius Kabi Link+. Devices outside this list still need a `[DEV/...]` section.
+
+**Network and USB-identified devices are unaffected.** TCP ports, Bluetooth devices and
+anything addressed by IP still come from the configuration file as before.
+
+#### What it does
+
+Detection asks the port itself rather than guessing from the port name:
+
+1. **Line settings** — the baud rate and frame width are measured from the serial
+   line, so a device is found even if it is not on the rate you would expect.
+2. **Protocol** — candidate drivers matching those line settings are tried in turn,
+   and one is accepted only when it decodes real, checksum-valid data. A driver that
+   merely opens the port is not enough.
+3. **Recording starts immediately** once a device is identified. The log records what
+   was found and where, for example `[autodetect] AMA2 -> Datex-Ohmeda`.
+
+Because acceptance requires decoded data, a port with nothing attached simply stays
+empty rather than being assigned to the wrong device.
 
 ### Port Filtering
 

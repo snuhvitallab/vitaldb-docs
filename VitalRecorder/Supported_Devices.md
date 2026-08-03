@@ -32,6 +32,24 @@ Includes connection interfaces, communication settings, and collected parameters
 | UDP | Network UDP socket |
 | BLE | Bluetooth Low Energy |
 
+### Automatic Detection
+
+Devices marked below can be found without any configuration when `AUTO_DETECT=1` is set
+in `vr.conf` — VitalRecorder measures the serial line and identifies the protocol itself.
+
+| Device family | Detected |
+|---------------|----------|
+| Philips IntelliVue | Yes |
+| Dräger Medibus / Medibus.X (Primus, Atlan, ...) | Yes |
+| GE / Datex-Ohmeda S/5 | Yes |
+| Masimo Radical-7 / Root | Yes |
+| Daiwha DS-5000 | Yes |
+| Fresenius Kabi Link+ | Yes (identified by USB vendor ID) |
+| Everything else | No — add a `[DEV/...]` section |
+
+Network (TCP/UDP) and Bluetooth devices are always configured explicitly.
+See [Configuration Guide](Configuration_Guide.md#automatic-device-detection).
+
 ---
 
 ## 1. VitalDB Devices

@@ -101,6 +101,18 @@ VitalRecorder 采用选项卡式界面。每个选项卡代表一个"房间"或"
 | 心输出量监护仪 | Edwards Hemosphere/Vigilance/EV1000/Vigileo, Getinge PulsioFlex |
 | 胎儿监护仪 | GE Corometrics 250cx |
 
+### 自动识别（串口设备）
+
+在 `vr.conf` 中设置 `AUTO_DETECT=1` 后，无需手动添加串口设备。程序会实测每个端口的
+通信参数，只有在成功解析出有效数据时才认定为设备，因此未连接设备的端口会保持空闲，
+不会被错误识别。
+
+手动添加的设备始终优先，因此可以只让部分设备自动识别。
+目前支持自动识别：Philips IntelliVue、Dräger Medibus/Medibus.X、GE/Datex-Ohmeda S/5、
+Masimo Radical-7/Root、Daiwha DS-5000、Fresenius Kabi Link+。
+
+详见[配置指南](Configuration_Guide.md#automatic-device-detection)。
+
 ---
 
 ## 连接方式
@@ -351,6 +363,7 @@ port=PortSpec
 | `SAVEDIR` | （系统默认） | 录制文件保存目录 |
 | `VRCODE` | （自动生成） | VitalRecorder 唯一识别码 |
 | `FILENAME_TEMPLATE` | `%r_%y%m%d_%h%i%s` | 录制文件名模板 |
+| `AUTO_DETECT` | 0 | 自动识别串口设备 (0: 关闭, 1: 开启) |
 
 #### 录制
 

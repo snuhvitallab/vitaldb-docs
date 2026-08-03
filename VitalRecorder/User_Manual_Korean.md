@@ -101,6 +101,18 @@ VitalRecorder는 탭 기반 인터페이스를 사용합니다. 각 탭은 "방"
 | 심박출량 모니터 | Edwards Hemosphere/Vigilance/EV1000/Vigileo, Getinge PulsioFlex |
 | 태아 감시 장치 | GE Corometrics 250cx |
 
+### 자동 판별 (시리얼 장비)
+
+`vr.conf` 에 `AUTO_DETECT=1` 을 넣으면 시리얼 장비를 직접 추가하지 않아도 됩니다.
+각 포트의 통신 설정을 실제로 측정한 뒤, 그 포트에서 유효한 데이터가 해석될 때만
+장비로 인정하므로, 아무것도 연결되지 않은 포트는 비어 있는 채로 둡니다.
+
+직접 추가한 장비가 항상 우선하므로 일부만 자동으로 두어도 됩니다.
+현재 판별되는 장비: Philips IntelliVue, Dräger Medibus/Medibus.X, GE/Datex-Ohmeda S/5,
+Masimo Radical-7/Root, Daiwha DS-5000, Fresenius Kabi Link+.
+
+자세한 내용은 [설정 가이드](Configuration_Guide.md#automatic-device-detection) 참조.
+
 ---
 
 ## 연결 방식
@@ -347,6 +359,7 @@ port=포트설정
 | `SAVEDIR` | (시스템 기본값) | 녹화 파일 저장 디렉터리 |
 | `VRCODE` | (자동 생성) | VitalRecorder 고유 식별 코드 |
 | `FILENAME_TEMPLATE` | `%r_%y%m%d_%h%i%s` | 녹화 파일명 템플릿 |
+| `AUTO_DETECT` | 0 | 시리얼 장비 자동 판별 (0: 끔, 1: 켬) |
 
 #### 녹화
 

@@ -101,6 +101,20 @@ Vaya a **Agregar Dispositivo** y seleccione entre los grupos de dispositivos:
 | Monitor de gasto cardiaco | Edwards Hemosphere/Vigilance/EV1000/Vigileo, Getinge PulsioFlex |
 | Monitor fetal | GE Corometrics 250cx |
 
+### Deteccion Automatica (dispositivos serie)
+
+Si se establece `AUTO_DETECT=1` en `vr.conf`, VitalRecorder encuentra los dispositivos
+serie por si mismo y no hace falta agregarlos a mano. Mide los parametros de linea de
+cada puerto y solo acepta un dispositivo cuando decodifica datos validos de el, de modo
+que un puerto vacio se deja vacio en lugar de asignarse a un dispositivo equivocado.
+
+Los dispositivos agregados manualmente siempre tienen prioridad, por lo que ambos
+metodos pueden combinarse. Actualmente se detectan: Philips IntelliVue, Drager
+Medibus/Medibus.X, GE/Datex-Ohmeda S/5, Masimo Radical-7/Root, Daiwha DS-5000,
+Fresenius Kabi Link+.
+
+Consulte la [Guia de Configuracion](Configuration_Guide.md#automatic-device-detection).
+
 ---
 
 ## Tipos de Conexion
@@ -351,6 +365,7 @@ port=EspecPuerto
 | `SAVEDIR` | (predeterminado del sistema) | Directorio de guardado de archivos de grabacion |
 | `VRCODE` | (generado automaticamente) | Codigo de identificacion unico de VitalRecorder |
 | `FILENAME_TEMPLATE` | `%r_%y%m%d_%h%i%s` | Plantilla de nombre de archivo de grabacion |
+| `AUTO_DETECT` | 0 | Detectar dispositivos serie automaticamente (0: no, 1: si) |
 
 #### Grabacion
 

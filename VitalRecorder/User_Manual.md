@@ -101,6 +101,19 @@ Go to **Add Device** and select from the device groups:
 | Cardiac monitor | Edwards Hemosphere/Vigilance/EV1000/Vigileo, Getinge PulsioFlex |
 | Fetal monitor | GE Corometrics 250cx |
 
+### Automatic Detection (serial devices)
+
+If `AUTO_DETECT=1` is set in `vr.conf`, VitalRecorder finds serial devices on its own —
+you do not have to add them by hand. It measures each port's line settings and then
+accepts a device only once it decodes real data from it, so an empty port is left
+empty rather than being assigned to the wrong device.
+
+Devices you add yourself always take priority, so you can mix the two freely.
+Currently detected: Philips IntelliVue, Dräger Medibus/Medibus.X, GE/Datex-Ohmeda S/5,
+Masimo Radical-7/Root, Daiwha DS-5000, Fresenius Kabi Link+.
+
+See [Configuration Guide](Configuration_Guide.md#automatic-device-detection) for details.
+
 ---
 
 ## Connection Types
@@ -327,6 +340,7 @@ port=PortSpec
 | `VRCODE` | (auto-generated) | Unique VitalRecorder identification code |
 | `DEBUG` | 0 | Debug mode (0: off, 1: on) |
 | `FILENAME_TEMPLATE` | `%r_%y%m%d_%h%i%s` | Recording filename template |
+| `AUTO_DETECT` | 0 | Detect serial devices automatically (0: off, 1: on) |
 
 #### Recording
 
