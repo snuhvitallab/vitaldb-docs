@@ -2,7 +2,7 @@
 
 > **Disclaimer:** This document is for reference only. Our team is not responsible for connection errors. If discrepancies exist between this document and the device manufacturer's manual, **always follow the manufacturer's manual**.
 
-This guide covers Vital Recorder hardware setup for **44 medical devices** across 6 categories. Use the Quick Reference tables below to identify your cable type, then click the device name to open its full setup instructions.
+This guide covers Vital Recorder hardware setup for **46 medical devices** across 7 categories. Use the Quick Reference tables below to identify your cable type, then click the device name to open its full setup instructions.
 
 ## System Overview
 
@@ -18,14 +18,18 @@ One recording PC collects from several devices at once. Serial devices reach the
 - [Quick Reference — All Devices](#quick-reference--all-devices)
   - [Patient Monitors](#patient-monitors)
   - [Anesthesia Machines](#anesthesia-machines)
+  - [Mechanical Ventilators](#mechanical-ventilators)
   - [Hemodynamic Monitors](#hemodynamic-monitors)
   - [Syringe Pumps](#syringe-pumps)
   - [Brain Monitors](#brain-monitors)
   - [Others](#others)
+  - [Supported but Not Yet Documented](#supported-but-not-yet-documented)
+  - [Not Recordable](#not-recordable)
 - [Getting Started](#getting-started)
   - [Requirements](#requirements)
   - [Connection Types](#connection-types)
   - [Cable Types](#cable-types)
+  - [Port Assignment Convention (PiVR)](#port-assignment-convention-pivr)
 - [Troubleshooting](#troubleshooting)
 
 ---
@@ -52,7 +56,7 @@ One recording PC collects from several devices at once. Serial devices reach the
 | [Dräger Infinity C500 / C700](patient_monitors/drager_infinity_c500.md) | Custom RJ10 ↔ DB-9F | None | P2500 RJ10 port | `Infinity` |
 | [MEKICS MP1300](patient_monitors/mekics_mp1300.md) | Wireless (Wi-Fi) | — | LAN port | `MEKICS` |
 | [Nihon Kohden BSM](patient_monitors/nihon_kohden_bsm.md) | Direct Serial | Null Modem M/F | RS-232C interface board, **model-dependent** | `BSM` |
-| [GE Corometrics 170](patient_monitors/ge_corometrics.md) | Custom RJ-45 ↔ DB-9F (CTS looped to RTS) | None | RS-232 Port 1 or 2 (RJ-45) — **service setup required** | `Coro` |
+| [GE Corometrics 170 / 250cx](patient_monitors/ge_corometrics.md) | 170: Custom RJ-45 ↔ DB-9F (CTS looped to RTS) · 250cx: **RJ11** cable (pinout pending) | None | 170: RS-232 Port 1 or 2 (RJ-45) — **service setup required** · 250cx: RJ11 | `Coro` |
 
 ### Anesthesia Machines
 
@@ -63,8 +67,14 @@ One recording PC collects from several devices at once. Serial devices reach the
 | [Dräger Perseus](anesthesia_machines/drager_perseus.md) | Direct Serial | Null Modem F/F | COM1 or COM2 | `MedibusX` |
 | [GE Datex-Ohmeda](anesthesia_machines/ge_datex_ohmeda.md) | Custom 9-pin ↔ 15-pin | None | 15-pin (under cover) | `Datex-Ohmeda` |
 | [Maquet Flow-i](anesthesia_machines/maquet_flow_i.md) | Direct Serial | Null Modem M/F | Serial port | `Flow-i` |
-| [Maquet Servo-i Ventilator](anesthesia_machines/maquet_servo_i.md) | Direct Serial | Null Modem M/F | **BOTTOM** RS-232 port | `Servo-i` |
-| [Hamilton G5 Ventilator](anesthesia_machines/hamilton_g5.md) | Direct Serial | Null Modem M/F | Monitoring Interface 1 or 2 | `Hamilton` |
+
+### Mechanical Ventilators
+
+| Device | Cable | Adapter | Port | VR Device Name |
+|--------|-------|---------|------|----------------|
+| [Dräger EVITA V300 / V500 / V600 / V800](mechanical_ventilators/drager_evita.md) | Direct Serial | Null Modem *(gender unverified)* | RS-232 COM1 | `MedibusX` (19200) |
+| [Maquet / Getinge Servo-i / Servo-s / Servo-U](mechanical_ventilators/maquet_servo.md) | Direct Serial | Null Modem M/F | **BOTTOM** RS-232 only | `Servo-i` |
+| [Hamilton G5 / C-series](mechanical_ventilators/hamilton.md) | Direct Serial | Null Modem M/F | Monitoring Interface 1 or 2 — set to **Block** | `Hamilton` |
 
 ### Hemodynamic Monitors
 
@@ -107,7 +117,37 @@ One recording PC collects from several devices at once. Serial devices reach the
 | [Sentec SDM](others/sentec_sdm.md) | USB-Serial converter | None | Serial Data Port (RS-232), rear | `SDM` |
 | [MDMS ANI Monitor V2](others/mdms_ani_monitor.md) | NEXT USB-Serial [NEXT-RS232U20] | None | `REAL TIME EXPORT` DB-9 — not `DATA EXPORT` | `ANIMonitor2` |
 | [BlinkDC TwitchView](others/blink_twitchview.md) | Custom RJ45 (special wiring) | None | RJ45 on the **Charging Station** | `TwitchView` |
+| [OBELAB NIRSIT-ON+](others/obelab_nirsit_on.md) | Direct Serial | None | Rear USB (serial) — **open TCP 5525** on the tablet | `NirsitON` |
 | [IDMed TOFscan](others/idmed_tofscan.md) | TOF-RS1 / TOF-RS2 optic-serial cable (from IDMed) | None | **Optical** output | `TOFScan` |
+
+### Supported but Not Yet Documented
+
+Vital Recorder supports these devices (see `Supported_Devices.md`) but no connection page has been written — no field installation has been recorded yet. If you connect one, please contribute the page.
+
+| Device | Type | VR Device Name |
+|---|---|---|
+| Philips VueLink module | Patient monitor | `VueLink` |
+| GE Canvas · GE MPS (Dash 2500 module) | Patient monitor | `Canvas`, `MPS` |
+| Edwards ClearSight · Vigilance C | Hemodynamic | `ClearSight`, `Vigilance` |
+| Getinge PulsioFlex (PiCCO) | Hemodynamic | `PulsioFlex` |
+| Bilab AirTom / HemoVista · Edgecare CW10 | Hemodynamic | `AirTom`, `HemoVista`, `CW10` |
+| Fresenius Kabi Conox · PCBM | Brain / pump | `Conox`, `PCBM` |
+| B. Braun DoseLink (HL7 / MLLP) · Daiwha DS-5000 | Pump | `DoseLink`, `DS-5000` |
+| RGB Medical TOFcuff | Neuromuscular | `TOFcuff` |
+| Inbody PLEM100 | Brain | `PLEM100` |
+| Mindray monitors (HL7) · Nihon Kohden central server (ADT / ORF / NealTime) | Network | `Mindray : HL7`, `NIHONKOHDEN::*` |
+
+### Not Recordable
+
+Confirmed by testing or by the manufacturer's documentation. Listed so the question is not re-opened at every site.
+
+| Device | Why |
+|---|---|
+| Philips **MP2 / X2 / X3** | No usable serial port; X3 has no MIB board |
+| Philips **Avalon FM20** fetal monitor | Needs the optional MIB board **and** a protocol Vital Recorder does not yet implement |
+| Dräger **Vista 120S** | Its MEDIBUS/X port only *receives* from anesthesia machines; no response at any baud / frame combination |
+| Anesthesia-machine data **relayed through a Dräger Infinity Kappa** | Not forwarded on the Kappa export link — connect the machine directly |
+| **Nihon Kohden BSM without an RS-232C interface board**, or ventilator data shown on a BSM | Numerics need the interface board; ventilator values are not on the serial port |
 
 ---
 
@@ -232,6 +272,22 @@ Cables under 10 meters do not risk signal degradation. Use shielded cables in OR
 <img src="hardware_images/usb_extension_1.png" width="220" alt="A USB 2.0 extension cable — USB-A male on one end, USB-A female on the other">
 
 ---
+
+### Port Assignment Convention (PiVR)
+
+Recorders with several serial channels are easier to support remotely when every site uses the same assignment. The convention used on PiVR installations:
+
+| Channel | Device |
+|---|---|
+| `P1` | Patient monitor (Philips Intellivue) |
+| `P2` | Anesthesia machine / ventilator |
+| `P3` | TwitchView |
+| `LU` | Wireless LAN adapter |
+| `RU` | Event button |
+| `RL` | Fresenius Link+ |
+| hotspot | Masimo ROOT (`X003`) |
+
+Leave a channel empty if the device is absent; other devices take the remaining channels.
 
 ### Starter Kit — Reference Cost
 

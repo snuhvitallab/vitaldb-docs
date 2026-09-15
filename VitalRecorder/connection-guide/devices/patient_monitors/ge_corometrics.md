@@ -1,4 +1,4 @@
-# GE Corometrics 170 Series
+# GE Corometrics 170 Series / 250cx
 
 <!-- meta
 category: Patient Monitor
@@ -71,6 +71,10 @@ The communication mode and baud rate for each port live in **service setup mode*
 
 - Serial: **9600 baud**, port switched to communications mode **5 (115 update)**. The RTS/CTS loop described in step 3 is what makes a 3-wire cable work.
 
+## Corometrics 250cx
+
+The **250cx** is the model named in `Supported_Devices.md` (FHR, MHR, TOCO at 9600 baud) and the one most often found in delivery suites. Its serial port is **RJ11**, not the 170 Series' RJ45, so the cable above does not fit. A dedicated RJ11 ↔ DB-9F cable is needed; its pinout has not been recorded in this guide yet — confirm with the GE service manual for the 250cx before building one. On-site testing has been deferred to GE for this reason.
+
 ## Vital Recorder Setup
 
 - Add the device in Vital Recorder as **`Coro`**.
@@ -80,5 +84,4 @@ The communication mode and baud rate for each port live in **service setup mode*
 - Recorded parameters: **fetal HR1 / HR2** and **uterine activity (UACT / TOCO)**. From **1.19.7** onward the **maternal vital signs (SpO2, PR, NIBP)** are recorded into the same file as the fetal channels.
 - The 170 Series covers models **170, 171, 172, 173 and 174**. The setup-code table above is common to all of them; the *HR offset* and *ECG artifact elimination* codes exist only on 172/173/174.
 - **Verify the setup codes on the unit in front of you.** An earlier revision of this guide listed the port-1 baud rate under code `40`; the service manual (P/N 2000947-004) assigns `30`/`40` to the *communications mode* of ports 1/2 and `31`/`41` to their *baud rate*. The manual numbering is used above.
-- Vital Recorder's supported-device list names the **Corometrics 250cx** for fetal monitoring (FHR, MHR, TOCO). Confirm the exact model on site before planning a delivery-room install — the 170 Series and the 250 Series have different rear panels, and site requests for "a GE fetal monitor" have turned out to be either.
 - **Gap:** there are no field photographs for this device yet — no rear-panel shot, no RS-232 port location, no setup-mode display. Photographs of the rear RJ-45 ports and of the UA/FHR displays while in service setup mode would be a useful addition.
