@@ -31,7 +31,7 @@ Two separate menus must be set: the **service-mode** serial configuration (which
 
    <img src="../hardware_images/fresenius_orchestra_1.png" width="450" alt="Base Primea with two DPS syringe modules mounted, with the top blue side button and the two lower-right buttons circled for the service-mode key combination">
 
-2. In **SPECIAL FUNCTIONS**, press the side button next to **"Serial & ..."**.
+2. In **SPECIAL FUNCTIONS**, press the side button next to **"Serial & ..."** (the fourth blue button from the top).
 
    <img src="../hardware_images/fresenius_orchestra_2.png" width="450" alt="SPECIAL FUNCTIONS menu listing License, Erase histo, SAV Tests, Serial & ..., Error traces, PC Mode, SAV Data and Neutral product, with Serial & ... and its side button circled">
 

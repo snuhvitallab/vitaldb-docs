@@ -9,26 +9,33 @@ vr_device_name: Bx50
 
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|
-| **ATEN UC-232A** USB-to-RS232 | Null Modem F/F | **USB port** on the rear panel | `Bx50` |
+| USB-to-RS232 converter — **model depends on monitor software version** (see below) | Null Modem F/F | **USB port** on the rear panel | `Bx50` |
 
-> ⚠️ **ATEN UC-232A is the only USB-Serial converter the monitor accepts.** The CARESCAPE runs its own embedded OS and only carries drivers for that converter — other converters (including the Startech ICUSB232V2) are not recognized and produce no data. Do **not** connect to the monitor's own DB-9 serial port; use a USB port.
+> ⚠️ **The monitor accepts only specific USB-to-RS232 converters, and which one depends on its software version.** The CARESCAPE runs its own embedded OS and carries drivers for these converters only:
+>
+> | Monitor software | Converter |
+> |---|---|
+> | **v3.1 or later** | **Startech ICUSB232V2** |
+> | **v2** | **ATEN UC-232A**, legacy revision only — serial numbers starting **Z3L1** or later alphabetically (USB vendor ID `0x0557`). This revision is discontinued. |
+>
+> Check the version under **Monitor setup → Defaults & Service → Service** before buying. Field reports of the Startech "not being recognized" come from v2 monitors. Do **not** connect to the monitor's own DB-9 serial port; use a USB port.
 
 > ⚠️ **The Bx50 uses hardware handshaking.** A 3-wire connection will not work. The converter on the **PC** side must carry **DTR and RTS** — an FTDI-based converter is recommended. With a 3-wire cable or a converter that drops the handshake lines the link comes up but roughly 60 % of the waveform samples are lost and reception is intermittent.
 
 ## Connection Steps
 
-1. Plug the **ATEN UC-232A** USB-to-RS232 converter into one of the USB ports on the rear of the monitor. The USB block sits on the lower connector strip, to the left of the DVI and DB-9 connectors.
+1. Plug the USB-to-RS232 converter that matches the monitor's software version (see above) into one of the USB ports on the rear of the monitor. The USB block sits on the lower connector strip, to the left of the DVI and DB-9 connectors.
 
    <img src="../hardware_images/ge_carescape_1.png" width="450" alt="Rear three-quarter view of a CARESCAPE monitor; a red circle marks the block of four USB ports on the lower connector strip, to the left of the DVI video connector and the DB-9 serial connector">
 
    Field installations most often use **USB port 4**. If no data appears, try the other ports before suspecting the cable.
 
-2. Attach a **Null Modem (F/F)** adapter to the DB-9 end of the ATEN converter. This is what turns the two "direct" ends into a crossed link.
+2. Attach a **Null Modem (F/F)** adapter to the DB-9 end of the converter. This is what turns the two "direct" ends into a crossed link.
 
 3. Run a **direct serial cable** from the Null Modem adapter to the recording PC. On a laptop or tablet this means a second USB-Serial converter on the PC side — that one must support DTR/RTS (FTDI recommended).
 
    ```
-   CARESCAPE USB -- ATEN UC-232A (DB-9M) -- Null Modem F/F -- direct serial cable -- USB-Serial (FTDI) -- PC
+   CARESCAPE USB -- USB-to-RS232 converter (DB-9M) -- Null Modem F/F -- direct serial cable -- USB-Serial (FTDI) -- PC
    ```
 
 ## Device Configuration

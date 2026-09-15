@@ -64,7 +64,11 @@ Only the machine's transmit line and ground are branched to CON2, so Vital Recor
 
 <img src="../hardware_images/com1_in_use_1.png" width="450" alt="Y-cable pin wiring diagram — machine TX (pin 2) and GND (pin 5) branch to both CON1 and CON2 (PC Vital Recorder, read-only option); RX (pin 3) goes only to CON1">
 
-> **Atlan Anesthesia Machine:** Attach a Null Modem adapter on both the anesthesia machine side and the CON1 side. CON2 is used as-is for data reading.
+> **Atlan Anesthesia Machine:** Attach a Null Modem adapter matching the connector on both the anesthesia machine side and the CON1 side. CON2 is used as-is for data reading. Per the original guide:
+>
+> ```
+> Atlan COM (DB9F) --- Null Modem F/F --- DB9M  Y-cable  CON1 (DB9F) --- Null Modem M/F --- existing device
+> ```
 
 ## Notes
 - **Recommended version:** MEDIBUS communication was stabilized in Vital Recorder **1.19.11** (repeated `COM1 failure` fixed with a 2-second keep-alive) and **1.19.12** (connection stability, serial-line noise). Models that transmit no waveforms were fixed in **1.19.20**.

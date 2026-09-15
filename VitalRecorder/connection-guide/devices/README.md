@@ -233,6 +233,21 @@ Cables under 10 meters do not risk signal degradation. Use shielded cables in OR
 
 ---
 
+### Starter Kit — Reference Cost
+
+The original connection guide priced the basic kit for recording **four serial devices at once** (Korean retail, 2025). Prices drift; the quantities are the useful part.
+
+| Item | Qty | Approx. (KRW) | Note |
+|---|---|---|---|
+| Null Modem adapter (M/F and F/F) | 6 | 11,700 | Buy spares — they are the part that goes missing |
+| Direct serial cable, M/F, 3 m | 4 | 7,800 | Buy the length you need |
+| 4-port USB-Serial converter | 1 | 50,500 | 4-port recommended |
+| Powered USB hub | 1 | 30,000–35,000 | Must have its own power adapter |
+| USB extension cable, M/F, 5 m | 1 | 2,000 | Buy the length you need |
+| **Total** | | **≈ 102,000–107,000** | |
+
+---
+
 ## Troubleshooting
 
 Common problems and fixes are documented in [`troubleshooting`](troubleshooting.md).

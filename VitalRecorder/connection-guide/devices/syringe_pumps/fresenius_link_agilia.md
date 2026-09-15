@@ -24,7 +24,7 @@ The Link+ rack aggregates every Agilia SP / VP module mounted on it, so **all pu
 
 Enabling **Data Export** is a **one-time** procedure performed over LAN from a PC. It must be done before the USB connection will produce any data.
 
-1. Connect the Link+ **LAN (RJ-45) port** — on the left of the same connector panel — to the PC's Ethernet port with a patch cable.
+1. Connect the Link+ **LAN (RJ-45) port** — on the left of the same connector panel — to the PC's Ethernet port. The original guide specifies a **crossover** LAN cable; a straight patch cable also works with any NIC that auto-negotiates (all modern PCs).
 
    <img src="../hardware_images/fresenius_link_agilia_3.png" width="300" alt="Link+ connector panel with the RJ-45 LAN port highlighted on the left side of the panel">
 

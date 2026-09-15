@@ -14,6 +14,8 @@ vr_device_name: Primus
 
 ## Before You Start
 
+This page covers the **Fabius GS**, **Fabius Tiro**, **Zeus** and **Infinity Evita V500** — the models the original connection guide groups together and specifies with a null modem. The manufacture-date rule below refines that for the Fabius.
+
 Per Dräger's documentation the Fabius COM1 connector changed in **October 2004**, and the two versions assign the transmit and receive pins differently:
 
 | Manufactured | COM1 connector | What to fit |

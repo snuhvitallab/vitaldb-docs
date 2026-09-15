@@ -15,7 +15,7 @@ Extracts SpO₂, pulse rate, PI and the digital pleth waveform.
 
 ## Connection Steps
 
-1. Locate the **P1** connector on the rear of the Docking Station — it is the one marked **RS-232**. The adjacent **P2** is a wider high-density connector for nurse call / analog output; do not use it.
+1. Locate the **P1** connector on the rear of the Docking Station — it is the one marked **RS-232**. The adjacent **P2** is the wider high-density **analog output** connector: with *analog 1 / analog 2* set to Pleth (step 3 below) it carries the pleth waveform as a voltage, which needs an ADC. It is not used for the serial link.
 
    <img src="../hardware_images/masimo_radical7_3.png" width="450" alt="Docking Station rear panel — P1 marked RS-232 next to the wider P2 nurse-call/analog connector">
 

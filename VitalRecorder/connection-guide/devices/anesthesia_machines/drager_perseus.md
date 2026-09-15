@@ -9,7 +9,7 @@ vr_device_name: MedibusX
 
 | Cable | Adapter | Port | Serial | VR Device Name |
 |-------|---------|------|--------|----------------|
-| Direct Serial | Null Modem F/F | COM 1 or COM 2 | 19200 baud, 8 data bits, Even parity, 1 stop bit — MEDIBUS.X | `MedibusX` |
+| Direct Serial | Null Modem F/F | COM 1 or COM 2 | **MEDIBUS.X 19200** → `MedibusX`, or **MEDIBUS 9600** → `Primus` — match the protocol set on the port | `MedibusX` / `Primus` |
 
 ## Connection Steps
 1. Open the interface panel on the machine column. It carries a **male DB-9 serial connector** together with a USB port and a LAN (RJ-45) socket.
@@ -24,13 +24,11 @@ vr_device_name: MedibusX
 3. Choose **Interface** from the list on the right — the page holding the DHCP / IP address / subnet mask / default gateway, **RS232**, LAN and USB settings.
 4. In the **COM 1** (or **COM 2**) block, set:
 
-- **Protocol: MEDIBUS.X** — the only alternative is *None*, which disables the port
-- **Baud rate: 19200** — selectable values are 1200, 2400, 4800, 9600, 19200 and 38400
+- **Protocol:** **MEDIBUS.X** with **19200** baud (add as `MedibusX`), or **MEDIBUS** with **9600** baud (add as `Primus`) — the original connection guide uses the MEDIBUS / 9600 pairing. *None* disables the port.
+- **Baud rate:** selectable values are 1200, 2400, 4800, 9600, 19200 and 38400
 - The frame format is fixed and shown next to the baud rate as **8, e, 1** (8 data bits, Even parity, 1 stop bit)
 
 > ⚠️ **Match the baud rate to the protocol.** MEDIBUS.X runs at **19200** and pairs with the `MedibusX` device entry; legacy MEDIBUS runs at **9600** and pairs with `Primus`. A mismatch produces a `MEDIBUS COM2` message or a repeated `COM1 failure` on the machine.
->
-> Perseus software normally offers **MEDIBUS.X only** — there is no legacy MEDIBUS option. Where an older release does offer plain **MEDIBUS**, set the port to **9600** and add the machine in Vital Recorder as **`Primus`** instead.
 
 ## Vital Recorder Setup
 

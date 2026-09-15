@@ -48,6 +48,7 @@ The communication mode and baud rate for each port live in **service setup mode*
    - Press and hold the **Setup** button (clock/calendar icon).
    - While still holding it, press and hold the blue **Power** button.
    - Release both buttons. Service mode is now active.
+   - *The original connection guide instead says to keep holding **Setup** for the whole procedure. If the display leaves setup mode when you release it, follow that.*
 
 2. Use the **UA Reference** button to toggle between the **setup code** (shown in the **UA display**) and its **value** (shown in the primary **FHR display**). The UA display is active when the `±` qualifier is lit; the FHR display is active when the heartbeat indicator is lit.
 

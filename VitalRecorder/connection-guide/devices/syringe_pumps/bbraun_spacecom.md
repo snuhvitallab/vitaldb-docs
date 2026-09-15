@@ -37,7 +37,7 @@ The serial interface is configured over LAN through **SpaceOnline**, the module'
 
    <img src="../hardware_images/bbraun_spacecom_2.png" width="200" alt="SpaceOnline web interface left menu with the Language selector set to English and Status, Service and Configuration entries, Configuration highlighted">
 
-4. Open the **Interface Settings** and set the serial parameters:
+4. Open **BCC Protocol settings** (its panel is titled *Interface Settings*) and set the serial parameters:
 
    <img src="../hardware_images/bbraun_spacecom_3.png" width="250" alt="SpaceOnline Interface Settings panel with Interface COM1, Baudrate 9600, Parity n, Stopbits 1 and Databits 8">
 
