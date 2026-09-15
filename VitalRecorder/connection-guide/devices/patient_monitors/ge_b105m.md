@@ -15,7 +15,7 @@ vr_device_name: B1x5M
 
 ## Connection Steps
 
-1. Connect a **direct serial cable** to the serial port **marked in red** on the rear of the monitor. No gender changer is used — the monitor-side connector and a standard direct cable already line up.
+1. Connect a **direct serial cable** to the serial port **marked in red** on the rear of the monitor. No Null Modem adapter is used — the monitor-side connector and a standard direct cable already line up.
 
 2. Connect the other end to the PC through a USB-Serial converter.
 

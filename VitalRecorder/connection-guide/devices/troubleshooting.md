@@ -6,7 +6,7 @@
 |---|---|
 | **Cause** | Device driver not properly installed. |
 | **Diagnosis** | Open Device Manager. A yellow exclamation mark on the USB-Serial Port device indicates a driver problem. Normal display shows the device under "Ports (COM & LPT)". |
-| **Solution** | Download and install the driver for your Serial-to-USB converter from the manufacturer's website. If the problem persists, replace the converter. |
+| **Solution** | Download and install the driver for your USB-Serial converter from the manufacturer's website. If the problem persists, replace the converter. |
 
 <img src="hardware_images/troubleshooting_1.png" width="700" alt="Two Device Manager windows side by side. Left, the fault: USB-Serial Port sits under Other devices with no COM number. Right, working correctly: USB-Serial Port(COM5) is listed under Ports (COM &amp; LPT)">
 

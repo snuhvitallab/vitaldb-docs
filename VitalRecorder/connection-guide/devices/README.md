@@ -6,9 +6,9 @@ This guide covers Vital Recorder hardware setup for **44 medical devices** acros
 
 ## System Overview
 
-One recording PC collects from several devices at once. Serial devices reach the PC through USB-Serial converters gathered on a powered USB hub; a cross gender adapter is fitted only at the device ports that need one.
+One recording PC collects from several devices at once. Serial devices reach the PC through USB-Serial converters gathered on a powered USB hub; a Null Modem adapter is fitted only at the device ports that need one.
 
-<img src="hardware_images/intro_1.png" width="620" alt="Example setup: a Vital Recorder laptop connected to a powered USB hub, which feeds a 4-port and a 2-port USB-Serial converter; the 4-port converter reaches an Orchestra infusion pump and an EV-1000 through cross type serial genders and a BIS EEG monitor directly, with one channel spared, while the 2-port converter reaches a Solar 8000 patient monitor and a Primus anesthesia machine, and a Tram-RAC 4A connects through an ADC">
+<img src="hardware_images/intro_1.png" width="620" alt="Example setup: a Vital Recorder laptop connected to a powered USB hub, which feeds a 4-port and a 2-port USB-Serial converter; the 4-port converter reaches an Orchestra infusion pump and an EV-1000 through Null Modem adapters and a BIS EEG monitor directly, with one channel spared, while the 2-port converter reaches a Solar 8000 patient monitor and a Primus anesthesia machine, and a Tram-RAC 4A connects through an ADC">
 
 ---
 
@@ -104,7 +104,7 @@ One recording PC collects from several devices at once. Serial devices reach the
 |--------|-------|---------|------|----------------|
 | [Masimo Radical7](others/masimo_radical7.md) | Direct Serial | None | P1 RS-232 (Docking Station) | `Radical7` |
 | [Masimo ROOT](others/masimo_root.md) | Masimo data-acquisition USB cable *(preferred)*; generic USB-Serial converter as fallback | None with the Masimo cable; **Null Modem F/F** with a generic converter | USB1 or USB2 *(both routes)* | `Root` |
-| [Sentec SDM](others/sentec_sdm.md) | USB-Serial Converter | None | Serial Data Port (RS-232), rear | `SDM` |
+| [Sentec SDM](others/sentec_sdm.md) | USB-Serial converter | None | Serial Data Port (RS-232), rear | `SDM` |
 | [MDMS ANI Monitor V2](others/mdms_ani_monitor.md) | NEXT USB-Serial [NEXT-RS232U20] | None | `REAL TIME EXPORT` DB-9 — not `DATA EXPORT` | `ANIMonitor2` |
 | [BlinkDC TwitchView](others/blink_twitchview.md) | Custom RJ45 (special wiring) | None | RJ45 on the **Charging Station** | `TwitchView` |
 | [IDMed TOFscan](others/idmed_tofscan.md) | TOF-RS1 / TOF-RS2 optic-serial cable (from IDMed) | None | **Optical** output | `TOFScan` |
@@ -140,7 +140,7 @@ There are two types of serial cable. They are **physically identical in appearan
 
 > ⚠️ **WARNING:** Using a cross cable where a direct cable is required (or vice versa) can cause electrical shorts, device malfunction, or fire. **Always verify the cable type before connecting.**
 
-**Recommended approach:** Use only direct cables for all runs. If a cross connection is required, attach a **Null Modem cross gender adapter** at the device port.
+**Recommended approach:** Use only direct cables for all runs. If a cross connection is required, attach a **Null Modem adapter** at the device port.
 
 ---
 
@@ -156,11 +156,11 @@ Device serial port → direct cable → USB-Serial converter → PC. No adapter.
 
 <img src="hardware_images/connection_direct.svg" width="620" alt="Type A: a device 9-pin serial port joins a direct serial cable wired pin 2 to 2 and pin 3 to 3, into a USB-Serial converter that presents a virtual COM port, then by USB to the PC running Vital Recorder">
 
-#### Type B — Null Modem (Cross Gender) Adapter
+#### Type B — Null Modem Adapter
 
-Same as Type A, with a cross gender adapter fitted **at the device port**.
+Same as Type A, with a Null Modem adapter fitted **at the device port**.
 
-<img src="hardware_images/connection_cross.svg" width="620" alt="Type B: a device serial port takes a Null Modem cross gender adapter, M/F or F/F, that swaps pins 2 and 3, then a standard direct serial cable to a USB-Serial converter and by USB to the PC running Vital Recorder">
+<img src="hardware_images/connection_cross.svg" width="620" alt="Type B: a device serial port takes a Null Modem adapter, M/F or F/F, that swaps pins 2 and 3, then a standard direct serial cable to a USB-Serial converter and by USB to the PC running Vital Recorder">
 
 #### Type C — Custom / Proprietary Cable
 
@@ -186,6 +186,8 @@ The images below show the cables and adapters referenced throughout this guide.
 
 #### Null Modem Adapter — F/F (Female / Female)
 
+> Korean cable shops sell null modem adapters as **"크로스 젠더" (cross gender)**. Ask for that name when buying locally — a plain *gender changer* (젠더) is wired straight through and will **not** work.
+
 <img src="hardware_images/cable_null_modem_ff.svg" width="450" alt="Diagram of a Null Modem F/F adapter — female DB-9 on both ends, pins 2 and 3 crossed internally, pin 5 straight through; required when the device port is female-type">
 
 <img src="hardware_images/serial_cable_3.png" width="300" alt="A Null Modem F/F serial gender adapter (9F/9F, cross wiring) — female sockets on both sides">
@@ -205,7 +207,7 @@ The images below show the cables and adapters referenced throughout this guide.
 
 <img src="hardware_images/cable_usb_serial.svg" width="450" alt="Diagram of a USB-Serial converter — USB-A to the PC on one side, DB-9 male to the device cable on the other, creating a virtual COM port; it acts as a direct cable">
 
-Laptops and tablets typically lack a built-in serial port. A USB-Serial converter creates a virtual COM port and **acts as a direct cable**. Devices that require a cross connection still need a cross gender adapter.
+Laptops and tablets typically lack a built-in serial port. A USB-Serial converter creates a virtual COM port and **acts as a direct cable**. Devices that require a cross connection still need a Null Modem adapter.
 
 **Recommended:** Netmate 4-port Serial-to-USB Converter (Kangwon Electronics) — creates four COM ports from one USB connection. [Purchase link (Korea)](http://cableguy.com/shop/mall.php?cat=005004003&query=view&no=39206)
 

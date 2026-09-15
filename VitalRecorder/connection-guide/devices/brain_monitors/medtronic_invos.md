@@ -5,23 +5,23 @@ category: Brain Monitor
 manufacturer: Medtronic
 vr_device_name: Invos
 -->
-> ⚠️ **The INVOS RS-232 port is a DB-9 *male* connector, so an F/F Null Modem gender changer is required.** This is the opposite of the BIS monitors, whose ports are female and take a plain direct cable.
+> ⚠️ **The INVOS RS-232 port is a DB-9 *male* connector, so an F/F Null Modem adapter is required.** This is the opposite of the BIS monitors, whose ports are female and take a plain direct cable.
 > Select **PC LINK**, not **VUELINK** — VueLink is the Philips module format and runs at a different baud rate.
 
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|
-| Direct Serial (DB-9M ↔ DB-9F) | **Null Modem F/F** (cross gender) | `\|O\|O\|` RS-232 port (DB-9 **male**), rear panel | `Invos` |
+| Direct Serial (DB-9M ↔ DB-9F) | **Null Modem F/F** | `\|O\|O\|` RS-232 port (DB-9 **male**), rear panel | `Invos` |
 
 - Serial: **9600 baud, 8 data bits, No parity, 1 stop bit** (INVOS 5100C operator's manual, *Using the Digital Output Port*).
-- Fasten the Null Modem gender changer to the monitor with its screws so it cannot be pulled off or mistaken for part of the cable.
+- Fasten the Null Modem adapter to the monitor with its screws so it cannot be pulled off or mistaken for part of the cable.
 
 ## Connection Steps
 1. Locate the **RS-232 port** on the rear panel — the upper DB-9 marked with the `|O|O|` serial symbol. It has **pins** (male). The DB-9 directly below it is the **VGA/monitor output**; do not use it.
 
    <img src="../hardware_images/medtronic_invos_1.png" width="450" alt="INVOS rear panel — upper DB-9 male RS-232 port circled beside the |O|O| serial symbol, with the VGA/monitor DB-9 connector below it">
 
-2. Screw a **Null Modem (F/F) gender changer** onto the male RS-232 port.
-3. Connect a **direct serial cable** from the gender changer to the PC's DB-9M serial port, or to a USB-Serial converter.
+2. Screw a **Null Modem (F/F) adapter** onto the male RS-232 port.
+3. Connect a **direct serial cable** from the adapter to the PC's DB-9M serial port, or to a USB-Serial converter.
 
 ## Device Configuration
 Digital output is off by default and is reached through the softkey row at the bottom of the monitoring screen.

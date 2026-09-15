@@ -21,7 +21,7 @@ The ADC connects to the PC over **USB**. There is no VR device entry for the TRA
 
    <img src="../hardware_images/ge_tram_rac_1.png" width="450" alt="Rear of the TRAM-RAC 4A housing — the 15-pin ANALOG OUT connector circled in red, beside the two DB-9 TRAM-NET ports">
 
-2. Fabricate or order a cable that routes the ANALOG OUT pins to the ADC's analog inputs. Only the pins you actually need have to be wired.
+2. Build or order a cable that routes the ANALOG OUT pins to the ADC's analog inputs. Only the pins you actually need have to be wired.
 
    <img src="../hardware_images/ge_tram_rac_2.png" width="450" alt="Wiring diagram — ANALOG OUT DB-15 pins 2, 3, 5, 9, 10, 11 and 13 to ADC analog inputs Ch1 to Ch7 (+), with pins 1 and 8 as the common ground for all channel (−) inputs">
 
@@ -49,10 +49,14 @@ The ADC connects to the PC over **USB**. There is no VR device entry for the TRA
 
    <img src="../hardware_images/ge_tram_rac_3.png" width="300" alt="Custom DB-15 cable wired into the screw-terminal block of a DataQ DI-149 ADC, with the USB lead that runs to the PC">
 
-   - Ordering the cable from a cable shop (e.g. cableguy.com) plus a DataQ DI-149 and its 15-pin adapter typically works out to roughly ₩100,000–200,000 per bed once shipping and customs are included.
+   - Ordering the cable from a cable shop (e.g. cableguy.com) plus a DataQ DI-149 and its 15-pin adapter typically costs about ₩100,000–200,000 per bed once shipping and customs are included.
    - **SNU-ADC** is an in-house 8-channel ADC built to avoid that cost. Besides the 8 analog channels it accepts a wired or wireless push button for event markers.
 
      <img src="../hardware_images/ge_tram_rac_4.png" width="450" alt="SNU-ADC board — USB-B connector on one bracket and the D-type analog input connector on the other">
+
+## Device Configuration
+
+No configuration is required on the TRAM-RAC — the analog outputs are always live. All setup happens on the ADC side in Vital Recorder: channel mapping, gain and unit (see Notes for the scaling values).
 
 ## Choosing the module slots
 
@@ -67,6 +71,10 @@ The ADC connects to the PC over **USB**. There is no VR device entry for the TRA
 3. **Correct:** leave **BP2 empty** and move the CVP transducer to the **third** BP connector (BP3).
 
    <img src="../hardware_images/ge_tram_rac_7.png" width="450" alt="Tram module front panel with the second BP socket left empty and the transducer cables moved to the third and fourth positions — correct">
+
+## Vital Recorder Setup
+
+- There is no Vital Recorder device entry for this port. Add the **ADC** (DataQ DI-149 / DI-155 / DI-1110 or SNU-ADC) as the device and map each analog channel to a track.
 
 ## Notes
 

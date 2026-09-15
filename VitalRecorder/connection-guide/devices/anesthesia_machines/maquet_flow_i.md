@@ -12,15 +12,18 @@ vr_device_name: Flow-i
 | Direct Serial | Null Modem M/F | Serial port — lower right of the rear panel | `Flow-i` |
 
 ## Connection Steps
-1. Locate the **DB-9 serial port** on the lower right of the rear panel and attach a **Null Modem (M/F cross-gender)** adapter to it.
+1. Locate the **DB-9 serial port** on the lower right of the rear panel and attach a **Null Modem (M/F)** adapter to it.
 
    <img src="../hardware_images/maquet_flow_i_1.png" width="450" alt="Flow-i rear panel with the DB-9 serial port outlined in red, next to a network connector">
 
 2. Connect a direct serial cable from the adapter to the PC via a USB-Serial converter.
-3. In Vital Recorder, add the device as **`Flow-i`**.
 
 ## Device Configuration
 Nothing has to be set on the machine — the serial port streams as soon as it is cabled.
+
+## Vital Recorder Setup
+
+- In Vital Recorder, add the device as **`Flow-i`**.
 
 ## Notes
 - The Flow-i has **two independent serial ports**, so a patient monitor can keep one while Vital Recorder uses the other. (This is unlike the Servo-i, which has a single usable RS-232 port.)

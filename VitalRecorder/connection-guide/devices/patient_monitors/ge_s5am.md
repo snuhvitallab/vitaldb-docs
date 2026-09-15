@@ -11,7 +11,7 @@ vr_device_name: Bx50
 |-------|---------|------|----------------|
 | Direct Serial | **Null Modem F/F** | **X8** (9-pin D-type, rear of the frame) | `Bx50` |
 
-> ⚠️ **The Null Modem adapter is not optional.** A direct cable straight into X8 leaves TX connected to TX and no data appears. Attach the Null Modem (F/F) gender changer at the monitor end.
+> ⚠️ **The Null Modem adapter is not optional.** A direct cable straight into X8 leaves TX connected to TX and no data appears. Attach the Null Modem (F/F) adapter at the monitor end.
 
 ## Connection Steps
 
@@ -26,6 +26,10 @@ vr_device_name: Bx50
    ```
    S/5 frame X8 -- Null Modem F/F -- direct serial cable -- USB-Serial -- PC
    ```
+
+## Device Configuration
+
+No configuration is required on the monitor — X8 streams the S/5 Computer Interface as soon as Vital Recorder opens the port.
 
 ## Vital Recorder Setup
 

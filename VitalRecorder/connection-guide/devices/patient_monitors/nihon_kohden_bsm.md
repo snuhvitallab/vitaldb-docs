@@ -29,25 +29,32 @@ Confirm the exact interface unit that applies to a given serial number with Niho
 
    <img src="../hardware_images/nihon_kohden_bsm_1.png" width="300" alt="BSM interface unit connector panel with the DB-9 RS-232C socket outlined in red, above the 15-pin video socket, the RJ-45 network socket and the ECG/BP OUT connector">
 
-2. Attach a **Null Modem (M/F)** gender changer to that socket. Screwing it down keeps it from working loose.
+2. Attach a **Null Modem (M/F)** adapter to that socket. Screwing it down keeps it from working loose.
 3. Connect a **direct serial cable** from the adapter to the PC's DB-9M port or a USB-Serial converter.
-4. In Vital Recorder, add **Patient monitor → Nihon Kohden : BSM**.
-
-- Serial: **RS-232C**. The BSM RS-232C socket supports **9600 / 19200 / 38400 baud**; no monitor-side menu change is normally required. If nothing arrives, confirm the port's configured baud rate with Nihon Kohden.
 
 ## Connection Steps — ECG / ART Waveform
 
 The RS-232C link carries numeric data only. ECG and arterial pressure waveforms come out of the **`ECG/BP OUT`** port as analog voltages, visible on the same connector panel as the serial socket.
 
 1. Plug the Nihon Kohden **ECG/BP output cable** (`YJ-910P` or `YJ-920P`) into the `ECG/BP OUT` port.
-2. Fabricate a **5.5pi Mono ↔ RJ45** cable to bring the analog outputs into the ADC (SNU-ADC / SNUADCM, DataQ DI-149/DI-155, …).
+2. Build a **5.5pi Mono ↔ RJ45** cable to bring the analog outputs into the ADC (SNU-ADC / SNUADCM, DataQ DI-149/DI-155, …).
 3. Connect the ADC to the PC via USB.
+
+## Device Configuration
+
+No monitor-side menu change is normally required.
+
+- Serial: **RS-232C**. The BSM RS-232C socket supports **9600 / 19200 / 38400 baud**. If nothing arrives, confirm the port's configured baud rate with Nihon Kohden.
 
 ## Troubleshooting
 
 - **The port opens but no data arrives.** Sources disagree on whether this link needs a crossover: the legacy main guide describes a plain direct cable, while the Patient Monitor documentation and our own field notes call for a **Null Modem (M/F)**. This page follows the latter. If the connection was made with the adapter and stays silent, **remove it** and retry direct — and vice versa. Record which one worked for that model so the matrix above can be tightened.
 - **No RS-232C socket on the panel.** The interface unit is missing or is a variant without the serial option — see the [Model / Interface Matrix](#model--interface-matrix). No cable will help.
 - **Numerics arrive but no waveforms.** Expected: the RS-232C link carries numeric data only. Waveforms need the `ECG/BP OUT` path and an ADC.
+
+## Vital Recorder Setup
+
+- In Vital Recorder, add **Patient monitor → Nihon Kohden : BSM**.
 
 ## Notes
 - Requires Vital Recorder **1.8.16.2** or later.

@@ -59,7 +59,7 @@ vr_device_name: Root
 
    <img src="../hardware_images/masimo_root_9.png" width="450" alt="USB cable plugged into a USB port on the ROOT rear panel, below the RJ45 LAN port">
 
-3. **Without the Masimo cable:** `ROOT USB1/2` → USB-Serial converter → **Null Modem (F/F)** → Serial-to-USB converter → PC.
+3. **Without the Masimo cable:** `ROOT USB1/2` → USB-Serial converter → **Null Modem (F/F)** → USB-Serial converter → PC.
 
 4. In Vital Recorder, press **Add Device → Masimo ROOT** and assign it to the new COM port. Once recording, the Root device exposes tracks such as `PSI`, `EMG`, `SR`, `ARTF`, `SO2_1`, `SO2_2`, `SEFL`, `SEFR`, `DELTA_SO2_1/2`, `SPO2`, `BPM`, `PI`, `SPMET`, `SPHB`, `SPOC` and `PVI`.
 
@@ -82,6 +82,10 @@ vr_device_name: Root
 4. Run a **LAN cable** from the RJ45 port on the rear of the ROOT to the Ethernet port of the PiVR.
 
    <img src="../hardware_images/masimo_root_14.png" width="450" alt="LAN cable plugged into the RJ45 port on the ROOT rear panel (left) and into the Ethernet port of the PiVR unit (right)">
+
+## Vital Recorder Setup
+
+- Add the device in Vital Recorder as **`Root`**.
 
 ## Notes
 

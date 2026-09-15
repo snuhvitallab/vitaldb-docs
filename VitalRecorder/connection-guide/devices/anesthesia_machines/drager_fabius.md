@@ -18,7 +18,7 @@ Per Dräger's documentation the Fabius COM1 connector changed in **October 2004*
 
 | Manufactured | COM1 connector | What to fit |
 |---|---|---|
-| Before Oct 2004 | **Male** (pins) | Null Modem **F/F** cross-gender adapter at COM1, then a direct serial cable |
+| Before Oct 2004 | **Male** (pins) | Null Modem **F/F** Null Modem adapter at COM1, then a direct serial cable |
 | Oct 2004 onward | **Female** (sockets) | Direct serial cable only — **no** adapter |
 
 Identify the connector by looking at COM1 on the machine, not by the model name: the same model was sold across the change. The gender rule is the same one used throughout this guide — an adapter fitted to a **male** device port must be **F/F**, one fitted to a **female** device port must be **M/F**.
@@ -30,7 +30,7 @@ If the machine's purchase date is unknown, the connector itself is the answer. F
 1. Look at **COM1** on the machine and note whether it is male or female.
 2. Fit the adapter, if the connector calls for one:
    - **Female COM1** — nothing to fit. Connect a direct serial cable straight from COM1.
-   - **Male COM1** — attach a **Null Modem (F/F cross-gender)** adapter at COM1, then the direct serial cable.
+   - **Male COM1** — attach a **Null Modem (F/F)** adapter at COM1, then the direct serial cable.
 3. Connect the other end of the cable to the PC through a USB-Serial converter.
 4. **Fabius only:** enter service mode and set the serial parameters — see [Device Configuration](#device-configuration).
 5. In Vital Recorder, add the device as **`Primus`** — see [Vital Recorder Setup](#vital-recorder-setup).

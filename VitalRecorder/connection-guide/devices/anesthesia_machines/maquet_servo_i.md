@@ -14,9 +14,8 @@ vr_device_name: Servo-i
 
 ## Connection Steps
 1. Open the connector cover on the rear of the patient unit. Two ports labeled **RS 232** are stacked there; identify the **BOTTOM** one — the upper `RS 232` port is for service/debugging and returns nothing.
-2. Attach a **Null Modem (M/F cross-gender)** adapter to the bottom port.
+2. Attach a **Null Modem (M/F)** adapter to the bottom port.
 3. Connect a direct serial cable from the adapter to the PC via a USB-Serial converter.
-4. In Vital Recorder, add the device as **`Servo-i`**.
 
 ## Device Configuration
 Nothing has to be enabled on the ventilator. The serial port is served by the built-in **Computer Interface Emulator (CIE)**, which answers commands from Vital Recorder as soon as the line is up.
@@ -27,8 +26,12 @@ Nothing has to be enabled on the ventilator. The serial port is served by the bu
 > **Model differences:** Servo-i and Servo-s run the CIE at **9600 baud**; **Servo-U runs at 19200 baud**. Set the matching device entry in Vital Recorder.
 
 ## Troubleshooting
-- **The Servo-i has only one usable serial port**, and in most installations the patient monitor already owns it. A read-only Y-cable tap does **not** work here: the listening branch never sees the command side of the exchange, so the parameter order cannot be resolved and parsing fails. **A direct connection is required** to collect values — otherwise take the data from the monitor instead (Servo-i → Philips Intellivue → Vital Recorder).
+- **The Servo-i has only one usable serial port**, and in most installations the patient monitor already occupies it. A read-only Y-cable tap does **not** work here: the listening branch never sees the command side of the exchange, so the parameter order cannot be resolved and parsing fails. **A direct connection is required** to collect values — otherwise take the data from the monitor instead (Servo-i → Philips Intellivue → Vital Recorder).
 - **Port opens, then a repeating "no data for 20 s → close" loop:** check the cable first — cross/Null Modem type, pin-out and that both connectors are fully seated — and confirm the connection is direct rather than a tap. Confirm the RS-232 output side of the ventilator with Getinge service documentation if the cable is proven good.
+
+## Vital Recorder Setup
+
+- In Vital Recorder, add the device as **`Servo-i`**.
 
 ## Notes
 - Only 4 waveform channels can be sampled simultaneously over the CIE (a firmware limit of the interface).

@@ -48,6 +48,10 @@ Navigate to **Interfaces → Serial Interface** and configure:
 - Baud rates **other than 115200 will not work** with the SenTecLink protocol.
 - Data bits / parity / stop bits are not stated in the publicly available Sentec service manual — *verify with Sentec* if you need them for a third-party terminal.
 
+## Vital Recorder Setup
+
+- Add the device in Vital Recorder as **`SDM`**.
+
 ## Notes
 
 - **Firmware requirement:** SenTecLink at 115200 baud requires SDM software **SMB SW-V08.00.xx or higher**.

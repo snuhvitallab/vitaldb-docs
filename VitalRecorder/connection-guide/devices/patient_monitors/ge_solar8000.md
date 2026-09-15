@@ -17,7 +17,7 @@ vr_device_name: Solar8000
 
    <img src="../hardware_images/ge_solar8000_1.png" width="450" alt="Close-up of the Solar 8000 rear connector panel; a red circle marks the 9-pin D-type female socket under the silk-screened label RS-232 1, with the labels DFP Vid 1 and VGA Vid 1 alongside and a blue VGA cable plugged into the connector below">
 
-2. Plug a **direct serial cable** (DB-9 male end) straight into RS-232 1. No Null Modem adapter or gender changer is used.
+2. Plug a **direct serial cable** (DB-9 male end) straight into RS-232 1. No Null Modem adapter is used.
 
 3. Connect the other end of the cable to the PC through a USB-Serial converter.
 
@@ -39,6 +39,6 @@ Nothing has to be changed in the monitor's service menu — the RS-232 port stre
 ## Notes
 
 - **Dropout that never recovers.** Recording stops although the COM port stays open. This has been traced to the per-device restart thread in Vital Recorder dying in the background, and is seen most often when a TwitchView is being recorded on the same machine. Restarting Vital Recorder recovers it.
-- **Garbage on the line after re-cabling.** Unplugging and re-plugging the serial cable while the device is running pushes junk bytes into the stream. Stop the device in Vital Recorder before re-cabling, then start it again.
+- **Garbage on the line after re-cabling.** Unplugging and re-plugging the serial cable while the device is running sends stray bytes into the stream. Stop the device in Vital Recorder before re-cabling, then start it again.
 - **RS-232 1 vs. the other serial connectors.** On the Solar 8000M/i the RS-232 ports on this panel also serve the iPanel computer and other serial peripherals. Use the one labeled **RS-232 1**; if a site already has something occupying it, confirm with biomedical engineering before moving cables.
 - The **Dash 2000 / 3000 / 4000** share this protocol but expose it on an RJ-45 Aux terminal and need a custom cable — see [GE Dash 2000 / 3000 / 4000](ge_dash2000.md). The **Dash 2500** uses a different protocol entirely — see [GE Dash 2500](ge_dash2500.md).

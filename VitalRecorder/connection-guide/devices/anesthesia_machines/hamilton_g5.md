@@ -16,9 +16,8 @@ vr_device_name: Hamilton
    - **Special Interface connector** (15-pin, topmost) — **not** a COM port, do not use it
    - **Monitoring Interface 1 connector** (9-pin) = COM1
    - **Monitoring Interface 2 connector** (9-pin) = COM2
-2. Attach a **Null Modem (M/F cross-gender)** adapter to Monitoring Interface **1** or **2**.
+2. Attach a **Null Modem (M/F)** adapter to Monitoring Interface **1** or **2**.
 3. Connect a direct serial cable from the adapter to the PC via a USB-Serial converter.
-4. In Vital Recorder, add the device as **`Hamilton`**.
 
 The COM (RS-232) connector pin assignment is: **2 RxD, 3 TxD, 4 DTR, 5 GND, 6 DSR, 7 RTS, 8 CTS** (pins 1 and 9 unused, shield = chassis ground).
 
@@ -33,6 +32,10 @@ The COM (RS-232) connector pin assignment is: **2 RxD, 3 TxD, 4 DTR, 5 GND, 6 DS
 
 - Block protocol line settings: **38400 baud, 8 data bits, No parity, 1 stop bit, no handshake**
 - Do **not** select `HAMILTON-G5 / Polling` or `Galileo / Polling` — polling runs at 9600 baud, 7 data bits, Even parity, 2 stop bits with XON/XANY handshake and transmits only a subset of the data. `DraegerTestProtocol` is for Dräger MIB II converters and `HAMILTON-G5 / Block (ACK)` for distributed alarm systems.
+
+## Vital Recorder Setup
+
+- In Vital Recorder, add the device as **`Hamilton`**.
 
 ## Notes
 - Block mode carries all settings, measurements, alarms and up to 8 high-resolution waveforms; polling mode is limited to 4 low-resolution waveforms and a data subset — this is why Vital Recorder requires Block.

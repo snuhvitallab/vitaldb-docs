@@ -19,7 +19,7 @@ vr_device_name: Dash2500
 
    <img src="../hardware_images/ge_dash2500_1.png" width="450" alt="Line drawing of the Dash 2500 rear panel with callouts: Speaker at top, AC Power Operation inlet and the HostComm Port D-sub connector beside it in the same recessed bay, the Potential Equalization Terminal stud below, and the Ethernet and Serial Connectors (two RJ-45 jacks) on the right">
 
-2. Plug a **direct serial cable** into the HostComm port. No Null Modem adapter or gender changer is used.
+2. Plug a **direct serial cable** into the HostComm port. No Null Modem adapter is used.
 
 3. Connect the other end to the PC through a USB-Serial converter.
 
@@ -39,7 +39,7 @@ Per the GE Dash 2500 service manual (document 2042481-001), the isolated host co
 | 4 | DTR | 9 | No connection |
 | 5 | Ground | | |
 
-Only pins 2, 3 and 5 are needed for recording. Note that **pin 1 is ground on this monitor**, not DCD as on a PC — this is harmless with an ordinary cable, but worth knowing if a cable is being made up.
+Only pins 2, 3 and 5 are needed for recording. Note that **pin 1 is ground on this monitor**, not DCD as on a PC — this is harmless with an ordinary cable, but worth knowing if a cable is being built.
 
 ## Device Configuration
 

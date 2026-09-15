@@ -16,7 +16,7 @@ vr_device_name: Datex-Ohmeda
 
    <img src="../hardware_images/ge_datex_ohmeda_1.png" width="300" alt="Rear connector panel behind the opened cover, with an arrow marking the 15-pin female connector">
 
-2. Connect the **custom 15-pin to 9-pin cable** to that connector. Ordinary USB-Serial converters end in a 9-pin male plug, so this cable has to be made up — the wiring is only three conductors:
+2. Connect the **custom 15-pin to 9-pin cable** to that connector. Ordinary USB-Serial converters end in a 9-pin male plug, so this cable has to be built — the wiring is only three conductors:
 
    | Machine side — DB-15 male | PC side — DB-9 female |
    |---------------------------|------------------------|
@@ -27,7 +27,6 @@ vr_device_name: Datex-Ohmeda
    <img src="../hardware_images/ge_datex_ohmeda_3.png" width="450" alt="Pin wiring diagram of the custom cable — Datex-Ohmeda DB-15 male pin 13 (TX) to DB-9 female pin 2 (RX), pin 6 (RX) to pin 3 (TX), pin 5 to pin 5 (GND)">
 
 3. Connect the 9-pin end to the PC via a USB-Serial converter.
-4. In Vital Recorder, add the device as **`Datex-Ohmeda`**.
 
 ## Device Configuration
 No setting has to be changed on the machine — the serial port streams continuously. If no data arrives, confirm the line settings expected by the GE Ohmeda Serial Protocol:
@@ -38,7 +37,7 @@ If the machine has a service page for the serial ports (for example the *Test Se
 
 ## When the 15-pin Port is Already in Use
 
-If the 15-pin port is already feeding a patient monitor (CO2 curve, airway pressure, etc.), fabricate a **Y-cable** so Vital Recorder can listen without disturbing the existing link, and enable **"Read Only Mode"** in Vital Recorder when adding the device.
+If the 15-pin port is already feeding a patient monitor (CO2 curve, airway pressure, etc.), build a **Y-cable** so Vital Recorder can listen without disturbing the existing link, and enable **"Read Only Mode"** in Vital Recorder when adding the device.
 
 | Machine side — DB-15 male | CON1 — to the existing GE device (DB-15F) | CON2 — to Vital Recorder (DB-9F) |
 |---------------------------|--------------------------------------------|-----------------------------------|
@@ -49,6 +48,10 @@ If the 15-pin port is already feeding a patient monitor (CO2 curve, airway press
 Only the machine's transmit line and ground are branched to CON2, so Vital Recorder never drives the line.
 
 <img src="../hardware_images/ge_datex_ohmeda_2.png" width="450" alt="Y-cable pin wiring diagram — machine TX (pin 13) and GND (pin 5) branch to both CON1 (DB-15F, existing GE device) and CON2 (DB-9F, PC Vital Recorder with the read-only option); RX (pin 6) goes only to CON1">
+
+## Vital Recorder Setup
+
+- In Vital Recorder, add the device as **`Datex-Ohmeda`**.
 
 ## Notes
 - With **`AUTO_DETECT=1`** in `vr.conf` (Vital Recorder **1.19.0** or later), GE / Datex-Ohmeda S/5 devices are identified on the serial line without a `[DEV/...]` section.

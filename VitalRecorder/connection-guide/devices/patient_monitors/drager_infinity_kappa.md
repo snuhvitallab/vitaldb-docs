@@ -12,9 +12,9 @@ vr_device_name: Infinity
 | 14-pin Mini-D ↔ DB-9F, custom (numeric) | None | `X5` or `X3` on the module, monitor or docking station | `Infinity` |
 | Analog/Sync cable → ADC (waveform) | None | Analog/Sync port (see Notes) | — (ADC device) |
 
-The serial link can be taken from the **module, the monitor itself, or the docking station** — whichever exposes an X5 or X3 port. The DB-9F end goes to the PC's DB-9M serial port or a USB-Serial converter; no Null Modem gender changer is used, because the crossover is built into the custom cable.
+The serial link can be taken from the **module, the monitor itself, or the docking station** — whichever exposes an X5 or X3 port. The DB-9F end goes to the PC's DB-9M serial port or a USB-Serial converter; no Null Modem adapter is used, because the crossover is built into the custom cable.
 
-A factory cable is available instead of a home-made one: **Dräger part `5206441`** ("Export/Expert Protocol Cable, 3 m, with 9-pin connector"), which carries the 14-pin universal connector on the monitor side.
+A factory cable is available instead of a custom-built one: **Dräger part `5206441`** ("Export/Expert Protocol Cable, 3 m, with 9-pin connector"), which carries the 14-pin universal connector on the monitor side.
 
 ## Connection Steps — Numeric Data
 
@@ -40,7 +40,6 @@ A factory cable is available instead of a home-made one: **Dräger part `5206441
    <img src="../hardware_images/drager_infinity_2.png" width="450" alt="Wiring tables for the X5 and X3 ports, each mapping three 14-pin Mini-D pins to DB-9F pins 5, 2 and 3">
 
 4. Connect the DB-9F end to the PC via a USB-Serial converter.
-5. In Vital Recorder, add **Patient monitor → Draeger : Infinity**.
 
 ## Connection Steps — Waveform Data (Optional)
 
@@ -53,8 +52,15 @@ Waveforms are only available as analog voltages from the **Analog/Sync port** (D
 | 7 | CH2 (+) |
 | 6 | CH2 (−) |
 
+## Device Configuration
+
+No monitor-side configuration is required — the export protocol is always active on X5/X3.
+
+## Vital Recorder Setup
+
+- In Vital Recorder, add **Patient monitor → Draeger : Infinity**.
+
 ## Notes
-- **No device configuration is needed** — the export protocol is always active on X5/X3.
 - Numeric data is delivered at a **2-second interval**; do not expect higher-rate trends over this link.
 - The Analog/Sync port is documented as **X10** in the original guide, but the docking station photographed above labels its analog/sync connector **X16**. Confirm the label on the actual unit before wiring.
 - Sibling model **Infinity C500 / C700** uses a completely different connection (P2500 RJ10 port) — see [Dräger Infinity C500 / C700](drager_infinity_c500.md).

@@ -11,7 +11,7 @@ vr_device_name: Bx50
 |-------|---------|------|----------------|
 | **ATEN UC-232A** USB-to-RS232 | Null Modem F/F | **USB port** on the rear panel | `Bx50` |
 
-> ⚠️ **ATEN UC-232A is the only USB-to-serial converter the monitor accepts.** The CARESCAPE runs its own embedded OS and only carries drivers for that converter — other converters (including the Startech ICUSB232V2) are not recognized and produce no data. Do **not** connect to the monitor's own DB-9 serial port; use a USB port.
+> ⚠️ **ATEN UC-232A is the only USB-Serial converter the monitor accepts.** The CARESCAPE runs its own embedded OS and only carries drivers for that converter — other converters (including the Startech ICUSB232V2) are not recognized and produce no data. Do **not** connect to the monitor's own DB-9 serial port; use a USB port.
 
 > ⚠️ **The Bx50 uses hardware handshaking.** A 3-wire connection will not work. The converter on the **PC** side must carry **DTR and RTS** — an FTDI-based converter is recommended. With a 3-wire cable or a converter that drops the handshake lines the link comes up but roughly 60 % of the waveform samples are lost and reception is intermittent.
 
@@ -23,7 +23,7 @@ vr_device_name: Bx50
 
    Field installations most often use **USB port 4**. If no data appears, try the other ports before suspecting the cable.
 
-2. Attach a **Null Modem (F/F)** gender changer to the DB-9 end of the ATEN converter. This is what turns the two "direct" ends into a crossed link.
+2. Attach a **Null Modem (F/F)** adapter to the DB-9 end of the ATEN converter. This is what turns the two "direct" ends into a crossed link.
 
 3. Run a **direct serial cable** from the Null Modem adapter to the recording PC. On a laptop or tablet this means a second USB-Serial converter on the PC side — that one must support DTR/RTS (FTDI recommended).
 
@@ -46,7 +46,7 @@ Once the interface is set to S/5, no baud rate has to be chosen on the monitor: 
 ## Notes
 
 - **Converter revision matters.** Field reports indicate that only the older ATEN UC-232A revision (USB vendor ID `0x0557`) is driven by the monitor's built-in driver; newer stock built around a different chipset (`0x067b`) is not. If a freshly bought UC-232A produces nothing, check the revision before changing anything else.
-- **Communication stops and does not auto-recover (software version 2).** Data is received normally and then stops at an unpredictable point, and Vital Recorder does not re-establish the link on its own. Workaround: **unplug and re-plug the cable at the monitor end** — reception resumes immediately. Sites with frequent stoppages have fitted a relay to automate the re-connection, which reduced but did not fully eliminate the problem (Chonnam National University Hospital ICU, 2026); the root cause is still under investigation. Before chasing it, verify that the cable and the PC-side converter really carry DTR/RTS, since a missing handshake produces similar symptoms.
+- **Communication stops and does not auto-recover (software version 2).** Data is received normally and then stops at an unpredictable point, and Vital Recorder does not re-establish the link on its own. Workaround: **unplug and re-plug the cable at the monitor end** — reception resumes immediately. Sites with frequent stoppages have fitted a relay to automate the re-connection, which reduced but did not fully eliminate the problem (Chonnam National University Hospital ICU, 2026); the root cause is still under investigation. Before investigating it, verify that the cable and the PC-side converter really carry DTR/RTS, since a missing handshake produces similar symptoms.
 - **Avoid PL2303-based converters on the PC side.** They have proved unstable in the field (`pl2303_get_line_request failed`).
 - **Confirm the model before the site visit.** The B1x5M (B105M/B125M/B155M) and the Bx50 look alike on a pre-survey form but need different cabling and a different Vital Recorder device type — see [GE B105M / B125M / B155M](ge_b105m.md).
 - **VRZero note:** the USB cable that connects to VRZero must support handshaking. Cables known to work:

@@ -12,7 +12,7 @@ vr_device_name: Intellivue
 | Custom RJ-45 ↔ DB-9F (MP / MX via MIB) | None | `MIB/RS232` (RJ-45) | `Intellivue` |
 | Custom RJ-45 ↔ DB-9F with pins 2/3 swapped (MX400–550 via ASIB) | None | `MIB/RS232` on the Advanced Interface Card | `Intellivue` |
 
-The DB-9F end goes to the PC's DB-9M serial port or a USB-Serial converter (e.g. ATEN UC-232A). The monitor side is RJ-45, so **no Null Modem gender changer is used** — the crossover is built into the custom cable.
+The DB-9F end goes to the PC's DB-9M serial port or a USB-Serial converter (e.g. ATEN UC-232A). The monitor side is RJ-45, so **no Null Modem adapter is used** — the crossover is built into the custom cable.
 
 ## Connection Steps
 1. Locate the port labeled **`MIB/RS232`** on the monitor. A separate port labeled only `RS232` (next to `Alarm`) is **not** the data-export port and will not work.
@@ -94,6 +94,10 @@ The DB-9F end goes to the PC's DB-9M serial port or a USB-Serial converter (e.g.
 7. Press **Confirm** to leave configuration mode and apply the settings.
 
    <img src="../hardware_images/philips_intellivue_15.png" width="450" alt="Please Confirm prompt for leaving Configuration Mode with the Confirm button highlighted">
+
+## Vital Recorder Setup
+
+- Add the device in Vital Recorder as **`Intellivue`**.
 
 ## Notes
 - **MP2 / X2** monitors do not support serial communication and **cannot be used** with Vital Recorder.

@@ -12,7 +12,7 @@ vr_device_name: VISTA
 |-------|---------|------|----------------|
 | Direct Serial (DB-9M ↔ DB-9F) — **NOT a cross cable** | None | RS-232 port, rear panel (DB-9 **female**) | `VISTA` |
 
-The VISTA presents a **DB-9 female** RS-232 port and the PC side is DB-9 male, so a plain **direct** (straight-through) serial cable is correct and **no Null Modem gender changer is used**.
+The VISTA presents a **DB-9 female** RS-232 port and the PC side is DB-9 male, so a plain **direct** (straight-through) serial cable is correct and **no Null Modem adapter is used**.
 
 | Serial Protocol option | What it carries | Vital Recorder device to select |
 |----------|------|------|

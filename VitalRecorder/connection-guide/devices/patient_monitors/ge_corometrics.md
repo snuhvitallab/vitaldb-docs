@@ -11,7 +11,7 @@ vr_device_name: Coro
 |-------|---------|------|----------------|
 | Custom RJ-45 ↔ DB-9F (null-modem wiring, CTS looped to RTS) | None | **RS-232 Port 1** or **Port 2** (rear panel, RJ-45) | `Coro` |
 
-The DB-9F end plugs into the PC's DB-9M serial port or into a USB-Serial converter. Because the crossover is built into the custom cable's pin mapping, **no Null Modem gender changer is used**.
+The DB-9F end plugs into the PC's DB-9M serial port or into a USB-Serial converter. Because the crossover is built into the custom cable's pin mapping, **no Null Modem adapter is used**.
 
 ## Connection Steps
 
@@ -69,6 +69,10 @@ The communication mode and baud rate for each port live in **service setup mode*
 5. **Exit with the Setup button.** Exiting service setup mode puts the monitor into standby. If you exit with the **Power** button instead, none of your changes are saved.
 
 - Serial: **9600 baud**, port switched to communications mode **5 (115 update)**. The RTS/CTS loop described in step 3 is what makes a 3-wire cable work.
+
+## Vital Recorder Setup
+
+- Add the device in Vital Recorder as **`Coro`**.
 
 ## Notes
 

@@ -23,7 +23,7 @@ ANI = Analgesia Nociception Index. The V2 monitor derives it from the ECG-based 
 
    <img src="../hardware_images/mdms_ani_monitor_2.png" width="450" alt="ANI Monitor connector panel — ECG IN, the highlighted REAL TIME EXPORT DB-9 connector, and the DATA EXPORT USB port below it">
 
-3. Plug the USB-Serial converter **directly into the `REAL TIME EXPORT` DB-9** — no Null Modem or gender changer is needed.
+3. Plug the USB-Serial converter **directly into the `REAL TIME EXPORT` DB-9** — no Null Modem adapter is needed.
 
    <img src="../hardware_images/mdms_ani_monitor_3.jpg" width="450" alt="NEXT-RS232U20 USB-Serial converter plugged into the REAL TIME EXPORT DB-9 port on the ANI Monitor">
 
@@ -34,6 +34,10 @@ ANI = Analgesia Nociception Index. The V2 monitor derives it from the ECG-based 
 **No on-device setting is required** — the ANI Monitor V2 streams on the `REAL TIME EXPORT` port as soon as a session is running.
 
 - **Serial parameters (baud rate, data bits, parity) are not published** in the publicly available Mdoloris documentation — *verify with Mdoloris Medical Systems* if you need them for a third-party terminal. Vital Recorder applies them automatically.
+
+## Vital Recorder Setup
+
+- Add the device in Vital Recorder as **`ANIMonitor2`**.
 
 ## Notes
 

@@ -13,9 +13,8 @@ vr_device_name: MedibusX
 
 ## Connection Steps
 1. Open the interface panel on the machine column. It carries a **male DB-9 serial connector** together with a USB port and a LAN (RJ-45) socket.
-2. Attach a **Null Modem (F/F cross-gender)** adapter to the DB-9 serial port.
+2. Attach a **Null Modem (F/F)** adapter to the DB-9 serial port.
 3. Connect a direct serial cable from the adapter to the PC via a USB-Serial converter.
-4. In Vital Recorder, add the device as **`MedibusX`**.
 
 > The Perseus has **two RS-232 ports (COM 1 and COM 2)**. Either can be used, but only the port you enable in the interface page transmits — the other is often already assigned to the hospital EMR gateway.
 
@@ -32,6 +31,10 @@ vr_device_name: MedibusX
 > ⚠️ **Match the baud rate to the protocol.** MEDIBUS.X runs at **19200** and pairs with the `MedibusX` device entry; legacy MEDIBUS runs at **9600** and pairs with `Primus`. A mismatch produces a `MEDIBUS COM2` message or a repeated `COM1 failure` on the machine.
 >
 > Perseus software normally offers **MEDIBUS.X only** — there is no legacy MEDIBUS option. Where an older release does offer plain **MEDIBUS**, set the port to **9600** and add the machine in Vital Recorder as **`Primus`** instead.
+
+## Vital Recorder Setup
+
+- In Vital Recorder, add the device as **`MedibusX`**.
 
 ## Notes
 - **Recommended version:** MEDIBUS / MEDIBUS.X communication was stabilized in Vital Recorder **1.19.11** (repeated `COM1 failure` fixed with a keep-alive) and **1.19.12**. Model-name selection and the generic `Medibus` entry arrived in **1.19.22**.

@@ -12,7 +12,7 @@ vr_device_name: A2000
 |-------|---------|------|----------|----------------|
 | Direct Serial (DB-9M ↔ DB-9F) | None | `J1` — DB-9 **female**, rear panel | Binary | `A2000` |
 
-The A-2000 presents a **DB-9 female** port, and the PC side is DB-9 male, so a plain **direct** (straight-through) serial cable is used — **no Null Modem gender changer**. This distinguishes it from INVOS, whose port is male and therefore needs an F/F Null Modem.
+The A-2000 presents a **DB-9 female** port, and the PC side is DB-9 male, so a plain **direct** (straight-through) serial cable is used — **no Null Modem adapter**. This distinguishes it from INVOS, whose port is male and therefore needs an F/F Null Modem.
 
 Supports **2-channel, 256 Hz EEG** acquisition — the highest-resolution EEG of the BIS family. It shares the monitor family of the BIS VISTA, but the menu structure and protocol options differ.
 

@@ -12,7 +12,7 @@ vr_device_name: SpaceCom
 | Custom 9-pin mini-DIN ↔ DB-9F | None | Serial (9-pin mini-DIN), bottom of the SpaceCom module | `SpaceCom` |
 | Ethernet patch cable (configuration only) | None | LAN (RJ-45), SpaceOnline | — |
 
-A standard serial cable will not fit — the pump side is a 9-pin mini-DIN, so a custom or B. Braun-supplied cable is required. No Null Modem gender changer is used; the crossover is in the custom cable's pin mapping.
+A standard serial cable will not fit — the pump side is a 9-pin mini-DIN, so a custom or B. Braun-supplied cable is required. No Null Modem adapter is used; the crossover is in the custom cable's pin mapping.
 
 ## Connection Steps
 1. Identify the two ports on the SpaceCom module's connector column: the **LAN port (SpaceOnline)** near the top, below the two status LEDs, and the **serial port (9-pin mini-DIN)** at the bottom of the column.
@@ -44,8 +44,12 @@ The serial interface is configured over LAN through **SpaceOnline**, the module'
 5. Press **Save**. Power-cycle the SpaceStation so the interface comes up with the new settings.
 
 - Interface: **COM1**
-- Serial: **9600 baud, 8 data bits, no parity (`n`), 1 stop bit**
+- Serial: **9600 baud, 8 data bits, No parity (`n`), 1 stop bit**
 - B. Braun's manual states these four values are chosen to match the requirements of the receiving PDM system — the values above are those used with Vital Recorder. If they are changed on the pump, the matching change must be made on the recorder side.
+
+## Vital Recorder Setup
+
+- Add the device in Vital Recorder as **`SpaceCom`**.
 
 ## Notes
 - The SpaceCom is the communication module of the **SpaceStation** rack; it reports the infusion pumps (Perfusor / Infusomat Space) docked in that rack, so one `SpaceCom` device in Vital Recorder covers the whole station rather than one entry per pump.

@@ -19,7 +19,7 @@ Extracts SpO₂, pulse rate, PI and the digital pleth waveform.
 
    <img src="../hardware_images/masimo_radical7_3.png" width="450" alt="Docking Station rear panel — P1 marked RS-232 next to the wider P2 nurse-call/analog connector">
 
-2. Connect a **direct serial cable** from P1 to the PC's serial port. A USB-Serial converter can also be plugged straight into P1 — **no Null Modem or gender changer is required**.
+2. Connect a **direct serial cable** from P1 to the PC's serial port. A USB-Serial converter can also be plugged straight into P1 — **no Null Modem adapter is required**.
 
 3. Confirm that the handheld is fully docked before recording.
 
@@ -41,7 +41,11 @@ Extracts SpO₂, pulse rate, PI and the digital pleth waveform.
 
    <img src="../hardware_images/masimo_radical7_5.png" width="450" alt="Device output screen scrolled down — SatShare diagnostics Enable and docking station baud rate 9600">
 
-- Serial: **9600 baud, 8 data bits, no parity, 1 stop bit, no handshaking (RS-232)**
+- Serial: **9600 baud, 8 data bits, No parity, 1 stop bit, no handshaking (RS-232)**
+
+## Vital Recorder Setup
+
+- Add the device in Vital Recorder as **`Radical7`**.
 
 ## Notes
 
@@ -52,6 +56,6 @@ Extracts SpO₂, pulse rate, PI and the digital pleth waveform.
 
 ## Sources
 
-- Masimo Radical-7 Operator's Manual (Serial Interface Specifications / Serial Interface Setup) — serial connector on the rear of the Docking Station, serial interface only available when docked, 9600 bps / 8 data bits / 1 stop bit / no parity / no handshaking, ASCII 1 default, `ASCII1 IAP FLEXPORT` docking-station field.
+- Masimo Radical-7 Operator's Manual (Serial Interface Specifications / Serial Interface Setup) — serial connector on the rear of the Docking Station, serial interface only available when docked, 9600 bps / 8 data bits / 1 stop bit / No parity / no handshaking, ASCII 1 default, `ASCII1 IAP FLEXPORT` docking-station field.
 - Cable and gender (direct serial, no Null Modem): original Vital Recorder connection guide device table.
 - Menu screens and port layout: photographs in this guide.

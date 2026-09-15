@@ -41,6 +41,14 @@ The ADC connects to the PC over **USB**. There is no separate VR device entry fo
 
 4. Connect the ADC to the PC via USB and map the two channels in Vital Recorder.
 
+## Device Configuration
+
+No configuration is required on the module — the analog outputs are always live. All setup happens on the ADC side in Vital Recorder: channel mapping, gain and unit (see Notes for the scaling values).
+
+## Vital Recorder Setup
+
+- There is no Vital Recorder device entry for this port. Add the **ADC** (DataQ DI-149 / DI-155 / DI-1110 or SNU-ADC) as the device and map each analog channel to a track.
+
 ## Notes
 
 - **Voltage scaling** matches the TRAM-RAC analog output: ECG **1 V/mV ± 10%**, invasive BP **1 V / 100 mmHg**.

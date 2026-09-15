@@ -5,21 +5,21 @@ category: Syringe Pump
 manufacturer: Fresenius Kabi
 vr_device_name: Orchestra
 -->
-> ⚠️ **A cross (null-modem) connection is required, and the port must be configured in service mode.** Connect a **direct** serial cable plus an **M/F cross gender** adapter — never a cross cable on its own, and never a direct connection without the gender changer. Both mistakes cause faulty communication or hardware damage.
+> ⚠️ **A cross (null-modem) connection is required, and the port must be configured in service mode.** Connect a **direct** serial cable plus an **M/F Null Modem** adapter — never a cross cable on its own, and never a direct connection without the Null Modem adapter. Both mistakes cause faulty communication or hardware damage.
 
 | Cable | Adapter | Port | Protocol | VR Device Name |
 |-------|---------|------|----------|----------------|
-| Direct serial (DB-9M ↔ DB-9F) | Null Modem, **M/F** cross gender | **RS 232-3** (DB-9F) — rightmost of the three serial ports on the Base Primea | IDMS | `Orchestra` |
+| Direct serial (DB-9M ↔ DB-9F) | Null Modem **M/F** | **RS 232-3** (DB-9F) — rightmost of the three serial ports on the Base Primea | IDMS | `Orchestra` |
 
-The Base Primea's serial ports are DB-9 **female**, and the PC side is DB-9 **male**, so the M/F gender changer both reverses the wiring and keeps the correct genders. Screwing the gender changer onto the device port and leaving it there is the safest arrangement — it cannot be lost and it removes any doubt about which cable is in use.
+The Base Primea's serial ports are DB-9 **female**, and the PC side is DB-9 **male**, so the M/F Null Modem adapter both reverses the wiring and keeps the correct genders. Screwing the adapter onto the device port and leaving it there is the safest arrangement — it cannot be lost and it removes any doubt about which cable is in use.
 
 ## Connection Steps
 1. Identify the serial ports on the rear of the Base Primea. They are labeled **RS 232-1**, **RS 232-2** and **RS 232-3**; **RS 232-3 is the rightmost**, alongside the round connectors, and is the only one used for data export.
 
    <img src="../hardware_images/fresenius_orchestra_10.png" width="350" alt="Rear of the Base Primea showing RS 232-1 and RS 232-2 stacked on the left and the rightmost RS 232-3 port circled">
 
-2. Attach the **Null Modem (M/F)** gender changer to **RS 232-3**.
-3. Connect a **direct** serial cable from the gender changer to the PC, via a USB-Serial converter if the PC has no DB-9 port.
+2. Attach the **Null Modem (M/F)** adapter to **RS 232-3**.
+3. Connect a **direct** serial cable from the adapter to the PC, via a USB-Serial converter if the PC has no DB-9 port.
 
 ## Device Configuration
 
@@ -73,6 +73,10 @@ Two separate menus must be set: the **service-mode** serial configuration (which
     <img src="../hardware_images/fresenius_orchestra_9.png" width="450" alt="SERIAL PORTS AND PRINTER screen with RS232-3 IDMS circled and the SAVE AND EXIT button circled">
 
     - Choosing **DISCARD CHANGES AND EXIT** here loses the assignment silently, and the unit will record nothing.
+
+## Vital Recorder Setup
+
+- Add the device in Vital Recorder as **`Orchestra`**.
 
 ## Notes
 - **Vital Recorder versions:** recording from the Orchestra Base Primea (including TCI) has been supported since **0.9.11**.

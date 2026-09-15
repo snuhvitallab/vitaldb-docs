@@ -11,7 +11,7 @@ vr_device_name: Pion
 |-------|---------|------|----------------|
 | Direct serial (DB-9M ↔ DB-9F) | None | Serial (DB-9F), rear panel | `Pion` / `Pion1`, `Pion2`, … |
 
-The device port is DB-9 **female** and the PC side is DB-9 **male**, so a direct cable mates correctly and **no gender changer or Null Modem is needed**.
+The device port is DB-9 **female** and the PC side is DB-9 **male**, so a direct cable mates correctly and **no Null Modem adapter is needed**.
 
 ## Connection Steps
 1. Locate the **DB-9 female** serial port on the rear panel, below the mains inlet label and to the left of the square USB-B socket. Both ports carry the same data-link pictogram, so identify the 9-pin one specifically.

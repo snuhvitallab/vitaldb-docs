@@ -11,7 +11,7 @@ vr_device_name: Agilia
 |-------|---------|------|----------------|
 | Proprietary Fresenius Kabi cable (7-pin mini-DIN pump side, DB-9F output) | None | Serial (7-pin mini-DIN, circular screw-lock), pump housing | `Agilia` |
 
-The cable's output end is DB-9 **female**, which mates directly with the DB-9 male of a PC serial port or USB-Serial converter. **No gender changer or Null Modem is used** — the crossover is built into the proprietary cable.
+The cable's output end is DB-9 **female**, which mates directly with the DB-9 male of a PC serial port or USB-Serial converter. **No Null Modem adapter is used** — the crossover is built into the proprietary cable.
 
 ## Connection Steps
 1. Obtain the proprietary cable from Fresenius Kabi. There is no documented pinout to build one from.
@@ -24,6 +24,10 @@ The cable's output end is DB-9 **female**, which mates directly with the DB-9 ma
 
 ## Device Configuration
 - No configuration is required on the pump. No service menu, code or output option has to be enabled — the proprietary cable alone completes the connection.
+
+## Vital Recorder Setup
+
+- Add the device in Vital Recorder as **`Agilia`**.
 
 ## Notes
 - **Vital Recorder versions:** a `std::length_error` in the Link+/Agilia parser was fixed in **1.19.5**. Use **1.19.5** or later.

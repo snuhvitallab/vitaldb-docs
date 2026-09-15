@@ -19,7 +19,7 @@ vr_device_name: TOFScan
 
    <img src="../hardware_images/idmed_tofscan_1.png" width="450" alt="Optical output port on the device with the TOF-RS1 cable connector screwed on">
 
-3. Plug the cable's **DB-9F end directly into a USB-Serial converter** — no Null Modem or gender changer is needed.
+3. Plug the cable's **DB-9F end directly into a USB-Serial converter** — no Null Modem adapter is needed.
 
 4. Connect the USB-Serial converter to the PC.
 
@@ -33,6 +33,10 @@ No on-device output setting is documented for the TOFscan; the optic-serial cabl
 ## Troubleshooting
 
 Most problems are hardware-related — usually a loose optical connector or the wrong cable. Report unresolved issues at [vitaldb.org](https://vitaldb.org).
+
+## Vital Recorder Setup
+
+- Add the device in Vital Recorder as **`TOFScan`**.
 
 ## Notes
 
