@@ -1,4 +1,4 @@
-# Dräger Infinity C500 / C700
+# Dräger Infinity C500 / C700 (Infinity Acute Care System, IACS)
 
 <!-- meta
 category: Patient Monitor
@@ -9,7 +9,7 @@ vr_device_name: Infinity
 
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|
-| Custom RJ10 ↔ DB-9F (numeric) | None | `RJ10` port on the P2500 | `Infinity` |
+| Custom RJ10 ↔ DB-9F (numeric) — or Dräger **Export Protocol Cable MS22948** | None | `RJ10` port on the P2500 | `Infinity` |
 | Analog/Sync cable → custom MDR14 ↔ RJ45 → ADC (waveform) | None | Analog/Sync port | — (ADC device) |
 
 The DB-9F end goes to the PC's DB-9M serial port or a USB-Serial converter. No Null Modem adapter is used — the crossover is built into the custom cable's pin mapping.
@@ -30,6 +30,7 @@ Waveforms are only available as analog voltages, read through an ADC (SNU-ADC, D
    - [Connector purchase link](http://www.cableguy.com/shop/mall.php?cat=007002007&query=view&no=210644)
    - [Pre-made cable purchase link](http://www.cableguy.com/shop/mall.php?cat=025015011&query=view&no=209983)
 3. Connect the ADC to the PC via USB.
+4. In Vital Recorder add the ADC (**SNUADC** or **SNUADCM**) and map the channels: **ART = ch2 with gain ×100**, **ECG = ch3**.
 
 ## Device Configuration
 
@@ -40,6 +41,11 @@ No monitor-side configuration is required for numeric data — the export protoc
 - In Vital Recorder, add **Patient monitor → Draeger : Infinity**.
 
 ## Notes
+
+- Dräger markets this family as the **Infinity Acute Care System (IACS)** — sites and vendors often say "IACS C500". Same connection.
+- **The P2500 COM ports are inputs.** On installed systems COM1 is reserved for a Dräger anesthesia machine, COM2 for a TOFscan and COM3 for BIS Vista / EV-1000 data coming *into* the monitor, usually through a Capsule Tech adapter. Recording from the monitor uses the RJ10 export port and the Analog/Sync port described above, not those COMs.
+- Dräger Korea has supplied the export cable and the analog cable set (MDR14 ↔ RJ45) to sites installing Vital Recorder — ask the Dräger service engineer before building cables.
+- **Data that stops does not resume on its own** on the Infinity family; restart Vital Recorder to re-establish the link.
 - **Infinity C700 firmware 7.xx breaks RS-232 output.** Reported from the field; verify the installed firmware with Dräger if a correctly wired C700 produces no data.
 - Sibling model **Infinity Kappa** uses the X5/X3 14-pin Mini-D port instead — see [Dräger Infinity Kappa](drager_infinity_kappa.md).
 - The MDR-14 pin numbering is not photographed in this guide; request the pinout from the cable vendor or Dräger when ordering.

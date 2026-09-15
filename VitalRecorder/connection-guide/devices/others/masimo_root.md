@@ -89,9 +89,12 @@ vr_device_name: Root
 
 ## Notes
 
+- **A ROOT that moves between rooms takes its Wi-Fi/hotspot pairing with it.** Recorders in two adjacent rooms have logged each other's ROOT for months after a move. Turn the ROOT's Wi-Fi off before moving it, and check the SSID after any Masimo service swap.
+- After changing the output settings the ROOT sometimes needs **two or three power cycles**, or a different USB port, before data flows.
+
 - The USB ports on the ROOT are **data ports, not host ports** for the recorder — a Masimo cable or a USB-Serial converter is still what creates the COM port on the PC.
 - If the ROOT was previously left at its **921600** default, Vital Recorder will show the device but no data; re-check step 5 and confirm the power cycle actually happened.
-- Some ROOT firmware labels the output protocol list `X001` / `X002` rather than `ASCII 1` / `ASCII 2`; select the entry corresponding to ASCII 1. *Verify against your firmware's menu.*
+- **`X001` / `X002` / `X003` are Vital Recorder device types, not ROOT settings.** `Root` is the ASCII 1 serial path described above. `X001` reads the ROOT's native **921600**-baud serial stream (no baud change needed), `X002` is the same protocol at **57600** for a Radical-7 or a ROOT limited to that rate, and `X003` is the **TCP** path on port **4202** used with the Ethernet setup below. All three deliver the same parameters.
 - On the PiVR path, the ROOT and the recorder must be on the same subnet — the destination IP is the recorder, not a gateway.
 
 ## Sources

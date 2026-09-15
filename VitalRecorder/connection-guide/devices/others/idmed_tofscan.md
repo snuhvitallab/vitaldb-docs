@@ -40,6 +40,8 @@ Most problems are hardware-related — usually a loose optical connector or the 
 
 ## Notes
 
+- **The TOFscan needs +6 V on pin 4 and −6 V on pin 7 of the DB-9** to talk. Vital Recorder drives these through the converter's DTR/RTS lines, so the USB-Serial converter must implement them — a 3-wire converter or cable (TX/RX/GND only) will never receive data.
+
 - The optical connector is threaded; hand-tighten it so it cannot work loose during a case.
 - Because the link is optical on the device side, the TOFscan is galvanically isolated from the recording PC through this cable.
 

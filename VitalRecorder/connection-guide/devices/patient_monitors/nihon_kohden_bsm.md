@@ -57,6 +57,10 @@ No monitor-side menu change is normally required.
 - In Vital Recorder, add **Patient monitor → Nihon Kohden : BSM**.
 
 ## Notes
+
+- **Central-server path (no per-bed cable).** Where a Nihon Kohden central server with the HL7 gateway is installed, Vital Recorder can take data from it instead: add **three** devices — `NIHONKOHDEN::ADT` (patient ID, server port **9007**), `NIHONKOHDEN::ORF` (numerics every 30 s, port **7999**) and `NIHONKOHDEN::NealTime` (waveforms, port **9001**, at most three waves — default ECG_II, PLETH, AWP). The ADT device must be given the monitor's bed name. The gateway's *Start Code* setting must match what the client expects, and changing it can break the site's EMR feed — coordinate with Nihon Kohden. Without the HL7 plug-in the server delivers nothing.
+- **Ventilator parameters displayed on a BSM** (ventilator wired to the monitor with a Nihon Kohden cable) are **not** available on the monitor's serial port; they only come through the central server, or by connecting the ventilator directly (a Y-cable on the Nihon Kohden ventilator cable works).
+- **CSM 1702 / PSM** models: expected to speak the BSM protocol but unverified — test before committing an installation.
 - Requires Vital Recorder **1.8.16.2** or later.
 - The `QI-373P` interface carries **both** the RS-232C socket and the `ECG/BP OUT` port, so a single added board can serve numeric and waveform collection — but the waveform side still needs its own output cable and an ADC.
 - **CSM / LifeScope** models are less well verified than BSM — treat support as unconfirmed.

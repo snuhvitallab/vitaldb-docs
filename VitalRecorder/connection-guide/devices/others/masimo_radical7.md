@@ -49,6 +49,9 @@ Extracts SpO₂, pulse rate, PI and the digital pleth waveform.
 
 ## Notes
 
+- **Alternative without the ASCII 1 path:** add the device as **`X002`** with the Docking Station serial set to **IAP** protocol at **57600** — the maximum the Radical-7 supports. This delivers SpO2, PR, PI and the **pleth waveform without an ADC**.
+- The Docking Station has **no USB port**; only the serial and analog connectors on P1 / P2.
+
 - ASCII 1 is the Radical-7's default serial output mode; if someone has changed it, step 3 restores it.
 - When the Radical-7 is docked, the docking-station field is reported as `ASCII1 IAP FLEXPORT` — this is normal.
 - Device-output settings are inaccessible while undocked, so make all changes with the handheld in the dock.

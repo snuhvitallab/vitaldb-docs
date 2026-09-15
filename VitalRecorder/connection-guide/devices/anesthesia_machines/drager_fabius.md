@@ -78,6 +78,8 @@ If the machine's purchase date is unknown, the connector itself is the answer. F
 
 ## Notes
 
+- **Fabius plus:** a unit with a female COM1 has been seen to answer MEDIBUS correctly on the line (ICC/DEVID/MEAS with valid checksums at 9600 8E1) while Vital Recorder still recorded nothing on a pre-1.19 build. Re-test on 1.19.22 or later before changing cables.
+
 - MEDIBUS communication was stabilized in **1.19.11** (repeated `COM1 failure`) and **1.19.12** (connection stability, serial-line noise); models that transmit no waveforms were fixed in **1.19.20**.
 - **Waveforms** must be requested with `wavs=` in the device section — up to 4 at a time, Vital Recorder **1.19.15** or later.
 - Zeus and Infinity are grouped with the Fabius here because they share the MEDIBUS interface, and `Supported_Devices.md` lists Zeus alongside Primus and Fabius at 9600. **Their COM connector gender has not been verified** against Dräger documentation — check the connector before ordering an adapter.

@@ -100,6 +100,13 @@ The DB-9F end goes to the PC's DB-9M serial port or a USB-Serial converter (e.g.
 - Add the device in Vital Recorder as **`Intellivue`**.
 
 ## Notes
+
+- **Invasive pressure label must be `ART1` / `IBP1`.** Beds labelled `ART2` (or another second-channel label) on the monitor have recorded numerics but **no pressure waveform**. Relabel on the monitor — the track name is not configurable in Vital Recorder.
+- **Datex-Ohmeda machine bridged through IntelliBridge:** the wave order Vital Recorder receives is whatever the monitor sends. Set the anesthesia-machine wave order on the monitor to **C-F-V-P** (CO2, Flow, Volume, Pressure) rather than relying on `wavs=`, which only tells Vital Recorder how to interpret the order.
+- **AWF looks wrong after a machine swap:** the airway-flow bias differs by bridged machine (about −130 for Datex-Ohmeda, −160 for Dräger). Re-request `awp`/`awf` in `vr.conf` after swapping the anesthesia machine.
+- **Powering a recorder from the monitor's rear USB port** is unreliable on the MX750 and MX400 (most units fail to boot the recorder). Use an external power supply.
+- **Transport monitors:** the IntelliVue **X3** module has no MIB port and cannot be recorded when detached; the **MX400** is the smallest IntelliVue with an MIB board. Confirm the MIB option is fitted before purchase — it is optional on the MX400.
+- If the service password has been changed from `1345`, only the Philips service agent can supply it.
 - **MP2 / X2** monitors do not support serial communication and **cannot be used** with Vital Recorder.
 - **MX600–800** require the MIB board to be installed; **MX400–550** can use either the MIB port or the ASIB port on the Advanced Interface Card.
 - Vital Recorder versions: serial-communication fixes affecting Intellivue landed in **1.16.4**, a multi-bed crash was fixed in **1.19.3**, and waveform-dropout handling improved in **1.19.9**. Use **1.19.9** or later where possible.

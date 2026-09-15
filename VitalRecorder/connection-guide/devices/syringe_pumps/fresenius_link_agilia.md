@@ -77,6 +77,11 @@ Enabling **Data Export** is a **one-time** procedure performed over LAN from a P
   <img src="../hardware_images/fresenius_link_agilia_2.png" width="450" alt="Vital Recorder Device Settings row with Device Type Link+, Name Link+, Port ACM0 and the Y Cable checkbox unchecked">
 
 ## Notes
+
+- **USB power is the usual cause of an unstable Link+.** Rooms whose recorder rebooted or lost the server connection all had a Link+ on a bus-powered port; the syslog shows USB power errors before each drop. Feed the rack through a **powered hub** or a Y-cable with external power, and keep the USB run short — a 6 m extension with a repeater still failed.
+- If the PC reaches the rack through a Windows hotspot instead of the LAN port, set the rack's address to **`192.168.137.2`** in the web interface.
+- **Version notes:** hardware handshaking on the Link+ port was removed in **1.14.9**; a re-connection bug when the rack is powered up after the recorder was fixed in **1.18.50**; **1.19.0** retried a dead port without delay and blocked recording — fixed in **1.19.9**.
+- The four-channel **Agilia Link4+** rack is the same device with the `Link4` type name in older builds.
 - **Vital Recorder versions:** a serial re-open crash that showed up on Link+ racks with frequent reconnects was fixed in **1.19.4**, and a `std::length_error` in the Link+/Agilia parser was fixed in **1.19.5**. Use **1.19.5** or later.
 - All Agilia SP / VP modules on the rack are reported through the one `Link+` device. Track names are distinguished per module by the rack, so no separate Vital Recorder device is added for each pump.
 - If the rack stops reporting after a network or power event, **power-cycle the pump rack and then restart Vital Recorder** — the recorder applies a 60-second timeout before it gives up on the port, so the order matters.

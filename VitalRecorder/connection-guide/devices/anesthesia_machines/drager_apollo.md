@@ -71,6 +71,9 @@ Only the machine's transmit line and ground are branched to CON2, so Vital Recor
 > ```
 
 ## Notes
+
+- **Do not unplug a cable already occupying COM1 while the machine is running.** On a Primus this has switched off the connected patient monitor, which then did not restart — use the Y-cable, and fit it between cases.
+- **Atlan A300:** numerics arrive but **no waveforms**, with a repeating `MEDIBUS COM1 FAILURE` warning, on some units — under investigation; collect with `DEBUG=1` if you see it. **Atlan A350:** the baud-rate setting is not in the obvious interface menu — ask the Dräger engineer for the path.
 - **Recommended version:** MEDIBUS communication was stabilized in Vital Recorder **1.19.11** (repeated `COM1 failure` fixed with a 2-second keep-alive) and **1.19.12** (connection stability, serial-line noise). Models that transmit no waveforms were fixed in **1.19.20**.
 - **Waveforms** must be requested explicitly with `wavs=` in the device section — up to 4 at a time, Vital Recorder **1.19.15** or later (e.g. `wavs=AWP,AWF`).
 - **Y-cable (read-only) taps:** waveform naming was fixed in **1.19.16**, manual waveform ordering via `wavs=` added in **1.19.17**, and waveform-type auto-detection for Y-cable connections added in **1.19.18**.

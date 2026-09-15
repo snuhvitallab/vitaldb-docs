@@ -78,6 +78,8 @@ No configuration is required on the TRAM-RAC — the analog outputs are always l
 
 ## Notes
 
+- **Vital Recorder records ECG lead II only** from this port. If the monitor is displaying another lead, switch it to **lead II** or the ECG channel stays flat.
+
 - **Analog output scaling** (GE Solar 8000M/i service manual): ECG **1 V/mV ± 10%**, invasive BP **1 V / 100 mmHg**, SpO2 **0–100 % equivalent to 0–1 V**. Use these to set the per-channel gain and unit in Vital Recorder.
 - **ICP:** when monitoring ICP, the ICP module must be in the **first slot** of the TRAM-RAC.
 - **Choosing an ADC:** the DI-149 and DI-155 differ mainly in voltage resolution. The DI-149 is adequate for general monitoring; use the DI-155 if you intend to analyse ECG detail such as P- or T-waves.
