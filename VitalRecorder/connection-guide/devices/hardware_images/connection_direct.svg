@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 140" width="780" height="140" font-family="Arial, sans-serif">
+  <!-- Background -->
+  <rect width="780" height="140" fill="#f8fafc" rx="10"/>
+
+  <!-- Title -->
+  <text x="390" y="22" text-anchor="middle" font-size="13" font-weight="bold" fill="#1e293b">Type A — Direct Serial Connection</text>
+
+  <!-- Device Box -->
+  <rect x="20" y="45" width="140" height="60" rx="8" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+  <text x="90" y="72" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e40af">Medical Device</text>
+  <text x="90" y="90" text-anchor="middle" font-size="10" fill="#1e40af">9-pin serial port</text>
+
+  <!-- Arrow 1 -->
+  <line x1="165" y1="75" x2="225" y2="75" stroke="#64748b" stroke-width="2" stroke-dasharray="4,2"/>
+  <polygon points="225,70 235,75 225,80" fill="#64748b"/>
+  <text x="200" y="65" text-anchor="middle" font-size="9" fill="#64748b">Direct Cable</text>
+
+  <!-- Direct Cable Box -->
+  <rect x="240" y="45" width="140" height="60" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="310" y="68" text-anchor="middle" font-size="12" font-weight="bold" fill="#15803d">Direct Serial</text>
+  <text x="310" y="84" text-anchor="middle" font-size="10" fill="#15803d">Cable</text>
+  <text x="310" y="98" text-anchor="middle" font-size="9" fill="#15803d">(Pin 2↔2, Pin 3↔3)</text>
+
+  <!-- Arrow 2 -->
+  <line x1="385" y1="75" x2="445" y2="75" stroke="#64748b" stroke-width="2" stroke-dasharray="4,2"/>
+  <polygon points="445,70 455,75 445,80" fill="#64748b"/>
+  <text x="420" y="65" text-anchor="middle" font-size="9" fill="#64748b">USB</text>
+
+  <!-- USB Converter Box -->
+  <rect x="460" y="45" width="140" height="60" rx="8" fill="#fef9c3" stroke="#ca8a04" stroke-width="2"/>
+  <text x="530" y="68" text-anchor="middle" font-size="12" font-weight="bold" fill="#92400e">USB-Serial</text>
+  <text x="530" y="84" text-anchor="middle" font-size="10" fill="#92400e">Converter</text>
+  <text x="530" y="98" text-anchor="middle" font-size="9" fill="#92400e">(Virtual COM port)</text>
+
+  <!-- Arrow 3 -->
+  <line x1="605" y1="75" x2="660" y2="75" stroke="#64748b" stroke-width="2" stroke-dasharray="4,2"/>
+  <polygon points="660,70 670,75 660,80" fill="#64748b"/>
+  <text x="637" y="65" text-anchor="middle" font-size="9" fill="#64748b">USB</text>
+
+  <!-- PC Box -->
+  <rect x="675" y="45" width="90" height="60" rx="8" fill="#f3e8ff" stroke="#9333ea" stroke-width="2"/>
+  <text x="720" y="72" text-anchor="middle" font-size="12" font-weight="bold" fill="#7e22ce">PC</text>
+  <text x="720" y="90" text-anchor="middle" font-size="10" fill="#7e22ce">Vital Recorder</text>
+
+  <!-- Devices using this type -->
+  <text x="390" y="128" text-anchor="middle" font-size="10" fill="#475569">✅ Used by: GE B105M, GE Solar 8000, GE Dash 2500, Bionet Pion TCI, Medtronic BIS VISTA/A2000, Masimo Radical7</text>
+</svg>

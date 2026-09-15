@@ -5,29 +5,80 @@ category: Syringe Pump
 manufacturer: Fresenius Kabi
 vr_device_name: Link+
 -->
-> **Note:** Requires a **USB 2.0 AM-Mini 5-pin cable** connected to the USB-B port on the side-bottom of the device. Initial setup also requires a **crossover LAN cable** for web-based configuration.
+> ⚠️ **Two separate cables are involved.** Data is recorded over the rack's **USB-B (mini-USB) port**, but **Data Export must first be enabled once via the web interface**, which is reached over the **LAN (RJ-45) port**. Out of the box the serial export protocol is disabled and the pump rack sends nothing.
 
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|
-| USB 2.0 AM-Mini 5-pin (USB-B) | None | USB-B (side, bottom) | `Link+` |
+| USB 2.0 A-male ↔ mini-B 5-pin | None | USB-B (mini-USB), connector panel on the rack | `Link+` |
+| Ethernet patch cable (one-time setup only) | None | LAN (RJ-45), same connector panel | — |
+
+The Link+ rack aggregates every Agilia SP / VP module mounted on it, so **all pumps on one rack appear in Vital Recorder as a single logical device** — one `Link+` entry, not one per pump.
 
 ## Connection Steps
-1. Connect the **USB 2.0 AM-Mini 5-pin cable** to the **USB-B port** on the side-bottom of the Link+.
-2. Connect the other end (USB-A) to the PC.
-3. In Vital Recorder Device Settings, select port **ACM0**.
+1. Locate the connector panel on the rack. The **mini-USB (USB-B) port** is the data port used by Vital Recorder — it sits on the right-hand side of the panel, above the full-size USB-A socket, and is distinct from the RJ-45 and the round power/nurse-call connectors on the same panel.
 
-**Initial Setup (Required — LAN Configuration):**
+   <img src="../hardware_images/fresenius_link_agilia_1.png" width="300" alt="Link+ connector panel with the mini-USB (USB-B) data port highlighted, above the USB-A socket and beside the RJ-45 and round connectors">
 
-1. Connect the Link+ to the PC using a **crossover LAN cable**.
-2. On the PC, navigate to **Control Panel → Network & Internet → Network Connections → Ethernet**.
-3. Right-click **Ethernet** → **Properties** → select **Internet Protocol Version 4 (TCP/IPv4)** → **Properties**.
-4. Select **Use the following IP address** and enter:
+2. Connect the **mini-B end** to that port and the **USB-A end** directly to the PC. No USB-Serial converter is needed — the rack presents itself as a USB CDC-ACM serial device.
+## Device Configuration
+
+Enabling **Data Export** is a **one-time** procedure performed over LAN from a PC. It must be done before the USB connection will produce any data.
+
+1. Connect the Link+ **LAN (RJ-45) port** — on the left of the same connector panel — to the PC's Ethernet port with a patch cable.
+
+   <img src="../hardware_images/fresenius_link_agilia_3.png" width="300" alt="Link+ connector panel with the RJ-45 LAN port highlighted on the left side of the panel">
+
+2. On the PC, open **Control Panel → Network and Internet → Network Connections**, right-click the **Ethernet** adapter and choose **Properties**.
+
+   <img src="../hardware_images/fresenius_link_agilia_4.png" width="450" alt="Windows Network Connections with the Ethernet adapter right-clicked and Properties highlighted in the context menu">
+
+3. In the adapter properties list, select **Internet Protocol Version 4 (TCP/IPv4)** and click **Properties**.
+
+   <img src="../hardware_images/fresenius_link_agilia_5.png" width="300" alt="Ethernet Properties dialog with Internet Protocol Version 4 (TCP/IPv4) selected and the Properties button highlighted">
+
+4. Choose **Use the following IP address** and enter a static address on the rack's subnet:
    - IP address: `192.168.0.100`
-   - Subnet mask: (auto-filled)
+   - Subnet mask: `255.255.255.0`
    - Default gateway: `192.168.0.1`
-5. Click **OK**.
-6. Open a browser and navigate to `192.168.0.1`.
-7. Log in: ID `admin` / Password `fresenius`.
-8. Navigate to **Configuration → Data Export**.
-9. Check **Enabled** → click **Apply** → click **OK** when prompted.
-10. Click **Exit Configuration** — the device restarts automatically, completing setup.
+
+   Click **OK**.
+
+   <img src="../hardware_images/fresenius_link_agilia_6.png" width="400" alt="IPv4 properties dialog with Use the following IP address selected and 192.168.0.100 / 255.255.255.0 / 192.168.0.1 entered">
+
+5. Open a browser and navigate to **`192.168.0.1`**. The Link+ Agilia configuration page loads. The browser will warn that the connection is not secure — this is expected for the device's local HTTP server.
+
+   <img src="../hardware_images/fresenius_link_agilia_7.png" width="450" alt="Browser address bar showing 192.168.0.1 with the page titled Link+ Agilia and a not-secure warning">
+
+6. Log in at the **Identification — Password** prompt (ID `admin` / password `fresenius`; if these are rejected, obtain the current credentials from Fresenius Kabi service).
+
+   <img src="../hardware_images/fresenius_link_agilia_8.png" width="300" alt="Link+ Agilia web interface Identification - Password login form with ID and Password fields and a Login button">
+
+7. Open the **Configuration** menu and select **Data Export**.
+
+   <img src="../hardware_images/fresenius_link_agilia_9.png" width="350" alt="Link+ Agilia web interface Configuration menu expanded showing General Parameters, Network, Data Export, Time and Configuration Summary, with Data Export highlighted">
+
+8. Under **Serial export protocol for Agilia SP and VP**, tick **Enabled**, then click **Apply**.
+   - Leave **Serial export protocol Over TCP** disabled. It is a separate transport (default port `52000`) and, as the page itself warns, enabling it requires the VPN to be configured in the **Network** tab beforehand. Vital Recorder's tested path is the USB/serial export above.
+
+   <img src="../hardware_images/fresenius_link_agilia_10.png" width="450" alt="Data Export page with Serial export protocol for Agilia SP and VP set to Enabled, Serial export protocol Over TCP left disabled with port 52000, and the Apply button highlighted">
+
+9. A dialog confirms the parameters were applied and warns that the Link+ will reboot when configuration is exited. Click **OK**.
+
+   <img src="../hardware_images/fresenius_link_agilia_11.png" width="400" alt="Data Export confirmation dialog reading Applying parameters, please wait .. OK and warning that the settings will force the Link+ to reboot when configuration is exit">
+
+10. Click **Exit Configuration**. The rack reboots on its own, which completes the setup. Afterwards restore the PC's Ethernet adapter to **Obtain an IP address automatically** if it is needed on the hospital network.
+
+- The web interface reports its own firmware revision at the top right (**Version 3.0** on the unit documented here). Menu wording can differ on other revisions.
+
+## Vital Recorder Setup
+
+- Add a device with **Device Type `Link+`** and set **Port** to **`ACM0`** — the CDC-ACM port the rack creates, not a `COM`/`C` converter channel. Leave **Y Cable** unchecked.
+
+  <img src="../hardware_images/fresenius_link_agilia_2.png" width="450" alt="Vital Recorder Device Settings row with Device Type Link+, Name Link+, Port ACM0 and the Y Cable checkbox unchecked">
+
+## Notes
+- **Vital Recorder versions:** a serial re-open crash that showed up on Link+ racks with frequent reconnects was fixed in **1.19.4**, and a `std::length_error` in the Link+/Agilia parser was fixed in **1.19.5**. Use **1.19.5** or later.
+- All Agilia SP / VP modules on the rack are reported through the one `Link+` device. Track names are distinguished per module by the rack, so no separate Vital Recorder device is added for each pump.
+- If the rack stops reporting after a network or power event, **power-cycle the pump rack and then restart Vital Recorder** — the recorder applies a 60-second timeout before it gives up on the port, so the order matters.
+- The rack also carries an RS-232 connector, documented by Fresenius Kabi for system management, maintenance and export to a Patient Data Management System (RS-232 levels, asynchronous, half duplex, up to 115.2 kb/s). Vital Recorder does not use it; the USB path above is the supported one.
+- `Data Export` reverts to disabled if the rack is reset to factory configuration — re-run the web procedure after any service intervention that reports nothing on a previously working rack.
