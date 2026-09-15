@@ -9,7 +9,7 @@ vr_device_name: Datex-Ohmeda
 
 | Cable | Adapter | Port | Serial | VR Device Name |
 |-------|---------|------|--------|----------------|
-| Custom 9-pin ↔ 15-pin serial | None | 15-pin female connector (under the rear cover) | 19200 baud, 7 data bits, Even parity, 1 stop bit | `Datex-Ohmeda` |
+| Custom 9-pin ↔ 15-pin serial | None | 15-pin female connector (under the rear cover) | 19200 baud, 7 data bits — parity/stop bits unconfirmed | `Datex-Ohmeda` |
 
 ## Connection Steps
 1. Open the **back cover** of the anesthesia machine to expose the **15-pin female** connector. It sits on the same panel as the 9-pin, RJ-45 and USB connectors; it is the same height as an ordinary DB-9 but noticeably longer.
@@ -29,9 +29,9 @@ vr_device_name: Datex-Ohmeda
 3. Connect the 9-pin end to the PC via a USB-Serial converter.
 
 ## Device Configuration
-No setting has to be changed on the machine — the serial port streams continuously. If no data arrives, confirm the line settings expected by the GE Ohmeda Serial Protocol:
+No setting has to be changed on the machine — the serial port streams continuously. If no data arrives, confirm the line settings expected by the GE Ohmeda Serial Protocol (a third-party terminal will need them; Vital Recorder does not):
 
-- Serial: **19200 baud, 7 data bits, Even parity, 1 stop bit**
+- Serial: **19200 baud, 7 data bits**. `Supported_Devices.md` records this link as `19200 baud (7,1)`; the second value in that notation is not defined anywhere in the repository, so **parity and stop bits are unconfirmed** — the same notation gives `(8,2)` for the Dräger MEDIBUS link, which is known to be 8 data bits, even parity, 1 stop bit. Confirm with GE documentation before relying on a specific frame format; Vital Recorder applies the correct one itself.
 
 If the machine has a service page for the serial ports (for example the *Test Serial Ports* item in the Aestiva 7900 service menu), use it to confirm the port is alive before suspecting the cable.
 
