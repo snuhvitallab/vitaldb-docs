@@ -63,5 +63,5 @@ Only pins 2, 3 and 5 are needed for recording. Note that **pin 1 is ground on th
 
 ## Notes
 
-- **Do not use the Dash 2000/3000/4000 procedure here.** Those models expose serial data on an RJ-45 Aux terminal over the Unity Network protocol and need a custom DB-9F ↔ RJ-45 cable — see [GE Dash 2000 / 3000 / 4000](ge_dash2000.md).
+- **Do not use the Dash 2000/3000/4000 procedure here.** Those models expose serial data on an RJ-45 Aux terminal over the Unity Network protocol and need a custom DB-9F ↔ RJ-45 cable — see [GE Dash 2000 / 3000 / 4000 / 5000](ge_dash2000.md).
 - If the link stays silent after configuration, re-check that **Remote Access** is set to **Serial 2** — the setting reverts if *Save Default Changes* is skipped before leaving configuration mode.

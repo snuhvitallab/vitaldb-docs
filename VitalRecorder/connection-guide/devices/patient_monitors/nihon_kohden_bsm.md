@@ -48,7 +48,7 @@ No monitor-side menu change is normally required.
 
 ## Troubleshooting
 
-- **The port opens but no data arrives.** Sources disagree on whether this link needs a crossover: the legacy main guide describes a plain direct cable, while the Patient Monitor documentation and our own field notes call for a **Null Modem (M/F)**. This page follows the latter. If the connection was made with the adapter and stays silent, **remove it** and retry direct — and vice versa. Record which one worked for that model so the matrix above can be tightened.
+- **The port opens but no data arrives.** Confirm the **Null Modem (M/F)** is fitted — the original connection guide specifies it for the QI-373P RS-232C port. Then confirm the port's baud rate (9600 / 19200 / 38400) with Nihon Kohden.
 - **No RS-232C socket on the panel.** The interface unit is missing or is a variant without the serial option — see the [Model / Interface Matrix](#model--interface-matrix). No cable will help.
 - **Numerics arrive but no waveforms.** Expected: the RS-232C link carries numeric data only. Waveforms need the `ECG/BP OUT` path and an ADC.
 

@@ -1,4 +1,4 @@
-# GE Dash 2000 / 3000 / 4000
+# GE Dash 2000 / 3000 / 4000 / 5000
 
 <!-- meta
 category: Patient Monitor
@@ -50,5 +50,5 @@ No service-mode change is required on the monitor — the Aux terminal emits the
 ## Notes
 
 - The **Dash 2500** is a different device — it uses the GE **Dinamap** protocol on a DB-9 *Host Comm* port and does require configuration. See [GE Dash 2500](ge_dash2500.md).
-- The **Dash 5000** is listed in the original connection guide as using the same Unity Network protocol, but it does not appear in the Vital Recorder supported-device list and no field record exists for it — confirm the Aux terminal pinout on site before ordering a cable.
+- The **Dash 5000** is included per the original connection guide, which lists it with the Solar 8000 and Dash 3000/4000 as a Unity Network device. It is not yet named in `Supported_Devices.md` — add it there when the list is next updated.
 - For ECG and ABP as analog voltages (e.g. when higher-fidelity waveforms are needed), the front-panel Defib Sync socket can be used instead — see [GE Defib Connectors](ge_defib.md). On the **Dash 4000** the defib cable pin mapping differs from the SNUADCM default and needs the dedicated `Dash defib-SNUADCM` mapping.
