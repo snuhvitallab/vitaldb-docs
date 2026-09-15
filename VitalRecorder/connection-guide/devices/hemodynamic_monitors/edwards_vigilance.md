@@ -54,6 +54,7 @@ vr_device_name: Vigilance
 - In the Vital Recorder device list this appears under **Cardiac monitor** as **Edwards Lifesciences: Vigilance**; recorded tracks are prefixed `Vigilance/` (CO, CI, SV, SVI, EDV, EDVI, ESV, ESVI, RVEF, HR_AVG, BT_PA, SQI, SNR).
 
 ## Notes
+
+- **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
 - The **System Configuration** screen shows an **IFMout ID #** — its presence confirms the monitor has the IFMout interface, and the same screen also offers **Analog Input** / **Analog Output**, which are unrelated to Vital Recorder.
 - If COM 1 is already taken by another system, COM 2 can be configured identically.
-- No minimum Vital Recorder version is documented for this device.

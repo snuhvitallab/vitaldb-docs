@@ -73,7 +73,7 @@ The communication mode and baud rate for each port live in **service setup mode*
 
 ## Corometrics 250cx
 
-The **250cx** is the model named in `Supported_Devices.md` (FHR, MHR, TOCO at 9600 baud) and the one most often found in delivery suites. Its serial port is **RJ11**, not the 170 Series' RJ45, so the cable above does not fit. A dedicated RJ11 ↔ DB-9F cable is needed; its pinout has not been recorded in this guide yet — confirm with the GE service manual for the 250cx before building one. On-site testing has been deferred to GE for this reason.
+The **250cx** is the model named in `Supported_Devices.md` (FHR, MHR, TOCO at 9600 baud) and the one most often found in delivery suites. Its serial port is **RJ11**, not the 170 Series' RJ45, so the cable above does not fit. A dedicated RJ11 ↔ DB-9F cable is needed; its pinout has not been recorded in this guide yet — confirm with the GE service manual for the 250cx before building one. On-site testing has been deferred to GE for this reason. ❓ *Unverified — tracked in [unverified.md](../unverified.md).*
 
 ## Vital Recorder Setup
 
@@ -81,7 +81,9 @@ The **250cx** is the model named in `Supported_Devices.md` (FHR, MHR, TOCO at 96
 
 ## Notes
 
-- Recorded parameters: **fetal HR1 / HR2** and **uterine activity (UACT / TOCO)**. From **1.19.7** onward the **maternal vital signs (SpO2, PR, NIBP)** are recorded into the same file as the fetal channels.
+- **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
+
+- Recorded parameters: **fetal HR1 / HR2** and **uterine activity (UACT / TOCO)**. On current builds the **maternal vital signs (SpO2, PR, NIBP)** are also recorded into the same file as the fetal channels.
 - The 170 Series covers models **170, 171, 172, 173 and 174**. The setup-code table above is common to all of them; the *HR offset* and *ECG artifact elimination* codes exist only on 172/173/174.
 - **Verify the setup codes on the unit in front of you.** An earlier revision of this guide listed the port-1 baud rate under code `40`; the service manual (P/N 2000947-004) assigns `30`/`40` to the *communications mode* of ports 1/2 and `31`/`41` to their *baud rate*. The manual numbering is used above.
 - **Gap:** there are no field photographs for this device yet — no rear-panel shot, no RS-232 port location, no setup-mode display. Photographs of the rear RJ-45 ports and of the UA/FHR displays while in service setup mode would be a useful addition.

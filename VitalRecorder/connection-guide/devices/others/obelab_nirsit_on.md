@@ -20,7 +20,7 @@ vr_device_name: NirsitON
 
 ## Device Configuration
 
-No protocol or baud setting is exposed on the device. The link runs at **115200 baud** (Vital Recorder 1.11.4 or later; earlier builds used 9600). The device streams at **1 Hz or 32 Hz**; 32 Hz recording is supported from **1.13.9**.
+No protocol or baud setting is exposed on the device. The link runs at **115200 baud** on current builds (very old builds used 9600). The device streams at **1 Hz or 32 Hz**; both are recorded.
 
 ## Vital Recorder Setup
 
@@ -29,11 +29,13 @@ No protocol or baud setting is exposed on the device. The link runs at **115200 
 ## Troubleshooting
 
 - **Works, then drops every few minutes:** the tablet firewall is blocking port 5525.
-- **Connected but no values / `-nan` on the web monitor:** an older protocol version mismatch — upgrade Vital Recorder (fixes landed in 1.11.5–1.13.9).
+- **Connected but no values / `-nan` on the web monitor:** an older protocol version mismatch — upgrade Vital Recorder.
 - **Recording restarts repeatedly during a NIRSIT session:** seen with 1.13.x builds; upgrade.
 - **Nothing until Calibrate is pressed** is normal.
 
 ## Notes
+
+- **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
 
 - Developed with the manufacturer in 2024; the protocol went through several revisions (sign byte, 32 Hz timing) — keep Vital Recorder current.
 - **No photographs yet** of the rear USB port or the Calibrate screen.

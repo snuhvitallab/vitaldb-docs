@@ -36,10 +36,12 @@ vr_device_name: MedibusX
 
 ## Notes
 
+- **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
+
 - **Perseus A500 offers MEDIBUS.X only** — its protocol list shows `MEDIBUS.X` and `None`. Setting 9600 baud on an A500 produces a `MEDIBUS COM2` error; use **19200 / `MedibusX`**. The MEDIBUS / 9600 / `Primus` pairing above applies to Perseus software that does list plain MEDIBUS.
 - **A Y-cable tap does not work on the Perseus** (no data even with the adapter fitted). Use a free COM port with a direct connection.
-- **Recommended version:** MEDIBUS / MEDIBUS.X communication was stabilized in Vital Recorder **1.19.11** (repeated `COM1 failure` fixed with a keep-alive) and **1.19.12**. Model-name selection and the generic `Medibus` entry arrived in **1.19.22**.
-- With **`AUTO_DETECT=1`** in `vr.conf` (Vital Recorder **1.19.0** or later), Dräger MEDIBUS / MEDIBUS.X machines are detected on the serial line without a `[DEV/...]` section.
-- **Waveforms** must be requested with `wavs=` in the device section — up to 4 at a time, Vital Recorder **1.19.15** or later (e.g. `wavs=AWP,AWF`).
+- Model-name selection and the generic `Medibus` entry exist on current builds.
+- With **`AUTO_DETECT=1`** in `vr.conf` Dräger MEDIBUS / MEDIBUS.X machines are detected on the serial line without a `[DEV/...]` section.
+- **Waveforms** must be requested with `wavs=` in the device section — up to 4 at a time (e.g. `wavs=AWP,AWF`).
 - In `vr.conf`, `port=` must be the actual serial port name of the converter channel (e.g. `C1`), not `COM1`.
 - The same Interface page also sets the machine name and the MEDIBUS time-synchronisation source; neither is needed for recording.

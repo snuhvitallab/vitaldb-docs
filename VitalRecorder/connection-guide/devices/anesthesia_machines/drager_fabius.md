@@ -63,8 +63,8 @@ If the machine's purchase date is unknown, the connector itself is the answer. F
 
 - The Fabius speaks **MEDIBUS at 9600**, so it is added as **`Primus`** — the entry for MEDIBUS (9600) machines. `MedibusX` is the entry for **MEDIBUS.X (19200)** machines and does **not** apply to a Fabius left at its standard settings.
 - What decides the entry is the protocol and baud rate actually set on the machine's COM port, not the model name. If the port has been switched to MEDIBUS.X at 19200, use `MedibusX` instead.
-- From Vital Recorder **1.19.22** the Fabius models are listed **by name** in the device dialog, and a generic **`Medibus`** entry covers Dräger models that are not listed.
-- With **`AUTO_DETECT=1`** in `vr.conf` (Vital Recorder **1.19.0** or later) the machine is found on the serial line without a `[DEV/...]` section.
+- Fabius models are listed **by name** in the device dialog on current builds, and a generic **`Medibus`** entry covers Dräger models that are not listed (from 1.19.22 — see version notes).
+- With **`AUTO_DETECT=1`** in `vr.conf` the machine is found on the serial line without a `[DEV/...]` section.
 - In `vr.conf`, `port=` must be the actual serial port name of the converter channel (e.g. `C1`), not `COM1`.
 
 ## Troubleshooting
@@ -74,16 +74,16 @@ If the machine's purchase date is unknown, the connector itself is the answer. F
 1. **Female COM1 with a Null Modem fitted → remove the adapter.** This is the classic double-crossover: the cable is already straight-through and the adapter swaps pins 2/3 a second time, so both ends transmit at each other.
 2. **Male COM1 with no adapter → add a Null Modem F/F adapter** at COM1.
 3. **Cable and adapter already match the connector → check the machine, not the cable.** Confirm in service mode that COM1 is set to **MEDIBUS at 9600**, and that the device was added in Vital Recorder as **`Primus`** rather than `MedibusX`.
-4. **Everything above checks out → check the Vital Recorder build.** On versions before **1.19.22** a correctly cabled direct connection could open the port and still deliver nothing. *(Version boundary not yet confirmed against a release note — see Notes.)*
+4. **Everything above checks out → check the Vital Recorder build.** Older builds could open the port and record nothing; **models without waveform capability (Fabius GS) recorded nothing at all before 1.19.20.** Update to the latest release before touching the cable.
 
 ## Notes
 
-- **Fabius plus:** a unit with a female COM1 has been seen to answer MEDIBUS correctly on the line (ICC/DEVID/MEAS with valid checksums at 9600 8E1) while Vital Recorder still recorded nothing on a pre-1.19 build. Re-test on 1.19.22 or later before changing cables.
+- **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
 
-- MEDIBUS communication was stabilized in **1.19.11** (repeated `COM1 failure`) and **1.19.12** (connection stability, serial-line noise); models that transmit no waveforms were fixed in **1.19.20**.
-- **Waveforms** must be requested with `wavs=` in the device section — up to 4 at a time, Vital Recorder **1.19.15** or later.
-- Zeus and Infinity are grouped with the Fabius here because they share the MEDIBUS interface, and `Supported_Devices.md` lists Zeus alongside Primus and Fabius at 9600. **Their COM connector gender has not been verified** against Dräger documentation — check the connector before ordering an adapter.
-- The 1.19.x version boundaries on this page come from field notes and are **not yet corroborated by a release note in this repository**. Confirm with the Vital Recorder team before treating them as a requirement.
+- **Fabius plus:** a unit with a female COM1 has been seen to answer MEDIBUS correctly on the line (ICC/DEVID/MEAS with valid checksums at 9600 8E1) while Vital Recorder still recorded nothing on an older build — consistent with the no-waveform bug fixed in 1.19.20. Re-test on the latest Vital Recorder before changing cables. ❓ *Unverified — tracked in [unverified.md](../unverified.md).*
+
+- **Waveforms** must be requested with `wavs=` in the device section (up to 4). **The Fabius GS has no waveform output by specification** — expect numerics only; the Fabius family in general offers AWP/AWF but no CO2 waveform.
+- Zeus and Infinity are grouped with the Fabius here because they share the MEDIBUS interface, and `Supported_Devices.md` lists Zeus alongside Primus and Fabius at 9600. **Their COM connector gender has not been verified** against Dräger documentation — check the connector before ordering an adapter. ❓ *Unverified — tracked in [unverified.md](../unverified.md).*
 
 ## Sources
 

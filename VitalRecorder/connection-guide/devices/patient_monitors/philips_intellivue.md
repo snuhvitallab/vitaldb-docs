@@ -101,6 +101,8 @@ The DB-9F end goes to the PC's DB-9M serial port or a USB-Serial converter (e.g.
 
 ## Notes
 
+- **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
+
 - **Invasive pressure label must be `ART1` / `IBP1`.** Beds labelled `ART2` (or another second-channel label) on the monitor have recorded numerics but **no pressure waveform**. Relabel on the monitor — the track name is not configurable in Vital Recorder.
 - **Datex-Ohmeda machine bridged through IntelliBridge:** the wave order Vital Recorder receives is whatever the monitor sends. Set the anesthesia-machine wave order on the monitor to **C-F-V-P** (CO2, Flow, Volume, Pressure) rather than relying on `wavs=`, which only tells Vital Recorder how to interpret the order.
 - **AWF looks wrong after a machine swap:** the airway-flow bias differs by bridged machine (about −130 for Datex-Ohmeda, −160 for Dräger). Re-request `awp`/`awf` in `vr.conf` after swapping the anesthesia machine.
@@ -109,7 +111,7 @@ The DB-9F end goes to the PC's DB-9M serial port or a USB-Serial converter (e.g.
 - If the service password has been changed from `1345`, only the Philips service agent can supply it.
 - **MP2 / X2** monitors do not support serial communication and **cannot be used** with Vital Recorder.
 - **MX600–800** require the MIB board to be installed; **MX400–550** can use either the MIB port or the ASIB port on the Advanced Interface Card.
-- Vital Recorder versions: serial-communication fixes affecting Intellivue landed in **1.16.4**, a multi-bed crash was fixed in **1.19.3**, and waveform-dropout handling improved in **1.19.9**. Use **1.19.9** or later where possible.
+- Multi-bed Intellivue installations crashed repeatedly before 1.19.3, and a serial-reception failure affected 1.16.3 (fixed 1.16.4) — run the latest release.
 - **The `DtOut1` setting can be lost silently** after a monitor swap or a power event, which shows up as a bed that records nothing. Re-check *Setup Interfaces*, then power-cycle the monitor and restart Vital Recorder.
 - **The ECG waveform disappears when the monitor is displaying lead I or III** — use lead II.
 - Ventilator parameters (CO2 / AWP) additionally require the monitor's ventilator-data setup to be enabled.

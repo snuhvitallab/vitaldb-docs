@@ -5,7 +5,7 @@ category: Anesthesia Machine
 manufacturer: Maquet
 vr_device_name: Flow-i
 -->
-> **Note:** Available in Vital Recorder **1.8.16.0** or later. No additional device configuration required.
+> **Note:** No additional device configuration required.
 
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|
@@ -27,7 +27,9 @@ Nothing has to be set on the machine — the serial port streams as soon as it i
 
 ## Notes
 
-- **Set TV is not transmitted** by Flow-i protocol v5 (the channel was removed). In volume modes derive it as **Set MV ÷ Set RR**. Eleven set-parameters (Set MV, RR, PEEP, PC, PS, FGF, FGF O2 %, Agent % …) are recorded from Vital Recorder **1.18.49**, which also fixed a bug that reported TV at half its value.
+- **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
+
+- **Set TV is not transmitted** by Flow-i protocol v5 (the channel was removed). In volume modes derive it as **Set MV ÷ Set RR**. Eleven set-parameters (Set MV, RR, PEEP, PC, PS, FGF, FGF O2 %, Agent % …) are recorded on current builds (added in 1.18.49, which also fixed TV being reported at half its value).
 - The Flow-i has **two independent serial ports**, so a patient monitor can keep one while Vital Recorder uses the other. (This is unlike the Servo-i, which has a single usable RS-232 port.)
 - The exact line settings (baud / parity) are not documented in our records; the `Flow-i` device driver handles them, so no serial parameters are entered in Vital Recorder. Verify with Getinge documentation if a third-party terminal is used for testing.
 - If the port opens but no data arrives, check the Null Modem adapter and that the cable is fully seated before suspecting the machine.

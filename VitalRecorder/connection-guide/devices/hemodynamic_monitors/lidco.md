@@ -36,9 +36,10 @@ vr_device_name: LiDCO
 - In the Vital Recorder device list this appears under **Cardiac monitor** as **LiDCO: LiDCO**.
 
 ## Notes
+
+- **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
 - Menu wording varies between LiDCOplus and LiDCOrapid and across software revisions. If **Settings → Communications → Serial** is not present, look for the RS-232 / port configuration inside the **Engineering Screen** — LiDCO's own documentation places the settings there.
 - These values are the ones Vital Recorder expects. LiDCO's published defaults differ per integration (for example, the GE Centricity interface calls for 19200 baud with **even** parity), so do not copy settings from another interface's instructions.
 - LiDCO does not publish the RS-232 frame specification; contact LiDCO to obtain detailed specifications for the RS-232 interface.
-- No minimum Vital Recorder version is documented for this device.
-- **The COM1 connector gender is unverified.** The M/F adapter specified above assumes a female port, which is the usual arrangement on these monitors. If the port turns out to be male, an **F/F** adapter is needed instead — the rule throughout this guide is F/F onto a male port, M/F onto a female one.
+- **The COM1 connector gender is unverified.** ❓ *Unverified — tracked in [unverified.md](../unverified.md).* The M/F adapter specified above assumes a female port, which is the usual arrangement on these monitors. If the port turns out to be male, an **F/F** adapter is needed instead — the rule throughout this guide is F/F onto a male port, M/F onto a female one.
 - This page has no photographs. LiDCO does not publish its operator manual publicly, so the COM1 location and the serial settings screen are described in text only — **confirm both against your unit's manual before connecting**.

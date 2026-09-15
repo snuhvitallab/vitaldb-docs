@@ -5,7 +5,7 @@ category: Mechanical Ventilator
 manufacturer: Hamilton
 vr_device_name: Hamilton
 -->
-> **Note:** Available in Vital Recorder **1.10.2** or later. Either Monitoring Interface port (1 or 2) can be used, but the port's protocol must be switched to **Block** first.
+> **Note:** Either Monitoring Interface port (1 or 2) can be used, but the port's protocol must be switched to **Block** first.
 
 | Cable | Adapter | Port | Protocol | Serial | VR Device Name |
 |-------|---------|------|----------|--------|----------------|
@@ -39,8 +39,10 @@ The COM (RS-232) connector pin assignment is: **2 RxD, 3 TxD, 4 DTR, 5 GND, 6 DS
 
 ## Notes
 
-- **C6, C2, T1 and MR1** are listed in `Supported_Devices.md` with the same 38400-baud Block protocol and the `Hamilton` entry. The port layout and the menu path to set *Block* differ by model — this page documents the G5; treat it as a starting point for the others and record differences.
-- Waveform capture from Hamilton ventilators was added in Vital Recorder **1.10.x** (bug fix in 1.10.8); no `wavs=` entry is needed — unlike the S/5 monitors, the Block protocol carries the waveforms by default.
+- **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
+
+- **C6, C2, T1 and MR1** are listed in `Supported_Devices.md` with the same 38400-baud Block protocol and the `Hamilton` entry. The port layout and the menu path to set *Block* differ by model — this page documents the G5; treat it as a starting point for the others and record differences. ❓ *Unverified — tracked in [unverified.md](../unverified.md).*
+- Waveform capture from Hamilton ventilators is supported on current builds; no `wavs=` entry is needed — unlike the S/5 monitors, the Block protocol carries the waveforms by default.
 - Block mode carries all settings, measurements, alarms and up to 8 high-resolution waveforms; polling mode is limited to 4 low-resolution waveforms and a data subset — this is why Vital Recorder requires Block.
 - The two Monitoring Interface ports are independent, so a patient monitor can stay on one port while Vital Recorder uses the other. Each port has its own protocol setting.
 - Typical parameters recorded: Paw, PEEP, Pplat, TV, MV, RR, FiO2, CO2.

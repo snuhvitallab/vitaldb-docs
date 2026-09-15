@@ -34,8 +34,8 @@ On machines that expose the setting on screen it is reached from the interface p
 
 ## Vital Recorder Setup
 - Machines speaking **MEDIBUS (9600)** are added as **`Primus`**; **`MedibusX`** is the entry for **MEDIBUS.X (19200)** devices.
-- From Vital Recorder **1.19.22**, Dräger anesthesia machines can also be selected **by model name**, and a generic **`Medibus`** entry is available for models that are not listed.
-- With **`AUTO_DETECT=1`** in `vr.conf` (Vital Recorder **1.19.0** or later), Dräger MEDIBUS / MEDIBUS.X machines are found on the serial line with no `[DEV/...]` section at all. From 1.19.22 detection identifies them by protocol name rather than by model.
+- On current builds Dräger machines can also be selected **by model name**, and a generic **`Medibus`** entry covers models that are not listed.
+- With **`AUTO_DETECT=1`** in `vr.conf`, Dräger MEDIBUS / MEDIBUS.X machines are found on the serial line with no `[DEV/...]` section; detection identifies them by protocol name rather than by model.
 
 ## When the COM1 Port is Already in Use
 
@@ -72,9 +72,10 @@ Only the machine's transmit line and ground are branched to CON2, so Vital Recor
 
 ## Notes
 
+- **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
+
 - **Do not unplug a cable already occupying COM1 while the machine is running.** On a Primus this has switched off the connected patient monitor, which then did not restart — use the Y-cable, and fit it between cases.
 - **Atlan A300:** numerics arrive but **no waveforms**, with a repeating `MEDIBUS COM1 FAILURE` warning, on some units — under investigation; collect with `DEBUG=1` if you see it. **Atlan A350:** the baud-rate setting is not in the obvious interface menu — ask the Dräger engineer for the path.
-- **Recommended version:** MEDIBUS communication was stabilized in Vital Recorder **1.19.11** (repeated `COM1 failure` fixed with a 2-second keep-alive) and **1.19.12** (connection stability, serial-line noise). Models that transmit no waveforms were fixed in **1.19.20**.
-- **Waveforms** must be requested explicitly with `wavs=` in the device section — up to 4 at a time, Vital Recorder **1.19.15** or later (e.g. `wavs=AWP,AWF`).
-- **Y-cable (read-only) taps:** waveform naming was fixed in **1.19.16**, manual waveform ordering via `wavs=` added in **1.19.17**, and waveform-type auto-detection for Y-cable connections added in **1.19.18**.
+- **Waveforms** must be requested explicitly with `wavs=` in the device section — up to 4 at a time (e.g. `wavs=AWP,AWF`).
+- **Y-cable (read-only) taps:** on current builds the waveform order is detected automatically when the other device's requests are visible on the line; otherwise fix it with `wavs=`.
 - In `vr.conf`, `port=` must be the actual serial port name of the converter channel (e.g. `C1`), not `COM1`.

@@ -139,6 +139,9 @@ Vital Recorder supports these devices (see `Supported_Devices.md`) but no connec
 
 ### Not Recordable
 
+> Items that are **stated but not yet confirmed on a unit** are collected in [unverified.md](unverified.md) — check it before relying on a ❓-marked value.
+> **Vital Recorder version:** always run the latest release — [official version history](https://vitaldb.net/vital-recorder/?action=versions). Device-related release notes are summarised in [version-notes.md](version-notes.md).
+
 Confirmed by testing or by the manufacturer's documentation. Listed so the question is not re-opened at every site.
 
 | Device | Why |

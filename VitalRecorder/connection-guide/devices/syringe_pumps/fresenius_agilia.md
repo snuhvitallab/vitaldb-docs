@@ -30,6 +30,7 @@ The cable's output end is DB-9 **female**, which mates directly with the DB-9 ma
 - Add the device in Vital Recorder as **`Agilia`**.
 
 ## Notes
-- **Vital Recorder versions:** a `std::length_error` in the Link+/Agilia parser was fixed in **1.19.5**. Use **1.19.5** or later.
+
+- **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
 - This page covers a **standalone Agilia pump** cabled directly to the PC. Where several Agilia SP / VP modules are mounted on a **Link+ / Agilia Link rack**, use the rack's USB connection instead and configure it as the `Link+` device — see [Fresenius Kabi Link+ Agilia](fresenius_link_agilia.md). Do not cable individual pumps separately when a Link+ rack is present.
 - Keep the rubber cap closed when the cable is not fitted; the connector is on the pump exterior and is exposed to fluid spills.

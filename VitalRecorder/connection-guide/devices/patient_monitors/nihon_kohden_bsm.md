@@ -5,7 +5,7 @@ category: Patient Monitor
 manufacturer: Nihon Kohden
 vr_device_name: BSM
 -->
-> ⚠️ **Whether a BSM has an RS-232C output depends on the model and on which optional interface unit is fitted.** Photograph the monitor's connector panel and confirm the model number before ordering anything. Requires Vital Recorder **1.8.16.2** or later.
+> ⚠️ **Whether a BSM has an RS-232C output depends on the model and on which optional interface unit is fitted.** Photograph the monitor's connector panel and confirm the model number before ordering anything.
 
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|
@@ -58,10 +58,12 @@ No monitor-side menu change is normally required.
 
 ## Notes
 
+- **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
+
 - **Central-server path (no per-bed cable).** Where a Nihon Kohden central server with the HL7 gateway is installed, Vital Recorder can take data from it instead: add **three** devices — `NIHONKOHDEN::ADT` (patient ID, server port **9007**), `NIHONKOHDEN::ORF` (numerics every 30 s, port **7999**) and `NIHONKOHDEN::NealTime` (waveforms, port **9001**, at most three waves — default ECG_II, PLETH, AWP). The ADT device must be given the monitor's bed name. The gateway's *Start Code* setting must match what the client expects, and changing it can break the site's EMR feed — coordinate with Nihon Kohden. Without the HL7 plug-in the server delivers nothing.
 - **Ventilator parameters displayed on a BSM** (ventilator wired to the monitor with a Nihon Kohden cable) are **not** available on the monitor's serial port; they only come through the central server, or by connecting the ventilator directly (a Y-cable on the Nihon Kohden ventilator cable works).
-- **CSM 1702 / PSM** models: expected to speak the BSM protocol but unverified — test before committing an installation.
-- Requires Vital Recorder **1.8.16.2** or later.
+- **CSM 1702 / PSM** models: expected to speak the BSM protocol but unverified — test before committing an installation. ❓ *Unverified — tracked in [unverified.md](../unverified.md).*
+-
 - The `QI-373P` interface carries **both** the RS-232C socket and the `ECG/BP OUT` port, so a single added board can serve numeric and waveform collection — but the waveform side still needs its own output cable and an ADC.
 - **CSM / LifeScope** models are less well verified than BSM — treat support as unconfirmed.
 - Where a Nihon Kohden **central station** exists, data can be taken from the server instead of per-bed serial. Where there is no central server, per-bed serial is the only route.

@@ -75,7 +75,8 @@ In Vital Recorder press **Add Device**, select **Patient monitor → MEKICS : ME
 <img src="../hardware_images/mekics_mp1300_12.png" width="450" alt="Vital Recorder Add Device dialog with MEKICS : MEKICS selected under Patient monitor and Port set to 6002">
 
 ## Notes
-- The `MEKICS` device type has been present in Vital Recorder since at least **1.8.15**.
+
+- **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
 - The `Port` value in Vital Recorder and the monitor's **Server Port** must match. `6002` is the default on both sides.
 - One router can serve several MP1300s; give each monitor a distinct last octet and point them all at the same Server IP and port.
 - Because the SSID broadcast is disabled, the router will not appear in Wi-Fi scans — always reconnect as a hidden network.

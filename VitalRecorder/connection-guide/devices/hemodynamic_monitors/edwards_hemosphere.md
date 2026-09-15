@@ -5,7 +5,7 @@ category: Hemodynamic Monitor
 manufacturer: Edwards Lifesciences
 vr_device_name: Hemosphere
 -->
-> ⚠️ **Requires Vital Recorder 1.8.16.4 or later.** Serial output lives behind the password-protected **Advanced Setup** menu, and the monitor must be **restarted** for the change to take effect — so configure it before the case, not during one.
+> ⚠️ Serial output lives behind the password-protected **Advanced Setup** menu, and the monitor must be **restarted** for the change to take effect — so configure it before the case, not during one.
 
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|
@@ -61,6 +61,8 @@ Resulting serial settings:
 - In the Vital Recorder device list this appears under **Cardiac monitor** as **Edwards Lifesciences: HemoSphere**.
 
 ## Notes
+
+- **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
 - Edwards specifies the HemoSphere RS-232 port as using an Edwards proprietary protocol with a maximum data rate of 57.6 kbaud; **9600** is the rate Vital Recorder expects, so do not raise it.
 - The **Serial Port Setup** screen has a second tab, **USB** — leave it alone; Vital Recorder reads the DB-9 serial port.
 - Do not confuse **Analog Input** (also in Advanced Setup) with **Connectivity → Serial Port Setup**. Analog input is for external pressure signals, not for Vital Recorder.
