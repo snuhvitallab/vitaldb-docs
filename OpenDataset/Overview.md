@@ -727,7 +727,7 @@ W=waveform; N=numeric; S=string
 
 1\. Objective
 
-This Agreement (hereinafter referred to as the "Agreement") is made in accordance with Article 18 (2) 4 of the Personal Information Protection Act and Article 16 (3) of the Bioethics Act of Korea, and the Health Insurance Portability and Accountability Act of 1996 (HIPPA) Regulation 45 CFR Part 160 and Part 164. This agreement is intended to specify the details necessary to allow the access of data users (hereinafter referred to as the "User") to the limited data set (hereinafter referred to as the "Data") provided by the VitalDB team (hereinafter referred to as the "Provider").
+This Agreement (hereinafter referred to as the "Agreement") is made in accordance with Article 18 (2) 4 of the Personal Information Protection Act and Article 16 (3) of the Bioethics Act of Korea, and the Health Insurance Portability and Accountability Act of 1996 (HIPPA) Regulation 45 CFR Part 160 and Part 164. This agreement is intended to specify the details necessary to allow the access of data users (hereinafter referred to as the "User") to the de-identified data set (hereinafter referred to as the "Data") provided by the VitalDB team (hereinafter referred to as the "Provider").
 
 2\. Terms
 
@@ -747,17 +747,11 @@ Name (including Chinese characters and full name), address, unique identifiers (
 
 5\. User's obligation
 
-1\) The User can use the Data for research and development purposes.
+1\) The User may share, copy and redistribute the Data in any medium or format, and adapt, remix, transform and build upon the Data for any purpose, even commercially, under the terms of the Creative Commons Attribution 4.0 International (CC BY 4.0) license.
 
-2\) The User must not disclose the Data to anyone who is not hired to the User without the consent of provider. If the User wishes to disclose the Data to his or her employee, the User must document the contract applying the same restrictions and conditions as those applied to him/herself to the employee, and have all legal responsibility for the use of the Data.
+2\) The User must give appropriate credit to VitalDB, provide a link to the license (https://creativecommons.org/licenses/by/4.0/), and indicate if changes were made.
 
-3\) The User must not use or disclose the Data beyond the scope of this Agreement except as required by law.
-
-4\) The User must take appropriate security measures to prevent the use or disclosure of Data that is outside the scope of this Agreement.
-
-5\) The User must report to the Provider within 24 hours if you use or disclose the Data beyond the scope of this Agreement.
-
-6\) The User must not attempt to identify any personal information from the Data.
+3\) The User must not attempt to identify any personal information from the Data.
 
 6\. Change of contract
 
@@ -791,7 +785,7 @@ d\) The benefit of the Provider is infringed by the sole judgment of the Provide
 
 1\) If the Data becomes no longer available due to related legislative changes, the Provider may limit the use of the Data after 14 days’ notice to the User.
 
-2\) Unless otherwise provided in this Agreement, the User’s right is not transferable to any third party.
+2\) Anyone who receives the Data from the User automatically receives a license from the Provider to use the Data under the same CC BY 4.0 terms.
 
 # Acknowledgement
 

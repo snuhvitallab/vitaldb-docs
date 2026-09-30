@@ -162,7 +162,7 @@ By logging in to our site and using the programs, codes, and data we provide, yo
 
 ## Purpose
 
-This contract (hereinafter referred to as the "Agreement") is made in accordance with Article 18 (2) 4 of the Personal Information Protection Act of Korea and Article 16 (3) of the Bioethics Act, Health Insurance Portability and Accountability Act of 1996, HIPPA Regulation 45 CFR Part 160, 164. This Agreement is intended to define the requirements for granting access to a person (the "User") who is provided with a limited dataset ("Data") provided by the VitalDB Team ("Provider").
+This contract (hereinafter referred to as the "Agreement") is made in accordance with Article 18 (2) 4 of the Personal Information Protection Act of Korea and Article 16 (3) of the Bioethics Act, Health Insurance Portability and Accountability Act of 1996, HIPPA Regulation 45 CFR Part 160, 164. This Agreement is intended to define the requirements for granting access to a person (the "User") who is provided with a de-identified dataset ("Data") provided by the VitalDB Team ("Provider").
 
 ## Definition of terms
 
@@ -170,21 +170,11 @@ Unless otherwise specified, the definition of terms used in this Agreement shall
 
 ## User's obligation
 
-1\) The Agreement does not restrict the User from making use of the Data in a specific field of endeavor. For example, it may not restrict the Data from being used for development, or from being used for research.
+1\) The User may share, copy and redistribute the Data in any medium or format, and adapt, remix, transform and build upon the Data for any purpose, even commercially, under the terms of the Creative Commons Attribution 4.0 International (CC BY 4.0) license.
 
-2\) Redistribution of the Data is not allowed without permission. The Agreement may restrict any party from selling or giving away the Data as a component of an aggregate hardware or software containing the Data. A royalty or other fee may be required for such sale.
+2\) The User must give appropriate credit to VitalDB, provide a link to the license (https://creativecommons.org/licenses/by/4.0/), and indicate if changes were made.
 
-3\) The Agreement allows modifications and derived works based on the Data only when the data source is represented.
-
-4\) All parties to whom the Data is redistributed do not have the same rights as those that are granted in conjunction with the original data use. In the event that the User discloses the Data to his or her employee, the User shall have all legal responsibilities related to employee's use of the Data.
-
-5\) The User shall not use or disclose the Data beyond the scope of this Agreement unless otherwise specified by law.
-
-6\) The User shall take appropriate security measures to prevent the use or disclosure of the Data beyond the scope of this Agreement.
-
-7\) The User shall report to the Provider within 24 hours of using or disclosing the Data beyond the scope of this Agreement.
-
-8\) The User shall not attempt any personally identifiable act on the contents contained in the Data
+3\) The User must not attempt to identify any personal information from the Data.
 
 ## Change of contract
 
