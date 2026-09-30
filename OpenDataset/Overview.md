@@ -737,7 +737,7 @@ Unless otherwise specified, the definition of terms used in this Agreement shall
 
 Users are permitted to use dataset from the Provider website subject to our terms of use.
 
-The dataset will be released to Users under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) license. This license type has been applied to the VitalDB Open Dataset in order to maximize the dissemination and use of the Data.
+The dataset will be released to Users under a Creative Commons Attribution 4.0 International (CC BY 4.0) license. This license type has been applied to the VitalDB Open Dataset in order to maximize the dissemination and use of the Data.
 
 4\. Provider's obligation
 
