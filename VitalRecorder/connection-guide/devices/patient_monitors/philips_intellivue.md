@@ -107,6 +107,7 @@ The DB-9F end goes to the PC's DB-9M serial port or a USB-Serial converter (e.g.
 - **No CO2 / AWP from the ventilator.** Enable the monitor's ventilator-data setup; the parameters are not forwarded otherwise.
 - **Anesthesia-machine waves arrive in the wrong order (Datex-Ohmeda through IntelliBridge).** The order Vital Recorder receives is whatever the monitor sends. Set the wave order on the monitor to **C-F-V-P** (CO2, Flow, Volume, Pressure) — `wavs=` only tells Vital Recorder how to interpret the order.
 - **AWF looks wrong after an anesthesia-machine swap.** The airway-flow bias differs by bridged machine (about −130 for Datex-Ohmeda, −160 for Dräger). Re-request `awp`/`awf` in `vr.conf` after the swap.
+- **Waveforms stop a few seconds after recording starts while numerics continue.** More waveforms were requested than the serial link can carry, and the monitor then stops sending all of them. By default Vital Recorder adds a waveform for every numeric present on top of the ones selected. Clear the auto-add checkbox in the device dialog (`auto_wavs=0`) so only the selected waveforms are requested.
 - **Waves missing on old firmware (e.g. some MP20 units).** Request them explicitly in `vr.conf`.
 - **The recorder does not boot when powered from the monitor's rear USB port.** Seen on the MX750 and MX400 — use an external power supply.
 - **Repeated crashes on a multi-bed installation, or serial reception failing.** Fixed in 1.19.3 and 1.16.4 respectively — run the latest release.

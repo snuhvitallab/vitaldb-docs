@@ -23,6 +23,8 @@ vr_device_name: BSM
 
 Confirm the exact interface unit that applies to a given serial number with Nihon Kohden — the option list differs between the A and K market variants.
 
+The **Vismo PVM-4700** has its own entry and page — see [Nihon Kohden PVM-4700](nihon_kohden_pvm.md).
+
 ## Connection Steps
 
 ### Numeric Data
@@ -55,6 +57,7 @@ No monitor-side menu change is normally required.
 ## Troubleshooting
 
 - **The port opens but no data arrives.** Confirm the **Null Modem (M/F)** is fitted on the QI-373P RS-232C port. Then confirm the port's baud rate (9600 / 19200 / 38400) with Nihon Kohden.
+- **A BSM-3000 / BSM-6000 or CSM-1500 / CSM-1700 records nothing over serial on a build before 1.19.34.** These models reject the extended request earlier builds sent. Upgrade.
 - **No RS-232C socket on the panel.** The interface unit is missing or is a variant without the serial option — see the [Model / Interface Matrix](#before-you-start). No cable will help.
 - **Numerics arrive but no waveforms.** Expected: the RS-232C link carries numeric data only. Waveforms need the `ECG/BP OUT` path and an ADC.
 - **Central-server path delivers nothing.** The HL7 plug-in is not installed on the server, or the ADT device was not given the monitor's bed name — see the central-server path under Notes.
@@ -63,7 +66,7 @@ No monitor-side menu change is normally required.
 
 - The RS-232C link carries **numeric data only**; waveforms need the `ECG/BP OUT` path and an ADC.
 - **Ventilator parameters displayed on a BSM** (ventilator wired to the monitor with a Nihon Kohden cable) are **not** available on the monitor's serial port; they only come through the central server, or by connecting the ventilator directly (a Y-cable on the Nihon Kohden ventilator cable works).
-- **CSM / LifeScope** models are less well verified than BSM — treat support as unconfirmed. **CSM 1702 / PSM** are expected to speak the BSM protocol but unverified — test before committing an installation.
+- **CSM-1500 / CSM-1700** are added as `BSM`. **PSM** models have not been tested.
 
 ## Notes
 

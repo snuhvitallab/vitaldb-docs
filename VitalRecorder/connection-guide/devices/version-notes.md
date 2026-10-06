@@ -4,8 +4,11 @@
 
 | Version | Date | Device | Change |
 |---|---|---|---|
+| 1.19.34 | 2026-10-06 | Nihon Kohden PVM-4700, BSM-3000/6000, CSM-1500/1700 | New **`PVM`** entry for the Vismo PVM-4700 series. These models previously recorded nothing over serial; numerics are now collected. |
+| 1.19.32 | 2026-10-05 | Philips IntelliVue | **`auto_wavs=0`** (device-dialog checkbox) requests only the selected waveforms. By default a waveform is added for every numeric present. |
 | 1.19.27 | 2026-09-05 | TwitchView, TOFscan | Serial auto-detection (`AUTO_DETECT=1`) now waits long enough for these monitors, which report only every ~5 min. |
 | 1.19.22 | 2026-08-30 | Dräger (MEDIBUS) | Machines selectable **by model** (`Fabius` added) plus a generic **`Medibus`** entry; `Primus`, `Fabius` and `Medibus` behave identically. Auto-detection identifies Dräger machines by protocol, not model. |
+| 1.19.20 | 2026-08-29 | SyncPulseSerial | New device: sync pulse generator sending a 6-digit counter every second, recorded in the `PULSE` track. |
 | 1.19.20 | 2026-08-29 | Dräger Fabius GS | Machines with no waveform capability now record numerics (previously nothing was collected). Fabius has AWP/AWF but no CO2 waveform. |
 | 1.19.19 | 2026-08-27 | Dräger (MEDIBUS) | New tracks: ventilation phase `VENT_PHASE`, mode `VENT_MODE`, device messages `VENT_MSG`. |
 | 1.19.15 – 1.19.18 | 2026-08-27 | Dräger (MEDIBUS) | Waveforms are requested from the list the machine offers, up to 4 (previously fixed to CO2 and AWP); **`wavs=`** selects specific ones (AWP AWF PLETH VOL O2 CO2 …). On Y-cable taps the waveform type is auto-detected when the other device's requests are visible (1.19.18); otherwise `wavs=` fixes it (1.19.17). |

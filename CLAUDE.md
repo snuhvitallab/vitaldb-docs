@@ -25,7 +25,7 @@ VitalRecorder/                      # Primary docs (hand-edited)
 ├── VitalServer_HL7_v2_Spec.md      # HL7 v2 upload protocol
 └── connection-guide/
     └── devices/
-        ├── README.md               # Quick-reference table (all 48 devices)
+        ├── README.md               # Quick-reference table (all 49 devices)
         ├── anesthesia_machines/
         ├── brain_monitors/
         ├── hemodynamic_monitors/
