@@ -23,7 +23,6 @@ One recording PC collects from several devices at once. Serial devices reach the
   - [Syringe Pumps](#syringe-pumps)
   - [Brain Monitors](#brain-monitors)
   - [Others](#others)
-  - [Supported but Not Yet Documented](#supported-but-not-yet-documented)
   - [Not Recordable](#not-recordable)
 - [Getting Started](#getting-started)
   - [Requirements](#requirements)
@@ -122,23 +121,6 @@ One recording PC collects from several devices at once. Serial devices reach the
 | [BlinkDC TwitchView](others/blink_twitchview.md) | Custom RJ45 (special wiring) | None | RJ45 on the **Charging Station** | `TwitchView` |
 | [OBELAB NIRSIT-ON+](others/obelab_nirsit_on.md) | Direct Serial | None | Rear USB (serial) — **open TCP 5525** on the tablet | `NirsitON` |
 | [IDMed TOFscan](others/idmed_tofscan.md) | TOF-RS1 / TOF-RS2 optic-serial cable (from IDMed) | None | **Optical** output | `TOFScan` |
-
-### Supported but Not Yet Documented
-
-Vital Recorder supports these devices (see `Supported_Devices.md`) but no connection page has been written — no field installation has been recorded yet. If you connect one, please contribute the page.
-
-| Device | Type | VR Device Name |
-|---|---|---|
-| Philips VueLink module | Patient monitor | `VueLink` |
-| GE Canvas · GE MPS (Dash 2500 module) | Patient monitor | `Canvas`, `MPS` |
-| Edwards ClearSight · Vigilance C | Hemodynamic | `ClearSight`, `Vigilance` |
-| Getinge PulsioFlex (PiCCO) | Hemodynamic | `PulsioFlex` |
-| Bilab AirTom / HemoVista · Edgecare CW10 | Hemodynamic | `AirTom`, `HemoVista`, `CW10` |
-| Fresenius Kabi Conox · PCBM | Brain / pump | `Conox`, `PCBM` |
-| B. Braun DoseLink (HL7 / MLLP) · Daiwha DS-5000 | Pump | `DoseLink`, `DS-5000` |
-| RGB Medical TOFcuff | Neuromuscular | `TOFcuff` |
-| Inbody PLEM100 | Brain | `PLEM100` |
-| Mindray monitors (HL7) · Nihon Kohden central server (ADT / ORF / NealTime) | Network | `Mindray : HL7`, `NIHONKOHDEN::*` |
 
 ### Not Recordable
 
