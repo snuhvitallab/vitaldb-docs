@@ -25,6 +25,7 @@ Documentation for **VitalDB** and **VitalRecorder** — a medical biosignal reco
 ### VitalRecorder
 - [User Manual](VitalRecorder/User_Manual.md) — Full feature reference
 - [Configuration Guide](VitalRecorder/Configuration_Guide.md) — `vr.conf` reference (devices, server, TLS)
+- [PiVR Setup Guide](VitalRecorder/Raspberry_Pi_Setup_Guide.md) — Raspberry Pi image: writing the card, first boot, admin page
 - [Hardware Connection Guide](VitalRecorder/connection-guide/devices/README.md) — Per-device connection instructions (47 devices)
 - [Supported Devices & Parameters](VitalRecorder/Supported_Devices.md)
 - [Vital File Format](VitalRecorder/Vital_File_Format.md)
@@ -45,6 +46,7 @@ Documentation for **VitalDB** and **VitalRecorder** — a medical biosignal reco
 | Document | EN | KO | ZH | ES |
 |----------|----|----|----|----|
 | User Manual | [EN](VitalRecorder/User_Manual.md) | [KO](VitalRecorder/User_Manual_Korean.md) | [ZH](VitalRecorder/User_Manual_Chinese.md) | [ES](VitalRecorder/User_Manual_Spanish.md) |
+| PiVR Setup Guide | [EN](VitalRecorder/Raspberry_Pi_Setup_Guide.md) | [KO](VitalRecorder/Raspberry_Pi_Setup_Guide_Korean.md) | — | — |
 | Hardware Connection Guide | [EN](VitalRecorder/connection-guide/devices/README.md) | — | — | — |
 | Web Monitoring Guide | [EN](WebMonitoring/User_Guide.md) | [KO](WebMonitoring/User_Guide_Korean.md) | — | — |
 | Vitalserver User Manual | [EN](Vitalserver/User_Manual.md) | [KO](Vitalserver/User_Manual_Korean.md) | — | — |

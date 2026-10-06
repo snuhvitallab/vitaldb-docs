@@ -53,6 +53,8 @@ Log out and back in for the group change to take effect.
 
 For unattended server-style recording without a GUI, download the platform-specific console binary (`pivr64` for Raspberry Pi ARM64 or `ubuntu64` for Ubuntu x64) from the release page and run it directly.
 
+For the ready-made PiVR microSD card image with its web admin page, see the [PiVR Setup Guide](Raspberry_Pi_Setup_Guide.md).
+
 ---
 
 ## Quick Start

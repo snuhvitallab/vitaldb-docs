@@ -9,6 +9,8 @@
 | [User Manual](User_Manual_Chinese.md) | ZH | |
 | [User Manual](User_Manual_Spanish.md) | ES | |
 | [Configuration Guide](Configuration_Guide.md) | EN | `vr.conf` reference |
+| [PiVR Setup Guide](Raspberry_Pi_Setup_Guide.md) | EN | Raspberry Pi image: writing the card, first boot, admin page |
+| [PiVR Setup Guide](Raspberry_Pi_Setup_Guide_Korean.md) | KO | |
 | [Supported Devices](Supported_Devices.md) | EN | Full device & parameter compatibility matrix |
 | [Vital File Format](Vital_File_Format.md) | EN | Binary `.vital` file format specification |
 | [VitalServer HL7 v2 Spec](VitalServer_HL7_v2_Spec.md) | EN | HL7 v2 protocol for server upload |

@@ -53,6 +53,8 @@ sudo usermod -aG dialout $USER
 
 GUI 없이 서버 형태로 무인 녹화를 수행하려면, 릴리스 페이지에서 플랫폼별 콘솔 바이너리(Raspberry Pi ARM64 는 `pivr64`, Ubuntu x64 는 `ubuntu64`)를 다운로드하여 직접 실행합니다.
 
+웹 관리자 페이지가 포함된 PiVR microSD 카드 이미지는 [PiVR 설치 가이드](Raspberry_Pi_Setup_Guide_Korean.md)를 참고하십시오.
+
 ---
 
 ## 빠른 시작
