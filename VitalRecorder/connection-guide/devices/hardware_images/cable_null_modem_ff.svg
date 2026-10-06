@@ -3,7 +3,7 @@
 
   <!-- Title -->
   <text x="220" y="22" text-anchor="middle" font-size="13" font-weight="bold" fill="#1e293b">Null Modem Adapter — F/F (Female / Female)</text>
-  <text x="220" y="38" text-anchor="middle" font-size="10" fill="#dc2626">Pin 2 ↔ Pin 3 (Tx/Rx crossed internally) &nbsp;|&nbsp; Pin 5 ↔ Pin 5 (GND)</text>
+  <text x="220" y="38" text-anchor="middle" font-size="10" fill="#dc2626">Pin 2 ↔ Pin 3 (Tx/Rx crossed internally) &#160;|&#160; Pin 5 ↔ Pin 5 (GND)</text>
 
   <!-- LEFT: DB-9 Female -->
   <polygon points="25,55 120,55 125,125 20,125" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
