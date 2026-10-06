@@ -35,12 +35,6 @@ vr_device_name: MedibusX
 - In Vital Recorder, add the device as **`MedibusX`**.
 - **Waveforms:** Vital Recorder asks the machine which waveforms it offers and requests up to 4 of them, so `wavs=` is not needed. Set `wavs=` in the device section only to choose specific ones, e.g. `wavs=AWP,AWF`.
 
-## Troubleshooting
-
-- **`MEDIBUS COM2` error.** The port is not at MEDIBUS.X / 19200. Correct it as in [Device Configuration](#device-configuration).
-- **The port does not open.** In `vr.conf`, `port=` must be the actual serial port name of the converter channel (e.g. `C1`), not `COM1`.
-- **Numerics arrive but no waveforms.** If `wavs=` is set, remove it and test again.
-
 ## Known Limitations
 
 - **A Y-cable tap does not work on the Perseus.** A direct connection on a free COM port is required.
