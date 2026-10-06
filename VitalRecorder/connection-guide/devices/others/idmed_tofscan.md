@@ -1,24 +1,45 @@
-# IDMed TOFscan
+# IDMED TOFscan
 
 <!-- meta
 category: Other
-manufacturer: IDMed
+manufacturer: IDMED
 vr_device_name: TOFScan
 -->
-> **Note:** Requires a **TOF-RS1 cable** available from IDMed. No gender adapter needed.
+> ⚠️ **The TOFscan data port is optical, not electrical.** The **TOF-RS1** (or TOF-RS2) accessory cable is an optic-to-serial converter cable — a plain serial cable cannot be used, and no generic substitute exists.
 
-| Cable | Adapter | VR Device Name |
-|-------|---------|----------------|
-| TOF-RS1 cable (from IDMed) — DB-9F output | None | `TOFScan` |
+| Cable | Adapter | Port | VR Device Name |
+|-------|---------|------|----------------|
+| TOF-RS1 optic-serial cable (from IDMED) — DB-9F output | None | Optical output port on the device | `TOFScan` |
 
 ## Connection Steps
-1. Obtain the **TOF-RS1 cable** from IDMed.
-2. Connect one end to the TOFscan.
-3. Connect the other end **directly** to a USB-Serial converter (no adapter needed).
+
+1. Obtain the **TOF-RS1** cable from IDMED. Per the TOFscan manual, **TOF-RS1 and TOF-RS2 are the only recommended optic-serial (RS-232) cables** for connecting the TOFscan to other monitors.
+
+2. Screw the cable's optical connector onto the **optical output port** on the device.
+
+   <img src="../hardware_images/idmed_tofscan_1.png" width="450" alt="Optical output port on the device with the TOF-RS1 cable connector screwed on">
+
+3. Plug the cable's **DB-9F end directly into a USB-Serial converter** — no Null Modem adapter is needed.
+
 4. Connect the USB-Serial converter to the PC.
 
----
+## Device Configuration
+
+No on-device output setting is documented for the TOFscan; the optic-serial cable is expected to stream data as soon as it is attached.
+
+- **Serial parameters (baud rate, data bits, parity) are not published** in the publicly available TOFscan manuals — *verify with IDMED*.
+- Whether a menu option must be enabled on some firmware versions is likewise unconfirmed — *verify with IDMED*.
+
+## Vital Recorder Setup
+
+- Add the device in Vital Recorder as **`TOFScan`**.
 
 ## Troubleshooting
 
-Most problems are hardware-related. Report unresolved issues at [vitaldb.org](https://vitaldb.org).
+- **No data arrives.** Most problems are hardware-related — check first for a loose optical connector or the wrong cable (only TOF-RS1 / TOF-RS2 work). Report unresolved issues at [vitaldb.org](https://vitaldb.org).
+- **Cable and connector are correct but still nothing.** Check the USB-Serial converter: **the TOFscan needs +6 V on pin 4 and −6 V on pin 7 of the DB-9** to talk. Vital Recorder drives these through the converter's DTR/RTS lines, so the converter must implement them — a 3-wire converter or cable (TX/RX/GND only) will never receive data.
+
+## Notes
+
+- The optical connector is threaded; hand-tighten it so it cannot work loose during a case.
+- Because the link is optical on the device side, the TOFscan is galvanically isolated from the recording PC through this cable.

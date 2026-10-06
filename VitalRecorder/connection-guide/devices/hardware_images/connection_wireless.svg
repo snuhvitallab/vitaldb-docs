@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 150" width="700" height="150" font-family="Arial, sans-serif">
+  <!-- Background -->
+  <rect width="700" height="150" fill="#f8fafc" rx="10"/>
+
+  <!-- Title -->
+  <text x="350" y="22" text-anchor="middle" font-size="13" font-weight="bold" fill="#1e293b">Type D — Wireless (Wi-Fi) Connection</text>
+
+  <!-- Device Box -->
+  <rect x="20" y="50" width="140" height="60" rx="8" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+  <text x="90" y="73" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e40af">Medical Device</text>
+  <text x="90" y="89" text-anchor="middle" font-size="10" fill="#1e40af">MEKICS MP1300</text>
+  <text x="90" y="103" text-anchor="middle" font-size="10" fill="#1e40af">LAN port</text>
+
+  <!-- LAN cable arrow -->
+  <line x1="163" y1="80" x2="220" y2="80" stroke="#64748b" stroke-width="2"/>
+  <polygon points="220,75 230,80 220,85" fill="#64748b"/>
+  <text x="196" y="68" text-anchor="middle" font-size="9" fill="#64748b">LAN cable</text>
+
+  <!-- Router Box -->
+  <rect x="235" y="50" width="140" height="60" rx="8" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+  <text x="305" y="73" text-anchor="middle" font-size="12" font-weight="bold" fill="#075985">Wi-Fi Router</text>
+  <text x="305" y="89" text-anchor="middle" font-size="10" fill="#075985">iptime mini</text>
+  <text x="305" y="103" text-anchor="middle" font-size="9" fill="#075985">192.168.0.1</text>
+
+  <!-- Wi-Fi signal lines -->
+  <path d="M390 80 Q430 50 470 80" fill="none" stroke="#64748b" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <path d="M390 80 Q430 65 470 80" fill="none" stroke="#64748b" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <path d="M390 80 Q430 80 470 80" fill="none" stroke="#64748b" stroke-width="1.5"/>
+  <polygon points="470,75 480,80 470,85" fill="#64748b"/>
+  <text x="430" y="48" text-anchor="middle" font-size="9" fill="#64748b">Wi-Fi</text>
+
+  <!-- PC Box -->
+  <rect x="485" y="50" width="140" height="60" rx="8" fill="#f3e8ff" stroke="#9333ea" stroke-width="2"/>
+  <text x="555" y="73" text-anchor="middle" font-size="12" font-weight="bold" fill="#7e22ce">PC</text>
+  <text x="555" y="89" text-anchor="middle" font-size="10" fill="#7e22ce">Vital Recorder</text>
+  <text x="555" y="103" text-anchor="middle" font-size="9" fill="#7e22ce">Port 6002</text>
+
+  <!-- Note -->
+  <rect x="20" y="120" width="660" height="24" rx="5" fill="#fef3c7"/>
+  <text x="350" y="136" text-anchor="middle" font-size="10" fill="#92400e">⚠️ Router must be pre-configured: SSID, WPA2PSK+AES, IP 192.168.137.1 for VR PC, Port 6002</text>
+</svg>

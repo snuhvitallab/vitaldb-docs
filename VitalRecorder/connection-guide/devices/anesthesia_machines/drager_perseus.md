@@ -1,21 +1,52 @@
-# Drager Perseus
+# Dräger Perseus
 
 <!-- meta
 category: Anesthesia Machine
-manufacturer: Drager
+manufacturer: Dräger
 vr_device_name: MedibusX
 -->
-> **Note:** Password-protected interface configuration required. See Device Configuration below.
+> **Note:** The COM port is off by default and is enabled from a **password-protected** configuration page. See [Device Configuration](#device-configuration).
 
-| Cable | Adapter | Port | VR Device Name |
-|-------|---------|------|----------------|
-| Direct Serial | Null Modem F/F | COM1 or COM2 | `MedibusX` |
+| Cable | Adapter | Port | Serial | VR Device Name |
+|-------|---------|------|--------|----------------|
+| Direct Serial | Null Modem F/F | COM 1 or COM 2 | **MEDIBUS.X 19200** → `MedibusX`, or **MEDIBUS 9600** → `Primus` — match the protocol set on the port | `MedibusX` / `Primus` |
 
 ## Connection Steps
-1. Attach a **Null Modem (F/F)** adapter to the serial port.
-2. Connect a direct serial cable from the adapter to the PC via USB-Serial converter.
+1. Open the interface panel on the machine column. It carries a **male DB-9 serial connector** together with a USB port and a LAN (RJ-45) socket.
+2. Attach a **Null Modem (F/F)** adapter to the DB-9 serial port.
+3. Connect a direct serial cable from the adapter to the PC via a USB-Serial converter.
+
+> The Perseus has **two RS-232 ports (COM 1 and COM 2)**. Either can be used, but only the port you enable in the interface page transmits — the other is often already assigned to the hospital EMR gateway.
 
 ## Device Configuration
-1. Navigate to **System Settings → System Menu**. Enter password **`0000`**.
-2. Select **Interface Configuration**.
-3. For the connected port (COM1 or COM2), set **Protocol → MEDIBUS** and **Baud Rate → 9600**.
+1. Open **System setup** and go to the **System** tab.
+2. Enter the **configuration password** on the numeric keypad and confirm with **OK**. The factory default is **`0000`**; sites can change it, so ask biomedical engineering if it is rejected.
+3. Choose **Interface** from the list on the right — the page holding the DHCP / IP address / subnet mask / default gateway, **RS232**, LAN and USB settings.
+4. In the **COM 1** (or **COM 2**) block, set:
+
+- **Protocol:** **MEDIBUS.X** with **19200** baud (add as `MedibusX`), or **MEDIBUS** with **9600** baud (add as `Primus`). *None* disables the port.
+- **Baud rate:** selectable values are 1200, 2400, 4800, 9600, 19200 and 38400
+- The frame format is fixed and shown next to the baud rate as **8, e, 1** (8 data bits, Even parity, 1 stop bit)
+
+> ⚠️ **Match the baud rate to the protocol.** MEDIBUS.X runs at **19200** and pairs with the `MedibusX` device entry; legacy MEDIBUS runs at **9600** and pairs with `Primus`. A mismatch produces a `MEDIBUS COM2` message or a repeated `COM1 failure` on the machine.
+
+## Vital Recorder Setup
+
+- In Vital Recorder, add the device as **`MedibusX`**.
+
+## Troubleshooting
+
+- **`MEDIBUS COM2` error on a Perseus A500.** The A500 offers **MEDIBUS.X only** — its protocol list shows `MEDIBUS.X` and `None` — so 9600 baud produces this error. Use **19200 / `MedibusX`**. The MEDIBUS / 9600 / `Primus` pairing above applies to Perseus software that does list plain MEDIBUS.
+- **The port does not open.** In `vr.conf`, `port=` must be the actual serial port name of the converter channel (e.g. `C1`), not `COM1`.
+- **Numerics arrive but no waveforms.** Waveforms must be requested with `wavs=` in the device section — up to 4 at a time (e.g. `wavs=AWP,AWF`).
+- **No data on a Y-cable tap, even with the adapter fitted.** Expected — see Known Limitations; use a free COM port with a direct connection.
+
+## Known Limitations
+
+- **A Y-cable tap does not work on the Perseus.** A direct connection on a free COM port is required.
+
+## Notes
+
+- Model-name selection and the generic `Medibus` entry exist on current builds.
+- With **`AUTO_DETECT=1`** in `vr.conf` Dräger MEDIBUS / MEDIBUS.X machines are detected on the serial line without a `[DEV/...]` section.
+- The same Interface page also sets the machine name and the MEDIBUS time-synchronisation source; neither is needed for recording.

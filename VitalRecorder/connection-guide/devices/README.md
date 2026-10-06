@@ -2,22 +2,34 @@
 
 > **Disclaimer:** This document is for reference only. Our team is not responsible for connection errors. If discrepancies exist between this document and the device manufacturer's manual, **always follow the manufacturer's manual**.
 
-This guide covers Vital Recorder hardware setup for **44 medical devices** across 6 categories. Use the Quick Reference tables below to identify your cable type, then click the device name to open its full setup instructions.
+This guide covers Vital Recorder hardware setup for **47 medical devices** across 7 categories. Use the Quick Reference tables below to identify your cable type, then click the device name to open its full setup instructions.
+
+## System Overview
+
+One recording PC collects from several devices at once. Serial devices reach the PC through USB-Serial converters gathered on a powered USB hub; a Null Modem adapter is fitted only at the device ports that need one.
+
+<img src="hardware_images/intro_1.png" width="620" alt="Example setup: a Vital Recorder laptop connected to a powered USB hub, which feeds a 4-port and a 2-port USB-Serial converter; the 4-port converter reaches an Orchestra infusion pump and an EV-1000 through Null Modem adapters and a BIS EEG monitor directly, with one channel spared, while the 2-port converter reaches a Solar 8000 patient monitor and a Primus anesthesia machine, and a Tram-RAC 4A connects through an ADC">
 
 ---
 
 ## Table of Contents
 
+- [System Overview](#system-overview)
 - [Quick Reference — All Devices](#quick-reference--all-devices)
   - [Patient Monitors](#patient-monitors)
   - [Anesthesia Machines](#anesthesia-machines)
+  - [Mechanical Ventilators](#mechanical-ventilators)
   - [Hemodynamic Monitors](#hemodynamic-monitors)
   - [Syringe Pumps](#syringe-pumps)
   - [Brain Monitors](#brain-monitors)
   - [Others](#others)
+  - [Supported but Not Yet Documented](#supported-but-not-yet-documented)
+  - [Not Recordable](#not-recordable)
 - [Getting Started](#getting-started)
   - [Requirements](#requirements)
+  - [Connection Types](#connection-types)
   - [Cable Types](#cable-types)
+  - [Port Assignment Convention (PiVR)](#port-assignment-convention-pivr)
 - [Troubleshooting](#troubleshooting)
 
 ---
@@ -25,38 +37,47 @@ This guide covers Vital Recorder hardware setup for **44 medical devices** acros
 ## Quick Reference — All Devices
 
 > Find your device below and identify the cable type before connecting. Click the device name to open its full setup instructions.
+>
+> **Vital Recorder version:** always run the latest release — [official version history](https://vitaldb.net/vital-recorder/?action=versions). Device-related release notes are summarised in [version-notes.md](version-notes.md).
 
 ### Patient Monitors
 
 | Device | Cable | Adapter | Port | VR Device Name |
 |--------|-------|---------|------|----------------|
-| [GE CARESCAPE B850 / B650 / B450](patient_monitors/ge_carescape.md) | **ATEN UC-232A only** | Null Modem F/F | USB port | `Bx50` |
+| [GE CARESCAPE B850 / B650 / B450](patient_monitors/ge_carescape.md) | USB-Serial converter — **model depends on software version** (see page) | Null Modem F/F | USB port | `Bx50` |
 | [GE S/5 AM](patient_monitors/ge_s5am.md) | Direct Serial | Null Modem F/F | Port X8 | `Bx50` |
-| [GE B40 / B20](patient_monitors/ge_b40_b20.md) | 9-pin serial (pin 4 removed) | None | 9-pin | `Bx50` |
+| [GE B40 / B20](patient_monitors/ge_b40_b20.md) | 9-pin serial (pin 4 removed) | Null Modem F/F | 9-pin | `Bx50` |
 | [GE B105M / B125M / B155M](patient_monitors/ge_b105m.md) | Direct Serial | None | Red-marked serial | `B1x5M` |
 | [GE Solar 8000m / 8000i](patient_monitors/ge_solar8000.md) | Direct Serial | None | RS-232 1 | `Solar8000` |
-| [GE Dash 2000 / 3000 / 4000](patient_monitors/ge_dash2000.md) | Custom DB-9F ↔ RJ-45 | None | RJ-45 AUX | `Dashx000` |
+| [GE Dash 2000 / 3000 / 4000 / 5000](patient_monitors/ge_dash2000.md) | Custom DB-9F ↔ RJ-45 | None | RJ-45 AUX | `Dashx000` |
 | [GE Dash 2500](patient_monitors/ge_dash2500.md) | Direct Serial | None | Host Comm Port | `Dash2500` |
 | [GE TRAM-RAC 4A](patient_monitors/ge_tram_rac.md) | ADC required (analog) | — | 15-pin ANALOG OUT | *(per ADC type)* |
 | [GE Defib Connectors](patient_monitors/ge_defib.md) | 7-pin DIN → ADC | — | Defib.Sync | *(per ADC type)* |
-| [Philips Intellivue MP / MX](patient_monitors/philips_intellivue.md) | Custom RJ-45 ↔ DB-9F | None | MIB port | `Intellivue` |
-| [Drager Infinity Kappa](patient_monitors/drager_infinity_kappa.md) | Mini-D cable (part #5206421) | None | X5 or X3 docking | `Infinity` |
-| [Drager Infinity C500 / C700](patient_monitors/drager_infinity_c500.md) | Custom RJ10 ↔ DB-9F | None | P2500 RJ10 port | `Infinity` |
+| [Philips Intellivue MP / MX](patient_monitors/philips_intellivue.md) | Custom RJ-45 ↔ DB-9F | None | **`MIB/RS232`** port — not the standalone `RS232` port | `Intellivue` |
+| [Dräger Infinity Kappa](patient_monitors/drager_infinity_kappa.md) | 14-pin Mini-D ↔ DB-9F (part #5206441) | None | X5 or X3 docking — **pinouts differ** | `Infinity` |
+| [Dräger Infinity C500 / C700](patient_monitors/drager_infinity_c500.md) | Custom RJ10 ↔ DB-9F | None | P2500 RJ10 port | `Infinity` |
 | [MEKICS MP1300](patient_monitors/mekics_mp1300.md) | Wireless (Wi-Fi) | — | LAN port | `MEKICS` |
-| [Nihon Kohden BSM](patient_monitors/nihon_kohden_bsm.md) | Direct Serial | Null Modem M/F | RS-232C on QI-373P board | `BSM` |
-| [GE Corometrics 170](patient_monitors/ge_corometrics.md) | Direct Serial | None | RS232 Port 1 or 2 | `Coro` |
+| [Nihon Kohden BSM](patient_monitors/nihon_kohden_bsm.md) | Direct Serial | Null Modem M/F | RS-232C interface board, **model-dependent** | `BSM` |
+| [GE Corometrics 170 / 250cx](patient_monitors/ge_corometrics.md) | 170: Custom RJ-45 ↔ DB-9F (CTS looped to RTS) · 250cx: **RJ11** cable (pinout pending) | None | 170: RS-232 Port 1 or 2 (RJ-45) — **service setup required** · 250cx: RJ11 | `Coro` |
 
 ### Anesthesia Machines
 
 | Device | Cable | Adapter | Port | VR Device Name |
 |--------|-------|---------|------|----------------|
-| [Drager Apollo / Cicero EM Color / Julian / Primus / Vamos](anesthesia_machines/drager_apollo.md) | Direct Serial | None | COM1 | `Primus` |
-| [Drager Fabius / Zeus / Infinity](anesthesia_machines/drager_fabius.md) | Direct Serial | Null Modem (cross gender) | Serial port | `MedibusX` |
-| [Drager Perseus](anesthesia_machines/drager_perseus.md) | Direct Serial | Null Modem F/F | COM1 or COM2 | `MedibusX` |
+| [Dräger Apollo / Cicero EM Color / Julian / Primus / Vamos](anesthesia_machines/drager_apollo.md) | Direct Serial | None | COM1 | `Primus` |
+| [Dräger Fabius](anesthesia_machines/drager_fabius.md) | Direct Serial | **Depends on COM1 connector** — None if female (Oct 2004 →), Null Modem F/F if male (before Oct 2004) | COM1 | `Primus` |
+| [Dräger Zeus](anesthesia_machines/drager_zeus.md) | Direct Serial | Null Modem — gender per connector *(unverified)* | COM (rear) | `Primus` |
+| [Dräger Perseus](anesthesia_machines/drager_perseus.md) | Direct Serial | Null Modem F/F | COM1 or COM2 | `MedibusX` |
 | [GE Datex-Ohmeda](anesthesia_machines/ge_datex_ohmeda.md) | Custom 9-pin ↔ 15-pin | None | 15-pin (under cover) | `Datex-Ohmeda` |
 | [Maquet Flow-i](anesthesia_machines/maquet_flow_i.md) | Direct Serial | Null Modem M/F | Serial port | `Flow-i` |
-| [Maquet Servo-i Ventilator](anesthesia_machines/maquet_servo_i.md) | Direct Serial | Null Modem M/F | **BOTTOM** RS-232 port | `Servo-i` |
-| [Hamilton G5 Ventilator](anesthesia_machines/hamilton_g5.md) | Direct Serial | Null Modem M/F | Monitoring Interface 1 or 2 | `Hamilton` |
+
+### Mechanical Ventilators
+
+| Device | Cable | Adapter | Port | VR Device Name |
+|--------|-------|---------|------|----------------|
+| [Dräger EVITA V300 / V500 / V600 / V800](mechanical_ventilators/drager_evita.md) | Direct Serial | Null Modem *(gender unverified)* | RS-232 COM1 | `MedibusX` (19200) |
+| [Maquet / Getinge Servo-i / Servo-s / Servo-U](mechanical_ventilators/maquet_servo.md) | Direct Serial | Null Modem M/F | **BOTTOM** RS-232 only | `Servo-i` |
+| [Hamilton G5 / C-series](mechanical_ventilators/hamilton.md) | Direct Serial | Null Modem M/F | Monitoring Interface 1 or 2 — set to **Block** | `Hamilton` |
 
 ### Hemodynamic Monitors
 
@@ -86,8 +107,8 @@ This guide covers Vital Recorder hardware setup for **44 medical devices** acros
 
 | Device | Cable | Adapter | Port | VR Device Name |
 |--------|-------|---------|------|----------------|
-| [Medtronic BIS VISTA](brain_monitors/medtronic_bis_vista.md) | Direct Serial | **None** ⚠️ cross cable causes error | Serial port | `VISTA` |
-| [Medtronic BIS A2000](brain_monitors/medtronic_bis_a2000.md) | Direct Serial | None | 9-pin port | `A2000` |
+| [Medtronic BIS VISTA](brain_monitors/medtronic_bis_vista.md) | Direct Serial | **None** ⚠️ cross cable causes error | RS-232 (rear panel) | `VISTA` (ASCII) / `BIS (binary)` (Legacy Binary + EEG) |
+| [Medtronic BIS A2000](brain_monitors/medtronic_bis_a2000.md) | Direct Serial | None | **J1** (RS-232) — not J2, which is the printer port | `A2000` |
 | [Medtronic INVOS Cerebral/Somatic Oximetry](brain_monitors/medtronic_invos.md) | Direct Serial | Null Modem F/F | `\|O\|O\|` port (male connector) | `Invos` |
 
 ### Others
@@ -95,11 +116,41 @@ This guide covers Vital Recorder hardware setup for **44 medical devices** acros
 | Device | Cable | Adapter | Port | VR Device Name |
 |--------|-------|---------|------|----------------|
 | [Masimo Radical7](others/masimo_radical7.md) | Direct Serial | None | P1 RS-232 (Docking Station) | `Radical7` |
-| [Masimo ROOT](others/masimo_root.md) | Masimo USB data cable (preferred) | None | USB1 or USB2 | `Root` |
-| [Sentec SDM](others/sentec_sdm.md) | USB-Serial Converter | None | Serial port | `SDM` |
-| [MDMS ANI Monitor V2](others/mdms_ani_monitor.md) | NEXT USB-Serial [NEXT-RS232U20] | None | Serial port (right side) | `ANIMonitor2` |
-| [BlinkDC TwitchView](others/blink_twitchview.md) | Custom RJ45 (special wiring) | None | RJ45 (bottom, when docked) | `TwitchView` |
-| [IDMed TOFscan](others/idmed_tofscan.md) | TOF-RS1 cable (from IDMed) | None | Device-specific | `TOFScan` |
+| [Masimo ROOT](others/masimo_root.md) | Masimo data-acquisition USB cable *(preferred)*; generic USB-Serial converter as fallback | None with the Masimo cable; **Null Modem F/F** with a generic converter | USB1 or USB2 *(both routes)* | `Root` |
+| [Sentec SDM](others/sentec_sdm.md) | USB-Serial converter | None | Serial Data Port (RS-232), rear | `SDM` |
+| [MDMS ANI Monitor V2](others/mdms_ani_monitor.md) | NEXT USB-Serial [NEXT-RS232U20] | None | `REAL TIME EXPORT` DB-9 — not `DATA EXPORT` | `ANIMonitor2` |
+| [BlinkDC TwitchView](others/blink_twitchview.md) | Custom RJ45 (special wiring) | None | RJ45 on the **Charging Station** | `TwitchView` |
+| [OBELAB NIRSIT-ON+](others/obelab_nirsit_on.md) | Direct Serial | None | Rear USB (serial) — **open TCP 5525** on the tablet | `NirsitON` |
+| [IDMed TOFscan](others/idmed_tofscan.md) | TOF-RS1 / TOF-RS2 optic-serial cable (from IDMed) | None | **Optical** output | `TOFScan` |
+
+### Supported but Not Yet Documented
+
+Vital Recorder supports these devices (see `Supported_Devices.md`) but no connection page has been written — no field installation has been recorded yet. If you connect one, please contribute the page.
+
+| Device | Type | VR Device Name |
+|---|---|---|
+| Philips VueLink module | Patient monitor | `VueLink` |
+| GE Canvas · GE MPS (Dash 2500 module) | Patient monitor | `Canvas`, `MPS` |
+| Edwards ClearSight · Vigilance C | Hemodynamic | `ClearSight`, `Vigilance` |
+| Getinge PulsioFlex (PiCCO) | Hemodynamic | `PulsioFlex` |
+| Bilab AirTom / HemoVista · Edgecare CW10 | Hemodynamic | `AirTom`, `HemoVista`, `CW10` |
+| Fresenius Kabi Conox · PCBM | Brain / pump | `Conox`, `PCBM` |
+| B. Braun DoseLink (HL7 / MLLP) · Daiwha DS-5000 | Pump | `DoseLink`, `DS-5000` |
+| RGB Medical TOFcuff | Neuromuscular | `TOFcuff` |
+| Inbody PLEM100 | Brain | `PLEM100` |
+| Mindray monitors (HL7) · Nihon Kohden central server (ADT / ORF / NealTime) | Network | `Mindray : HL7`, `NIHONKOHDEN::*` |
+
+### Not Recordable
+
+Devices and data paths from which Vital Recorder **cannot record**, confirmed by testing or by the manufacturer's documentation. The reason states whether the limit is on the device side (no usable port or output) or on the Vital Recorder side (protocol not implemented).
+
+| Device | Why |
+|---|---|
+| Philips **MP2 / X2 / X3** | No usable serial port; X3 has no MIB board |
+| Philips **Avalon FM20** fetal monitor | Needs the optional MIB board **and** a protocol Vital Recorder does not yet implement |
+| Dräger **Vista 120S** | Its MEDIBUS/X port only *receives* from anesthesia machines; no response at any baud / frame combination |
+| Anesthesia-machine data **relayed through a Dräger Infinity Kappa** | Not forwarded on the Kappa export link — connect the machine directly |
+| **Nihon Kohden BSM without an RS-232C interface board**, or ventilator data shown on a BSM | Numerics need the interface board; ventilator values are not on the serial port |
 
 ---
 
@@ -123,14 +174,48 @@ Vital Recorder runs on Windows (Vista, 7, 8, 8.1, 10 — 32-bit and 64-bit).
 
 There are two types of serial cable. They are **physically identical in appearance** — the difference is in the internal wiring.
 
-| Type | Wiring | Use case |
-|------|--------|----------|
-| **Direct Cable** | Pin 2 ↔ Pin 2 (Rx), Pin 3 ↔ Pin 3 (Tx) | Most devices |
-| **Cross Cable (Null Modem)** | Pin 2 ↔ Pin 3 (crossed) | Some devices (Fresenius Orchestra, Edwards) |
+<img src="hardware_images/serial_cable_1.png" width="360" alt="A DB-9 serial cable with a male connector on one end and a female connector on the other — a direct and a cross cable look exactly like this, so the wiring cannot be told apart by sight">
 
-> ⚠️ **WARNING:** Using a cross cable where a direct cable is required (or vice versa) can cause electrical shorts, device malfunction, or fire. **Always verify the cable type before connecting.**
+| Type | Wiring | Use in this guide |
+|------|--------|-------------------|
+| **Direct serial cable** — also called a *straight-through* cable | Pin 2 ↔ Pin 2 (Rx), Pin 3 ↔ Pin 3 (Tx) | Every serial device |
+| **Cross cable** — also called a *crossover* or *null-modem cable* | Pin 2 ↔ Pin 3 (crossed) | Never specified as a cable. Where a crossed link is needed, the guide specifies a direct serial cable plus a **Null Modem adapter** |
 
-**Recommended approach:** Use only direct cables for all runs. If a cross connection is required, attach a **Null Modem cross gender adapter** at the device port.
+> ⚠️ **WARNING:** Using a cross cable where a direct serial cable is required (or vice versa) can cause electrical shorts, device malfunction, or fire. **Always verify the cable type before connecting.**
+
+**Recommended approach:** Use only direct serial cables for all runs. If a crossed link is required, attach a **Null Modem adapter** at the device port.
+
+---
+
+### Connection Types
+
+Every device in this guide connects in one of four ways. Identify which type applies to your device, then follow its device page for the exact port and settings.
+
+> The device lists in these diagrams are examples only. The [Quick Reference tables](#quick-reference--all-devices) and each device page are authoritative for cable, adapter and port.
+
+#### Type A — Direct Serial
+
+Device serial port → direct serial cable → USB-Serial converter → PC. No adapter.
+
+<img src="hardware_images/connection_direct.svg" width="620" alt="Type A: a device 9-pin serial port joins a direct serial cable wired pin 2 to 2 and pin 3 to 3, into a USB-Serial converter that presents a virtual COM port, then by USB to the PC running Vital Recorder">
+
+#### Type B — Null Modem Adapter
+
+Same as Type A, with a Null Modem adapter fitted **at the device port**.
+
+<img src="hardware_images/connection_cross.svg" width="620" alt="Type B: a device serial port takes a Null Modem adapter, M/F or F/F, that swaps pins 2 and 3, then a standard direct serial cable to a USB-Serial converter and by USB to the PC running Vital Recorder">
+
+#### Type C — Custom / Proprietary Cable
+
+The device port is not a standard DB-9 — RJ-45, RJ-10, 15-pin or DIN — so a cable with specific pin wiring is required.
+
+<img src="hardware_images/connection_custom.svg" width="620" alt="Type C: a device with an RJ-45, RJ-10, 15-pin or DIN port needs a custom cable with specific pin wiring, for example RJ-45 to DB-9F, then a USB-Serial converter presenting a virtual COM port to the PC running Vital Recorder">
+
+#### Type D — Wireless (Wi-Fi)
+
+The device sends data over the network instead of a serial line. The router must be configured in advance.
+
+<img src="hardware_images/connection_wireless.svg" width="620" alt="Type D: a MEKICS MP1300 connects by LAN cable to a Wi-Fi router at 192.168.0.1, which reaches the PC running Vital Recorder over Wi-Fi on port 6002; the router must be pre-configured with SSID, WPA2PSK with AES, and the recording PC's IP">
 
 ---
 
@@ -140,11 +225,17 @@ The images below show the cables and adapters referenced throughout this guide.
 
 #### Direct Serial Cable
 
-<img src="hardware_images/cable_direct.svg" width="450" alt="Direct Serial Cable">
+<img src="hardware_images/cable_direct.svg" width="450" alt="Diagram of a direct serial cable — DB-9 female on the device side, DB-9 male on the PC or converter side, with pin 2 to pin 2, pin 3 to pin 3 and pin 5 to pin 5; the default cable choice for most devices">
 
 #### Null Modem Adapter — F/F (Female / Female)
 
-<img src="hardware_images/cable_null_modem_ff.svg" width="450" alt="Null Modem F/F Adapter">
+A **Null Modem adapter** swaps the TX and RX lines (pins 2 and 3) and is specified by the gender of its two connectors, **M/F** or **F/F**. It is also sold as a *cross-gender* adapter.
+
+> Korean cable shops sell Null Modem adapters as **"크로스 젠더" (cross gender)**. Ask for that name when buying locally — a plain *gender changer* (젠더) is wired straight through and will **not** work.
+
+<img src="hardware_images/cable_null_modem_ff.svg" width="450" alt="Diagram of a Null Modem F/F adapter — female DB-9 on both ends, pins 2 and 3 crossed internally, pin 5 straight through; required when the device port is female-type">
+
+<img src="hardware_images/serial_cable_3.png" width="300" alt="A Null Modem F/F serial gender adapter (9F/9F, cross wiring) — female sockets on both sides">
 
 | Adapter | Description | Purchase (Korea) |
 |---------|-------------|-----------------|
@@ -153,21 +244,29 @@ The images below show the cables and adapters referenced throughout this guide.
 
 #### Null Modem Adapter — M/F (Male / Female)
 
-<img src="hardware_images/cable_null_modem_mf.svg" width="450" alt="Null Modem M/F Adapter">
+<img src="hardware_images/cable_null_modem_mf.svg" width="450" alt="Diagram of a Null Modem M/F adapter — male DB-9 on one end and female on the other, pins 2 and 3 crossed internally, pin 5 straight through; required when the device port is male-type">
+
+<img src="hardware_images/serial_cable_2.png" width="260" alt="A Null Modem M/F serial gender adapter (9M/9F, cross wiring) — male pins on one side, female sockets on the other">
 
 #### USB-Serial Converter
 
-<img src="hardware_images/cable_usb_serial.svg" width="450" alt="USB-Serial Converter">
+<img src="hardware_images/cable_usb_serial.svg" width="450" alt="Diagram of a USB-Serial converter — USB-A to the PC on one side, DB-9 male to the device cable on the other, creating a virtual COM port; it acts as a direct cable">
 
-Laptops and tablets typically lack a built-in serial port. A USB-Serial converter creates a virtual COM port and **acts as a direct cable**. Devices that require a cross connection still need a cross gender adapter.
+Laptops and tablets typically lack a built-in serial port. A **USB-Serial converter** — also sold as a *USB-to-RS232* or *Serial-to-USB* converter — creates a virtual COM port and **acts as a direct serial cable**. Devices that require a cross connection still need a Null Modem adapter.
 
-**Recommended:** Netmate 4-port Serial-to-USB Converter (Kangwon Electronics) — creates four COM ports from one USB connection. [Purchase link (Korea)](http://cableguy.com/shop/mall.php?cat=005004003&query=view&no=39206)
+**Recommended:** Netmate 4-port USB-Serial converter (Kangwon Electronics) — creates four COM ports from one USB connection. [Purchase link (Korea)](http://cableguy.com/shop/mall.php?cat=005004003&query=view&no=39206)
+
+<img src="hardware_images/usb_serial_converter_1.png" width="400" alt="A 4-port RS-232-to-USB converter cable (NEXT-RS232 4P) — one USB-A plug fanning out to four DB-9 connectors, creating four COM ports from a single USB port">
+
+> Some devices accept only specific converter models. The **GE CARESCAPE** accepts one converter per monitor software version — see its device page before buying.
 
 #### USB Hub
 
-Use a **powered USB hub** (with its own external power adapter) to prevent power shortage — the most common cause of intermittent data loss.
+Use a **powered USB hub** (with its own external power adapter) to prevent insufficient USB power — the most common cause of intermittent data loss.
 
 [Purchase — ORICO 4-port Powered USB Hub (Korea)](http://www.enuri.com/detail.jsp?modelno=10534644)
+
+<img src="hardware_images/usb_hub_1.png" width="400" alt="Two ORICO 4-port powered USB hubs — each has four USB ports on the front and, on the side, a USB uplink port next to a socket for its own external power adapter">
 
 #### USB Extension Cable
 
@@ -175,13 +274,58 @@ Cables under 10 meters do not risk signal degradation. Use shielded cables in OR
 
 [Purchase link (Korea)](http://cableguy.com/shop/mall.php?cat=025011002&query=view&no=541)
 
+<img src="hardware_images/usb_extension_1.png" width="220" alt="A USB 2.0 extension cable — USB-A male on one end, USB-A female on the other">
+
+---
+
+### Port Assignment Convention (PiVR)
+
+Recorders with several serial channels are easier to support remotely when every site uses the same assignment. The convention used on PiVR installations:
+
+| Channel | Device |
+|---|---|
+| `P1` | Patient monitor (Philips Intellivue) |
+| `P2` | Anesthesia machine / ventilator |
+| `P3` | TwitchView |
+| `LU` | Wireless LAN adapter |
+| `RU` | Event button |
+| `RL` | Fresenius Link+ |
+| hotspot | Masimo ROOT (`X003`) |
+
+Leave a channel empty if the device is absent; other devices take the remaining channels.
+
+### Starter Kit
+
+Basic kit for recording **four serial devices at once**:
+
+| Item | Qty | Note |
+|---|---|---|
+| Null Modem adapter (M/F and F/F) | 6 | Keep spares |
+| Direct serial cable, M/F, 3 m | 4 | Buy the length you need |
+| 4-port USB-Serial converter | 1 | 4-port recommended |
+| Powered USB hub | 1 | Must have its own power adapter |
+| USB extension cable, M/F, 5 m | 1 | Buy the length you need |
+
+---
+
+### Device Page Layout
+
+Every device page follows the same order. Optional sections are omitted when there is nothing to say.
+
+| Section | Content |
+|---|---|
+| Title, callout, connection table | Model name; one `> ⚠️` or `> **Note:**` callout for the single most important caution; a table with **Cable · Adapter · Port · (Serial) · VR Device Name** |
+| Before You Start *(optional)* | Model variants or checks that decide which cable to use |
+| Connection Steps | Numbered physical connection; sub-sections (`###`) for alternative paths such as a Y-cable or waveform output |
+| Device Configuration | Menus to set on the device |
+| Vital Recorder Setup | Device entry to add and any `vr.conf` options |
+| Troubleshooting *(optional)* | Symptom → cause → fix |
+| Known Limitations *(optional)* | What the link cannot deliver |
+| Notes *(optional)* | Anything else that affects the connection |
+
 ---
 
 ## Troubleshooting
-
-Common problems and fixes are documented in [`troubleshooting`](troubleshooting.md).
-
-Quick reference:
 
 | Problem | Likely Cause |
 |---------|-------------|

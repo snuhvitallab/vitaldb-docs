@@ -25,7 +25,7 @@ Documentation for **VitalDB** and **VitalRecorder** — a medical biosignal reco
 ### VitalRecorder
 - [User Manual](VitalRecorder/User_Manual.md) — Full feature reference
 - [Configuration Guide](VitalRecorder/Configuration_Guide.md) — `vr.conf` reference (devices, server, TLS)
-- [Hardware Connection Guide](VitalRecorder/connection-guide/devices/README.md) — Per-device connection instructions (44 devices)
+- [Hardware Connection Guide](VitalRecorder/connection-guide/devices/README.md) — Per-device connection instructions (47 devices)
 - [Supported Devices & Parameters](VitalRecorder/Supported_Devices.md)
 - [Vital File Format](VitalRecorder/Vital_File_Format.md)
 

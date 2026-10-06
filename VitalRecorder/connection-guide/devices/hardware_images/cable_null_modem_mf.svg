@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 180" width="440" height="180" font-family="Arial, sans-serif">
+  <rect width="440" height="180" fill="#ffffff" rx="10" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Title -->
+  <text x="220" y="22" text-anchor="middle" font-size="13" font-weight="bold" fill="#1e293b">Null Modem Adapter — M/F (Male / Female)</text>
+  <text x="220" y="38" text-anchor="middle" font-size="10" fill="#d97706">Pin 2 ↔ Pin 3 (Tx/Rx crossed internally) &nbsp;|&nbsp; Pin 5 ↔ Pin 5 (GND)</text>
+
+  <!-- LEFT: DB-9 Male (pins filled) -->
+  <polygon points="25,55 120,55 125,125 20,125" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+  <circle cx="37" cy="90" r="6" fill="none" stroke="#d97706" stroke-width="1.5"/>
+  <circle cx="108" cy="90" r="6" fill="none" stroke="#d97706" stroke-width="1.5"/>
+  <!-- Pins row 1 (filled) -->
+  <circle cx="48" cy="76" r="4" fill="#92400e"/>
+  <circle cx="62" cy="76" r="4" fill="#92400e"/>
+  <circle cx="76" cy="76" r="4" fill="#92400e"/>
+  <circle cx="90" cy="76" r="4" fill="#92400e"/>
+  <circle cx="104" cy="76" r="4" fill="#92400e"/>
+  <!-- Pins row 2 -->
+  <circle cx="55" cy="100" r="4" fill="#92400e"/>
+  <circle cx="69" cy="100" r="4" fill="#92400e"/>
+  <circle cx="83" cy="100" r="4" fill="#92400e"/>
+  <circle cx="97" cy="100" r="4" fill="#92400e"/>
+  <text x="73" y="143" text-anchor="middle" font-size="10" font-weight="bold" fill="#92400e">DB-9M</text>
+
+  <!-- ADAPTER BODY -->
+  <rect x="125" y="65" width="190" height="50" rx="6" fill="#d97706"/>
+  <text x="220" y="87" text-anchor="middle" font-size="12" font-weight="bold" fill="white">NULL MODEM</text>
+  <text x="220" y="103" text-anchor="middle" font-size="10" fill="#fef3c7">2↔3 crossed inside</text>
+
+  <!-- RIGHT: DB-9 Female (holes) -->
+  <polygon points="315,55 410,55 420,125 310,125" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+  <circle cx="327" cy="90" r="6" fill="none" stroke="#d97706" stroke-width="1.5"/>
+  <circle cx="398" cy="90" r="6" fill="none" stroke="#d97706" stroke-width="1.5"/>
+  <!-- Holes row 1 -->
+  <circle cx="338" cy="76" r="4" fill="#fde68a" stroke="#d97706" stroke-width="1.5"/>
+  <circle cx="352" cy="76" r="4" fill="#fde68a" stroke="#d97706" stroke-width="1.5"/>
+  <circle cx="366" cy="76" r="4" fill="#fde68a" stroke="#d97706" stroke-width="1.5"/>
+  <circle cx="380" cy="76" r="4" fill="#fde68a" stroke="#d97706" stroke-width="1.5"/>
+  <circle cx="394" cy="76" r="4" fill="#fde68a" stroke="#d97706" stroke-width="1.5"/>
+  <!-- Holes row 2 -->
+  <circle cx="345" cy="100" r="4" fill="#fde68a" stroke="#d97706" stroke-width="1.5"/>
+  <circle cx="359" cy="100" r="4" fill="#fde68a" stroke="#d97706" stroke-width="1.5"/>
+  <circle cx="373" cy="100" r="4" fill="#fde68a" stroke="#d97706" stroke-width="1.5"/>
+  <circle cx="387" cy="100" r="4" fill="#fde68a" stroke="#d97706" stroke-width="1.5"/>
+  <text x="362" y="143" text-anchor="middle" font-size="10" font-weight="bold" fill="#92400e">DB-9F</text>
+
+  <!-- Labels -->
+  <text x="73" y="158" text-anchor="middle" font-size="10" fill="#64748b">→ To Device</text>
+  <text x="362" y="158" text-anchor="middle" font-size="10" fill="#64748b">→ To Direct Cable</text>
+
+  <!-- Note -->
+  <rect x="55" y="165" width="330" height="14" rx="4" fill="#fef3c7"/>
+  <text x="220" y="175" text-anchor="middle" font-size="10" fill="#92400e">⚠ Required when device port is male-type (e.g. Maquet, Hamilton G5, Edwards Vigileo)</text>
+</svg>

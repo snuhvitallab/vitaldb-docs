@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 150" width="780" height="150" font-family="Arial, sans-serif">
+  <!-- Background -->
+  <rect width="780" height="150" fill="#f8fafc" rx="10"/>
+
+  <!-- Title -->
+  <text x="390" y="22" text-anchor="middle" font-size="13" font-weight="bold" fill="#1e293b">Type C — Custom / Proprietary Cable Connection</text>
+
+  <!-- Device Box -->
+  <rect x="20" y="50" width="140" height="60" rx="8" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+  <text x="90" y="73" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e40af">Medical Device</text>
+  <text x="90" y="89" text-anchor="middle" font-size="10" fill="#1e40af">RJ-45 / RJ-10 /</text>
+  <text x="90" y="103" text-anchor="middle" font-size="10" fill="#1e40af">15-pin / DIN port</text>
+
+  <!-- Arrow 1 -->
+  <line x1="163" y1="80" x2="215" y2="80" stroke="#64748b" stroke-width="2" stroke-dasharray="5,3"/>
+  <polygon points="215,75 225,80 215,85" fill="#64748b"/>
+
+  <!-- Custom Cable Box -->
+  <rect x="230" y="50" width="160" height="60" rx="8" fill="#fde68a" stroke="#d97706" stroke-width="2"/>
+  <text x="310" y="73" text-anchor="middle" font-size="11" font-weight="bold" fill="#92400e">Custom Cable</text>
+  <text x="310" y="89" text-anchor="middle" font-size="10" fill="#92400e">e.g. RJ-45↔DB-9F</text>
+  <text x="310" y="103" text-anchor="middle" font-size="9" fill="#92400e">Specific pin wiring required</text>
+
+  <!-- Arrow 2 -->
+  <line x1="393" y1="80" x2="440" y2="80" stroke="#64748b" stroke-width="2"/>
+  <polygon points="440,75 450,80 440,85" fill="#64748b"/>
+  <text x="421" y="70" text-anchor="middle" font-size="9" fill="#64748b">USB</text>
+
+  <!-- USB Converter Box -->
+  <rect x="455" y="50" width="140" height="60" rx="8" fill="#fef9c3" stroke="#ca8a04" stroke-width="2"/>
+  <text x="525" y="73" text-anchor="middle" font-size="12" font-weight="bold" fill="#92400e">USB-Serial</text>
+  <text x="525" y="89" text-anchor="middle" font-size="10" fill="#92400e">Converter</text>
+  <text x="525" y="103" text-anchor="middle" font-size="9" fill="#92400e">(Virtual COM port)</text>
+
+  <!-- Arrow 3 -->
+  <line x1="598" y1="80" x2="645" y2="80" stroke="#64748b" stroke-width="2"/>
+  <polygon points="645,75 655,80 645,85" fill="#64748b"/>
+
+  <!-- PC Box -->
+  <rect x="660" y="50" width="100" height="60" rx="8" fill="#f3e8ff" stroke="#9333ea" stroke-width="2"/>
+  <text x="710" y="73" text-anchor="middle" font-size="12" font-weight="bold" fill="#7e22ce">PC</text>
+  <text x="710" y="89" text-anchor="middle" font-size="10" fill="#7e22ce">Vital Recorder</text>
+
+  <!-- Devices using this type -->
+  <text x="390" y="135" text-anchor="middle" font-size="10" fill="#475569">✅ Used by: Philips Intellivue, GE Dash 2000/3000/4000, BBraun SpaceCom, GE Datex-Ohmeda, Drager C500/C700</text>
+</svg>
