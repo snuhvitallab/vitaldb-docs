@@ -111,7 +111,3 @@ The DB-9F end goes to the PC's DB-9M serial port or a USB-Serial converter (e.g.
 - **Waves missing on old firmware (e.g. some MP20 units).** Request them explicitly in `vr.conf`.
 - **The recorder does not boot when powered from the monitor's rear USB port.** Seen on the MX750 and MX400 — use an external power supply.
 - **Repeated crashes on a multi-bed installation, or serial reception failing.** Fixed in 1.19.3 and 1.16.4 respectively — run the latest release.
-
-## Notes
-
-- If the service password has been changed from `1345`, only the Philips service agent can supply it.
