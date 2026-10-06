@@ -5,7 +5,7 @@ category: Syringe Pump
 manufacturer: Fresenius Kabi
 vr_device_name: Orchestra
 -->
-> ⚠️ **A crossed link is required, and the port must be configured in service mode.** Connect a **direct** serial cable plus an **M/F Null Modem** adapter — never a cross cable on its own, and never a direct connection without the Null Modem adapter. Both mistakes cause faulty communication or hardware damage.
+> ⚠️ **A crossed link is required, and the port must be configured in service mode.** Connect a **direct serial cable** plus a **Null Modem M/F adapter** as specified below. Do not use a cross cable or omit the adapter; either can prevent communication.
 
 | Cable | Adapter | Port | Serial | VR Device Name |
 |-------|---------|------|--------|----------------|
@@ -80,7 +80,7 @@ Two separate menus must be set: the **service-mode** serial configuration (which
 
 ## Troubleshooting
 
-- **The Orchestra connects but produces no tracks.** Both halves of the configuration are required. Setting **RS 232-3 → IDMS** without assigning **COMM NEW SUP → 3** in service mode leaves the port silent — this is the common cause.
+- **The Orchestra connects but produces no tracks.** Confirm both configuration steps: **RS 232-3 → IDMS** and **COMM NEW SUP → 3** in service mode.
 - **The pump emits bursts on every keypress instead of a steady 1 s frame.** **"Send a frame on every change"** must stay unchecked; Vital Recorder expects the steady 1 s frame.
 - **The access code `00123` is rejected.** Menu wording and code behaviour can differ on other firmware revisions — request the current customisation code from Fresenius Kabi service rather than guessing.
 

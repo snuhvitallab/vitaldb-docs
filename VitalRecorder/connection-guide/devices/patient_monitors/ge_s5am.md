@@ -5,11 +5,11 @@ category: Patient Monitor
 manufacturer: GE
 vr_device_name: Bx50
 -->
-> **Note:** Protocol: **GE S5 Computer Interface** (the Datex DRI protocol, shared with the CARESCAPE Bx50, the B1x5M and the B40/B20). No configuration is required on the monitor — X8 streams as soon as Vital Recorder opens the port.
+> **Note:** Protocol: **GE S5 Computer Interface** (the Datex DRI protocol, shared with the CARESCAPE Bx50, the B1x5M and the B40/B20). On the frame configuration shown here, X8 is the serial/computer interface. Other configurations may use X7/X8 for analog output; confirm the connector labels before connecting.
 
-| Cable | Adapter | Port | VR Device Name |
-|-------|---------|------|----------------|
-| Direct Serial | **Null Modem F/F** | **X8** (9-pin D-type, rear of the frame) | `Bx50` |
+| Cable | Adapter | Port | Serial | VR Device Name |
+|-------|---------|------|--------|----------------|
+| Direct Serial | **Null Modem F/F** | **X8** (9-pin D-type, rear of the frame; verify on other configurations) | GE S5 Computer Interface | `Bx50` |
 
 > ⚠️ **The Null Modem adapter is not optional.** A direct serial cable straight into X8 leaves TX connected to TX and no data appears. Attach the Null Modem (F/F) adapter at the monitor end.
 
@@ -38,9 +38,9 @@ No configuration is required on the monitor — X8 streams the S/5 Computer Inte
 
 ## Troubleshooting
 
-- **X8 produces nothing.** Connector labels vary between frames: on some S/5 configurations the serial/computer interface sits on an Interface Module (M-INT) rather than on the CPU board, and the analog-output connectors X7/X8 are used for waveform outputs instead. Check the silk-screen on the actual frame and confirm the serial connector for that configuration in the Datex-Ohmeda S/5 technical reference manual before re-cabling.
-- **Gas readings collide with a Philips monitor on the same recording.** Gas from Datex/S/5 devices arrives on the `AGENT1` channel; if a Philips monitor also reports gas, keep the device types distinct in `vr.conf`.
+- **No data arrives from X8.** Check the frame's connector labels. On some configurations the serial/computer interface is on an Interface Module (M-INT), while X7/X8 are analog outputs. Confirm the serial connector in the Datex-Ohmeda S/5 technical reference manual before re-cabling.
 
 ## Notes
 
-- **Handshaking.** As with the other S/5-protocol monitors, use a USB-Serial converter that carries DTR and RTS (FTDI recommended) rather than a 3-wire adapter.
+- **Converter.** Use an FTDI-based USB-Serial converter on the PC side rather than a 3-wire adapter.
+- Gas from Datex/S/5 devices arrives on the `AGENT1` channel. If a Philips monitor also reports gas, account for this shared track when configuring `vr.conf`.

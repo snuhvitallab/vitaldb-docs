@@ -5,16 +5,15 @@ category: Mechanical Ventilator
 manufacturer: Maquet
 vr_device_name: Servo-i
 -->
-> ⚠️ **Connect to the BOTTOM RS-232 port only.** The TOP RS-232 port is a debugging port and cannot be used.
-> If the bottom port is already occupied, route data through the patient monitor (Servo-i → Philips Intellivue → Vital Recorder).
+> ⚠️ **On Servo-i and Servo-s, connect to the BOTTOM RS-232 port.** The TOP port is for service/debugging. The live port and adapter requirement for Servo-U have not been verified; confirm both with Getinge before connecting.
 
 | Cable | Adapter | Port | Serial | VR Device Name |
 |-------|---------|------|--------|----------------|
-| Direct Serial | Null Modem M/F | **BOTTOM** RS-232 port | Servo-i / Servo-s: 9600 baud, Even parity (7 or 8 data bits, 1 or 2 stop bits — auto-detected), XON/XOFF · **Servo-U: 19200** | `Servo-i` |
+| Direct Serial | Servo-i / Servo-s: Null Modem M/F; Servo-U: unverified | Servo-i / Servo-s: **BOTTOM** RS-232; Servo-U: unverified | Servo-i / Servo-s: 9600 baud, Even parity (7 or 8 data bits, 1 or 2 stop bits — auto-detected), XON/XOFF · **Servo-U: 19200** | `Servo-i` |
 
 ## Connection Steps
-1. Open the connector cover on the rear of the patient unit. Two ports labeled **RS 232** are stacked there; identify the **BOTTOM** one — the upper `RS 232` port is for service/debugging and returns nothing.
-2. Attach a **Null Modem (M/F)** adapter to the bottom port.
+1. Open the connector cover on the rear of the patient unit. On Servo-i and Servo-s, identify the **BOTTOM** of the two ports labeled **RS 232**; the upper port is for service/debugging. For Servo-U, confirm the active port with Getinge before connecting.
+2. On Servo-i and Servo-s, attach a **Null Modem (M/F)** adapter to the bottom port. Confirm the adapter requirement for Servo-U with Getinge before connecting.
 3. Connect a direct serial cable from the adapter to the PC via a USB-Serial converter.
 
 ## Device Configuration
@@ -31,14 +30,14 @@ Nothing has to be enabled on the ventilator. The serial port is served by the bu
 
 ## Troubleshooting
 
-- **Port opens, then a repeating "no data for 20 s → close" loop.** Check the cable first — cross/Null Modem type, pin-out and that both connectors are fully seated — and confirm the connection is direct rather than a tap (see Known Limitations). Confirm the RS-232 output side of the ventilator with Getinge service documentation if the cable is proven good.
+- **The port opens but no data arrives.** Check that the cable and adapter match the model and are fully seated. Confirm that the connection is direct rather than a read-only tap (see Known Limitations), then verify the RS-232 output with Getinge documentation.
 
 ## Known Limitations
 
-- **The Servo-i has only one usable serial port**, and in most installations the patient monitor already occupies it. A read-only Y-cable tap does **not** work here: the listening branch never sees the command side of the exchange, so the parameter order cannot be resolved and parsing fails. **A direct connection is required** to collect values — otherwise take the data from the monitor instead (Servo-i → Philips Intellivue → Vital Recorder).
+- **The Servo-i has only one usable serial port.** If the patient monitor already occupies it, a read-only Y-cable tap does **not** work: the listening branch cannot resolve the parameter order. Connect directly or collect the data through the patient monitor (Servo-i → Philips IntelliVue → Vital Recorder).
 - Only 4 waveform channels can be sampled simultaneously over the CIE (a firmware limit of the interface).
 
 ## Notes
 
-- **Servo-U.** Supported at **19200 baud** (per `Supported_Devices.md`) with the same `Servo-i` entry; several sites report Servo-U replacing Servo-i fleets. **Whether the Servo-U needs the Null Modem, and which of its RS-232 ports is live, has not been verified on a unit** — photograph the connector panel and the interface menu on first contact and record it here.
+- **Servo-U.** `Supported_Devices.md` lists it at **19200 baud** with the `Servo-i` entry.
 - Typical parameters recorded: Paw, PEEP, TV, MV, RR, FiO2.

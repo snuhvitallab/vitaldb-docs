@@ -1,24 +1,24 @@
-# Dräger Apollo / Cicero EM Color / Julian / Vamos
+# Dräger Primus
 
 <!-- meta
 category: Anesthesia Machine
 manufacturer: Dräger
-vr_device_name: Medibus
+vr_device_name: Primus
 -->
-> **Note:** These machines ship with COM1 already set up for MEDIBUS, so **no additional device configuration is normally required**. Only verify the serial parameters if no data appears.
+> **Note:** The Primus ships with COM1 already set up for MEDIBUS, so **no additional device configuration is normally required**. Only verify the serial parameters if no data appears.
 
 | Cable | Adapter | Port | Serial | VR Device Name |
 |-------|---------|------|--------|----------------|
-| Direct Serial | None | COM1 (rear) | 9600 baud, 8 data bits, Even parity, 1 stop bit — MEDIBUS | `Medibus` |
+| Direct Serial | None | COM1 (rear) | 9600 baud, 8 data bits, Even parity, 1 stop bit — MEDIBUS | `Primus` |
 
 ## Connection Steps
 1. Locate **COM 1** on the rear connector panel. The panel carries **COM 1**, **COM 2** and an **IV System** connector side by side — use **COM 1**.
 
    <img src="../hardware_images/drager_anesthesia_1.png" width="450" alt="Dräger anesthesia machine rear connector panel — COM 1 (circled in red) with a serial cable attached, beside COM 2 and IV System">
 
-2. Connect a **direct serial cable** to COM 1. No Null Modem adapter is needed on these models.
+2. Connect a **direct serial cable** to COM 1. No Null Modem adapter is needed.
 3. Connect the other end to the PC via a USB-Serial converter.
-4. In Vital Recorder, add the device as **`Medibus`** — see [Vital Recorder Setup](#vital-recorder-setup).
+4. In Vital Recorder, add the device as **`Primus`** — see [Vital Recorder Setup](#vital-recorder-setup).
 
 > If COM1 is already in use, see [When the COM1 Port is Already in Use](#when-the-com1-port-is-already-in-use) below.
 
@@ -49,14 +49,8 @@ Only the machine's transmit line and ground are branched to CON2, so Vital Recor
 
 <img src="../hardware_images/com1_in_use_1.png" width="450" alt="Y-cable pin wiring diagram — machine TX (pin 2) and GND (pin 5) branch to both CON1 and CON2 (PC Vital Recorder, read-only option); RX (pin 3) goes only to CON1">
 
-> **Atlan Anesthesia Machine:** Attach a Null Modem adapter matching the connector on both the anesthesia machine side and the CON1 side. CON2 is used as-is for data reading:
->
-> ```
-> Atlan COM (DB9F) --- Null Modem F/F --- DB9M  Y-cable  CON1 (DB9F) --- Null Modem M/F --- existing device
-> ```
-
 ## Device Configuration
-Nothing has to be changed on these models. If no data arrives, check the machine's serial parameters and set them to:
+Nothing has to be changed on the machine. If no data arrives, check the machine's serial parameters and set them to:
 
 - Serial: **9600 baud, 8 data bits, Even parity, 1 stop bit**
 - Protocol: **MEDIBUS**
@@ -66,13 +60,12 @@ On machines that expose the setting on screen it is reached from the interface p
 > ⚠️ **Keep the baud rate at 9600.** Any other value appears as a `MEDIBUS COM2` message or as a repeated `COM1 failure` on the machine.
 
 ## Vital Recorder Setup
-- Add the device as **`Medibus`**. Vital Recorder has no separate entry for these models.
-- With **`AUTO_DETECT=1`** in `vr.conf`, the machine is found on the serial line with no `[DEV/...]` section.
+- Add the device as **`Primus`**.
+- With **`AUTO_DETECT=1`** in `vr.conf`, the machine is found on the serial line with no `[DEV/...]` section. Detection names it `Medibus`, not `Primus`.
 - **Waveforms:** Vital Recorder asks the machine which waveforms it offers and requests up to 4 of them, so `wavs=` is not needed. Set `wavs=` in the device section only to choose specific ones, e.g. `wavs=AWP,AWF`.
 - **On a Y-cable tap** Vital Recorder cannot send requests. It records the waveforms the existing device has requested.
 
 ## Troubleshooting
-- **Numerics arrive but no waveforms.** If `wavs=` is set, remove it and test again. On a Y-cable tap, waveforms arrive only when the existing device requests them. On an **Atlan A300**, some units show this together with a repeating `MEDIBUS COM1 FAILURE` warning — under investigation; collect with `DEBUG=1` if you see it.
+- **Numerics arrive but no waveforms.** If `wavs=` is set, remove it and test again. On a Y-cable tap, waveforms arrive only when the existing device requests them.
 - **Waveforms come out in the wrong order on a Y-cable (read-only) tap.** The order is detected automatically when the existing device's requests are visible on the line. Otherwise list the waveforms with `wavs=` in the order the existing device requests them.
 - **The port does not open.** In `vr.conf`, `port=` must be the actual serial port name of the converter channel (e.g. `C1`), not `COM1`.
-- **Atlan A350 baud-rate menu path.** This guide does not document the path. Check the procedure in the applicable Dräger documentation or with Dräger service before changing the setting.

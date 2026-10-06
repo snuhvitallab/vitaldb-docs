@@ -49,7 +49,7 @@ Enabling **Data Export** is a **one-time** procedure performed over LAN from a P
 
    <img src="../hardware_images/fresenius_link_agilia_7.png" width="450" alt="Browser address bar showing 192.168.0.1 with the page titled Link+ Agilia and a not-secure warning">
 
-6. Log in at the **Identification — Password** prompt (ID `admin` / password `fresenius`; if these are rejected, obtain the current credentials from Fresenius Kabi service).
+6. On the authorized local setup connection, log in at the **Identification — Password** prompt (ID `admin` / password `fresenius`; if these are rejected, obtain the current credentials from Fresenius Kabi service).
 
    <img src="../hardware_images/fresenius_link_agilia_8.png" width="300" alt="Link+ Agilia web interface Identification - Password login form with ID and Password fields and a Login button">
 
@@ -58,7 +58,7 @@ Enabling **Data Export** is a **one-time** procedure performed over LAN from a P
    <img src="../hardware_images/fresenius_link_agilia_9.png" width="350" alt="Link+ Agilia web interface Configuration menu expanded showing General Parameters, Network, Data Export, Time and Configuration Summary, with Data Export highlighted">
 
 8. Under **Serial export protocol for Agilia SP and VP**, tick **Enabled**, then click **Apply**.
-   - Leave **Serial export protocol Over TCP** disabled. It is a separate transport (default port `52000`) and, as the page itself warns, enabling it requires the VPN to be configured in the **Network** tab beforehand. Vital Recorder's tested path is the USB/serial export above.
+   - Leave **Serial export protocol Over TCP** disabled. It is a separate transport (default port `52000`) that requires VPN configuration in the **Network** tab. Vital Recorder's documented path is the USB/serial export above.
 
    <img src="../hardware_images/fresenius_link_agilia_10.png" width="450" alt="Data Export page with Serial export protocol for Agilia SP and VP set to Enabled, Serial export protocol Over TCP left disabled with port 52000, and the Apply button highlighted">
 
@@ -72,13 +72,11 @@ Enabling **Data Export** is a **one-time** procedure performed over LAN from a P
 
 ## Vital Recorder Setup
 
-- Add a device with **Device Type `Link+`** and set **Port** to **`ACM0`** — the CDC-ACM port the rack creates, not a `COM`/`C` converter channel. Leave **Y Cable** unchecked.
-
-  <img src="../hardware_images/fresenius_link_agilia_2.png" width="450" alt="Vital Recorder Device Settings row with Device Type Link+, Name Link+, Port ACM0 and the Y Cable checkbox unchecked">
+- Add a device with **Device Type `Link+`** and leave **Port** empty. Vital Recorder finds the rack by its USB ID and follows it when it re-connects under a new port number. Leave **Y Cable** unchecked.
 
 ## Troubleshooting
 
-- **The Link+ is unstable — the recorder reboots or loses the server connection.** USB power is the usual cause: rooms with this symptom all had a Link+ on a bus-powered port, and the syslog shows USB power errors before each drop. Feed the rack through a **powered hub** or a Y-cable with external power, and keep the USB run short — a 6 m extension with a repeater still failed.
+- **The Link+ is unstable — the recorder reboots or loses the server connection.** Insufficient USB power on a bus-powered port causes this; the syslog shows USB power errors before each drop. Connect the rack through a **powered hub** or a Y-cable with external power, and keep the USB run short — a 6 m extension with a repeater is not enough.
 - **The rack stops reporting after a network or power event.** **Power-cycle the pump rack and then restart Vital Recorder** — the recorder applies a 60-second timeout before it gives up on the port, so the order matters.
 - **A previously working rack reports nothing after a service intervention.** `Data Export` reverts to disabled if the rack is reset to factory configuration — re-run the web procedure.
 - **Crashes or a failed reconnection on an older build.** Several Link+-specific crashes and a reconnection failure were fixed across 1.18.50–1.19.5; upgrade before troubleshooting hardware.

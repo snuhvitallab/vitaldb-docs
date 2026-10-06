@@ -5,11 +5,11 @@ category: Anesthesia Machine
 manufacturer: GE
 vr_device_name: Datex-Ohmeda
 -->
-> **Note:** Protocol: **GE Ohmeda Serial Protocol**. Compatible with: Aespire, Aespire View, Aestiva, Avance, Avance CS2, Aisys, Aisys CS2, Carestation 620/650/650c.
+> **Note:** Protocol: **GE Ohmeda Serial Protocol**. `Supported_Devices.md` lists Aisys, Avance and Aestiva; the Aisys CS2 and Avance CS2 are confirmed to work with this setup. Confirm other models with GE.
 
-| Cable | Adapter | Port | VR Device Name |
-|-------|---------|------|----------------|
-| Custom 9-pin ↔ 15-pin serial | None | 15-pin female connector (under the rear cover) | `Datex-Ohmeda` |
+| Cable | Adapter | Port | Serial | VR Device Name |
+|-------|---------|------|--------|----------------|
+| Custom 9-pin ↔ 15-pin serial | None | 15-pin female connector (under the rear cover) | GE Ohmeda Serial Protocol, 19200 baud | `Datex-Ohmeda` |
 
 ## Connection Steps
 1. Open the **back cover** of the anesthesia machine to expose the **15-pin female** connector. It sits on the same panel as the 9-pin, RJ-45 and USB connectors; it is the same height as an ordinary DB-9 but noticeably longer.
@@ -50,12 +50,11 @@ No setting has to be changed on the machine — the serial port streams continuo
 
 ## Troubleshooting
 - **Waveform gaps and lagging numerics.** This is a link-capacity limit, not a cable fault (see Known Limitations). Reduce the requested waveforms.
-- **Gas-agent values collide with a Philips monitor's on the same case.** Gas data from a Datex-Ohmeda machine arrives on the `AGENT1` track; keep the device types distinct so each source keeps its own tracks.
 
 ## Known Limitations
 - **The 19200 baud link carries about 1,920 characters per second.** When many parameters are active the stream exceeds that, waves drop out and numerics arrive late.
 
 ## Notes
-- Confirmed models in the field include the **Aisys CS2** and **Avance CS2**.
+- Gas-agent values from a Datex-Ohmeda machine use the `AGENT1` track. If a Philips monitor is also connected, account for this shared track when configuring the device types.
 - With **`AUTO_DETECT=1`** in `vr.conf` GE / Datex-Ohmeda S/5 devices are identified on the serial line without a `[DEV/...]` section.
 - Typical parameters recorded: Paw, Pplat, EtCO2, TV, MV, FiO2.

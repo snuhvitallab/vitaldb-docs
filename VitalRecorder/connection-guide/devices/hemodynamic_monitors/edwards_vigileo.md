@@ -46,7 +46,3 @@ vr_device_name: Vigileo
 ## Troubleshooting
 
 - **Configured but nothing arrives.** Check that **`Serial Port Setup`** was used, not **`Analog In Setup`** / **`Analog Out Setup`** — they sit in the same Status Menu but are unrelated to Vital Recorder.
-
-## Known Limitations
-
-- Configure the monitor **before** applying it to a patient.

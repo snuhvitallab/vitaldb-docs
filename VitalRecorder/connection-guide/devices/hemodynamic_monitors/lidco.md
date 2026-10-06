@@ -9,7 +9,7 @@ vr_device_name: LiDCO
 
 | Cable | Adapter | Port | Serial | VR Device Name |
 |-------|---------|------|--------|----------------|
-| Direct Serial | Null Modem **M/F** | **COM1** — standard 9-way serial port on the monitor | 57600 baud | `LiDCO` |
+| Direct Serial | Null Modem **M/F** (assumes female COM1; unverified) | **COM1** — standard 9-way serial port on the monitor | 57600 baud | `LiDCO` |
 
 ## Connection Steps
 1. Attach a **Null Modem (M/F)** adapter to **COM1** on the monitor. LiDCO documents COM1 as the hardware connection point for all serial communications output from LiDCO monitors, and describes it as a standard 9-way serial port.
@@ -42,6 +42,5 @@ vr_device_name: LiDCO
 
 ## Notes
 
-- **The COM1 connector gender is unverified.** The usual arrangement on these monitors is a female port, which is what the M/F adapter above assumes.
 - LiDCO does not publish the RS-232 frame specification; contact LiDCO to obtain detailed specifications for the RS-232 interface.
-- This page has no photographs. LiDCO does not publish its operator manual publicly, so the COM1 location and the serial settings screen are described in text only — **confirm both against your unit's manual before connecting**.
+- Confirm the COM1 connector gender and serial settings against the manual for the installed unit before connecting.

@@ -5,11 +5,11 @@ category: Other
 manufacturer: IDMED
 vr_device_name: TOFScan
 -->
-> ⚠️ **The TOFscan data port is optical, not electrical.** The **TOF-RS1** (or TOF-RS2) accessory cable is an optic-to-serial converter cable — a plain serial cable cannot be used, and no generic substitute exists.
+> ⚠️ **The TOFscan data port is optical, not electrical.** Use the **TOF-RS1** or **TOF-RS2** optic-to-serial cable; a plain serial cable cannot be used. The PC-side USB-Serial converter must support DTR/RTS because Vital Recorder uses those lines to supply **+6 V at DB-9 pin 4 and −6 V at pin 7**.
 
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|
-| TOF-RS1 optic-serial cable (from IDMED) — DB-9F output | None | Optical output port on the device | `TOFScan` |
+| TOF-RS1 or TOF-RS2 optic-serial cable (from IDMED) — DB-9F output | None | Optical output port on the device | `TOFScan` |
 
 ## Connection Steps
 
@@ -36,8 +36,7 @@ No on-device output setting is documented for the TOFscan; the optic-serial cabl
 
 ## Troubleshooting
 
-- **No data arrives.** Most problems are hardware-related — check first for a loose optical connector or the wrong cable (only TOF-RS1 / TOF-RS2 work). Report unresolved issues at [vitaldb.org](https://vitaldb.org).
-- **Cable and connector are correct but still nothing.** Check the USB-Serial converter: **the TOFscan needs +6 V on pin 4 and −6 V on pin 7 of the DB-9** to talk. Vital Recorder drives these through the converter's DTR/RTS lines, so the converter must implement them — a 3-wire converter or cable (TX/RX/GND only) will never receive data.
+- **No data arrives.** Check that the optical connector is secure, the cable is TOF-RS1 or TOF-RS2, and the PC-side USB-Serial converter supports DTR/RTS. Report unresolved issues at [vitaldb.org](https://vitaldb.org).
 
 ## Notes
 

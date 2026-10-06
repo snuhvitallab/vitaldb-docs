@@ -28,12 +28,10 @@ No protocol or baud setting is exposed on the device. The link runs at **115200 
 
 ## Troubleshooting
 
-- **Nothing until Calibrate is pressed.** This is normal — data starts only after calibration completes.
-- **Works, then drops every few minutes.** The tablet firewall is blocking port 5525.
+- **The link drops repeatedly after a few minutes.** Confirm that inbound TCP port 5525 is allowed in the NIRSIT tablet firewall.
 - **Connected but no values / `-nan` on the web monitor.** An older protocol version mismatch — upgrade Vital Recorder.
 - **Recording restarts repeatedly during a NIRSIT session.** Seen with 1.13.x builds; upgrade.
 
 ## Notes
 
 - Developed with the manufacturer in 2024; the protocol went through several revisions (sign byte, 32 Hz timing) — keep Vital Recorder current.
-- **No photographs yet** of the rear USB port or the Calibrate screen.

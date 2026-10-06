@@ -76,9 +76,8 @@ The communication mode and baud rate for each port live in **service setup mode*
 - Add the device in Vital Recorder as **`Coro`**.
 
 ## Troubleshooting
-- **The port is configured but nothing arrives.** Verify the setup codes on the unit in front of you. An earlier revision of this guide listed the port-1 baud rate under code `40`; the service manual (P/N 2000947-004) assigns `30`/`40` to the *communications mode* of ports 1/2 and `31`/`41` to their *baud rate*. The manual numbering is used above.
+- **The port is configured but nothing arrives.** Verify the setup codes on the unit: the service manual (P/N 2000947-004) assigns `30`/`40` to the *communications mode* of ports 1/2 and `31`/`41` to their *baud rate*.
 
 ## Notes
 - Recorded parameters: **fetal HR1 / HR2** and **uterine activity (UACT / TOCO)**. On current builds the **maternal vital signs (SpO2, PR, NIBP)** are also recorded into the same file as the fetal channels.
 - The 170 Series covers models **170, 171, 172, 173 and 174**. The setup-code table above is common to all of them; the *HR offset* and *ECG artifact elimination* codes exist only on 172/173/174.
-- **Gap:** there are no field photographs for this device yet — no rear-panel shot, no RS-232 port location, no setup-mode display. Photographs of the rear RJ-45 ports and of the UA/FHR displays while in service setup mode would be a useful addition.

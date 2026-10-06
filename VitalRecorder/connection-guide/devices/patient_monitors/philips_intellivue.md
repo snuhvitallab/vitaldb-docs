@@ -1,4 +1,4 @@
-# Philips Intellivue MP / MX Series
+# Philips IntelliVue MP / MX Series
 
 <!-- meta
 category: Patient Monitor
@@ -107,17 +107,7 @@ The DB-9F end goes to the PC's DB-9M serial port or a USB-Serial converter (e.g.
 - **No CO2 / AWP from the ventilator.** Enable the monitor's ventilator-data setup; the parameters are not forwarded otherwise.
 - **Anesthesia-machine waves arrive in the wrong order (Datex-Ohmeda through IntelliBridge).** The order Vital Recorder receives is whatever the monitor sends. Set the wave order on the monitor to **C-F-V-P** (CO2, Flow, Volume, Pressure) — `wavs=` only tells Vital Recorder how to interpret the order.
 - **AWF looks wrong after an anesthesia-machine swap.** The airway-flow bias differs by bridged machine (about −130 for Datex-Ohmeda, −160 for Dräger). Re-request `awp`/`awf` in `vr.conf` after the swap.
+- **Waveforms stop a few seconds after recording starts while numerics continue.** More waveforms were requested than the serial link can carry, and the monitor then stops sending all of them. By default Vital Recorder adds a waveform for every numeric present on top of the ones selected. Clear the auto-add checkbox in the device dialog (`auto_wavs=0`) so only the selected waveforms are requested.
 - **Waves missing on old firmware (e.g. some MP20 units).** Request them explicitly in `vr.conf`.
 - **The recorder does not boot when powered from the monitor's rear USB port.** Seen on the MX750 and MX400 — use an external power supply.
 - **Repeated crashes on a multi-bed installation, or serial reception failing.** Fixed in 1.19.3 and 1.16.4 respectively — run the latest release.
-
-## Known Limitations
-
-- **MP2 / X2** monitors do not support serial communication and **cannot be used** with Vital Recorder.
-- The IntelliVue **X3** transport module has no MIB port and cannot be recorded when detached. The **MX400** is the smallest IntelliVue with an MIB board, and the MIB option is optional on it — confirm it is fitted before purchase.
-- **MX600–800** require the MIB board to be installed; **MX400–550** can use either the MIB port or the ASIB port on the Advanced Interface Card.
-- A **Datex-Ohmeda** machine bridged into the monitor via IntelliBridge does not forward gas-agent data to the monitor (a Dräger bridge does).
-
-## Notes
-
-- If the service password has been changed from `1345`, only the Philips service agent can supply it.

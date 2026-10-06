@@ -61,7 +61,3 @@ Resulting serial settings:
 
 - In the Vital Recorder device list this appears under **Cardiac monitor** as **Edwards Lifesciences: EV-1000**; recorded tracks are prefixed `EV1000/` (CO, CI, SV, SVI, SVV, SVR, SVRI, CVP, ART_MBP).
 - Both generations use the same `EV1000` device entry in Vital Recorder — only the adapter gender and port position differ.
-
-## Known Limitations
-
-- The serial settings should not be changed mid-case — configure the monitor **before** applying it to a patient.
