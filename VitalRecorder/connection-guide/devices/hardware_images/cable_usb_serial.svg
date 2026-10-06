@@ -51,5 +51,5 @@
 
   <!-- Note -->
   <rect x="80" y="165" width="360" height="14" rx="4" fill="#dbeafe"/>
-  <text x="260" y="175" text-anchor="middle" font-size="10" fill="#1e40af">Acts as direct cable — cross-gender adapter still needed for cross-wired devices</text>
+  <text x="260" y="175" text-anchor="middle" font-size="10" fill="#1e40af">Acts as a direct serial cable — a Null Modem adapter is still needed where a crossed link is required</text>
 </svg>

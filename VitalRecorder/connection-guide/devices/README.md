@@ -23,8 +23,6 @@ One recording PC collects from several devices at once. Serial devices reach the
   - [Syringe Pumps](#syringe-pumps)
   - [Brain Monitors](#brain-monitors)
   - [Others](#others)
-  - [Supported but Not Yet Documented](#supported-but-not-yet-documented)
-  - [Not Recordable](#not-recordable)
 - [Getting Started](#getting-started)
   - [Requirements](#requirements)
   - [Connection Types](#connection-types)
@@ -122,35 +120,6 @@ One recording PC collects from several devices at once. Serial devices reach the
 | [BlinkDC TwitchView](others/blink_twitchview.md) | Custom RJ45 (special wiring) | None | RJ45 on the **Charging Station** | `TwitchView` |
 | [OBELAB NIRSIT-ON+](others/obelab_nirsit_on.md) | Direct Serial | None | Rear USB (serial) — **open TCP 5525** on the tablet | `NirsitON` |
 | [IDMed TOFscan](others/idmed_tofscan.md) | TOF-RS1 / TOF-RS2 optic-serial cable (from IDMed) | None | **Optical** output | `TOFScan` |
-
-### Supported but Not Yet Documented
-
-Vital Recorder supports these devices (see `Supported_Devices.md`) but no connection page has been written — no field installation has been recorded yet. If you connect one, please contribute the page.
-
-| Device | Type | VR Device Name |
-|---|---|---|
-| Philips VueLink module | Patient monitor | `VueLink` |
-| GE Canvas · GE MPS (Dash 2500 module) | Patient monitor | `Canvas`, `MPS` |
-| Edwards ClearSight · Vigilance C | Hemodynamic | `ClearSight`, `Vigilance` |
-| Getinge PulsioFlex (PiCCO) | Hemodynamic | `PulsioFlex` |
-| Bilab AirTom / HemoVista · Edgecare CW10 | Hemodynamic | `AirTom`, `HemoVista`, `CW10` |
-| Fresenius Kabi Conox · PCBM | Brain / pump | `Conox`, `PCBM` |
-| B. Braun DoseLink (HL7 / MLLP) · Daiwha DS-5000 | Pump | `DoseLink`, `DS-5000` |
-| RGB Medical TOFcuff | Neuromuscular | `TOFcuff` |
-| Inbody PLEM100 | Brain | `PLEM100` |
-| Mindray monitors (HL7) · Nihon Kohden central server (ADT / ORF / NealTime) | Network | `Mindray : HL7`, `NIHONKOHDEN::*` |
-
-### Not Recordable
-
-Devices and data paths from which Vital Recorder **cannot record**, confirmed by testing or by the manufacturer's documentation. The reason states whether the limit is on the device side (no usable port or output) or on the Vital Recorder side (protocol not implemented).
-
-| Device | Why |
-|---|---|
-| Philips **MP2 / X2 / X3** | No usable serial port; X3 has no MIB board |
-| Philips **Avalon FM20** fetal monitor | Needs the optional MIB board **and** a protocol Vital Recorder does not yet implement |
-| Dräger **Vista 120S** | Its MEDIBUS/X port only *receives* from anesthesia machines; no response at any baud / frame combination |
-| Anesthesia-machine data **relayed through a Dräger Infinity Kappa** | Not forwarded on the Kappa export link — connect the machine directly |
-| **Nihon Kohden BSM without an RS-232C interface board**, or ventilator data shown on a BSM | Numerics need the interface board; ventilator values are not on the serial port |
 
 ---
 
@@ -293,35 +262,6 @@ Recorders with several serial channels are easier to support remotely when every
 | hotspot | Masimo ROOT (`X003`) |
 
 Leave a channel empty if the device is absent; other devices take the remaining channels.
-
-### Starter Kit
-
-Basic kit for recording **four serial devices at once**:
-
-| Item | Qty | Note |
-|---|---|---|
-| Null Modem adapter (M/F and F/F) | 6 | Keep spares |
-| Direct serial cable, M/F, 3 m | 4 | Buy the length you need |
-| 4-port USB-Serial converter | 1 | 4-port recommended |
-| Powered USB hub | 1 | Must have its own power adapter |
-| USB extension cable, M/F, 5 m | 1 | Buy the length you need |
-
----
-
-### Device Page Layout
-
-Every device page follows the same order. Optional sections are omitted when there is nothing to say.
-
-| Section | Content |
-|---|---|
-| Title, callout, connection table | Model name; one `> ⚠️` or `> **Note:**` callout for the single most important caution; a table with **Cable · Adapter · Port · (Serial) · VR Device Name** |
-| Before You Start *(optional)* | Model variants or checks that decide which cable to use |
-| Connection Steps | Numbered physical connection; sub-sections (`###`) for alternative paths such as a Y-cable or waveform output |
-| Device Configuration | Menus to set on the device |
-| Vital Recorder Setup | Device entry to add and any `vr.conf` options |
-| Troubleshooting *(optional)* | Symptom → cause → fix |
-| Known Limitations *(optional)* | What the link cannot deliver |
-| Notes *(optional)* | Anything else that affects the connection |
 
 ---
 

@@ -3,7 +3,7 @@
 
   <!-- Title -->
   <text x="280" y="22" text-anchor="middle" font-size="13" font-weight="bold" fill="#1e293b">Direct Serial Cable</text>
-  <text x="280" y="38" text-anchor="middle" font-size="10" fill="#64748b">Pin 2 ↔ Pin 2 (Rx) &nbsp;|&nbsp; Pin 3 ↔ Pin 3 (Tx) &nbsp;|&nbsp; Pin 5 ↔ Pin 5 (GND)</text>
+  <text x="280" y="38" text-anchor="middle" font-size="10" fill="#64748b">Pin 2 ↔ Pin 2 (Rx) &#160;|&#160; Pin 3 ↔ Pin 3 (Tx) &#160;|&#160; Pin 5 ↔ Pin 5 (GND)</text>
 
   <!-- LEFT CONNECTOR: DB-9 Female (device side) -->
   <!-- Trapezoid shell -->
