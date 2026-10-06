@@ -112,13 +112,6 @@ The DB-9F end goes to the PC's DB-9M serial port or a USB-Serial converter (e.g.
 - **The recorder does not boot when powered from the monitor's rear USB port.** Seen on the MX750 and MX400 — use an external power supply.
 - **Repeated crashes on a multi-bed installation, or serial reception failing.** Fixed in 1.19.3 and 1.16.4 respectively — run the latest release.
 
-## Known Limitations
-
-- **MP2 / X2** monitors do not support serial communication and **cannot be used** with Vital Recorder.
-- The IntelliVue **X3** transport module has no MIB port and cannot be recorded when detached. The **MX400** is the smallest IntelliVue with an MIB board, and the MIB option is optional on it — confirm it is fitted before purchase.
-- **MX600–800** require the MIB board to be installed; **MX400–550** can use either the MIB port or the ASIB port on the Advanced Interface Card.
-- A **Datex-Ohmeda** machine bridged into the monitor via IntelliBridge does not forward gas-agent data to the monitor (a Dräger bridge does).
-
 ## Notes
 
 - If the service password has been changed from `1345`, only the Philips service agent can supply it.
