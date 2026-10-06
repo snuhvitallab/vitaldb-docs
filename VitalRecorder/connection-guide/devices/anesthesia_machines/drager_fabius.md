@@ -75,4 +75,4 @@ If the machine's purchase date is unknown, the connector itself is the answer. F
 
 ## Known Limitations
 
-- **The Fabius GS has no waveform output by specification** — expect numerics only. The Fabius family in general offers AWP/AWF but no CO2 waveform.
+- **Fabius machines provide the AWP and AWF waveforms only** — there is no CO2 waveform.
