@@ -51,11 +51,6 @@ vr_device_name: B1x5M
 
 - Add the device in Vital Recorder as **GE :: B1x5M**; in `vr.conf` the type is `B1x5M`.
 
-## Troubleshooting
-
-- **No DB-9 on the rear panel.** Some B125M / B105M units ship without the serial port fitted; what looks like the port is the connector for GE's **Multi I/O adapter**, which must be purchased from GE to obtain the RS-232 port. The same applies to the B20 / B40.
-- **Waveforms stop after about 40 minutes.** Observed on a B125M running on a plain direct serial cable. Check that the PC-side converter is FTDI-based and, if the site allows, shorten the requested `wavs` list.
-
 ## Notes
 
 - The B155M carries its own serial port, so **no ATEN converter is involved** — a plain direct serial cable, unlike the CARESCAPE Bx50. Protocol and tracks are identical to the B650.
