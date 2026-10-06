@@ -52,7 +52,14 @@ The serial protocol lives several levels deep, in the diagnostic/service area of
 
 - In Vital Recorder, select the device as **`A2000`**. The single-channel BISx module is a separate entry (`BISx`), and BIS VISTA is `VISTA` — do not mix them up.
 
-## Notes
+## Troubleshooting
+
+- **EEG scaling is wrong after the gain or sampling frequency was changed on the monitor.** Vital Recorder fixes gain, offset and sample rate per track at creation time — **delete and re-create** the affected track for the new scaling to apply.
+
+## Known Limitations
+
 - **BIS and Masimo PSI (SedLine) share the same index slot in Vital Recorder** and cannot both be recorded for the same patient at the same time.
-- Vital Recorder fixes gain, offset and sample rate per track at creation time. If the EEG gain or sampling frequency is changed on the monitor afterwards, the affected track must be **deleted and re-created** for the new scaling to apply.
+
+## Notes
+
 - The A-2000's serial port is also the software/firmware download path, so a cable left connected during a service update can interfere — disconnect Vital Recorder before servicing.

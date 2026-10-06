@@ -75,9 +75,16 @@ The VISTA menu is a touch screen paged with **Next**. **Serial Protocol** sits t
 - With **Legacy Binary** selected, add it as **`BIS (binary)`** instead — this is the only way to record the 128 Hz EEG waveform.
 - The A-2000 (`A2000`) and the single-channel BISx module (`BISx`) are separate entries — do not mix them up.
 
-## Notes
-- The Maintenance menu also holds **BISx Connection History**, which lists the serial number of each BISx that was attached — useful when reconciling a recording with the sensor actually used.
+## Troubleshooting
+
+- **EEG scaling is wrong after the gain or sampling frequency was changed on the monitor.** Vital Recorder fixes gain, offset and sample rate per track at creation time — **delete and re-create** the affected track for the new scaling to apply.
+
+## Known Limitations
+
 - **BIS and Masimo PSI (SedLine) share the same index slot in Vital Recorder** and cannot both be recorded for the same patient at the same time.
-- Vital Recorder fixes gain, offset and sample rate per track at creation time. If the EEG gain or sampling frequency is changed on the monitor afterwards, the affected track must be **deleted and re-created** for the new scaling to apply.
 - The **USB Type A** port is for data export to a removable drive and for monitor/BISx software updates — it is not a Vital Recorder data path. Use the RS-232 port.
+
+## Notes
+
+- The Maintenance menu also holds **BISx Connection History**, which lists the serial number of each BISx that was attached — useful when reconciling a recording with the sensor actually used.
 - Aspect/Medtronic do not publish the serial data format in the operating or service manual; the manuals direct users to contact Medtronic Technical Service. The settings above reflect the configuration Vital Recorder expects.

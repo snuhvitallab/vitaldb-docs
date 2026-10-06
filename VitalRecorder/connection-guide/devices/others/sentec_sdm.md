@@ -52,11 +52,14 @@ Navigate to **Interfaces → Serial Interface** and configure:
 
 - Add the device in Vital Recorder as **`SDM`**.
 
+## Known Limitations
+
+- The SDM's three interface connectors — serial data port, Multipurpose I/O port, LAN port — are **not isolated from each other**. Connecting accessory equipment to only one of them needs no extra measures; connecting to two or three simultaneously may require additional safety measures under IEC 60601-1. Consult a qualified technician if in doubt.
+- Any equipment attached to the SDM's data ports must be certified to IEC 60950, and the resulting combination must comply with IEC 60601-1.
+
 ## Notes
 
 - **Firmware requirement:** SenTecLink at 115200 baud requires SDM software **SMB SW-V08.00.xx or higher**.
-- The SDM's three interface connectors — serial data port, Multipurpose I/O port, LAN port — are **not isolated from each other**. Connecting accessory equipment to only one of them needs no extra measures; connecting to two or three simultaneously may require additional safety measures under IEC 60601-1. Consult a qualified technician if in doubt.
-- Any equipment attached to the SDM's data ports must be certified to IEC 60950, and the resulting combination must comply with IEC 60601-1.
 
 ## Sources
 

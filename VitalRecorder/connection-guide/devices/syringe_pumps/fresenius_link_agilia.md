@@ -76,15 +76,20 @@ Enabling **Data Export** is a **one-time** procedure performed over LAN from a P
 
   <img src="../hardware_images/fresenius_link_agilia_2.png" width="450" alt="Vital Recorder Device Settings row with Device Type Link+, Name Link+, Port ACM0 and the Y Cable checkbox unchecked">
 
+## Troubleshooting
+
+- **The Link+ is unstable — the recorder reboots or loses the server connection.** USB power is the usual cause: rooms with this symptom all had a Link+ on a bus-powered port, and the syslog shows USB power errors before each drop. Feed the rack through a **powered hub** or a Y-cable with external power, and keep the USB run short — a 6 m extension with a repeater still failed.
+- **The rack stops reporting after a network or power event.** **Power-cycle the pump rack and then restart Vital Recorder** — the recorder applies a 60-second timeout before it gives up on the port, so the order matters.
+- **A previously working rack reports nothing after a service intervention.** `Data Export` reverts to disabled if the rack is reset to factory configuration — re-run the web procedure.
+- **Crashes or a failed reconnection on an older build.** Several Link+-specific crashes and a reconnection failure were fixed across 1.18.50–1.19.5; upgrade before troubleshooting hardware.
+
+## Known Limitations
+
+- The rack also carries an RS-232 connector, documented by Fresenius Kabi for system management, maintenance and export to a Patient Data Management System (RS-232 levels, asynchronous, half duplex, up to 115.2 kb/s). Vital Recorder does not use it; the USB path above is the supported one.
+
 ## Notes
 
 - **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
-
-- **USB power is the usual cause of an unstable Link+.** Rooms whose recorder rebooted or lost the server connection all had a Link+ on a bus-powered port; the syslog shows USB power errors before each drop. Feed the rack through a **powered hub** or a Y-cable with external power, and keep the USB run short — a 6 m extension with a repeater still failed.
+- All Agilia SP / VP modules on the rack are reported through the one `Link+` device. Track names are distinguished per module by the rack, so no separate Vital Recorder device is added for each pump.
 - If the PC reaches the rack through a Windows hotspot instead of the LAN port, set the rack's address to **`192.168.137.2`** in the web interface.
 - The four-channel **Agilia Link4+** rack is the same device with the `Link4` type name in older builds.
-- Several Link+-specific crashes and a reconnection failure were fixed across 1.18.50–1.19.5; on an older build, upgrade before troubleshooting hardware.
-- All Agilia SP / VP modules on the rack are reported through the one `Link+` device. Track names are distinguished per module by the rack, so no separate Vital Recorder device is added for each pump.
-- If the rack stops reporting after a network or power event, **power-cycle the pump rack and then restart Vital Recorder** — the recorder applies a 60-second timeout before it gives up on the port, so the order matters.
-- The rack also carries an RS-232 connector, documented by Fresenius Kabi for system management, maintenance and export to a Patient Data Management System (RS-232 levels, asynchronous, half duplex, up to 115.2 kb/s). Vital Recorder does not use it; the USB path above is the supported one.
-- `Data Export` reverts to disabled if the rack is reset to factory configuration — re-run the web procedure after any service intervention that reports nothing on a previously working rack.

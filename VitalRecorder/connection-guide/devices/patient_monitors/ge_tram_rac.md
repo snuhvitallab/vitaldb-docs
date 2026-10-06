@@ -76,13 +76,15 @@ No configuration is required on the TRAM-RAC — the analog outputs are always l
 
 - There is no Vital Recorder device entry for this port. Add the **ADC** (DataQ DI-149 / DI-155 / DI-1110 or SNU-ADC) as the device and map each analog channel to a track.
 
-## Notes
+## Troubleshooting
 
-- **Vital Recorder records ECG lead II only** from this port. If the monitor is displaying another lead, switch it to **lead II** or the ECG channel stays flat.
+- **The ECG channel stays flat.** Vital Recorder records **ECG lead II only** from this port — if the monitor is displaying another lead, switch it to **lead II**.
+- **A DataQ DI-1110 (or newer) is not recognised.** These can run in either libusb or CDC mode, and Vital Recorder only recognises **CDC mode** — switch the device over before use; see the [manufacturer guide](https://www.dataq.com/blog/data-acquisition/usb-daq-products-support-libusb-cdc).
+- **The channel on Trace I (pin 2) changes unexpectedly.** It mirrors whatever trace sits at the top of the monitor screen, so changing the displayed lead changes what is recorded on that channel. Pins 9 and 10 (ECG II and ECG V) are fixed and are the safer choice.
+
+## Notes
 
 - **Analog output scaling** (GE Solar 8000M/i service manual): ECG **1 V/mV ± 10%**, invasive BP **1 V / 100 mmHg**, SpO2 **0–100 % equivalent to 0–1 V**. Use these to set the per-channel gain and unit in Vital Recorder.
 - **ICP:** when monitoring ICP, the ICP module must be in the **first slot** of the TRAM-RAC.
 - **Choosing an ADC:** the DI-149 and DI-155 differ mainly in voltage resolution. The DI-149 is adequate for general monitoring; use the DI-155 if you intend to analyse ECG detail such as P- or T-waves.
-- **DataQ DI-1110 and newer** can run in either libusb or CDC mode. Vital Recorder only recognises **CDC mode**, so switch the device over before use — see the [manufacturer guide](https://www.dataq.com/blog/data-acquisition/usb-daq-products-support-libusb-cdc).
-- Trace I (pin 2) mirrors whatever trace sits at the top of the monitor screen, so changing the displayed lead changes what is recorded on that channel. Pins 9 and 10 (ECG II and ECG V) are fixed and are the safer choice.
 - If the analog port is already in use for another purpose, ECG and ABP can also be taken from the **Defib.Sync** connector on the module front panel — see [GE Defib Connectors](ge_defib.md).

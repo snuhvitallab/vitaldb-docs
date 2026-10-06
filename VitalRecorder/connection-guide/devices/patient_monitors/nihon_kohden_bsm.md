@@ -46,24 +46,25 @@ No monitor-side menu change is normally required.
 
 - Serial: **RS-232C**. The BSM RS-232C socket supports **9600 / 19200 / 38400 baud**. If nothing arrives, confirm the port's configured baud rate with Nihon Kohden.
 
+## Vital Recorder Setup
+
+- In Vital Recorder, add **Patient monitor → Nihon Kohden : BSM**.
+
 ## Troubleshooting
 
 - **The port opens but no data arrives.** Confirm the **Null Modem (M/F)** is fitted — the original connection guide specifies it for the QI-373P RS-232C port. Then confirm the port's baud rate (9600 / 19200 / 38400) with Nihon Kohden.
 - **No RS-232C socket on the panel.** The interface unit is missing or is a variant without the serial option — see the [Model / Interface Matrix](#model--interface-matrix). No cable will help.
 - **Numerics arrive but no waveforms.** Expected: the RS-232C link carries numeric data only. Waveforms need the `ECG/BP OUT` path and an ADC.
+- **Central-server path delivers nothing.** The HL7 plug-in is not installed on the server, or the ADT device was not given the monitor's bed name — see the central-server path under Notes.
 
-## Vital Recorder Setup
+## Known Limitations
 
-- In Vital Recorder, add **Patient monitor → Nihon Kohden : BSM**.
+- The RS-232C link carries **numeric data only**; waveforms need the `ECG/BP OUT` path and an ADC.
+- **Ventilator parameters displayed on a BSM** (ventilator wired to the monitor with a Nihon Kohden cable) are **not** available on the monitor's serial port; they only come through the central server, or by connecting the ventilator directly (a Y-cable on the Nihon Kohden ventilator cable works).
+- **CSM / LifeScope** models are less well verified than BSM — treat support as unconfirmed. **CSM 1702 / PSM** are expected to speak the BSM protocol but unverified — test before committing an installation. ❓ *Unverified — tracked in [unverified.md](../unverified.md).*
 
 ## Notes
 
 - **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
-
-- **Central-server path (no per-bed cable).** Where a Nihon Kohden central server with the HL7 gateway is installed, Vital Recorder can take data from it instead: add **three** devices — `NIHONKOHDEN::ADT` (patient ID, server port **9007**), `NIHONKOHDEN::ORF` (numerics every 30 s, port **7999**) and `NIHONKOHDEN::NealTime` (waveforms, port **9001**, at most three waves — default ECG_II, PLETH, AWP). The ADT device must be given the monitor's bed name. The gateway's *Start Code* setting must match what the client expects, and changing it can break the site's EMR feed — coordinate with Nihon Kohden. Without the HL7 plug-in the server delivers nothing.
-- **Ventilator parameters displayed on a BSM** (ventilator wired to the monitor with a Nihon Kohden cable) are **not** available on the monitor's serial port; they only come through the central server, or by connecting the ventilator directly (a Y-cable on the Nihon Kohden ventilator cable works).
-- **CSM 1702 / PSM** models: expected to speak the BSM protocol but unverified — test before committing an installation. ❓ *Unverified — tracked in [unverified.md](../unverified.md).*
--
+- **Central-server path (no per-bed cable).** Where a Nihon Kohden **central station** with the HL7 gateway is installed, Vital Recorder can take data from the server instead of per-bed serial: add **three** devices — `NIHONKOHDEN::ADT` (patient ID, server port **9007**), `NIHONKOHDEN::ORF` (numerics every 30 s, port **7999**) and `NIHONKOHDEN::NealTime` (waveforms, port **9001**, at most three waves — default ECG_II, PLETH, AWP). The ADT device must be given the monitor's bed name. The gateway's *Start Code* setting must match what the client expects, and changing it can break the site's EMR feed — coordinate with Nihon Kohden. Without the HL7 plug-in the server delivers nothing. Where there is no central server, per-bed serial is the only route.
 - The `QI-373P` interface carries **both** the RS-232C socket and the `ECG/BP OUT` port, so a single added board can serve numeric and waveform collection — but the waveform side still needs its own output cable and an ADC.
-- **CSM / LifeScope** models are less well verified than BSM — treat support as unconfirmed.
-- Where a Nihon Kohden **central station** exists, data can be taken from the server instead of per-bed serial. Where there is no central server, per-bed serial is the only route.

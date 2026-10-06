@@ -40,7 +40,6 @@ The COM (RS-232) connector pin assignment is: **2 RxD, 3 TxD, 4 DTR, 5 GND, 6 DS
 ## Notes
 
 - **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
-
 - **C6, C2, T1 and MR1** are listed in `Supported_Devices.md` with the same 38400-baud Block protocol and the `Hamilton` entry. The port layout and the menu path to set *Block* differ by model — this page documents the G5; treat it as a starting point for the others and record differences. ❓ *Unverified — tracked in [unverified.md](../unverified.md).*
 - Waveform capture from Hamilton ventilators is supported on current builds; no `wavs=` entry is needed — unlike the S/5 monitors, the Block protocol carries the waveforms by default.
 - Block mode carries all settings, measurements, alarms and up to 8 high-resolution waveforms; polling mode is limited to 4 low-resolution waveforms and a data subset — this is why Vital Recorder requires Block.

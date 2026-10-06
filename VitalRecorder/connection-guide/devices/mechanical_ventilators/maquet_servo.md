@@ -25,16 +25,20 @@ Nothing has to be enabled on the ventilator. The serial port is served by the bu
 
 > **Model differences:** Servo-i and Servo-s run the CIE at **9600 baud**; **Servo-U runs at 19200 baud**. Set the matching device entry in Vital Recorder.
 
-## Troubleshooting
-- **The Servo-i has only one usable serial port**, and in most installations the patient monitor already occupies it. A read-only Y-cable tap does **not** work here: the listening branch never sees the command side of the exchange, so the parameter order cannot be resolved and parsing fails. **A direct connection is required** to collect values — otherwise take the data from the monitor instead (Servo-i → Philips Intellivue → Vital Recorder).
-- **Port opens, then a repeating "no data for 20 s → close" loop:** check the cable first — cross/Null Modem type, pin-out and that both connectors are fully seated — and confirm the connection is direct rather than a tap. Confirm the RS-232 output side of the ventilator with Getinge service documentation if the cable is proven good.
-
 ## Vital Recorder Setup
 
 - In Vital Recorder, add the device as **`Servo-i`**.
 
+## Troubleshooting
+
+- **Port opens, then a repeating "no data for 20 s → close" loop.** Check the cable first — cross/Null Modem type, pin-out and that both connectors are fully seated — and confirm the connection is direct rather than a tap (see Known Limitations). Confirm the RS-232 output side of the ventilator with Getinge service documentation if the cable is proven good.
+
+## Known Limitations
+
+- **The Servo-i has only one usable serial port**, and in most installations the patient monitor already occupies it. A read-only Y-cable tap does **not** work here: the listening branch never sees the command side of the exchange, so the parameter order cannot be resolved and parsing fails. **A direct connection is required** to collect values — otherwise take the data from the monitor instead (Servo-i → Philips Intellivue → Vital Recorder).
+- Only 4 waveform channels can be sampled simultaneously over the CIE (a firmware limit of the interface).
+
 ## Notes
 
 - **Servo-U.** Supported at **19200 baud** (per `Supported_Devices.md`) with the same `Servo-i` entry; several sites report Servo-U replacing Servo-i fleets. **Whether the Servo-U needs the Null Modem, and which of its RS-232 ports is live, has not been verified on a unit** — photograph the connector panel and the interface menu on first contact and record it here. ❓ *Unverified — tracked in [unverified.md](../unverified.md).*
-- Only 4 waveform channels can be sampled simultaneously over the CIE (a firmware limit of the interface).
 - Typical parameters recorded: Paw, PEEP, TV, MV, RR, FiO2.

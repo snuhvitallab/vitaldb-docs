@@ -47,11 +47,13 @@ Resulting serial settings:
 
 - In the Vital Recorder device list this appears under **Cardiac monitor** as **Edwards Lifesciences: Vigilance** — the same entry as the first-generation Vigilance. Selecting anything else will record nothing.
 
-## Notes
+## Troubleshooting
 
-- **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
-- **Do not confuse `Analog Input Setup` with `Serial Port Setup`.** The two entries sit next to each other in the Setup Menu, and Analog Input Setup lists **Port 1 / Port 2 / Port 3** which look deceptively like the serial ports. Analog input carries external pressure signals and is not used by Vital Recorder.
+- **Configured but nothing arrives.** Check that **`Serial Port Setup`**, not **`Analog Input Setup`**, was used. The two entries sit next to each other in the Setup Menu, and Analog Input Setup lists **Port 1 / Port 2 / Port 3** which look deceptively like the serial ports. Analog input carries external pressure signals and is not used by Vital Recorder.
 
   <img src="../hardware_images/edwards_vigilance2_4.png" width="450" alt="Vigilance II Analog Input Setup screen listing Port 1 (None), Port 2 (None) and Port 3 (None) — the wrong menu for Vital Recorder">
 
+## Notes
+
+- **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
 - Source: field reports on the VitalDB bug-report board (crossover cable required; only `Vigilance` selectable).

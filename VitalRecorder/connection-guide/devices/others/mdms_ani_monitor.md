@@ -39,9 +39,12 @@ ANI = Analgesia Nociception Index. The V2 monitor derives it from the ECG-based 
 
 - Add the device in Vital Recorder as **`ANIMonitor2`**.
 
+## Troubleshooting
+
+- **Vital Recorder shows the device but no values.** The most common cause is that **New Patient** was not pressed or the monitor is still initialising — the port is live but silent until a session starts.
+
 ## Notes
 
-- If Vital Recorder shows the device but no values, the most common cause is that **New Patient** was not pressed or the monitor is still initialising — the port is live but silent until a session starts.
 - The screwposts on the `REAL TIME EXPORT` connector are usable; fastening the converter prevents it working loose.
 
 ## Sources

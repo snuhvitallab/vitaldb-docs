@@ -49,9 +49,12 @@ No configuration is required on the module — the analog outputs are always liv
 
 - There is no Vital Recorder device entry for this port. Add the **ADC** (DataQ DI-149 / DI-155 / DI-1110 or SNU-ADC) as the device and map each analog channel to a track.
 
+## Known Limitations
+
+- Only **ECG and ABP** are available here — for PLETH, RESP or additional pressures use the 15-pin [TRAM-RAC ANALOG OUT](ge_tram_rac.md) port instead.
+- **Dash 4000:** the defib cable pin mapping differs from the SNUADCM default, so a dedicated mapping (`Dash defib-SNUADCM`) is needed rather than the stock channel map.
+
 ## Notes
 
 - **Voltage scaling** matches the TRAM-RAC analog output: ECG **1 V/mV ± 10%**, invasive BP **1 V / 100 mmHg**.
-- Only **ECG and ABP** are available here — for PLETH, RESP or additional pressures use the 15-pin [TRAM-RAC ANALOG OUT](ge_tram_rac.md) port instead.
-- **Dash 4000:** the defib cable pin mapping differs from the SNUADCM default, so a dedicated mapping (`Dash defib-SNUADCM`) is needed rather than the stock channel map.
 - The Solar 8000M/i service manual also documents a separate 9-pin *test* cable for this port (pin 1 brown = ECG_ANALOG_OUT, pin 2 red = BP_ANALOG_OUT, pin 6 green = ANALOG_RETURN). The two numbering schemes are not interchangeable — use the module-socket numbers above unless you are working from that test cable.

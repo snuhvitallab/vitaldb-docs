@@ -50,12 +50,18 @@ Only the machine's transmit line and ground are branched to CON2, so Vital Recor
 
 - In Vital Recorder, add the device as **`Datex-Ohmeda`**.
 
+## Troubleshooting
+
+- **Waveform gaps and lagging numerics.** This is a link-capacity limit, not a cable fault (see Known Limitations). Reduce the requested waveforms.
+- **Gas-agent values collide with a Philips monitor's on the same case.** Gas data from a Datex-Ohmeda machine arrives on the `AGENT1` track; keep the device types distinct so each source keeps its own tracks.
+
+## Known Limitations
+
+- **The 19200 baud link carries about 1,920 characters per second.** When many parameters are active the stream exceeds that, waves drop out and numerics arrive late.
+
 ## Notes
 
 - **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
-
-- **Waveform gaps and lagging numerics are a link-capacity limit**, not a cable fault. The machine's 19200 baud link carries about 1,920 characters per second; when many parameters are active the stream exceeds that, waves drop out and numerics arrive late. Reducing the requested waveforms helps.
 - Confirmed models in the field include the **Aisys CS2** and **Avance CS2**.
 - With **`AUTO_DETECT=1`** in `vr.conf` GE / Datex-Ohmeda S/5 devices are identified on the serial line without a `[DEV/...]` section.
-- **Anesthetic agent labeling:** gas data from a Datex-Ohmeda machine arrives on the `AGENT1` track. If the same case also records gas from a Philips monitor, the two displays collide — keep the device types distinct so each source keeps its own tracks.
 - Typical parameters recorded: Paw, Pplat, EtCO2, TV, MV, FiO2.

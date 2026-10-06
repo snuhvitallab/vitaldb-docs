@@ -70,12 +70,14 @@ Only the machine's transmit line and ground are branched to CON2, so Vital Recor
 > Atlan COM (DB9F) --- Null Modem F/F --- DB9M  Y-cable  CON1 (DB9F) --- Null Modem M/F --- existing device
 > ```
 
+## Troubleshooting
+
+- **Numerics arrive but no waveforms.** Waveforms must be requested explicitly with `wavs=` in the device section — up to 4 at a time (e.g. `wavs=AWP,AWF`). On an **Atlan A300**, some units show this together with a repeating `MEDIBUS COM1 FAILURE` warning even with `wavs=` set — under investigation; collect with `DEBUG=1` if you see it.
+- **Waveforms come out in the wrong order on a Y-cable (read-only) tap.** On current builds the order is detected automatically when the other device's requests are visible on the line; otherwise fix it with `wavs=`.
+- **The port does not open.** In `vr.conf`, `port=` must be the actual serial port name of the converter channel (e.g. `C1`), not `COM1`.
+- **The baud-rate setting cannot be found on an Atlan A350.** It is not in the obvious interface menu — ask the Dräger engineer for the path.
+
 ## Notes
 
 - **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
-
 - **Do not unplug a cable already occupying COM1 while the machine is running.** On a Primus this has switched off the connected patient monitor, which then did not restart — use the Y-cable, and fit it between cases.
-- **Atlan A300:** numerics arrive but **no waveforms**, with a repeating `MEDIBUS COM1 FAILURE` warning, on some units — under investigation; collect with `DEBUG=1` if you see it. **Atlan A350:** the baud-rate setting is not in the obvious interface menu — ask the Dräger engineer for the path.
-- **Waveforms** must be requested explicitly with `wavs=` in the device section — up to 4 at a time (e.g. `wavs=AWP,AWF`).
-- **Y-cable (read-only) taps:** on current builds the waveform order is detected automatically when the other device's requests are visible on the line; otherwise fix it with `wavs=`.
-- In `vr.conf`, `port=` must be the actual serial port name of the converter channel (e.g. `C1`), not `COM1`.

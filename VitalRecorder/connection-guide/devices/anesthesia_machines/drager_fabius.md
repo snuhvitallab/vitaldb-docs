@@ -76,13 +76,15 @@ If the machine's purchase date is unknown, the connector itself is the answer. F
 3. **Cable and adapter already match the connector → check the machine, not the cable.** Confirm in service mode that COM1 is set to **MEDIBUS at 9600**, and that the device was added in Vital Recorder as **`Primus`** rather than `MedibusX`.
 4. **Everything above checks out → check the Vital Recorder build.** Older builds could open the port and record nothing; **models without waveform capability (Fabius GS) recorded nothing at all before 1.19.20.** Update to the latest release before touching the cable.
 
+## Known Limitations
+
+- **The Fabius GS has no waveform output by specification** — expect numerics only. The Fabius family in general offers AWP/AWF but no CO2 waveform.
+
 ## Notes
 
 - **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
-
+- **Waveforms** must be requested with `wavs=` in the device section (up to 4).
 - **Fabius plus:** a unit with a female COM1 has been seen to answer MEDIBUS correctly on the line (ICC/DEVID/MEAS with valid checksums at 9600 8E1) while Vital Recorder still recorded nothing on an older build — consistent with the no-waveform bug fixed in 1.19.20. Re-test on the latest Vital Recorder before changing cables. ❓ *Unverified — tracked in [unverified.md](../unverified.md).*
-
-- **Waveforms** must be requested with `wavs=` in the device section (up to 4). **The Fabius GS has no waveform output by specification** — expect numerics only; the Fabius family in general offers AWP/AWF but no CO2 waveform.
 - Zeus and Infinity are grouped with the Fabius here because they share the MEDIBUS interface, and `Supported_Devices.md` lists Zeus alongside Primus and Fabius at 9600. **Their COM connector gender has not been verified** against Dräger documentation — check the connector before ordering an adapter. ❓ *Unverified — tracked in [unverified.md](../unverified.md).*
 
 ## Sources

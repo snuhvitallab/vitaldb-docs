@@ -51,8 +51,12 @@ The serial interface is configured over LAN through **SpaceOnline**, the module'
 
 - Add the device in Vital Recorder as **`SpaceCom`**.
 
+## Troubleshooting
+
+- **The SpaceCom links up but transmits nothing.** Configuration is mandatory — an unconfigured SpaceCom links up electrically but sends no data. Complete the SpaceOnline procedure above.
+- **A previously working station stops producing tracks.** After a firmware update or a factory reset the interface settings return to their defaults. Re-check **Interface Settings** first.
+
 ## Notes
+
 - The SpaceCom is the communication module of the **SpaceStation** rack; it reports the infusion pumps (Perfusor / Infusomat Space) docked in that rack, so one `SpaceCom` device in Vital Recorder covers the whole station rather than one entry per pump.
-- **Configuration is mandatory** — an unconfigured SpaceCom links up electrically but transmits nothing.
-- After a firmware update or a factory reset the interface settings return to their defaults. Re-check **Interface Settings** first when a previously working station stops producing tracks.
 - Restore the PC's Ethernet adapter to DHCP after configuration if it is also used on the hospital network.

@@ -51,15 +51,16 @@ Once the interface is set to S/5, no baud rate has to be chosen on the monitor: 
 - The Bx50 uses the Datex DRI waveform options. Default waveforms are `ECG1, PLETH, IABP1, CO2, AWP`; request others with `wavs=` — see [Configuration Guide → S5 / Datex Device Settings](../../../Configuration_Guide.md#s5--datex-device-settings-ge-solar--bx50--b1x5m--canvas).
 - Invasive arterial pressure is `IABP1` — the names `ART` and `INVP1` are not recognized.
 
+## Troubleshooting
+
+- **A freshly bought UC-232A produces nothing.** Converter revision matters: field reports indicate that only the older ATEN UC-232A revision (USB vendor ID `0x0557`) is driven by the monitor's built-in driver; newer stock built around a different chipset (`0x067b`) is not. Check the revision before changing anything else.
+- **An otherwise-correct installation produces nothing.** Dust in the rear USB ports has stopped such installations — clean the port before suspecting the converter.
+- **Communication stops and does not auto-recover (software version 2).** Data is received normally and then stops at an unpredictable point, and Vital Recorder does not re-establish the link on its own. Workaround: **unplug and re-plug the cable at the monitor end** — reception resumes immediately. Sites with frequent stoppages have fitted a relay to automate the re-connection, which reduced but did not fully eliminate the problem. Two causes have since been identified: (1) a missing hardware handshake on the PC-side converter (check DTR/RTS first), and (2) a one-second waveform gap at every re-request, which Vital Recorder fixed by sending the request only once at start-up — **update Vital Recorder** before chasing hardware.
+- **The link drops intermittently.** Prolific-based PC-side cables (ATEN new revision, NETmate Prolific, UGREEN Prolific) connect but drop intermittently; changing the monitor's USB port sometimes restores them. Avoid PL2303-based converters — they have proved unstable in the field (`pl2303_get_line_request failed`). Converters proven stable on Linux/PiVR: NETmate **KW-725 / KW-825** (FTDI) and UGREEN FTDI.
+- **Waveforms drop out.** Trim the `wavs=` list if the monitor cannot sustain all of the defaults (`wavs=1,4,8,9,13` — ECG1, PLETH, IABP1, CO2, AWP).
+
 ## Notes
 
-- **Default waveforms** for the `Bx50` entry are `wavs=1,4,8,9,13` (ECG1, PLETH, IABP1, CO2, AWP). Trim the list if the monitor cannot sustain all of them.
-- **PC-side converters proven stable on Linux/PiVR:** NETmate **KW-725 / KW-825** (FTDI) and UGREEN FTDI. Prolific-based cables (ATEN new revision, NETmate Prolific, UGREEN Prolific) connect but drop intermittently; changing the monitor's USB port sometimes restores them.
-- **Dust in the rear USB ports** has stopped otherwise-correct installations — clean the port before suspecting the converter.
-
-- **Converter revision matters.** Field reports indicate that only the older ATEN UC-232A revision (USB vendor ID `0x0557`) is driven by the monitor's built-in driver; newer stock built around a different chipset (`0x067b`) is not. If a freshly bought UC-232A produces nothing, check the revision before changing anything else.
-- **Communication stops and does not auto-recover (software version 2).** Data is received normally and then stops at an unpredictable point, and Vital Recorder does not re-establish the link on its own. Workaround: **unplug and re-plug the cable at the monitor end** — reception resumes immediately. Sites with frequent stoppages have fitted a relay to automate the re-connection, which reduced but did not fully eliminate the problem. Two causes have since been identified: (1) a missing hardware handshake on the PC-side converter (check DTR/RTS first), and (2) a one-second waveform gap at every re-request, which Vital Recorder fixed by sending the request only once at start-up — **update Vital Recorder** before chasing hardware.
-- **Avoid PL2303-based converters on the PC side.** They have proved unstable in the field (`pl2303_get_line_request failed`).
 - **Confirm the model before the site visit.** The B1x5M (B105M/B125M/B155M) and the Bx50 look alike on a pre-survey form but need different cabling and a different Vital Recorder device type — see [GE B105M / B125M / B155M](ge_b105m.md).
 - **VRZero note:** the USB cable that connects to VRZero must support handshaking. Cables known to work:
   - [NETmate KW-525 (0.45 m)](http://www.compuzone.co.kr/product/product_detail.htm?ProductNo=374732)

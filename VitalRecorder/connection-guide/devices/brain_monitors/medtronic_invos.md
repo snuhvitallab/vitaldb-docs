@@ -59,6 +59,7 @@ Digital output is off by default and is reached through the softkey row at the b
 - In Vital Recorder, select the device as **`Invos`**. Recorded parameters are left and right **rSO2** (cerebral/somatic regional oxygen saturation).
 
 ## Notes
+
 - Where the monitor is far from the PC, the site's arrangement runs the DB-9 male side into a **DB-9-to-RJ-45 adapter cable** over structured cabling, then back to a USB-Serial converter at the PC. The Null Modem F/F gender change is still required somewhere in that chain.
 - The INVOS serial port uses a standard DE-9 RS-232 pinout (2 RxD, 3 TxD, 5 GND, plus the DTR/DSR/RTS/CTS handshake lines) as documented in the INVOS Patient Monitor operator's manual; verify against the manual for the specific model on site before making a custom cable.
 - Newer INVOS models place the serial port on the **docking station** rather than on the monitor body, and label the digital-output formats **PC LINK 1 / PC LINK 2** instead of OUTPUT FORMAT 1/2/3. The cable and gender requirements are unchanged.

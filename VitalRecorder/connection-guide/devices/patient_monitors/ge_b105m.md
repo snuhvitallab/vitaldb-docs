@@ -66,11 +66,13 @@ wavs=ECG1,PLETH,IABP1,CO2,AWP
 
 See [Configuration Guide → S5 / Datex Device Settings](../../../Configuration_Guide.md#s5--datex-device-settings-ge-solar--bx50--b1x5m--canvas) for the full list of supported waveform names.
 
+## Troubleshooting
+
+- **No DB-9 on the rear panel.** Some B125M / B105M units ship without the serial port fitted; what looks like the port is the connector for GE's **Multi I/O adapter**, which must be purchased from GE to obtain the RS-232 port. The same applies to the B20 / B40.
+- **Nothing is recorded on a unit that monitors only ECG or only SpO2** (dialysis rooms, some wards). Vital Recorder's default case-cut logic waits for **both** HR and SpO2 before it starts recording. Set `CUT_BY` in `vr.conf` (HR-only or by-hour).
+- **Waveforms stop after about 40 minutes.** Observed on a B125M running on a plain direct cable. Check that the PC-side converter carries DTR/RTS and, if the site allows, shorten the requested `wavs` list — asking for more waveforms than the monitor can sustain is the usual trigger.
+
 ## Notes
 
-- **No DB-9 on the rear panel?** Some B125M / B105M units ship without the serial port fitted; what looks like the port is the connector for GE's **Multi I/O adapter**, which must be purchased from GE to obtain the RS-232 port. The same applies to the B20 / B40.
 - The B155M carries its own serial port, so **no ATEN converter is involved** — a plain direct cable, unlike the CARESCAPE Bx50. Protocol and tracks are identical to the B650.
-- **Units that monitor only ECG or only SpO2** (dialysis rooms, some wards): Vital Recorder's default case-cut logic waits for **both** HR and SpO2 before it starts recording. Set `CUT_BY` in `vr.conf` (HR-only or by-hour) or nothing is recorded.
-
-- **Waveforms stop after about 40 minutes.** Observed on a B125M running on a plain direct cable. Check that the PC-side converter carries DTR/RTS and, if the site allows, shorten the requested `wavs` list — asking for more waveforms than the monitor can sustain is the usual trigger.
 - **Do not confuse the B1x5M with the Bx50.** The CARESCAPE B450/B650/B850 uses a different port (USB, with an ATEN UC-232A), a Null Modem adapter and the `Bx50` device type. Pre-survey forms frequently list one model and the site turns out to have the other — see [GE CARESCAPE B850 / B650 / B450](ge_carescape.md).

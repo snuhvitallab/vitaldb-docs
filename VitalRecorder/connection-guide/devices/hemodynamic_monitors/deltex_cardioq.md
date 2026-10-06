@@ -51,6 +51,6 @@ Do this with **no probe connected** — the monitor blocks setup changes otherwi
 ## Notes
 
 - **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
-- Deltex documents this port as being "for serial data offload by linking to a patient monitor or bedside terminal server for electronic medical records (EMR)" — it is the correct port for Vital Recorder.
 - After a protocol is selected the monitor shows a connection-status icon (not connected / connecting / connected), which is a quick way to confirm the link.
+- Deltex documents this port as being "for serial data offload by linking to a patient monitor or bedside terminal server for electronic medical records (EMR)" — it is the correct port for Vital Recorder.
 - The operating handbook does not publish the RS-232 frame specification ("contact your Deltex Medical representative for details").

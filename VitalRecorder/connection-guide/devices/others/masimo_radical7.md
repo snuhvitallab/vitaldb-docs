@@ -47,14 +47,16 @@ Extracts SpO₂, pulse rate, PI and the digital pleth waveform.
 
 - Add the device in Vital Recorder as **`Radical7`**.
 
+## Known Limitations
+
+- **No serial output while undocked.** The serial interface exists only on the Docking Station, and the device-output settings are inaccessible while undocked — make all changes and record with the handheld in the dock.
+- The Docking Station has **no USB port**; only the serial and analog connectors on P1 / P2.
+
 ## Notes
 
 - **Alternative without the ASCII 1 path:** add the device as **`X002`** with the Docking Station serial set to **IAP** protocol at **57600** — the maximum the Radical-7 supports. This delivers SpO2, PR, PI and the **pleth waveform without an ADC**.
-- The Docking Station has **no USB port**; only the serial and analog connectors on P1 / P2.
-
 - ASCII 1 is the Radical-7's default serial output mode; if someone has changed it, step 3 restores it.
 - When the Radical-7 is docked, the docking-station field is reported as `ASCII1 IAP FLEXPORT` — this is normal.
-- Device-output settings are inaccessible while undocked, so make all changes with the handheld in the dock.
 - If the Radical-7 is used **together with a Masimo Root**, power on the **Radical-7 first**, then the Root. See [Masimo ROOT](masimo_root.md).
 
 ## Sources

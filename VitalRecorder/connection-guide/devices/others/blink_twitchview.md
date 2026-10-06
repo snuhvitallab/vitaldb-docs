@@ -57,10 +57,13 @@ The Charging Station carries a **combined RS-232 serial + Ethernet port on a sin
 
 - Add the device in Vital Recorder as **`TwitchView`**.
 
+## Known Limitations
+
+- No data is output while the Monitor is undocked.
+
 ## Notes
 
 - **Serial parameters (baud rate, data bits, parity) are not published.** The Operating Manual directs users to contact the manufacturer for "data format and connectivity details" — *verify with Blink Device Company*.
-- No data is output while the Monitor is undocked.
 - The TwitchView never transmits patient-identifying information over this link, but the traffic is unencrypted — keep the PC on a trusted network.
 
 ## Sources

@@ -99,21 +99,26 @@ The DB-9F end goes to the PC's DB-9M serial port or a USB-Serial converter (e.g.
 
 - Add the device in Vital Recorder as **`Intellivue`**.
 
+## Troubleshooting
+
+- **A bed records nothing after a monitor swap or a power event.** The `DtOut1` setting can be lost silently. Re-check *Setup Interfaces*, then power-cycle the monitor and restart Vital Recorder.
+- **Numerics arrive but no pressure waveform.** Check the invasive pressure label on the monitor — it must be **`ART1` / `IBP1`**. Beds labelled `ART2` (or another second-channel label) record numerics only. Relabel on the monitor; the track name is not configurable in Vital Recorder.
+- **The ECG waveform is missing.** It disappears when the monitor is displaying lead I or III — switch to **lead II**.
+- **No CO2 / AWP from the ventilator.** Enable the monitor's ventilator-data setup; the parameters are not forwarded otherwise.
+- **Anesthesia-machine waves arrive in the wrong order (Datex-Ohmeda through IntelliBridge).** The order Vital Recorder receives is whatever the monitor sends. Set the wave order on the monitor to **C-F-V-P** (CO2, Flow, Volume, Pressure) — `wavs=` only tells Vital Recorder how to interpret the order.
+- **AWF looks wrong after an anesthesia-machine swap.** The airway-flow bias differs by bridged machine (about −130 for Datex-Ohmeda, −160 for Dräger). Re-request `awp`/`awf` in `vr.conf` after the swap.
+- **Waves missing on old firmware (e.g. some MP20 units).** Request them explicitly in `vr.conf`.
+- **The recorder does not boot when powered from the monitor's rear USB port.** Seen on the MX750 and MX400 — use an external power supply.
+- **Repeated crashes on a multi-bed installation, or serial reception failing.** Fixed in 1.19.3 and 1.16.4 respectively — run the latest release.
+
+## Known Limitations
+
+- **MP2 / X2** monitors do not support serial communication and **cannot be used** with Vital Recorder.
+- The IntelliVue **X3** transport module has no MIB port and cannot be recorded when detached. The **MX400** is the smallest IntelliVue with an MIB board, and the MIB option is optional on it — confirm it is fitted before purchase.
+- **MX600–800** require the MIB board to be installed; **MX400–550** can use either the MIB port or the ASIB port on the Advanced Interface Card.
+- A **Datex-Ohmeda** machine bridged into the monitor via IntelliBridge does not forward gas-agent data to the monitor (a Dräger bridge does).
+
 ## Notes
 
 - **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
-
-- **Invasive pressure label must be `ART1` / `IBP1`.** Beds labelled `ART2` (or another second-channel label) on the monitor have recorded numerics but **no pressure waveform**. Relabel on the monitor — the track name is not configurable in Vital Recorder.
-- **Datex-Ohmeda machine bridged through IntelliBridge:** the wave order Vital Recorder receives is whatever the monitor sends. Set the anesthesia-machine wave order on the monitor to **C-F-V-P** (CO2, Flow, Volume, Pressure) rather than relying on `wavs=`, which only tells Vital Recorder how to interpret the order.
-- **AWF looks wrong after a machine swap:** the airway-flow bias differs by bridged machine (about −130 for Datex-Ohmeda, −160 for Dräger). Re-request `awp`/`awf` in `vr.conf` after swapping the anesthesia machine.
-- **Powering a recorder from the monitor's rear USB port** is unreliable on the MX750 and MX400 (most units fail to boot the recorder). Use an external power supply.
-- **Transport monitors:** the IntelliVue **X3** module has no MIB port and cannot be recorded when detached; the **MX400** is the smallest IntelliVue with an MIB board. Confirm the MIB option is fitted before purchase — it is optional on the MX400.
 - If the service password has been changed from `1345`, only the Philips service agent can supply it.
-- **MP2 / X2** monitors do not support serial communication and **cannot be used** with Vital Recorder.
-- **MX600–800** require the MIB board to be installed; **MX400–550** can use either the MIB port or the ASIB port on the Advanced Interface Card.
-- Multi-bed Intellivue installations crashed repeatedly before 1.19.3, and a serial-reception failure affected 1.16.3 (fixed 1.16.4) — run the latest release.
-- **The `DtOut1` setting can be lost silently** after a monitor swap or a power event, which shows up as a bed that records nothing. Re-check *Setup Interfaces*, then power-cycle the monitor and restart Vital Recorder.
-- **The ECG waveform disappears when the monitor is displaying lead I or III** — use lead II.
-- Ventilator parameters (CO2 / AWP) additionally require the monitor's ventilator-data setup to be enabled.
-- When an anesthesia machine is bridged into the monitor via IntelliBridge, a **Datex-Ohmeda** bridge does not forward gas-agent data to the monitor (a Dräger bridge does).
-- On old firmware (e.g. some MP20 units) waves may have to be requested explicitly in `vr.conf`.

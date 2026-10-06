@@ -30,17 +30,16 @@ No on-device output setting is documented for the TOFscan; the optic-serial cabl
 - **Serial parameters (baud rate, data bits, parity) are not published** in the publicly available TOFscan manuals — *verify with IDMED*.
 - Whether a menu option must be enabled on some firmware versions is likewise unconfirmed — *verify with IDMED*.
 
-## Troubleshooting
-
-Most problems are hardware-related — usually a loose optical connector or the wrong cable. Report unresolved issues at [vitaldb.org](https://vitaldb.org).
-
 ## Vital Recorder Setup
 
 - Add the device in Vital Recorder as **`TOFScan`**.
 
-## Notes
+## Troubleshooting
 
-- **The TOFscan needs +6 V on pin 4 and −6 V on pin 7 of the DB-9** to talk. Vital Recorder drives these through the converter's DTR/RTS lines, so the USB-Serial converter must implement them — a 3-wire converter or cable (TX/RX/GND only) will never receive data.
+- **No data arrives.** Most problems are hardware-related — check first for a loose optical connector or the wrong cable (only TOF-RS1 / TOF-RS2 work). Report unresolved issues at [vitaldb.org](https://vitaldb.org).
+- **Cable and connector are correct but still nothing.** Check the USB-Serial converter: **the TOFscan needs +6 V on pin 4 and −6 V on pin 7 of the DB-9** to talk. Vital Recorder drives these through the converter's DTR/RTS lines, so the converter must implement them — a 3-wire converter or cable (TX/RX/GND only) will never receive data.
+
+## Notes
 
 - The optical connector is threaded; hand-tighten it so it cannot work loose during a case.
 - Because the link is optical on the device side, the TOFscan is galvanically isolated from the recording PC through this cable.

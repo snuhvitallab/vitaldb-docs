@@ -61,7 +61,10 @@ Only pins 2, 3 and 5 are needed for recording. Note that **pin 1 is ground on th
 - Add the device in Vital Recorder as **GE :: Dash 2500**; in `vr.conf` the type is `Dash2500`.
 - Parameters delivered over this link are numerics (ECG/HR, NIBP, SpO2, Temp, Resp, IBP). If the site needs the MPS module's PLETH waveform, that is recorded as the separate **MPS** device type.
 
+## Troubleshooting
+
+- **The link stays silent after configuration.** Re-check that **Remote Access** is set to **Serial 2** — the setting reverts if *Save Default Changes* is skipped before leaving configuration mode.
+
 ## Notes
 
 - **Do not use the Dash 2000/3000/4000 procedure here.** Those models expose serial data on an RJ-45 Aux terminal over the Unity Network protocol and need a custom DB-9F ↔ RJ-45 cable — see [GE Dash 2000 / 3000 / 4000 / 5000](ge_dash2000.md).
-- If the link stays silent after configuration, re-check that **Remote Access** is set to **Serial 2** — the setting reverts if *Save Default Changes* is skipped before leaving configuration mode.

@@ -36,8 +36,11 @@ No configuration is required on the monitor — X8 streams the S/5 Computer Inte
 - Add the device in Vital Recorder as **GE :: Bx50**; in `vr.conf` the type is `Bx50`. The S/5 AM shares the Bx50 driver because both speak the S/5 Computer Interface.
 - Default waveforms are `ECG1, PLETH, IABP1, CO2, AWP`; request others with `wavs=` — see [Configuration Guide → S5 / Datex Device Settings](../../../Configuration_Guide.md#s5--datex-device-settings-ge-solar--bx50--b1x5m--canvas). Invasive arterial pressure is `IABP1`, not `ART` or `INVP1`.
 
+## Troubleshooting
+
+- **X8 produces nothing.** Connector labels vary between frames: on some S/5 configurations the serial/computer interface sits on an Interface Module (M-INT) rather than on the CPU board, and the analog-output connectors X7/X8 are used for waveform outputs instead. Check the silk-screen on the actual frame and confirm the serial connector for that configuration in the Datex-Ohmeda S/5 technical reference manual before re-cabling.
+- **Gas readings collide with a Philips monitor on the same recording.** Gas from Datex/S/5 devices arrives on the `AGENT1` channel; if a Philips monitor also reports gas, keep the device types distinct in `vr.conf`.
+
 ## Notes
 
-- **Connector labels vary between frames.** On some S/5 configurations the serial/computer interface sits on an Interface Module (M-INT) rather than on the CPU board, and the analog-output connectors X7/X8 are used for waveform outputs instead. Check the silk-screen on the actual frame and, if X8 produces nothing, confirm the serial connector for that configuration in the Datex-Ohmeda S/5 technical reference manual before re-cabling.
 - **Handshaking.** As with the other S/5-protocol monitors, use a USB-Serial converter that carries DTR and RTS (FTDI recommended) rather than a 3-wire adapter.
-- Gas readings from Datex/S/5 devices arrive on the `AGENT1` channel. If a Philips monitor on the same recording also reports gas, the two displays collide — keep the device types distinct in `vr.conf`.

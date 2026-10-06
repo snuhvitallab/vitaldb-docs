@@ -60,11 +60,16 @@ Resulting serial settings:
 
 - In the Vital Recorder device list this appears under **Cardiac monitor** as **Edwards Lifesciences: HemoSphere**.
 
+## Troubleshooting
+
+- **Configured but nothing arrives.** Check that **Connectivity → Serial Port Setup** was used, not **Analog Input** (also in Advanced Setup) — analog input is for external pressure signals, not for Vital Recorder. On the Serial Port Setup screen itself, confirm the settings were made on the serial tab, not the second **USB** tab; Vital Recorder reads the DB-9 serial port.
+
+## Known Limitations
+
+- Edwards specifies the HemoSphere RS-232 port as using an Edwards proprietary protocol with a maximum data rate of 57.6 kbaud; **9600** is the rate Vital Recorder expects, so do not raise it.
+- Settings cannot be adjusted while the monitor is in use on a patient.
+
 ## Notes
 
 - **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
-- Edwards specifies the HemoSphere RS-232 port as using an Edwards proprietary protocol with a maximum data rate of 57.6 kbaud; **9600** is the rate Vital Recorder expects, so do not raise it.
-- The **Serial Port Setup** screen has a second tab, **USB** — leave it alone; Vital Recorder reads the DB-9 serial port.
-- Do not confuse **Analog Input** (also in Advanced Setup) with **Connectivity → Serial Port Setup**. Analog input is for external pressure signals, not for Vital Recorder.
-- Settings cannot be adjusted while the monitor is in use on a patient.
 - Source: HemoSphere Advanced Monitor Operator's Manual (Edwards eIFU, DOC-0167253).

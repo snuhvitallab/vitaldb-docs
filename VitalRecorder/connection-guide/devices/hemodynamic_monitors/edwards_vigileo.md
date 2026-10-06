@@ -43,8 +43,14 @@ vr_device_name: Vigileo
 
 - In the Vital Recorder device list this appears under **Cardiac monitor** as **Edwards Lifesciences: Vigileo**; recorded tracks are prefixed `Vigileo/`.
 
+## Troubleshooting
+
+- **Configured but nothing arrives.** Check that **`Serial Port Setup`** was used, not **`Analog In Setup`** / **`Analog Out Setup`** — they sit in the same Status Menu but are unrelated to Vital Recorder.
+
+## Known Limitations
+
+- Configure the monitor **before** applying it to a patient.
+
 ## Notes
 
 - **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
-- **Do not confuse `Analog In Setup` / `Analog Out Setup` with `Serial Port Setup`** — they sit in the same Status Menu but are unrelated to Vital Recorder.
-- Configure the monitor before applying it to a patient.

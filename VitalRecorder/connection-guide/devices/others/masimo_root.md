@@ -87,14 +87,18 @@ vr_device_name: Root
 
 - Add the device in Vital Recorder as **`Root`**.
 
-## Notes
+## Troubleshooting
 
-- **A ROOT that moves between rooms takes its Wi-Fi/hotspot pairing with it.** Recorders in two adjacent rooms have logged each other's ROOT for months after a move. Turn the ROOT's Wi-Fi off before moving it, and check the SSID after any Masimo service swap.
-- After changing the output settings the ROOT sometimes needs **two or three power cycles**, or a different USB port, before data flows.
+- **Vital Recorder shows the device but no data.** The ROOT was probably left at its **921600** default — re-check step 5 and confirm the power cycle actually happened. After changing the output settings the ROOT sometimes needs **two or three power cycles**, or a different USB port, before data flows.
+- **A recorder in another room is logging this ROOT (or this recorder logs a ROOT that was moved away).** A ROOT that moves between rooms takes its Wi-Fi/hotspot pairing with it — recorders in two adjacent rooms have logged each other's ROOT for months after a move. Turn the ROOT's Wi-Fi off before moving it, and check the SSID after any Masimo service swap.
+
+## Known Limitations
 
 - The USB ports on the ROOT are **data ports, not host ports** for the recorder — a Masimo cable or a USB-Serial converter is still what creates the COM port on the PC.
-- If the ROOT was previously left at its **921600** default, Vital Recorder will show the device but no data; re-check step 5 and confirm the power cycle actually happened.
-- **`X001` / `X002` / `X003` are Vital Recorder device types, not ROOT settings.** `Root` is the ASCII 1 serial path described above. `X001` reads the ROOT's native **921600**-baud serial stream (no baud change needed), `X002` is the same protocol at **57600** for a Radical-7 or a ROOT limited to that rate, and `X003` is the **TCP** path on port **4202** used with the Ethernet setup below. All three deliver the same parameters.
+
+## Notes
+
+- **`X001` / `X002` / `X003` are Vital Recorder device types, not ROOT settings.** `Root` is the ASCII 1 serial path described above. `X001` reads the ROOT's native **921600**-baud serial stream (no baud change needed), `X002` is the same protocol at **57600** for a Radical-7 or a ROOT limited to that rate, and `X003` is the **TCP** path on port **4202** used with the Ethernet setup above. All three deliver the same parameters.
 - On the PiVR path, the ROOT and the recorder must be on the same subnet — the destination IP is the recorder, not a gateway.
 
 ## Sources

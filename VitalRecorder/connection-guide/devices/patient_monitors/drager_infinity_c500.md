@@ -40,12 +40,18 @@ No monitor-side configuration is required for numeric data — the export protoc
 
 - In Vital Recorder, add **Patient monitor → Draeger : Infinity**.
 
+## Troubleshooting
+
+- **Data stops and does not resume on its own.** Expected on the Infinity family — restart Vital Recorder to re-establish the link.
+- **A correctly wired C700 produces no data.** Check the installed firmware with Dräger: **Infinity C700 firmware 7.xx breaks RS-232 output** (reported from the field).
+
+## Known Limitations
+
+- **The P2500 COM ports are inputs.** On installed systems COM1 is reserved for a Dräger anesthesia machine, COM2 for a TOFscan and COM3 for BIS Vista / EV-1000 data coming *into* the monitor, usually through a Capsule Tech adapter. Recording from the monitor uses the RJ10 export port and the Analog/Sync port described above, not those COMs.
+
 ## Notes
 
 - Dräger markets this family as the **Infinity Acute Care System (IACS)** — sites and vendors often say "IACS C500". Same connection.
-- **The P2500 COM ports are inputs.** On installed systems COM1 is reserved for a Dräger anesthesia machine, COM2 for a TOFscan and COM3 for BIS Vista / EV-1000 data coming *into* the monitor, usually through a Capsule Tech adapter. Recording from the monitor uses the RJ10 export port and the Analog/Sync port described above, not those COMs.
 - Dräger Korea has supplied the export cable and the analog cable set (MDR14 ↔ RJ45) to sites installing Vital Recorder — ask the Dräger service engineer before building cables.
-- **Data that stops does not resume on its own** on the Infinity family; restart Vital Recorder to re-establish the link.
-- **Infinity C700 firmware 7.xx breaks RS-232 output.** Reported from the field; verify the installed firmware with Dräger if a correctly wired C700 produces no data.
-- Sibling model **Infinity Kappa** uses the X5/X3 14-pin Mini-D port instead — see [Dräger Infinity Kappa](drager_infinity_kappa.md).
 - The MDR-14 pin numbering is not photographed in this guide; request the pinout from the cable vendor or Dräger when ordering.
+- Sibling model **Infinity Kappa** uses the X5/X3 14-pin Mini-D port instead — see [Dräger Infinity Kappa](drager_infinity_kappa.md).

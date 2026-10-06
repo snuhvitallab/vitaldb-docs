@@ -36,9 +36,12 @@ Nothing has to be changed in the monitor's service menu — the RS-232 port stre
 - Add the device in Vital Recorder as **GE :: Solar 8000**; in `vr.conf` the type is `Solar8000` — **written without a space**.
 - The Solar 8000 uses the Datex/DRI waveform options in Vital Recorder. Default waveforms are `ECG1, PLETH, IABP1, CO2, AWP`; request others with `wavs=` — see [Configuration Guide → S5 / Datex Device Settings](../../../Configuration_Guide.md#s5--datex-device-settings-ge-solar--bx50--b1x5m--canvas).
 
-## Notes
+## Troubleshooting
 
 - **Dropout that never recovers.** Recording stops although the COM port stays open. This has been traced to the per-device restart thread in Vital Recorder dying in the background, and is seen most often when a TwitchView is being recorded on the same machine. Restarting Vital Recorder recovers it.
 - **Garbage on the line after re-cabling.** Unplugging and re-plugging the serial cable while the device is running sends stray bytes into the stream. Stop the device in Vital Recorder before re-cabling, then start it again.
+
+## Notes
+
 - **RS-232 1 vs. the other serial connectors.** On the Solar 8000M/i the RS-232 ports on this panel also serve the iPanel computer and other serial peripherals. Use the one labeled **RS-232 1**; if a site already has something occupying it, confirm with biomedical engineering before moving cables.
 - The **Dash 2000 / 3000 / 4000** share this protocol but expose it on an RJ-45 Aux terminal and need a custom cable — see [GE Dash 2000 / 3000 / 4000 / 5000](ge_dash2000.md). The **Dash 2500** uses a different protocol entirely — see [GE Dash 2500](ge_dash2500.md).

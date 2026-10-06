@@ -60,11 +60,17 @@ No monitor-side configuration is required — the export protocol is always acti
 
 - In Vital Recorder, add **Patient monitor → Draeger : Infinity**.
 
-## Notes
+## Troubleshooting
+
+- **Data stops and does not resume on its own.** Expected on the Infinity family — restart Vital Recorder to re-establish the link.
+
+## Known Limitations
 
 - **Anesthesia-machine data shown on the Kappa (e.g. from an Atlan) is not forwarded** over the Kappa's export link. Connect Vital Recorder to the anesthesia machine directly.
-- For a recorder with a 3.5 mm serial jack (VRZ), the X5 cable is wired **pin 10 (TX) → tip, pin 11 (RX) → ring, pin 7 (GND) → sleeve**.
-- **Data that stops does not resume on its own**; restart Vital Recorder to re-establish the link.
 - Numeric data is delivered at a **2-second interval**; do not expect higher-rate trends over this link.
+
+## Notes
+
+- For a recorder with a 3.5 mm serial jack (VRZ), the X5 cable is wired **pin 10 (TX) → tip, pin 11 (RX) → ring, pin 7 (GND) → sleeve**.
 - The Analog/Sync port is documented as **X10** in the original guide, but the docking station photographed above labels its analog/sync connector **X16**. Confirm the label on the actual unit before wiring. ❓ *Unverified — tracked in [unverified.md](../unverified.md).*
 - Sibling model **Infinity C500 / C700** uses a completely different connection (P2500 RJ10 port) — see [Dräger Infinity C500 / C700](drager_infinity_c500.md).

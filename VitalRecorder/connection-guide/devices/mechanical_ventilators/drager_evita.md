@@ -45,16 +45,15 @@ vr_device_name: MedibusX
 
 ## Troubleshooting
 
-- **Port does not open (`opening failed`):** `port=` is set to `COM1`; use the real converter channel name.
-- **Numerics arrive but no waveforms:** add `wavs=` and run the latest Vital Recorder — waveform naming for MEDIBUS devices was corrected in 1.19.15/1.19.16 (an Evita V600 was the reported case) and confirmed working in the field on 1.19.22.
-- **Vital Recorder restarts repeatedly** when a MEDIBUS device is attached: a SIGSEGV loop present from 1.15.11 to 1.18.39 — fixed in 1.18.40; upgrade.
-- **`COM1 failure` repeating on the ventilator:** keep-alive and reply handling were fixed in 1.19.11 — upgrade.
-- **Nothing at all:** check the adapter (see Notes), the port's protocol setting, and that no other system already owns the port.
+- **Nothing at all.** Check the adapter (see Notes), the port's protocol setting, and that no other system already owns the port.
+- **Port does not open (`opening failed`).** `port=` is set to `COM1`; use the real converter channel name.
+- **Numerics arrive but no waveforms.** Add `wavs=` and run the latest Vital Recorder — waveform naming for MEDIBUS devices was corrected in 1.19.15/1.19.16 (an Evita V600 was the reported case) and confirmed working in the field on 1.19.22.
+- **Vital Recorder restarts repeatedly when a MEDIBUS device is attached.** A SIGSEGV loop present from 1.15.11 to 1.18.39 — fixed in 1.18.40; upgrade.
+- **`COM1 failure` repeating on the ventilator.** Keep-alive and reply handling were fixed in 1.19.11 — upgrade.
 
 ## Notes
 
 - **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
-
 - **Adapter gender is unverified.** ❓ *Unverified — tracked in [unverified.md](../unverified.md).* The original connection guide groups the Evita Infinity V500 with the Fabius and Zeus and specifies a null modem for all of them; the current Fabius page shows that the answer depends on the COM connector's gender (F/F onto a male port, M/F onto a female one). Look at the EVITA's connector and record which adapter worked.
 - MEDIBUS is also spoken by the Dräger **Carina, Babylog, Savina and Oxylog** — the same procedure applies, with `Primus` for 9600 machines and `MedibusX` for 19200 ones.
 - **No photographs yet** — the rear connector panel and the interface menu would be the most useful additions.

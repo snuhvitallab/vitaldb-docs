@@ -30,7 +30,14 @@ The device port is DB-9 **female** and the PC side is DB-9 **male**, so a direct
 
   <img src="../hardware_images/bionet_pion_2.png" width="450" alt="Vital Recorder with a device named Pion2 on COM5 and tracks PUMP2_CT, PUMP2_RATE, PUMP2_CP, PUMP2_CE, PUMP2_MODE showing TCIE and PUMP2_DRUG showing REMIFENTANIL">
 
-## Notes
-- Recorded tracks per pump are **`CT`** (target concentration), **`RATE`**, **`CP`** (plasma concentration), **`CE`** (effect-site concentration), **`MODE`** (e.g. `TCIE` for effect-site TCI) and **`DRUG`** (the selected agent, e.g. `REMIFENTANIL`).
-- Give every pump a distinct numbered name **before** recording starts. Two devices left at the default name both write to `PUMP1_` and their data will collide.
+## Troubleshooting
+
+- **Two pumps' data collide in the `PUMP1_` tracks.** Both devices were left at the default name. Give every pump a distinct numbered name (`Pion1`, `Pion2`, …) **before** recording starts.
+
+## Known Limitations
+
 - Each pump needs its own COM port, so a multi-port USB-Serial converter is the practical way to record several Pion units at once.
+
+## Notes
+
+- Recorded tracks per pump are **`CT`** (target concentration), **`RATE`**, **`CP`** (plasma concentration), **`CE`** (effect-site concentration), **`MODE`** (e.g. `TCIE` for effect-site TCI) and **`DRUG`** (the selected agent, e.g. `REMIFENTANIL`).

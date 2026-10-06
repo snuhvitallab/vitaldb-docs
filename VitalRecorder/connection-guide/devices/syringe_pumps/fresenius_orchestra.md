@@ -78,8 +78,13 @@ Two separate menus must be set: the **service-mode** serial configuration (which
 
 - Add the device in Vital Recorder as **`Orchestra`**.
 
+## Troubleshooting
+
+- **The Orchestra connects but produces no tracks.** Both halves of the configuration are required. Setting **RS 232-3 → IDMS** without assigning **COMM NEW SUP → 3** in service mode leaves the port silent — this is the common cause.
+- **The pump emits bursts on every keypress instead of a steady 1 s frame.** **"Send a frame on every change"** must stay unchecked; Vital Recorder expects the steady 1 s frame.
+- **The access code `00123` is rejected.** Menu wording and code behaviour can differ on other firmware revisions — request the current customisation code from Fresenius Kabi service rather than guessing.
+
 ## Notes
+
 - **Vital Recorder versions:** recording from the Orchestra Base Primea (including TCI) has been supported since **0.9.11**.
-- The firmware of the documented unit reports **V03.2S-1A**. Menu wording and code behaviour can differ on other firmware revisions; if `00123` is rejected, request the current customisation code from Fresenius Kabi service rather than guessing.
-- Both halves of the configuration are required. Setting **RS 232-3 → IDMS** without assigning **COMM NEW SUP → 3** in service mode leaves the port silent, which is the common cause of an Orchestra that connects but produces no tracks.
-- **"Send a frame on every change"** must stay unchecked. With it enabled the pump emits bursts on every keypress instead of the steady 1 s frame that Vital Recorder expects.
+- The firmware of the documented unit reports **V03.2S-1A**.

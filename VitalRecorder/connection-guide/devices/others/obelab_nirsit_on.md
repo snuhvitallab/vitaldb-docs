@@ -28,14 +28,13 @@ No protocol or baud setting is exposed on the device. The link runs at **115200 
 
 ## Troubleshooting
 
-- **Works, then drops every few minutes:** the tablet firewall is blocking port 5525.
-- **Connected but no values / `-nan` on the web monitor:** an older protocol version mismatch — upgrade Vital Recorder.
-- **Recording restarts repeatedly during a NIRSIT session:** seen with 1.13.x builds; upgrade.
-- **Nothing until Calibrate is pressed** is normal.
+- **Nothing until Calibrate is pressed.** This is normal — data starts only after calibration completes.
+- **Works, then drops every few minutes.** The tablet firewall is blocking port 5525.
+- **Connected but no values / `-nan` on the web monitor.** An older protocol version mismatch — upgrade Vital Recorder.
+- **Recording restarts repeatedly during a NIRSIT session.** Seen with 1.13.x builds; upgrade.
 
 ## Notes
 
 - **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
-
 - Developed with the manufacturer in 2024; the protocol went through several revisions (sign byte, 32 Hz timing) — keep Vital Recorder current.
 - **No photographs yet** of the rear USB port or the Calibrate screen.

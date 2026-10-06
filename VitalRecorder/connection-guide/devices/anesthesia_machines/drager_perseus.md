@@ -34,14 +34,20 @@ vr_device_name: MedibusX
 
 - In Vital Recorder, add the device as **`MedibusX`**.
 
+## Troubleshooting
+
+- **`MEDIBUS COM2` error on a Perseus A500.** The A500 offers **MEDIBUS.X only** — its protocol list shows `MEDIBUS.X` and `None` — so 9600 baud produces this error. Use **19200 / `MedibusX`**. The MEDIBUS / 9600 / `Primus` pairing above applies to Perseus software that does list plain MEDIBUS.
+- **The port does not open.** In `vr.conf`, `port=` must be the actual serial port name of the converter channel (e.g. `C1`), not `COM1`.
+- **Numerics arrive but no waveforms.** Waveforms must be requested with `wavs=` in the device section — up to 4 at a time (e.g. `wavs=AWP,AWF`).
+- **No data on a Y-cable tap, even with the adapter fitted.** Expected — see Known Limitations; use a free COM port with a direct connection.
+
+## Known Limitations
+
+- **A Y-cable tap does not work on the Perseus.** A direct connection on a free COM port is required.
+
 ## Notes
 
 - **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
-
-- **Perseus A500 offers MEDIBUS.X only** — its protocol list shows `MEDIBUS.X` and `None`. Setting 9600 baud on an A500 produces a `MEDIBUS COM2` error; use **19200 / `MedibusX`**. The MEDIBUS / 9600 / `Primus` pairing above applies to Perseus software that does list plain MEDIBUS.
-- **A Y-cable tap does not work on the Perseus** (no data even with the adapter fitted). Use a free COM port with a direct connection.
 - Model-name selection and the generic `Medibus` entry exist on current builds.
 - With **`AUTO_DETECT=1`** in `vr.conf` Dräger MEDIBUS / MEDIBUS.X machines are detected on the serial line without a `[DEV/...]` section.
-- **Waveforms** must be requested with `wavs=` in the device section — up to 4 at a time (e.g. `wavs=AWP,AWF`).
-- In `vr.conf`, `port=` must be the actual serial port name of the converter channel (e.g. `C1`), not `COM1`.
 - The same Interface page also sets the machine name and the MEDIBUS time-synchronisation source; neither is needed for recording.
