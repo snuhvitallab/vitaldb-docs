@@ -277,21 +277,6 @@ Basic kit for recording **four serial devices at once**:
 
 ---
 
-### Device Page Layout
-
-Every device page follows the same order. Optional sections are omitted when there is nothing to say.
-
-| Section | Content |
-|---|---|
-| Title, callout, connection table | Model name; one `> ⚠️` or `> **Note:**` callout for the single most important caution; a table with **Cable · Adapter · Port · (Serial) · VR Device Name** |
-| Before You Start *(optional)* | Model variants or checks that decide which cable to use |
-| Connection Steps | Numbered physical connection; sub-sections (`###`) for alternative paths such as a Y-cable or waveform output |
-| Device Configuration | Menus to set on the device |
-| Vital Recorder Setup | Device entry to add and any `vr.conf` options |
-| Troubleshooting *(optional)* | Symptom → cause → fix |
-| Known Limitations *(optional)* | What the link cannot deliver |
-| Notes *(optional)* | Anything else that affects the connection |
-
 ---
 
 ## Troubleshooting
