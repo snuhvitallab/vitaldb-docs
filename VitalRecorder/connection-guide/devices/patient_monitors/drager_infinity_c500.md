@@ -45,7 +45,7 @@ No monitor-side configuration is required for numeric data — the export protoc
 ## Troubleshooting
 
 - **Data stops and does not resume on its own.** Expected on the Infinity family — restart Vital Recorder to re-establish the link.
-- **A correctly wired C700 produces no data.** Check the installed firmware with Dräger: **Infinity C700 firmware 7.xx breaks RS-232 output** (reported from the field).
+- **A correctly wired C700 produces no data.** Check the installed firmware with Dräger: **Infinity C700 firmware 7.xx breaks RS-232 output**.
 
 ## Known Limitations
 

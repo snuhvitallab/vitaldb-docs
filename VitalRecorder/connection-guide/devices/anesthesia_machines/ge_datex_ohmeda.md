@@ -56,6 +56,6 @@ No setting has to be changed on the machine — the serial port streams continuo
 - **The 19200 baud link carries about 1,920 characters per second.** When many parameters are active the stream exceeds that, waves drop out and numerics arrive late.
 
 ## Notes
-- Confirmed models in the field include the **Aisys CS2** and **Avance CS2**.
+- The **Aisys CS2** and **Avance CS2** are confirmed to work with this setup.
 - With **`AUTO_DETECT=1`** in `vr.conf` GE / Datex-Ohmeda S/5 devices are identified on the serial line without a `[DEV/...]` section.
 - Typical parameters recorded: Paw, Pplat, EtCO2, TV, MV, FiO2.
