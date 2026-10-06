@@ -2,7 +2,7 @@
 
 > **Disclaimer:** This document is for reference only. Our team is not responsible for connection errors. If discrepancies exist between this document and the device manufacturer's manual, **always follow the manufacturer's manual**.
 
-This guide covers Vital Recorder hardware setup for **47 medical devices** across 7 categories. Use the Quick Reference tables below to identify your cable type, then click the device name to open its full setup instructions.
+This guide covers Vital Recorder hardware setup for **48 medical devices** across 7 categories. Use the Quick Reference tables below to identify your cable type, then click the device name to open its full setup instructions.
 
 ## System Overview
 
@@ -60,9 +60,10 @@ One recording PC collects from several devices at once. Serial devices reach the
 
 | Device | Cable | Adapter | Port | VR Device Name |
 |--------|-------|---------|------|----------------|
-| [Dräger Apollo / Cicero EM Color / Julian / Primus / Vamos](anesthesia_machines/drager_apollo.md) | Direct Serial | None | COM1 | `Primus` |
-| [Dräger Fabius](anesthesia_machines/drager_fabius.md) | Direct Serial | **Depends on COM1 connector** — None if female (Oct 2004 →), Null Modem F/F if male (before Oct 2004) | COM1 | `Primus` |
-| [Dräger Zeus](anesthesia_machines/drager_zeus.md) | Direct Serial | Null Modem — gender per connector *(unverified)* | COM (rear) | `Primus` |
+| [Dräger Apollo / Cicero EM Color / Julian / Vamos](anesthesia_machines/drager_apollo.md) | Direct Serial | None | COM1 | `Medibus` |
+| [Dräger Primus](anesthesia_machines/drager_primus.md) | Direct Serial | None | COM1 | `Primus` |
+| [Dräger Fabius](anesthesia_machines/drager_fabius.md) | Direct Serial | **Depends on COM1 connector** — None if female (Oct 2004 →), Null Modem F/F if male (before Oct 2004) | COM1 | `Fabius` |
+| [Dräger Zeus](anesthesia_machines/drager_zeus.md) | Direct Serial | Null Modem — gender per connector *(unverified)* | COM (rear) | `Medibus` |
 | [Dräger Perseus](anesthesia_machines/drager_perseus.md) | Direct Serial | Null Modem F/F | COM1 or COM2 | `MedibusX` |
 | [GE Datex-Ohmeda](anesthesia_machines/ge_datex_ohmeda.md) | Custom 9-pin ↔ 15-pin | None | 15-pin (under cover) | `Datex-Ohmeda` |
 | [Maquet Flow-i](anesthesia_machines/maquet_flow_i.md) | Direct Serial | Null Modem M/F | Serial port | `Flow-i` |

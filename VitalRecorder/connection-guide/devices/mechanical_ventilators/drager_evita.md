@@ -19,8 +19,7 @@ vr_device_name: MedibusX
 
 ## Device Configuration
 
-1. In the ventilator's system setup, open the **interface / COM port** page and set the cabled port to **Protocol: MEDIBUS.X**, **Baud: 19200**. The frame is fixed at 8 / Even / 1. The menu path varies by model and software; on the V500 it is in the system-setup interface tab.
-2. If the machine offers plain **MEDIBUS** instead, set **9600** and add the device as **`Primus`** rather than `MedibusX` — the entry follows the protocol, not the model.
+In the ventilator's system setup, open the **interface / COM port** page and set the cabled port to **Protocol: MEDIBUS.X**, **Baud: 19200**. The frame is fixed at 8 / Even / 1. The menu path varies by model and software; on the V500 it is in the system-setup interface tab.
 
 ## Vital Recorder Setup
 
@@ -54,5 +53,4 @@ vr_device_name: MedibusX
 ## Notes
 
 - **Adapter gender is unverified.** The Evita Infinity V500 has been grouped with the Fabius and Zeus as taking a null modem; the [Fabius page](../anesthesia_machines/drager_fabius.md) shows that the answer depends on the COM connector's gender (F/F onto a male port, M/F onto a female one). Look at the EVITA's connector and record which adapter worked.
-- MEDIBUS is also spoken by the Dräger **Carina, Babylog, Savina and Oxylog** — the same procedure applies, with `Primus` for 9600 machines and `MedibusX` for 19200 ones.
 - **No photographs yet** — the rear connector panel and the interface menu would be the most useful additions.

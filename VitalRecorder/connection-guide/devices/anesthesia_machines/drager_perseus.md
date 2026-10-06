@@ -9,7 +9,7 @@ vr_device_name: MedibusX
 
 | Cable | Adapter | Port | Serial | VR Device Name |
 |-------|---------|------|--------|----------------|
-| Direct Serial | Null Modem F/F | COM 1 or COM 2 | **MEDIBUS.X 19200** → `MedibusX`, or **MEDIBUS 9600** → `Primus` — match the protocol set on the port | `MedibusX` / `Primus` |
+| Direct Serial | Null Modem F/F | COM 1 or COM 2 | 19200 baud, 8 data bits, Even parity, 1 stop bit — MEDIBUS.X | `MedibusX` |
 
 ## Connection Steps
 1. Open the interface panel on the machine column. It carries a **male DB-9 serial connector** together with a USB port and a LAN (RJ-45) socket.
@@ -24,11 +24,11 @@ vr_device_name: MedibusX
 3. Choose **Interface** from the list on the right — the page holding the DHCP / IP address / subnet mask / default gateway, **RS232**, LAN and USB settings.
 4. In the **COM 1** (or **COM 2**) block, set:
 
-- **Protocol:** **MEDIBUS.X** with **19200** baud (add as `MedibusX`), or **MEDIBUS** with **9600** baud (add as `Primus`). *None* disables the port.
-- **Baud rate:** selectable values are 1200, 2400, 4800, 9600, 19200 and 38400
+- **Protocol:** **MEDIBUS.X**. *None* disables the port.
+- **Baud rate:** **19200**
 - The frame format is fixed and shown next to the baud rate as **8, e, 1** (8 data bits, Even parity, 1 stop bit)
 
-> ⚠️ **Match the baud rate to the protocol.** MEDIBUS.X runs at **19200** and pairs with the `MedibusX` device entry; legacy MEDIBUS runs at **9600** and pairs with `Primus`. A mismatch produces a `MEDIBUS COM2` message or a repeated `COM1 failure` on the machine.
+> ⚠️ **Keep the baud rate at 19200.** Any other value produces a `MEDIBUS COM2` message or a repeated `COM1 failure` on the machine.
 
 ## Vital Recorder Setup
 
@@ -36,7 +36,7 @@ vr_device_name: MedibusX
 
 ## Troubleshooting
 
-- **`MEDIBUS COM2` error on a Perseus A500.** The A500 offers **MEDIBUS.X only** — its protocol list shows `MEDIBUS.X` and `None` — so 9600 baud produces this error. Use **19200 / `MedibusX`**. The MEDIBUS / 9600 / `Primus` pairing above applies to Perseus software that does list plain MEDIBUS.
+- **`MEDIBUS COM2` error.** The port is not at MEDIBUS.X / 19200. Correct it as in [Device Configuration](#device-configuration).
 - **The port does not open.** In `vr.conf`, `port=` must be the actual serial port name of the converter channel (e.g. `C1`), not `COM1`.
 - **Numerics arrive but no waveforms.** Waveforms must be requested with `wavs=` in the device section — up to 4 at a time (e.g. `wavs=AWP,AWF`).
 - **No data on a Y-cable tap, even with the adapter fitted.** Expected — see Known Limitations; use a free COM port with a direct connection.
@@ -47,6 +47,5 @@ vr_device_name: MedibusX
 
 ## Notes
 
-- Model-name selection and the generic `Medibus` entry exist on current builds.
-- With **`AUTO_DETECT=1`** in `vr.conf` Dräger MEDIBUS / MEDIBUS.X machines are detected on the serial line without a `[DEV/...]` section.
+- With **`AUTO_DETECT=1`** in `vr.conf` the machine is detected on the serial line without a `[DEV/...]` section.
 - The same Interface page also sets the machine name and the MEDIBUS time-synchronisation source; neither is needed for recording.

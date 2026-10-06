@@ -3,14 +3,14 @@
 <!-- meta
 category: Anesthesia Machine
 manufacturer: Dräger
-vr_device_name: Primus
+vr_device_name: Fabius
 -->
 > ⚠️ **Check the machine's manufacture date before ordering a cable.** The Fabius shipped with two different COM1 connectors, and the adapter you need depends on which one is fitted. Read [Before You Start](#before-you-start) first.
 
 | Model (COM1 connector) | Cable | Adapter | Port | Serial | VR Device Name |
 |--------------------------|-------|---------|------|--------|----------------|
-| **Female** COM1 — manufactured Oct 2004 onward | Direct Serial | **None** | COM1 | 9600, 8 / Even / 1 — MEDIBUS | `Primus` |
-| **Male** COM1 — manufactured before Oct 2004 | Direct Serial | **Null Modem F/F** | COM1 | 9600, 8 / Even / 1 — MEDIBUS | `Primus` |
+| **Female** COM1 — manufactured Oct 2004 onward | Direct Serial | **None** | COM1 | 9600, 8 / Even / 1 — MEDIBUS | `Fabius` |
+| **Male** COM1 — manufactured before Oct 2004 | Direct Serial | **Null Modem F/F** | COM1 | 9600, 8 / Even / 1 — MEDIBUS | `Fabius` |
 
 ## Before You Start
 
@@ -35,7 +35,7 @@ If the machine's purchase date is unknown, the connector itself is the answer. F
    - **Male COM1** — attach a **Null Modem (F/F)** adapter at COM1, then the direct serial cable.
 3. Connect the other end of the cable to the PC through a USB-Serial converter.
 4. Enter service mode and set the serial parameters — see [Device Configuration](#device-configuration).
-5. In Vital Recorder, add the device as **`Primus`** — see [Vital Recorder Setup](#vital-recorder-setup).
+5. In Vital Recorder, add the device as **`Fabius`** — see [Vital Recorder Setup](#vital-recorder-setup).
 
 ## Device Configuration
 
@@ -55,14 +55,12 @@ If the machine's purchase date is unknown, the connector itself is the answer. F
 
    <img src="../hardware_images/drager_fabius_2.png" width="450" alt="Fabius Service screen &quot;Serial Port Parameters&quot; for COM1 — Baud Rate 9600, Parity EVEN, Stop Bits 1, Data Bits 8, Protocol MEDIBUS">
 
-> ⚠️ **The baud rate must match the protocol version.** MEDIBUS runs at **9600**, MEDIBUS.X at **19200**. A mismatch appears as a `MEDIBUS COM2` message or a repeated `COM1 failure` on the machine.
+> ⚠️ **Keep the baud rate at 9600.** Any other value appears as a `MEDIBUS COM2` message or a repeated `COM1 failure` on the machine.
 
 ## Vital Recorder Setup
 
-- The Fabius speaks **MEDIBUS at 9600**, so it is added as **`Primus`** — the entry for MEDIBUS (9600) machines. `MedibusX` is the entry for **MEDIBUS.X (19200)** machines and does **not** apply to a Fabius left at its standard settings.
-- What decides the entry is the protocol and baud rate actually set on the machine's COM port, not the model name. If the port has been switched to MEDIBUS.X at 19200, use `MedibusX` instead.
-- Fabius models are listed **by name** in the device dialog on current builds, and a generic **`Medibus`** entry covers Dräger models that are not listed (from 1.19.22 — see version notes).
-- With **`AUTO_DETECT=1`** in `vr.conf` the machine is found on the serial line without a `[DEV/...]` section.
+- Add the device as **`Fabius`**.
+- With **`AUTO_DETECT=1`** in `vr.conf` the machine is found on the serial line without a `[DEV/...]` section. Detection names it `Medibus`, not `Fabius`.
 - In `vr.conf`, `port=` must be the actual serial port name of the converter channel (e.g. `C1`), not `COM1`.
 
 ## Troubleshooting
@@ -71,7 +69,7 @@ If the machine's purchase date is unknown, the connector itself is the answer. F
 
 1. **Female COM1 with a Null Modem fitted → remove the adapter.** This is the classic double-crossover: the direct serial cable is already wired pin-to-pin and the adapter swaps pins 2/3 a second time, so both ends transmit at each other.
 2. **Male COM1 with no adapter → add a Null Modem F/F adapter** at COM1.
-3. **Cable and adapter already match the connector → check the machine, not the cable.** Confirm in service mode that COM1 is set to **MEDIBUS at 9600**, and that the device was added in Vital Recorder as **`Primus`** rather than `MedibusX`.
+3. **Cable and adapter already match the connector → check the machine, not the cable.** Confirm in service mode that COM1 is set to **MEDIBUS at 9600**, and that the device was added in Vital Recorder as **`Fabius`**.
 4. **Everything above checks out → check the Vital Recorder build.** Older builds could open the port and record nothing; **models without waveform capability (Fabius GS) recorded nothing at all before 1.19.20.** Update to the latest release before touching the cable.
 
 ## Known Limitations
