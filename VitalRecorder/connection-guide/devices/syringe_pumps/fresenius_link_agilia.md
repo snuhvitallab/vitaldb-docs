@@ -73,11 +73,6 @@ Enabling **Data Export** is a **one-time** procedure performed over LAN from a P
 ## Vital Recorder Setup
 
 - Add a device with **Device Type `Link+`** and leave **Port** empty. Vital Recorder finds the rack by its USB ID and follows it when it re-connects under a new port number. Leave **Y Cable** unchecked.
-- A fixed **Port** such as **`ACM0`** — the CDC-ACM port the rack creates, not a `COM`/`C` converter channel — also works, but recording stops if the rack re-connects under a different number.
-
-The screenshot shows this optional fixed-port configuration. For automatic USB ID selection, leave **Port** empty as described above.
-
-  <img src="../hardware_images/fresenius_link_agilia_2.png" width="450" alt="Vital Recorder Device Settings row with Device Type Link+, Name Link+, Port ACM0 and the Y Cable checkbox unchecked">
 
 ## Troubleshooting
 
