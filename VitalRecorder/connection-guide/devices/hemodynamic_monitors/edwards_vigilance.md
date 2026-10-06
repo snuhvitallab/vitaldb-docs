@@ -5,7 +5,7 @@ category: Hemodynamic Monitor
 manufacturer: Edwards Lifesciences
 vr_device_name: Vigilance
 -->
-> ⚠️ **A straight-through serial cable will not work** — the link needs the TX/RX crossover, so the **Null Modem (M/F)** adapter is mandatory. The **Digital Ports** menu is also buried three screens deep and must be configured before use.
+> ⚠️ **A direct serial cable alone will not work** — the link needs the TX/RX crossover, so the **Null Modem (M/F)** adapter is mandatory. The **Digital Ports** menu is also buried three screens deep and must be configured before use.
 
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|
@@ -17,7 +17,7 @@ vr_device_name: Vigilance
    <img src="../hardware_images/edwards_vigilance_1.png" width="450" alt="Vigilance rear panel with the female DB-9 port labeled COM 1 circled, COM 2 beside it and the ANALOG IN 1/2 jacks to the right">
 
 2. Attach a **Null Modem (M/F)** adapter to COM 1.
-3. Connect a direct (straight-through) serial cable from the adapter to the PC via a USB-Serial converter.
+3. Connect a direct serial cable from the adapter to the PC via a USB-Serial converter.
 
 ## Device Configuration
 1. From the home screen press the **Setup** softkey on the right-hand edge.
@@ -60,11 +60,4 @@ vr_device_name: Vigilance
 
 ## Notes
 
-- **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
 - The **System Configuration** screen shows an **IFMout ID #** — its presence confirms the monitor has the IFMout interface.
-
-## Sources
-
-- Original Vital Recorder connection guide (legacy English and Korean editions) — two serial ports on the rear panel, either COM1 or COM2 usable, Null Modem **M/F** plus direct serial cable as for the other Edwards Lifesciences monitors; **IFMout / 9600**.
-- `VitalRecorder/Supported_Devices.md` — Edwards Lifesciences cardiac monitors, *RS-232, 9600 baud (STX/ETX)*.
-- COM 1 / COM 2 and ANALOG IN layout, the Setup → Display Format → System Config → Digital Ports path, the Patient Information prompt, the IFMout ID # and the full COM1 parameter set: photographs in this guide.

@@ -24,7 +24,7 @@ The Link+ rack aggregates every Agilia SP / VP module mounted on it, so **all pu
 
 Enabling **Data Export** is a **one-time** procedure performed over LAN from a PC. It must be done before the USB connection will produce any data.
 
-1. Connect the Link+ **LAN (RJ-45) port** — on the left of the same connector panel — to the PC's Ethernet port. The original guide specifies a **crossover** LAN cable; a straight patch cable also works with any NIC that auto-negotiates (all modern PCs).
+1. Connect the Link+ **LAN (RJ-45) port** — on the left of the same connector panel — to the PC's Ethernet port with the LAN cable supplied with the Link+.
 
    <img src="../hardware_images/fresenius_link_agilia_3.png" width="300" alt="Link+ connector panel with the RJ-45 LAN port highlighted on the left side of the panel">
 
@@ -89,16 +89,6 @@ Enabling **Data Export** is a **one-time** procedure performed over LAN from a P
 
 ## Notes
 
-- **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
 - All Agilia SP / VP modules on the rack are reported through the one `Link+` device. Track names are distinguished per module by the rack, so no separate Vital Recorder device is added for each pump.
 - If the PC reaches the rack through a Windows hotspot instead of the LAN port, set the rack's address to **`192.168.137.2`** in the web interface.
 - The four-channel **Agilia Link4+** rack is the same device with the `Link4` type name in older builds.
-
-## Sources
-
-- Original Vital Recorder connection guide (legacy Korean edition; the English edition has no Link+ section) — USB 2.0 A-male ↔ mini-B 5-pin cable to the USB-B port, port `ACM0` in Device Settings, the one-time **Data Export** setup over a dedicated **crossover** LAN cable: PC at `192.168.0.100` / `255.255.255.0` / gateway `192.168.0.1`, web interface at `192.168.0.1`, login `admin` / `fresenius`, *Configuration → Data Export → Enabled → Apply → OK → Exit Configuration* with automatic reboot.
-- `VitalRecorder/Supported_Devices.md` — *Agilia / Link+, Fresenius Kabi, RS-232, 115200 baud, infusion volume / rate / alarm status*; Link+ auto-detected by USB vendor ID.
-- Field records (VitalDB installation and support logs, 2024–2026) — USB power as the cause of recorder reboots and server-connection loss (bus-powered ports, syslog USB power errors, 6 m repeater extension still failing), power-cycle-then-restart order with the 60-second port timeout, the `192.168.137.2` address for a Windows hotspot, the `Link4` type name for the four-channel rack.
-- Vital Recorder official version history — <https://vitaldb.net/vital-recorder/?action=versions>: Link+ crash and reconnection fixes across 1.18.50–1.19.5; device-related entries in [version-notes.md](../version-notes.md).
-- Fresenius Kabi documentation — the rack's RS-232 connector for system management, maintenance and PDMS export (RS-232 levels, asynchronous, half duplex, up to 115.2 kb/s).
-- Connector-panel layout, the Windows IPv4 dialogs, the Link+ Agilia web pages (firmware **Version 3.0**) and the Vital Recorder Device Settings row (`Link+`, `ACM0`): photographs in this guide.

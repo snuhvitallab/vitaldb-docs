@@ -31,13 +31,5 @@ The cable's output end is DB-9 **female**, which mates directly with the DB-9 ma
 
 ## Notes
 
-- **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
 - This page covers a **standalone Agilia pump** cabled directly to the PC. Where several Agilia SP / VP modules are mounted on a **Link+ / Agilia Link rack**, use the rack's USB connection instead and configure it as the `Link+` device — see [Fresenius Kabi Link+ Agilia](fresenius_link_agilia.md). Do not cable individual pumps separately when a Link+ rack is present.
 - Keep the rubber cap closed when the cable is not fitted; the connector is on the pump exterior and is exposed to fluid spills.
-
-## Sources
-
-- Original Vital Recorder connection guide (legacy English and Korean editions) — Agilia device table (serial 7-pin mini-DIN, dedicated cable purchase required, no setting required) and the Agilia section: proprietary cable obtained from Fresenius Kabi at about 130,000 KRW, DB-9 female cable end mating directly with a USB-Serial converter without an adapter.
-- `VitalRecorder/Supported_Devices.md` — *Agilia / Link+, Fresenius Kabi, RS-232, 115200 baud, infusion volume / rate / alarm status*.
-- Rubber cap, keyway and knurled locking collar of the circular connector: pictogram and photograph in this guide.
-- Vital Recorder official version history — <https://vitaldb.net/vital-recorder/?action=versions>; device-related entries in [version-notes.md](../version-notes.md).

@@ -16,7 +16,9 @@ The serial link can be taken from the **module, the monitor itself, or the docki
 
 A factory cable is available instead of a custom-built one: **Dräger part `5206441`** ("Export/Expert Protocol Cable, 3 m, with 9-pin connector"), which carries the 14-pin universal connector on the monitor side.
 
-## Connection Steps — Numeric Data
+## Connection Steps
+
+### Numeric Data
 
 1. Locate the **X5** (or **X3**) port. On a docking station it sits on the rear panel alongside the Analog/Sync, Infinity Network and X8 ports.
 
@@ -41,7 +43,7 @@ A factory cable is available instead of a custom-built one: **Dräger part `5206
 
 4. Connect the DB-9F end to the PC via a USB-Serial converter.
 
-## Connection Steps — Waveform Data (Optional)
+### Waveform Data (Optional)
 
 Waveforms are only available as analog voltages from the **Analog/Sync port** (Dräger part `4314618`), read through an ADC (SNU-ADC, DataQ DI-149/DI-155, …).
 
@@ -72,12 +74,5 @@ No monitor-side configuration is required — the export protocol is always acti
 ## Notes
 
 - For a recorder with a 3.5 mm serial jack (VRZ), the X5 cable is wired **pin 10 (TX) → tip, pin 11 (RX) → ring, pin 7 (GND) → sleeve**.
-- The Analog/Sync port is documented as **X10** in the original guide, but the docking station photographed above labels its analog/sync connector **X16**. Confirm the label on the actual unit before wiring. ❓ *Unverified — tracked in [unverified.md](../unverified.md).*
+- Earlier documentation gives the Analog/Sync port as **X10**, but the docking station photographed above labels its analog/sync connector **X16**. Confirm the label on the actual unit before wiring. ❓ *Unverified — tracked in [unverified.md](../unverified.md).*
 - Sibling model **Infinity C500 / C700** uses a completely different connection (P2500 RJ10 port) — see [Dräger Infinity C500 / C700](drager_infinity_c500.md).
-
-## Sources
-
-- Original Vital Recorder connection guide (legacy English and Korean editions) — serial link from the module, monitor or docking station X5 / X3 Mini-D port with a custom Mini-D ↔ DB-9F cable, Dräger part `5206441` export protocol cable, numeric data every 2 seconds with no waveforms over the serial link, waveforms from the Analog/Sync port (documented there as X10, Dräger part `4314618`) using pins 12/13 and 7/6.
-- `VitalRecorder/Supported_Devices.md` — *Infinity (Delta/Kappa/Gamma), RS-232, 19200 baud*, `Infinity` device entry under Draeger.
-- Photographs in this guide — docking-station rear panel (X5 outlined, analog/sync connector labeled X16), 14-pin Mini-D pin numbering, and the X5 / X3 wiring tables.
-- Field records (VitalDB installation and support logs, 2024–2026) — anesthesia-machine (Atlan) data shown on the Kappa not being forwarded over the export link, the VRZ 3.5 mm jack wiring (pin 10 → tip, 11 → ring, 7 → sleeve), and data stopping until Vital Recorder restarts.

@@ -5,10 +5,10 @@ category: Syringe Pump
 manufacturer: Fresenius Kabi
 vr_device_name: Orchestra
 -->
-> ⚠️ **A cross (null-modem) connection is required, and the port must be configured in service mode.** Connect a **direct** serial cable plus an **M/F Null Modem** adapter — never a cross cable on its own, and never a direct connection without the Null Modem adapter. Both mistakes cause faulty communication or hardware damage.
+> ⚠️ **A crossed link is required, and the port must be configured in service mode.** Connect a **direct** serial cable plus an **M/F Null Modem** adapter — never a cross cable on its own, and never a direct connection without the Null Modem adapter. Both mistakes cause faulty communication or hardware damage.
 
-| Cable | Adapter | Port | Protocol | VR Device Name |
-|-------|---------|------|----------|----------------|
+| Cable | Adapter | Port | Serial | VR Device Name |
+|-------|---------|------|--------|----------------|
 | Direct serial (DB-9M ↔ DB-9F) | Null Modem **M/F** | **RS 232-3** (DB-9F) — rightmost of the three serial ports on the Base Primea | IDMS | `Orchestra` |
 
 The Base Primea's serial ports are DB-9 **female**, and the PC side is DB-9 **male**, so the M/F Null Modem adapter both reverses the wiring and keeps the correct genders. Screwing the adapter onto the device port and leaving it there is the safest arrangement — it cannot be lost and it removes any doubt about which cable is in use.
@@ -88,9 +88,3 @@ Two separate menus must be set: the **service-mode** serial configuration (which
 
 - **Vital Recorder versions:** recording from the Orchestra Base Primea (including TCI) has been supported since **0.9.11**.
 - The firmware of the documented unit reports **V03.2S-1A**.
-
-## Sources
-
-- Original Vital Recorder connection guide (legacy English and Korean editions) — Base Primea (Orchestra) device table (female port, Null Modem **M/F**, cross connection required) and the Orchestra section: **RS 232-3** at the right end of the three serial ports with an M/F adapter and a direct serial cable, service mode entered with the top blue side button + mute + power, *Serial & ...* (fourth blue button), **COM NEW SUP = 3** by jog dial, *Send a frame on every change* unchecked and *Send every* 1 s; the introduction's warning that the Orchestra needs a cross connection rather than a plain direct cable.
-- `VitalRecorder/Supported_Devices.md` — *Primea (Orchestra), Fresenius Kabi, RS-232, 19200 baud, infusion volume / rate / alarm status*.
-- Rear-port layout, the service-mode screens (*Special Functions*, *Serial, Supervisor and Print Configuration* with Ack timeout 1 s / Main timeout 10 s), the customisation path *OPT → Customisation → code `00123` → Serial Ports and Printer → RS232-3 = IDMS → Save and Exit*, the existing RS232-1 / RS232-2 assignments and firmware **V03.2S-1A**: photographs in this guide.

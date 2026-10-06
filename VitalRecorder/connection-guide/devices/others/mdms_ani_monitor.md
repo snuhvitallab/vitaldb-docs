@@ -46,8 +46,3 @@ ANI = Analgesia Nociception Index. The V2 monitor derives it from the ECG-based 
 ## Notes
 
 - The screwposts on the `REAL TIME EXPORT` connector are usable; fastening the converter prevents it working loose.
-
-## Sources
-
-- Original Vital Recorder connection guide device table — ANI Monitor V2 (Analgesia nociception monitor), device port Serial (DB-9F), generic USB-Serial converter, **no device-side setting required**.
-- Port labeling (`REAL TIME EXPORT` / `DATA EXPORT`), panel layout and the New Patient workflow: photographs in this guide.

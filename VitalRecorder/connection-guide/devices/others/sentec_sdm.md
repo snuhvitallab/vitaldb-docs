@@ -7,9 +7,9 @@ vr_device_name: SDM
 -->
 > ⚠️ **The serial interface is disabled while trend data are being downloaded over the LAN port.** It is reactivated automatically once the LAN download finishes.
 
-| Cable | Adapter | Port | Protocol | Baud Rate | VR Device Name |
-|-------|---------|------|----------|-----------|----------------|
-| USB-Serial converter (or direct serial) | None | Serial Data Port (RS-232) — rear panel | SenTecLink | 115200 | `SDM` |
+| Cable | Adapter | Port | Serial | VR Device Name |
+|-------|---------|------|--------|----------------|
+| USB-Serial converter (or direct serial) | None | Serial Data Port (RS-232) — rear panel | SenTecLink — 115200 baud | `SDM` |
 
 The SenTec Digital Monitor (SDM) provides transcutaneous PCO₂ and PO₂ along with SpO₂, pulse rate and heating power.
 
@@ -60,8 +60,3 @@ Navigate to **Interfaces → Serial Interface** and configure:
 ## Notes
 
 - **Firmware requirement:** SenTecLink at 115200 baud requires SDM software **SMB SW-V08.00.xx or higher**.
-
-## Sources
-
-- Sentec SDMS Service Manual, HB-005615 (§2.2.2 Rear Panel, §3.2.13 Serial Data Port, §8.10.2 / Table 10 Pin Assignment) — port location, `Interfaces / Serial Interfaces` → activate `SentecLink`, USB232 converter cable, DB-9 pin assignment, serial interface inactivated during LAN trend download, interface-connector isolation warning.
-- Sentec SDM–BeneView Interface Manual, HB-007750-a — menu parameter `Interfaces / Serial Interface` → `SenTecLink`, baud rate 115200 required, SMB SW-V08.00.xx minimum software version.

@@ -45,7 +45,7 @@ The Charging Station carries a **combined RS-232 serial + Ethernet port on a sin
 
 4. Enter the unlock sequence in this dialog — **Hour 1AM, Minute 2, Month March, Day 4, Year 2018** — then press **Set**. This reveals the **Dock Output Configuration** entry.
 
-   > This unlock sequence is not documented in the TwitchView Operating Manual; it is carried over from the original Vital Recorder connection guide. If it does not work on your firmware, ask Blink Device Company for the current service procedure.
+   > This unlock sequence is not documented in the TwitchView Operating Manual; it is the one used at existing installations. If it does not work on your firmware, ask Blink Device Company for the current service procedure.
 
 5. Open **Dock Output Configuration** and select **Serial**, then press **Set**. The other options (IntelliBridge, Ethernet-UDP, Ethernet-TCP) will not produce serial data.
 
@@ -65,8 +65,3 @@ The Charging Station carries a **combined RS-232 serial + Ethernet port on a sin
 
 - **Serial parameters (baud rate, data bits, parity) are not published.** The Operating Manual directs users to contact the manufacturer for "data format and connectivity details" — *verify with Blink Device Company*.
 - The TwitchView never transmits patient-identifying information over this link, but the traffic is unencrypted — keep the PC on a trusted network.
-
-## Sources
-
-- TwitchView System Operating Manual, PN00211 Rev O (Blink Device Company) — RJ45 combined RS-232/Ethernet output, infrared Monitor→Charging Station link, Device Settings menu contents, exported parameters.
-- Pinout and Dock Output Configuration values: photographs in this guide.

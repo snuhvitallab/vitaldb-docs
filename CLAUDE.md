@@ -25,7 +25,7 @@ VitalRecorder/                      # Primary docs (hand-edited)
 ├── VitalServer_HL7_v2_Spec.md      # HL7 v2 upload protocol
 └── connection-guide/
     └── devices/
-        ├── README.md               # Quick-reference table (all 44 devices)
+        ├── README.md               # Quick-reference table (all 47 devices)
         ├── anesthesia_machines/
         ├── brain_monitors/
         ├── hemodynamic_monitors/
@@ -68,9 +68,22 @@ category: <Patient Monitor|Anesthesia Machine|Hemodynamic Monitor|Syringe Pump|B
 manufacturer: <name>
 -->
 
-Content including connection steps, images, device configuration.
+> ⚠️ One callout with the most important caution (optional).
+
+| Cable | Adapter | Port | VR Device Name |     ← add a `Serial` column before VR Device Name when protocol/baud matters
+|-------|---------|------|----------------|
+
+## Before You Start        (optional)
+## Connection Steps        (### sub-sections for alternative paths, e.g. Y-cable, waveform output)
+## Device Configuration
+## Vital Recorder Setup
+## Troubleshooting         (optional)
+## Known Limitations       (optional)
+## Notes                   (optional)
 
 Images referenced as: <img src="../hardware_images/imageN.png" width="450">
+
+Terminology (defined once in `connection-guide/devices/README.md`, used verbatim elsewhere): **direct serial cable**, **cross cable**, **Null Modem adapter** (M/F or F/F), **USB-Serial converter**, **RS-232**. No page cites its sources inline; no page repeats the "run the latest Vital Recorder" note.
 ```
 
 When adding a new device:

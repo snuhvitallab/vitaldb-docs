@@ -37,13 +37,4 @@ Nothing has to be set on the machine — the serial port streams as soon as it i
 
 ## Notes
 
-- **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
 - The Flow-i has **two independent serial ports**, so a patient monitor can keep one while Vital Recorder uses the other. (This is unlike the Servo-i, which has a single usable RS-232 port.)
-
-## Sources
-
-- Original Vital Recorder connection guide (legacy English and Korean editions) — *Null modem (M/F cross gender)* and a direct serial cable to the serial port on the lower right of the rear panel; no device configuration required; *Serial (DB9F)* device port in the connection table.
-- `VitalRecorder/Supported_Devices.md` — *Flowi, Maquet, RS-232*, line settings not listed (handled by the `Flow-i` driver).
-- Rear-panel port location: photographs in this guide.
-- Field records (VitalDB installation and support logs, 2024–2026) — Set TV removed in Flow-i protocol v5 and derived as Set MV ÷ Set RR; the two independent serial ports; half-value TV and missing set-parameters before 1.18.49.
-- Vital Recorder official version history (<https://vitaldb.net/vital-recorder/?action=versions>) — 1.18.49 TV fix and the eleven set-parameters; device-related entries collected in [version-notes.md](../version-notes.md).

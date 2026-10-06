@@ -1,4 +1,4 @@
-# Dräger Fabius / Zeus / Infinity
+# Dräger Fabius
 
 <!-- meta
 category: Anesthesia Machine
@@ -7,14 +7,14 @@ vr_device_name: Primus
 -->
 > ⚠️ **Check the machine's manufacture date before ordering a cable.** The Fabius shipped with two different COM1 connectors, and the adapter you need depends on which one is fitted. Read [Before You Start](#before-you-start) first.
 
-| Machine (COM1 connector) | Cable | Adapter | Port | Serial | VR Device Name |
+| Model (COM1 connector) | Cable | Adapter | Port | Serial | VR Device Name |
 |--------------------------|-------|---------|------|--------|----------------|
 | **Female** COM1 — manufactured Oct 2004 onward | Direct Serial | **None** | COM1 | 9600, 8 / Even / 1 — MEDIBUS | `Primus` |
 | **Male** COM1 — manufactured before Oct 2004 | Direct Serial | **Null Modem F/F** | COM1 | 9600, 8 / Even / 1 — MEDIBUS | `Primus` |
 
 ## Before You Start
 
-This page covers the **Fabius GS**, **Fabius Tiro**, **Zeus** and **Infinity Evita V500** — the models the original connection guide groups together and specifies with a null modem. The manufacture-date rule below refines that for the Fabius.
+This page covers the **Fabius GS**, **Fabius Tiro** and **Fabius plus**. The **Zeus** has its own page — [Dräger Zeus](drager_zeus.md) — and the **Infinity Evita V500** is a ventilator, covered in [Dräger EVITA](../mechanical_ventilators/drager_evita.md).
 
 Per Dräger's documentation the Fabius COM1 connector changed in **October 2004**, and the two versions assign the transmit and receive pins differently:
 
@@ -34,12 +34,10 @@ If the machine's purchase date is unknown, the connector itself is the answer. F
    - **Female COM1** — nothing to fit. Connect a direct serial cable straight from COM1.
    - **Male COM1** — attach a **Null Modem (F/F)** adapter at COM1, then the direct serial cable.
 3. Connect the other end of the cable to the PC through a USB-Serial converter.
-4. **Fabius only:** enter service mode and set the serial parameters — see [Device Configuration](#device-configuration).
+4. Enter service mode and set the serial parameters — see [Device Configuration](#device-configuration).
 5. In Vital Recorder, add the device as **`Primus`** — see [Vital Recorder Setup](#vital-recorder-setup).
 
 ## Device Configuration
-
-**Fabius only.** Zeus and Infinity models are configured from their own system setup / interface menu.
 
 1. Press the **three controls circled in red** at the same time — the **Home** key, the **rotary knob**, and the **Standby** key — to enter service mode. The system diagnostics screen is shown while the machine starts into that mode.
 
@@ -71,7 +69,7 @@ If the machine's purchase date is unknown, the connector itself is the answer. F
 
 **The port opens but no data arrives.** Work through these in order — the first two are the common cause, and they are opposites, so establish the COM1 gender before changing anything.
 
-1. **Female COM1 with a Null Modem fitted → remove the adapter.** This is the classic double-crossover: the cable is already straight-through and the adapter swaps pins 2/3 a second time, so both ends transmit at each other.
+1. **Female COM1 with a Null Modem fitted → remove the adapter.** This is the classic double-crossover: the direct serial cable is already wired pin-to-pin and the adapter swaps pins 2/3 a second time, so both ends transmit at each other.
 2. **Male COM1 with no adapter → add a Null Modem F/F adapter** at COM1.
 3. **Cable and adapter already match the connector → check the machine, not the cable.** Confirm in service mode that COM1 is set to **MEDIBUS at 9600**, and that the device was added in Vital Recorder as **`Primus`** rather than `MedibusX`.
 4. **Everything above checks out → check the Vital Recorder build.** Older builds could open the port and record nothing; **models without waveform capability (Fabius GS) recorded nothing at all before 1.19.20.** Update to the latest release before touching the cable.
@@ -82,12 +80,5 @@ If the machine's purchase date is unknown, the connector itself is the answer. F
 
 ## Notes
 
-- **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
 - **Waveforms** must be requested with `wavs=` in the device section (up to 4).
 - **Fabius plus:** a unit with a female COM1 has been seen to answer MEDIBUS correctly on the line (ICC/DEVID/MEAS with valid checksums at 9600 8E1) while Vital Recorder still recorded nothing on an older build — consistent with the no-waveform bug fixed in 1.19.20. Re-test on the latest Vital Recorder before changing cables. ❓ *Unverified — tracked in [unverified.md](../unverified.md).*
-- Zeus and Infinity are grouped with the Fabius here because they share the MEDIBUS interface, and `Supported_Devices.md` lists Zeus alongside Primus and Fabius at 9600. **Their COM connector gender has not been verified** against Dräger documentation — check the connector before ordering an adapter. ❓ *Unverified — tracked in [unverified.md](../unverified.md).*
-
-## Sources
-
-- Dräger Fabius service documentation — COM1 connector change of October 2004.
-- `VitalRecorder/Supported_Devices.md` — *Primus / Zeus / Fabius, RS-232, 9600 baud*, MEDIBUS protocol.

@@ -17,7 +17,7 @@ vr_device_name: Hemosphere
    <img src="../hardware_images/edwards_hemosphere_1.png" width="450" alt="HemoSphere rear panel with the female DB-9 serial port outlined in the lower connector block, left of the DB-15 connector and below the USB and ECG inputs">
 
 2. Attach a **Null Modem (M/F)** adapter to that port.
-3. Connect a direct (straight-through) serial cable from the adapter to the PC via a USB-Serial converter.
+3. Connect a direct serial cable from the adapter to the PC via a USB-Serial converter.
 
 ## Device Configuration
 1. On the start-up screen (or from the home screen), touch the **settings (gear)** icon at the bottom left.
@@ -68,15 +68,3 @@ Resulting serial settings:
 
 - Edwards specifies the HemoSphere RS-232 port as using an Edwards proprietary protocol with a maximum data rate of 57.6 kbaud; **9600** is the rate Vital Recorder expects, so do not raise it.
 - Settings cannot be adjusted while the monitor is in use on a patient.
-
-## Notes
-
-- **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
-- Source: HemoSphere Advanced Monitor Operator's Manual (Edwards eIFU, DOC-0167253).
-
-## Sources
-
-- Original Vital Recorder connection guide (legacy English and Korean editions) — Null Modem **M/F** plus direct serial cable to the rear serial port; setup button at the bottom left, **Advanced Setup** with default password `55555555`, *Connectivity → Serial Port Setup*, **IFMout / 9600**, restart required to apply.
-- `VitalRecorder/Supported_Devices.md` — *Hemosphere, RS-232, 9600 baud (STX/ETX)*.
-- HemoSphere Advanced Monitor Operator's Manual (Edwards eIFU, DOC-0167253) — proprietary RS-232 protocol with a 57.6 kbaud maximum, settings not adjustable during patient use, the Analog Input and USB-tab distinctions.
-- Rear-panel port location and the Settings / Advanced Setup / Connectivity / Serial Port Setup screens: photographs in this guide.

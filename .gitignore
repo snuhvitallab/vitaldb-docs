@@ -1,3 +1,4 @@
 googledrive_webdocs
 .DS_Store
 *.code-workspace
+.internal/

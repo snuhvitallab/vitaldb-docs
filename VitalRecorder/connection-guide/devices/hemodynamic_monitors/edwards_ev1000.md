@@ -23,7 +23,7 @@ vr_device_name: EV1000
 
      <img src="../hardware_images/edwards_ev1000_2.png" width="450" alt="EV-1000A rear panel with the female DB-9 serial port circled, immediately right of the LAN2 port">
 
-2. Connect a direct (straight-through) serial cable from the adapter to the PC via a USB-Serial converter. A straight-through cable **without** the Null Modem will not work — the link needs the TX/RX crossover.
+2. Connect a direct serial cable from the adapter to the PC via a USB-Serial converter. A direct serial cable **without** the Null Modem adapter will not work — the link needs the TX/RX crossover.
 
 ## Device Configuration
 1. On the monitoring screen, touch the **settings (gear)** icon in the left-hand icon strip.
@@ -65,13 +65,3 @@ Resulting serial settings:
 ## Known Limitations
 
 - The serial settings should not be changed mid-case — configure the monitor **before** applying it to a patient.
-
-## Notes
-
-- **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
-
-## Sources
-
-- Original Vital Recorder connection guide (legacy English and Korean editions) — all Edwards Lifesciences monitors share the same settings; old EV-1000 has a different connector and takes Null Modem **F/F** on the second port from the right, EV-1000A takes Null Modem **M/F**; menu path *Settings → Monitor Settings → Serial Port Setup*, **Device = IFMout**, **Baud Rate = 9600**.
-- `VitalRecorder/Supported_Devices.md` — *EV1000, RS-232, 9600 baud (STX/ETX)*.
-- `REF EV1000M` / `REF EV1000A` labels, rear-panel port positions, the settings screens and the full serial parameter set (Parity, Stop Bits, Data Bits, Flow Control 2 seconds): photographs in this guide.

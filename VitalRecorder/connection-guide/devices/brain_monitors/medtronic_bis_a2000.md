@@ -8,11 +8,11 @@ vr_device_name: A2000
 > ⚠️ **Use the `J1` port, not `J2`.** The A-2000 rear panel carries two connectors: **`J1` is the RS-232 serial port**, **`J2` is the printer port**. Connecting to `J2` will not produce data.
 > Set **Serial Port Protocol = Binary** and **Save Settings**, otherwise Vital Recorder receives nothing.
 
-| Cable | Adapter | Port | Protocol | VR Device Name |
-|-------|---------|------|----------|----------------|
+| Cable | Adapter | Port | Serial | VR Device Name |
+|-------|---------|------|--------|----------------|
 | Direct Serial (DB-9M ↔ DB-9F) | None | `J1` — DB-9 **female**, rear panel | Binary | `A2000` |
 
-The A-2000 presents a **DB-9 female** port, and the PC side is DB-9 male, so a plain **direct** (straight-through) serial cable is used — **no Null Modem adapter**. This distinguishes it from INVOS, whose port is male and therefore needs an F/F Null Modem.
+The A-2000 presents a **DB-9 female** port, and the PC side is DB-9 male, so a plain **direct serial cable** is used — **no Null Modem adapter**. This distinguishes it from INVOS, whose port is male and therefore needs an F/F Null Modem.
 
 Supports **2-channel, 256 Hz EEG** acquisition — the highest-resolution EEG of the BIS family. It shares the monitor family of the BIS VISTA, but the menu structure and protocol options differ.
 
@@ -63,10 +63,3 @@ The serial protocol lives several levels deep, in the diagnostic/service area of
 ## Notes
 
 - The A-2000's serial port is also the software/firmware download path, so a cable left connected during a service update can interfere — disconnect Vital Recorder before servicing.
-
-## Sources
-
-- Original Vital Recorder connection guide (legacy English and Korean editions) — BIS device table (female port, direct serial cable, no Null Modem adapter) and the A-2000 section: 2-channel 256 Hz EEG, direct cable to the 9-pin rear port, menu path *Advanced Setup → Diagnostic Menu → System Configuration Menu → Serial Port Protocol = Binary → Save Settings*.
-- `VitalRecorder/Supported_Devices.md` — *A2000 (BIS 256 Hz), Medtronic, RS-232, 57600 baud, BIS / EMG / SQI / SR / EEG waveform (high-res)*; `BISx` and `VISTA` listed as separate entries.
-- A-2000 service manual — isolated serial port, `J1` serial / `J2` printer assignment.
-- `J1` location, menu screens and the Binary option: photographs in this guide.

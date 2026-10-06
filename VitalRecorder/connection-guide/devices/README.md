@@ -2,7 +2,7 @@
 
 > **Disclaimer:** This document is for reference only. Our team is not responsible for connection errors. If discrepancies exist between this document and the device manufacturer's manual, **always follow the manufacturer's manual**.
 
-This guide covers Vital Recorder hardware setup for **46 medical devices** across 7 categories. Use the Quick Reference tables below to identify your cable type, then click the device name to open its full setup instructions.
+This guide covers Vital Recorder hardware setup for **47 medical devices** across 7 categories. Use the Quick Reference tables below to identify your cable type, then click the device name to open its full setup instructions.
 
 ## System Overview
 
@@ -37,12 +37,16 @@ One recording PC collects from several devices at once. Serial devices reach the
 ## Quick Reference — All Devices
 
 > Find your device below and identify the cable type before connecting. Click the device name to open its full setup instructions.
+>
+> Items that are **stated but not yet confirmed on a unit** are collected in [unverified.md](unverified.md) — check it before relying on a ❓-marked value.
+>
+> **Vital Recorder version:** always run the latest release — [official version history](https://vitaldb.net/vital-recorder/?action=versions). Device-related release notes are summarised in [version-notes.md](version-notes.md).
 
 ### Patient Monitors
 
 | Device | Cable | Adapter | Port | VR Device Name |
 |--------|-------|---------|------|----------------|
-| [GE CARESCAPE B850 / B650 / B450](patient_monitors/ge_carescape.md) | **ATEN UC-232A only** | Null Modem F/F | USB port | `Bx50` |
+| [GE CARESCAPE B850 / B650 / B450](patient_monitors/ge_carescape.md) | USB-Serial converter — **model depends on software version** (see page) | Null Modem F/F | USB port | `Bx50` |
 | [GE S/5 AM](patient_monitors/ge_s5am.md) | Direct Serial | Null Modem F/F | Port X8 | `Bx50` |
 | [GE B40 / B20](patient_monitors/ge_b40_b20.md) | 9-pin serial (pin 4 removed) | Null Modem F/F | 9-pin | `Bx50` |
 | [GE B105M / B125M / B155M](patient_monitors/ge_b105m.md) | Direct Serial | None | Red-marked serial | `B1x5M` |
@@ -63,7 +67,8 @@ One recording PC collects from several devices at once. Serial devices reach the
 | Device | Cable | Adapter | Port | VR Device Name |
 |--------|-------|---------|------|----------------|
 | [Dräger Apollo / Cicero EM Color / Julian / Primus / Vamos](anesthesia_machines/drager_apollo.md) | Direct Serial | None | COM1 | `Primus` |
-| [Dräger Fabius / Zeus / Infinity](anesthesia_machines/drager_fabius.md) | Direct Serial | **Depends on COM1 connector** — None if female (Oct 2004 →), Null Modem F/F if male (before Oct 2004) | COM1 | `Primus` |
+| [Dräger Fabius](anesthesia_machines/drager_fabius.md) | Direct Serial | **Depends on COM1 connector** — None if female (Oct 2004 →), Null Modem F/F if male (before Oct 2004) | COM1 | `Primus` |
+| [Dräger Zeus](anesthesia_machines/drager_zeus.md) | Direct Serial | Null Modem — gender per connector ❓ | COM (rear) | `Primus` |
 | [Dräger Perseus](anesthesia_machines/drager_perseus.md) | Direct Serial | Null Modem F/F | COM1 or COM2 | `MedibusX` |
 | [GE Datex-Ohmeda](anesthesia_machines/ge_datex_ohmeda.md) | Custom 9-pin ↔ 15-pin | None | 15-pin (under cover) | `Datex-Ohmeda` |
 | [Maquet Flow-i](anesthesia_machines/maquet_flow_i.md) | Direct Serial | Null Modem M/F | Serial port | `Flow-i` |
@@ -139,10 +144,7 @@ Vital Recorder supports these devices (see `Supported_Devices.md`) but no connec
 
 ### Not Recordable
 
-> Items that are **stated but not yet confirmed on a unit** are collected in [unverified.md](unverified.md) — check it before relying on a ❓-marked value.
-> **Vital Recorder version:** always run the latest release — [official version history](https://vitaldb.net/vital-recorder/?action=versions). Device-related release notes are summarised in [version-notes.md](version-notes.md).
-
-Confirmed by testing or by the manufacturer's documentation. Listed so the question is not re-opened at every site.
+Devices and data paths from which Vital Recorder **cannot record**, confirmed by testing or by the manufacturer's documentation. The reason states whether the limit is on the device side (no usable port or output) or on the Vital Recorder side (protocol not implemented).
 
 | Device | Why |
 |---|---|
@@ -176,14 +178,14 @@ There are two types of serial cable. They are **physically identical in appearan
 
 <img src="hardware_images/serial_cable_1.png" width="360" alt="A DB-9 serial cable with a male connector on one end and a female connector on the other — a direct and a cross cable look exactly like this, so the wiring cannot be told apart by sight">
 
-| Type | Wiring | Use case |
-|------|--------|----------|
-| **Direct Cable** | Pin 2 ↔ Pin 2 (Rx), Pin 3 ↔ Pin 3 (Tx) | Most devices |
-| **Cross Cable (Null Modem)** | Pin 2 ↔ Pin 3 (crossed) | Some devices (Fresenius Orchestra, Edwards) |
+| Type | Wiring | Use in this guide |
+|------|--------|-------------------|
+| **Direct serial cable** — also called a *straight-through* cable | Pin 2 ↔ Pin 2 (Rx), Pin 3 ↔ Pin 3 (Tx) | Every serial device |
+| **Cross cable** — also called a *crossover* or *null-modem cable* | Pin 2 ↔ Pin 3 (crossed) | Never specified as a cable. Where a crossed link is needed, the guide specifies a direct serial cable plus a **Null Modem adapter** |
 
-> ⚠️ **WARNING:** Using a cross cable where a direct cable is required (or vice versa) can cause electrical shorts, device malfunction, or fire. **Always verify the cable type before connecting.**
+> ⚠️ **WARNING:** Using a cross cable where a direct serial cable is required (or vice versa) can cause electrical shorts, device malfunction, or fire. **Always verify the cable type before connecting.**
 
-**Recommended approach:** Use only direct cables for all runs. If a cross connection is required, attach a **Null Modem adapter** at the device port.
+**Recommended approach:** Use only direct serial cables for all runs. If a crossed link is required, attach a **Null Modem adapter** at the device port.
 
 ---
 
@@ -195,7 +197,7 @@ Every device in this guide connects in one of four ways. Identify which type app
 
 #### Type A — Direct Serial
 
-Device serial port → direct cable → USB-Serial converter → PC. No adapter.
+Device serial port → direct serial cable → USB-Serial converter → PC. No adapter.
 
 <img src="hardware_images/connection_direct.svg" width="620" alt="Type A: a device 9-pin serial port joins a direct serial cable wired pin 2 to 2 and pin 3 to 3, into a USB-Serial converter that presents a virtual COM port, then by USB to the PC running Vital Recorder">
 
@@ -229,7 +231,9 @@ The images below show the cables and adapters referenced throughout this guide.
 
 #### Null Modem Adapter — F/F (Female / Female)
 
-> Korean cable shops sell null modem adapters as **"크로스 젠더" (cross gender)**. Ask for that name when buying locally — a plain *gender changer* (젠더) is wired straight through and will **not** work.
+A **Null Modem adapter** swaps the TX and RX lines (pins 2 and 3) and is specified by the gender of its two connectors, **M/F** or **F/F**. It is also sold as a *cross-gender* adapter.
+
+> Korean cable shops sell Null Modem adapters as **"크로스 젠더" (cross gender)**. Ask for that name when buying locally — a plain *gender changer* (젠더) is wired straight through and will **not** work.
 
 <img src="hardware_images/cable_null_modem_ff.svg" width="450" alt="Diagram of a Null Modem F/F adapter — female DB-9 on both ends, pins 2 and 3 crossed internally, pin 5 straight through; required when the device port is female-type">
 
@@ -250,17 +254,17 @@ The images below show the cables and adapters referenced throughout this guide.
 
 <img src="hardware_images/cable_usb_serial.svg" width="450" alt="Diagram of a USB-Serial converter — USB-A to the PC on one side, DB-9 male to the device cable on the other, creating a virtual COM port; it acts as a direct cable">
 
-Laptops and tablets typically lack a built-in serial port. A USB-Serial converter creates a virtual COM port and **acts as a direct cable**. Devices that require a cross connection still need a Null Modem adapter.
+Laptops and tablets typically lack a built-in serial port. A **USB-Serial converter** — also sold as a *USB-to-RS232* or *Serial-to-USB* converter — creates a virtual COM port and **acts as a direct serial cable**. Devices that require a cross connection still need a Null Modem adapter.
 
-**Recommended:** Netmate 4-port Serial-to-USB Converter (Kangwon Electronics) — creates four COM ports from one USB connection. [Purchase link (Korea)](http://cableguy.com/shop/mall.php?cat=005004003&query=view&no=39206)
+**Recommended:** Netmate 4-port USB-Serial converter (Kangwon Electronics) — creates four COM ports from one USB connection. [Purchase link (Korea)](http://cableguy.com/shop/mall.php?cat=005004003&query=view&no=39206)
 
 <img src="hardware_images/usb_serial_converter_1.png" width="400" alt="A 4-port RS-232-to-USB converter cable (NEXT-RS232 4P) — one USB-A plug fanning out to four DB-9 connectors, creating four COM ports from a single USB port">
 
-> Some devices accept only one specific converter chipset. **GE CARESCAPE** works only with the **ATEN UC-232A** — see its device page before buying.
+> Some devices accept only specific converter models. The **GE CARESCAPE** accepts one converter per monitor software version — see its device page before buying.
 
 #### USB Hub
 
-Use a **powered USB hub** (with its own external power adapter) to prevent power shortage — the most common cause of intermittent data loss.
+Use a **powered USB hub** (with its own external power adapter) to prevent insufficient USB power — the most common cause of intermittent data loss.
 
 [Purchase — ORICO 4-port Powered USB Hub (Korea)](http://www.enuri.com/detail.jsp?modelno=10534644)
 
@@ -292,18 +296,34 @@ Recorders with several serial channels are easier to support remotely when every
 
 Leave a channel empty if the device is absent; other devices take the remaining channels.
 
-### Starter Kit — Reference Cost
+### Starter Kit
 
-The original connection guide priced the basic kit for recording **four serial devices at once** (Korean retail, 2025). Prices drift; the quantities are the useful part.
+Basic kit for recording **four serial devices at once**:
 
-| Item | Qty | Approx. (KRW) | Note |
-|---|---|---|---|
-| Null Modem adapter (M/F and F/F) | 6 | 11,700 | Buy spares — they are the part that goes missing |
-| Direct serial cable, M/F, 3 m | 4 | 7,800 | Buy the length you need |
-| 4-port USB-Serial converter | 1 | 50,500 | 4-port recommended |
-| Powered USB hub | 1 | 30,000–35,000 | Must have its own power adapter |
-| USB extension cable, M/F, 5 m | 1 | 2,000 | Buy the length you need |
-| **Total** | | **≈ 102,000–107,000** | |
+| Item | Qty | Note |
+|---|---|---|
+| Null Modem adapter (M/F and F/F) | 6 | Keep spares |
+| Direct serial cable, M/F, 3 m | 4 | Buy the length you need |
+| 4-port USB-Serial converter | 1 | 4-port recommended |
+| Powered USB hub | 1 | Must have its own power adapter |
+| USB extension cable, M/F, 5 m | 1 | Buy the length you need |
+
+---
+
+### Device Page Layout
+
+Every device page follows the same order. Optional sections are omitted when there is nothing to say.
+
+| Section | Content |
+|---|---|
+| Title, callout, connection table | Model name; one `> ⚠️` or `> **Note:**` callout for the single most important caution; a table with **Cable · Adapter · Port · (Serial) · VR Device Name** |
+| Before You Start *(optional)* | Model variants or checks that decide which cable to use |
+| Connection Steps | Numbered physical connection; sub-sections (`###`) for alternative paths such as a Y-cable or waveform output |
+| Device Configuration | Menus to set on the device |
+| Vital Recorder Setup | Device entry to add and any `vr.conf` options |
+| Troubleshooting *(optional)* | Symptom → cause → fix |
+| Known Limitations *(optional)* | What the link cannot deliver |
+| Notes *(optional)* | Anything else that affects the connection |
 
 ---
 

@@ -7,13 +7,15 @@ vr_device_name: MEKICS
 -->
 > ⚠️ **No serial cable — this monitor is collected over TCP/IP via a dedicated Wi-Fi router.** The router must be configured before first use, and the MP1300 must be rebooted for its network settings to apply.
 
-| Connection | Router address | Server IP (VR PC) | Server Port | VR Device Name |
-|------------|----------------|-------------------|-------------|----------------|
-| Ethernet from monitor to a dedicated Wi-Fi router, router bridged to the VR PC | `192.168.0.1` | `192.168.137.1` *(example — depends on how the PC reaches the router, see Step 2.4)* | `6002` | `MEKICS` |
+| Cable | Adapter | Port | VR Device Name |
+|-------|---------|------|----------------|
+| Ethernet — monitor → dedicated Wi-Fi router (`192.168.0.1`) → VR PC | — | TCP `6002` (monitor **Server Port**; Server IP = VR PC, see [Device Configuration](#device-configuration)) | `MEKICS` |
 
 The MP1300 speaks the **MP601 central-station protocol**; Vital Recorder listens as the central station on TCP port `6002`. The example below uses an ipTIME mini3 router — other models are configured the same way.
 
-## Step 1 — Router Setup
+## Connection Steps
+
+### Router Setup
 
 1. Power the router and connect the PC to its default AP, **`iptime_mini`** (open network).
 
@@ -43,32 +45,34 @@ The MP1300 speaks the **MP601 central-station protocol**; Vital Recorder listens
 
    <img src="../hardware_images/mekics_mp1300_7.png" width="450" alt="Router other-settings page with wired port function switched from WAN Port to LAN Port">
 
-## Step 2 — MP1300 Device Setup
+### Monitor Cabling
 
-1. Mount the router on the monitor, power it from the **USB port on the rear of the MP1300**, and run a **LAN cable** from the router to the MP1300's Ethernet port.
+Mount the router on the monitor, power it from the **USB port on the rear of the MP1300**, and run a **LAN cable** from the router to the MP1300's Ethernet port.
 
    <img src="../hardware_images/mekics_mp1300_8.png" width="300" alt="Rear of the MP1300 with the router on top, its USB power lead and the LAN cable circled">
 
-2. On the monitor, go to **System → Network** and set the monitor's own address:
+## Device Configuration
+
+1. On the monitor, go to **System → Network** and set the monitor's own address:
    - **IP:** `192.168.0.xxx` — the first three octets must match the router's subnet; the last octet is any unused value from 2–255, unique per monitor
    - **Mask:** `255.255.255.0`
    - **Gateway:** `192.168.0.1` (the router)
 
    <img src="../hardware_images/mekics_mp1300_9.png" width="450" alt="MP1300 Network menu showing IP, Mask 255.255.255.0, Gateway 192.168.0.1 and the Central and HL7 submenus">
 
-3. Go to **System → Network → Central → Mode** and select **MP601**.
+2. Go to **System → Network → Central → Mode** and select **MP601**.
 
    <img src="../hardware_images/mekics_mp1300_10.png" width="450" alt="MP1300 Central Mode submenu with MP601 selected from MP601 / MP600 / Off">
 
-4. Still under **Central**, set **Server IP** to the address of the Vital Recorder PC and **Server Port** to **`6002`**.
+3. Still under **Central**, set **Server IP** to the address of the Vital Recorder PC and **Server Port** to **`6002`**.
 
    <img src="../hardware_images/mekics_mp1300_11.png" width="450" alt="MP1300 Central settings with Mode MP601, the Server IP field highlighted and Server Port 6002">
 
-   - `192.168.137.1` is the Windows mobile-hotspot / ICS address, used when the router's wireless WAN uplinks to the VR PC's hotspot (Step 1.5). If the VR PC is instead a wired or wireless client on the router's own LAN, use its `192.168.0.x` address.
+   - `192.168.137.1` is the Windows mobile-hotspot / ICS address, used when the router's wireless WAN uplinks to the VR PC's hotspot ([Router Setup](#router-setup), step 5). If the VR PC is instead a wired or wireless client on the router's own LAN, use its `192.168.0.x` address.
 
-5. **Restart the monitor** — network changes only apply after a power cycle.
+4. **Restart the monitor** — network changes only apply after a power cycle.
 
-## Step 3 — Vital Recorder Setup
+## Vital Recorder Setup
 
 In Vital Recorder press **Add Device**, select **Patient monitor → MEKICS : MEKICS**, and set **Port** to **`6002`**.
 
@@ -81,12 +85,4 @@ In Vital Recorder press **Add Device**, select **Patient monitor → MEKICS : ME
 
 ## Notes
 
-- **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
 - One router can serve several MP1300s; give each monitor a distinct last octet and point them all at the same Server IP and port.
-
-## Sources
-
-- Original Vital Recorder connection guide (legacy English and Korean editions) — wireless collection through a dedicated ipTIME router: router login at `192.168.0.1`, SSID / WPA2PSK+AES setup with SSID broadcast disabled, reconnecting as a hidden network, Wireless WAN extension to the VR PC's hotspot, wired port switched to LAN Port, MP1300 **System → Network** IP / Mask / Gateway and **Central → MP601** with Server Port `6002`, and adding **MEKICS** with Port `6002` in Vital Recorder.
-- `VitalRecorder/Supported_Devices.md` — *MEKICS patient monitor, TCP, Port 6002*.
-- Photographs in this guide — the router pages, the MP1300 Network / Central menus, the router mounted on the monitor's rear USB power, and the Vital Recorder Add Device dialog.
-- Vital Recorder official version history — <https://vitaldb.net/vital-recorder/?action=versions> (version guidance in Notes; device-related entries in [version-notes.md](../version-notes.md)).

@@ -35,12 +35,5 @@ No protocol or baud setting is exposed on the device. The link runs at **115200 
 
 ## Notes
 
-- **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
 - Developed with the manufacturer in 2024; the protocol went through several revisions (sign byte, 32 Hz timing) — keep Vital Recorder current.
 - **No photographs yet** of the rear USB port or the Calibrate screen.
-
-## Sources
-
-- `VitalRecorder/Supported_Devices.md` — *NirsitON, OBELAB, RS-232, 115200 baud, RSO2, HbO2, HbR, CCO, NIRS waveform*.
-- Field records (VitalDB installation and support logs, 2024–2026) — protocol developed with the manufacturer in 2024 and its revisions (sign byte, 32 Hz timing, early 9600 builds), rear USB serial port with no null modem, tablet firewall **TCP 5525** requirement and the periodic drop when it is blocked, data starting only after **Calibrate**, 1 Hz / 32 Hz streams, `-nan` on protocol-version mismatch, and repeated recording restarts on 1.13.x builds.
-- Vital Recorder official version history — <https://vitaldb.net/vital-recorder/?action=versions> (version guidance in Notes; device-related entries in [version-notes.md](../version-notes.md)).

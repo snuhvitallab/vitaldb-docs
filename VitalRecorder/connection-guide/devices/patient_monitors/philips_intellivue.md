@@ -120,13 +120,4 @@ The DB-9F end goes to the PC's DB-9M serial port or a USB-Serial converter (e.g.
 
 ## Notes
 
-- **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
 - If the service password has been changed from `1345`, only the Philips service agent can supply it.
-
-## Sources
-
-- Original Vital Recorder connection guide (legacy English and Korean editions) — serial export through the LAN-like **MIB** port regardless of central-station connection, MIB port variants by model, custom cable RJ-45 pins 4, 5, 7 → DB-9F pins 5, 2, 3, the MX400–550 Advanced Interface Card alternative with Rx / Tx reversed, MX600–800 requiring a MIB board, and the service-mode configuration (Operating Modes → Service, Setup Hardware → Data Export → Fix 115200, Setup Interfaces → DtOut1, restart) and the IntelliBridge EC10 Setup Waves procedure.
-- `VitalRecorder/Supported_Devices.md` — *Intellivue (MX/MP series), RS-232, 115200 baud*; *MIB output must be enabled in the device menu for Intellivue*.
-- Photographs in this guide — rear-panel port identification, the MIB / ASIB wiring diagrams, the Service / Hardware / Interfaces menus, and the IntelliBridge Config-mode screens; service password `1345` and config password `71034` as shown there.
-- Field records (VitalDB installation and support logs, 2024–2026) — `DtOut1` being lost silently, **ART1 / IBP1** label requirement for the pressure waveform, ECG waveform disappearing on lead I / III, ventilator-data setup for CO2 / AWP, IntelliBridge wave order **C-F-V-P** and `wavs=`, AWF bias by bridged machine (about −130 Datex-Ohmeda / −160 Dräger), waves missing on old MP20 firmware, MX750 / MX400 rear USB power, MP2 / X2 / X3 having no usable serial port, the MX400 MIB option, Datex-Ohmeda bridges not forwarding gas-agent data, and the changed-service-password case.
-- Vital Recorder official version history — <https://vitaldb.net/vital-recorder/?action=versions> (multi-bed crash fix in 1.19.3, serial reception fix in 1.16.4; device-related entries in [version-notes.md](../version-notes.md)).

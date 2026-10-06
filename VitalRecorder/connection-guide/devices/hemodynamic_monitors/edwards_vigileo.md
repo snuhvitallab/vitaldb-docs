@@ -17,7 +17,7 @@ vr_device_name: Vigileo
    <img src="../hardware_images/edwards_vigileo_1.png" width="450" alt="Vigileo rear panel with the recessed female DB-9 serial port circled, below the USB port">
 
 2. Attach a **Null Modem (M/F)** adapter to that port.
-3. Connect a direct (straight-through) serial cable from the adapter to the PC via a USB-Serial converter.
+3. Connect a direct serial cable from the adapter to the PC via a USB-Serial converter.
 
 ## Device Configuration
 1. Tap the **blank strip at the bottom left** of the monitoring screen — there is no labeled button — to open the Status Menu.
@@ -50,13 +50,3 @@ vr_device_name: Vigileo
 ## Known Limitations
 
 - Configure the monitor **before** applying it to a patient.
-
-## Notes
-
-- **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
-
-## Sources
-
-- Original Vital Recorder connection guide (legacy English and Korean editions) — Vigileo listed with the Edwards Lifesciences monitors that connect with Null Modem **M/F** plus a direct serial cable and the shared **IFMout / 9600** setting.
-- `VitalRecorder/Supported_Devices.md` — *Vigileo (FloTrac), RS-232, 9600 baud (STX/ETX)*.
-- Recessed rear port below the USB port, the unlabeled bottom-left strip that opens the Status Menu, the Device picker (None / IFMout / Batch IFMout / Flexport), the Baud Rate picker and the Flow Control 2 seconds default: photographs in this guide.

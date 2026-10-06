@@ -12,7 +12,7 @@ vr_device_name: BSM
 | Direct serial DB-9M ↔ DB-9F (numeric) | Null Modem M/F | RS-232C socket on the interface unit | `BSM` |
 | Nihon Kohden ECG/BP output cable + custom 5.5pi Mono ↔ RJ45 (waveform) | None | `ECG/BP OUT` port | — (ADC device) |
 
-## Model / Interface Matrix
+## Before You Start
 
 | Model | RS-232C output | What is needed |
 |-------|----------------|----------------|
@@ -23,7 +23,9 @@ vr_device_name: BSM
 
 Confirm the exact interface unit that applies to a given serial number with Nihon Kohden — the option list differs between the A and K market variants.
 
-## Connection Steps — Numeric Data
+## Connection Steps
+
+### Numeric Data
 
 1. Identify the **RS-232C socket** (DB-9 female, marked with the serial `IOIOI` icon) on the interface unit's panel. Do not confuse it with the 15-pin RGB/video socket (`IOI`) directly below it, or with the RJ-45 network socket.
 
@@ -32,7 +34,7 @@ Confirm the exact interface unit that applies to a given serial number with Niho
 2. Attach a **Null Modem (M/F)** adapter to that socket. Screwing it down keeps it from working loose.
 3. Connect a **direct serial cable** from the adapter to the PC's DB-9M port or a USB-Serial converter.
 
-## Connection Steps — ECG / ART Waveform
+### ECG / ART Waveform
 
 The RS-232C link carries numeric data only. ECG and arterial pressure waveforms come out of the **`ECG/BP OUT`** port as analog voltages, visible on the same connector panel as the serial socket.
 
@@ -52,8 +54,8 @@ No monitor-side menu change is normally required.
 
 ## Troubleshooting
 
-- **The port opens but no data arrives.** Confirm the **Null Modem (M/F)** is fitted — the original connection guide specifies it for the QI-373P RS-232C port. Then confirm the port's baud rate (9600 / 19200 / 38400) with Nihon Kohden.
-- **No RS-232C socket on the panel.** The interface unit is missing or is a variant without the serial option — see the [Model / Interface Matrix](#model--interface-matrix). No cable will help.
+- **The port opens but no data arrives.** Confirm the **Null Modem (M/F)** is fitted on the QI-373P RS-232C port. Then confirm the port's baud rate (9600 / 19200 / 38400) with Nihon Kohden.
+- **No RS-232C socket on the panel.** The interface unit is missing or is a variant without the serial option — see the [Model / Interface Matrix](#before-you-start). No cable will help.
 - **Numerics arrive but no waveforms.** Expected: the RS-232C link carries numeric data only. Waveforms need the `ECG/BP OUT` path and an ADC.
 - **Central-server path delivers nothing.** The HL7 plug-in is not installed on the server, or the ADT device was not given the monitor's bed name — see the central-server path under Notes.
 
@@ -65,14 +67,5 @@ No monitor-side menu change is normally required.
 
 ## Notes
 
-- **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
 - **Central-server path (no per-bed cable).** Where a Nihon Kohden **central station** with the HL7 gateway is installed, Vital Recorder can take data from the server instead of per-bed serial: add **three** devices — `NIHONKOHDEN::ADT` (patient ID, server port **9007**), `NIHONKOHDEN::ORF` (numerics every 30 s, port **7999**) and `NIHONKOHDEN::NealTime` (waveforms, port **9001**, at most three waves — default ECG_II, PLETH, AWP). The ADT device must be given the monitor's bed name. The gateway's *Start Code* setting must match what the client expects, and changing it can break the site's EMR feed — coordinate with Nihon Kohden. Without the HL7 plug-in the server delivers nothing. Where there is no central server, per-bed serial is the only route.
 - The `QI-373P` interface carries **both** the RS-232C socket and the `ECG/BP OUT` port, so a single added board can serve numeric and waveform collection — but the waveform side still needs its own output cable and an ADC.
-
-## Sources
-
-- Original Vital Recorder connection guide (legacy English and Korean editions) — direct serial cable (DB-9M ↔ DB-9F) with a **Null Modem (M/F)** on the RS-232C port of the installed **QI-373P** board, which also carries the `ECG/BP OUT` port; ECG / ART waveforms through the Nihon Kohden ECG/BP output cable into a custom 5.5pi Mono ↔ RJ45 cable and an ADC; no other monitor-side setting.
-- `VitalRecorder/Supported_Devices.md` — *BSM series (Serial), RS-232, 9600 baud* and the network entries *BSM series (ADT) TCP Port 9007*, *(HL7 GW) Port 9001*, *(HL7 GN) Port 7999*.
-- Photographs in this guide — interface-unit connector panel with the RS-232C socket, the 15-pin video socket, the RJ-45 network socket and the `ECG/BP OUT` connector.
-- Field records (VitalDB installation and support logs, 2024–2026) — model / interface-unit matrix (BSM-1700, BSM-3000 with QF-910P / QI-373P, BSM-6000 with QI-631P / QI-671P, YJ-910P / YJ-920P output cables), 9600 / 19200 / 38400 baud options, the central-server path (`NIHONKOHDEN::ADT` 9007 / `ORF` 7999 / `NealTime` 9001, bed name, Start Code, HL7 plug-in), ventilator parameters shown on the BSM not being available on serial, and CSM / LifeScope / CSM 1702 / PSM being unverified.
-- Vital Recorder official version history — <https://vitaldb.net/vital-recorder/?action=versions> (version guidance in Notes; device-related entries in [version-notes.md](../version-notes.md)).

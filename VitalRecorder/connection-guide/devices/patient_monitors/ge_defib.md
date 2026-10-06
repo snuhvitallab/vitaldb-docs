@@ -7,9 +7,9 @@ vr_device_name: (none — ADC device)
 -->
 > **Note:** Use this route when the TRAM-RAC ANALOG OUT port is already occupied. ECG and ABP are available as voltages from the **Defib. Sync** connector on the front of the Tram / Patient Data Module. Like the TRAM-RAC analog port this is an **analog** output, so an ADC is required — the voltage scaling is the same.
 
-| Cable | Adapter | Port | ADC Required |
-|-------|---------|------|--------------|
-| 7-pin mini-DIN (or an 8-pin mini-DIN with the center pin cut away) | — | **Defib. Sync** (front panel of the Tram / Patient Data Module) | Yes — DataQ DI-149 / DI-155 / DI-1110 or SNU-ADC |
+| Cable | Adapter | Port | ADC | VR Device Name |
+|-------|---------|------|-----|----------------|
+| 7-pin mini-DIN (or an 8-pin mini-DIN with the center pin cut away) | — | **Defib. Sync** (front panel of the Tram / Patient Data Module) | DataQ DI-149 / DI-155 / DI-1110 or SNU-ADC | *(per ADC type)* |
 
 The ADC connects to the PC over **USB**. There is no separate VR device entry for the Defib.Sync port — add the ADC in Vital Recorder and map its channels.
 
@@ -58,10 +58,3 @@ No configuration is required on the module — the analog outputs are always liv
 
 - **Voltage scaling** matches the TRAM-RAC analog output: ECG **1 V/mV ± 10%**, invasive BP **1 V / 100 mmHg**.
 - The Solar 8000M/i service manual also documents a separate 9-pin *test* cable for this port (pin 1 brown = ECG_ANALOG_OUT, pin 2 red = BP_ANALOG_OUT, pin 6 green = ANALOG_RETURN). The two numbering schemes are not interchangeable — use the module-socket numbers above unless you are working from that test cable.
-
-## Sources
-
-- Original Vital Recorder connection guide (legacy English and Korean editions) — *GE Defib connectors*: ECG and ABP taken as voltages from the front-panel Defib.Sync port when the analog port is in use, 7-pin mini-DIN (analog, ADC via USB), and the statement that the voltage output is the same as the TRAM-RAC analog port.
-- GE Solar 8000M/i service manual, "Defibrillator Synchronization connector J2" — the seven-pin assignment (DEFIB_MARKER_OUT/IN, AGND1, DGND, AGND2, BP_ANALOG_OUTPUT, ECG_ANALOG_OUTPUT), the separate 9-pin test-cable numbering, and the analog output scaling (ECG 1 V/mV, invasive BP 1 V / 100 mmHg).
-- Front-panel socket location and the pin table figure: photographs in this guide.
-- Field records (VitalDB installation and support logs, 2024–2026) — Dash 4000 defib-cable pin mapping differs from the SNUADCM default and needs the dedicated `Dash defib-SNUADCM` channel map.

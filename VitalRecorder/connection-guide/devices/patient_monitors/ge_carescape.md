@@ -9,13 +9,13 @@ vr_device_name: Bx50
 
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|
-| USB-to-RS232 converter — **model depends on monitor software version** (see below) | Null Modem F/F | **USB port** on the rear panel | `Bx50` |
+| USB-Serial converter — **model depends on monitor software version** (see below) | Null Modem F/F | **USB port** on the rear panel | `Bx50` |
 
-> ⚠️ **The monitor accepts only specific USB-to-RS232 converters, and which one depends on its software version.** The CARESCAPE runs its own embedded OS and carries drivers for these converters only:
+> ⚠️ **The monitor accepts only specific USB-Serial converters, and which one depends on its software version.** The CARESCAPE runs its own embedded OS and carries drivers for these converters only:
 >
 > | Monitor software | Converter |
 > |---|---|
-> | **v3.1.4 or later** | **Startech ICUSB232V2**. Newer Startech stock has been seen to fail on some units — the **MBF-RS232** USB-to-RS232 cable is the proven alternative. |
+> | **v3.1.4 or later** | **Startech ICUSB232V2**. Newer Startech stock has been seen to fail on some units — the **MBF-RS232** USB-Serial cable is the proven alternative. |
 > | **v3.1 – v3.1.3** | Ask GE for the **free firmware upgrade** to 3.1.4 or later, then use the row above. |
 > | **v2** | **ATEN UC-232A**, legacy revision only — serial numbers starting **Z3L1** or later alphabetically (USB vendor ID `0x0557`); this revision is discontinued. **MBF-RS232** also works on v2 (chain: MBF-RS232 → Null Modem F/F → MBF-RS232). |
 >
@@ -25,7 +25,7 @@ vr_device_name: Bx50
 
 ## Connection Steps
 
-1. Plug the USB-to-RS232 converter that matches the monitor's software version (see above) into one of the USB ports on the rear of the monitor. The USB block sits on the lower connector strip, to the left of the DVI and DB-9 connectors.
+1. Plug the USB-Serial converter that matches the monitor's software version (see above) into one of the USB ports on the rear of the monitor. The USB block sits on the lower connector strip, to the left of the DVI and DB-9 connectors.
 
    <img src="../hardware_images/ge_carescape_1.png" width="450" alt="Rear three-quarter view of a CARESCAPE monitor; a red circle marks the block of four USB ports on the lower connector strip, to the left of the DVI video connector and the DB-9 serial connector">
 
@@ -36,7 +36,7 @@ vr_device_name: Bx50
 3. Run a **direct serial cable** from the Null Modem adapter to the recording PC. On a laptop or tablet this means a second USB-Serial converter on the PC side — that one must support DTR/RTS (FTDI recommended).
 
    ```
-   CARESCAPE USB -- USB-to-RS232 converter (DB-9M) -- Null Modem F/F -- direct serial cable -- USB-Serial (FTDI) -- PC
+   CARESCAPE USB -- USB-Serial converter (DB-9M) -- Null Modem F/F -- direct serial cable -- USB-Serial (FTDI) -- PC
    ```
 
 ## Device Configuration
@@ -65,11 +65,3 @@ Once the interface is set to S/5, no baud rate has to be chosen on the monitor: 
 - **VRZero note:** the USB cable that connects to VRZero must support handshaking. Cables known to work:
   - [NETmate KW-525 (0.45 m)](http://www.compuzone.co.kr/product/product_detail.htm?ProductNo=374732)
   - [ATEN UC-232A (0.35 m)](http://www.compuzone.co.kr/product/product_detail.htm?ProductNo=60189)
-
-## Sources
-
-- Original Vital Recorder connection guide (legacy English and Korean editions) — *GE CARESCAPE B850, B650, B450*: USB port (not the DB-9 serial port), USB-to-RS232 converter plus Null Modem (F/F), S/5 Computer Interface protocol. The English edition (newer) gives the version rule — **v3.1 or higher: Startech ICUSB232V2; v2: legacy ATEN UC-232A, serial numbers Z3L1 or later, discontinued**; the Korean edition states ATEN only. The VRZero cable links (NETmate KW-525, ATEN UC-232A) are from the same guide.
-- `VitalRecorder/Supported_Devices.md` — *Bx50, RS-232, 9600 baud, ECG, NIBP, SpO2, Temp, IBP*.
-- `VitalRecorder/Configuration_Guide.md` (S5 / Datex Device Settings) — default waveforms `ECG1, PLETH, IABP1, CO2, AWP`, `wavs=` option and `IABP1` naming.
-- Rear-panel USB port location: photographs in this guide.
-- Field records (VitalDB installation and support logs, 2024–2026) — v3.1.4 Startech and the free firmware upgrade, MBF-RS232 as the alternative on both v3.1.4+ and v2, "Startech not recognized" reports traced to v2 units, USB port 4, dust in the rear USB ports, ATEN revision by USB vendor ID (`0x0557` vs `0x067b`), the two causes of non-recovering communication loss on v2 (missing handshake; one-second gap per re-request fixed in Vital Recorder), Prolific-based cable drop-outs and the converters proven stable on Linux/PiVR (NETmate KW-725 / KW-825, UGREEN FTDI).

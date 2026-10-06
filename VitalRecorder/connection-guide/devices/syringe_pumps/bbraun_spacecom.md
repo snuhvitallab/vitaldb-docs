@@ -60,10 +60,3 @@ The serial interface is configured over LAN through **SpaceOnline**, the module'
 
 - The SpaceCom is the communication module of the **SpaceStation** rack; it reports the infusion pumps (Perfusor / Infusomat Space) docked in that rack, so one `SpaceCom` device in Vital Recorder covers the whole station rather than one entry per pump.
 - Restore the PC's Ethernet adapter to DHCP after configuration if it is also used on the hospital network.
-
-## Sources
-
-- Original Vital Recorder connection guide (legacy English and Korean editions) — SpaceCom device table (9-pin mini-DIN serial port, proprietary cable, setting required) and the SpaceCom section: custom cable mapping mini-DIN pins 2 / 3 / 5 → DB-9F pins 3 / 2 / 5, SpaceOnline web interface over a direct LAN cable, default address `192.168.100.41` with the PC at `192.168.100.42`, the three fixed accounts, the **BCC Protocol settings** submenu and **Save**.
-- `VitalRecorder/Supported_Devices.md` — *SpaceCom, BBraun, RS-232, 9600 baud, drug name / rate / dose rate / volume / concentration / pressure / TCI / bolus / syringe / weight / infusion time*.
-- B. Braun SpaceStation / SpaceCom user manual — the four interface values are chosen to match the receiving PDM system; mini-DIN pin assignment not published there.
-- Connector column layout (LAN port above, serial port below), the SpaceOnline menu and the *Interface Settings* values (COM1, 9600, n, 1, 8): photographs in this guide.

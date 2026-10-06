@@ -7,9 +7,9 @@ vr_device_name: (none — ADC device)
 -->
 > ⚠️ **This is an analog connection, not serial.** ECG, arterial pressure and PLETH waveforms can only be taken from the **15-pin ANALOG OUT** connector on the rear of the TRAM-RAC 4A housing. The connector outputs the measured waveforms as voltages, so an **Analog-to-Digital Converter (ADC)** is required between the TRAM-RAC and the PC. A Tram-rac **2** housing has no analog output connector.
 
-| Cable | Adapter | Port | ADC Required |
-|-------|---------|------|--------------|
-| Custom DB-15M → ADC analog inputs | — | 15-pin **ANALOG OUT** (rear of TRAM-RAC 4A housing) | DataQ DI-149, DI-155, DI-1110, or SNU-ADC |
+| Cable | Adapter | Port | ADC | VR Device Name |
+|-------|---------|------|-----|----------------|
+| Custom DB-15M → ADC analog inputs | — | 15-pin **ANALOG OUT** (rear of TRAM-RAC 4A housing) | DataQ DI-149, DI-155, DI-1110, or SNU-ADC | *(per ADC type)* |
 
 The ADC connects to the PC over **USB**. There is no VR device entry for the TRAM-RAC itself — the ADC is added in Vital Recorder as the ADC device (DataQ or SNU-ADC) and each analog channel is mapped to a track.
 
@@ -58,7 +58,7 @@ The ADC connects to the PC over **USB**. There is no VR device entry for the TRA
 
 No configuration is required on the TRAM-RAC — the analog outputs are always live. All setup happens on the ADC side in Vital Recorder: channel mapping, gain and unit (see Notes for the scaling values).
 
-## Choosing the module slots
+### Choosing the Module Slots
 
 1. Verify in Vital Recorder that each channel carries the waveform you expect. Below, PLETH shows no pulsatile signal and CVP does not come through at all — the signature of a BP2 conflict.
 
@@ -88,11 +88,3 @@ No configuration is required on the TRAM-RAC — the analog outputs are always l
 - **ICP:** when monitoring ICP, the ICP module must be in the **first slot** of the TRAM-RAC.
 - **Choosing an ADC:** the DI-149 and DI-155 differ mainly in voltage resolution. The DI-149 is adequate for general monitoring; use the DI-155 if you intend to analyse ECG detail such as P- or T-waves.
 - If the analog port is already in use for another purpose, ECG and ABP can also be taken from the **Defib.Sync** connector on the module front panel — see [GE Defib Connectors](ge_defib.md).
-
-## Sources
-
-- Original Vital Recorder connection guide (legacy English and Korean editions) — *GE TRAM-RAC 4A*: waveforms only through the 15-pin ANALOG OUT connector, ADC (DataQ DI-149 / DI-155 / SNU-ADC) over USB, building or ordering the custom cable (cable shop, cost estimate), **leave BP2 empty** to obtain PLETH, ICP module in the first slot, Tram-rac 2 has no analog output, and the DI-149 vs DI-155 resolution note.
-- GE Solar 8000M/i service manual (analog output signals, TRAM-RAC 4A) — the 15-pin ANALOG OUT pin assignment and the output scaling (ECG 1 V/mV ± 10 %, invasive BP 1 V / 100 mmHg, SpO2 0–100 % = 0–1 V).
-- ANALOG OUT location, wiring diagram, DI-149 terminal block, SNU-ADC board and the BP2 conflict screens: photographs in this guide.
-- DataQ manufacturer guide on libusb vs CDC mode — <https://www.dataq.com/blog/data-acquisition/usb-daq-products-support-libusb-cdc>.
-- Field records (VitalDB installation and support logs, 2024–2026) — Vital Recorder records ECG lead II only from this port; Trace I (pin 2) follows the displayed lead.

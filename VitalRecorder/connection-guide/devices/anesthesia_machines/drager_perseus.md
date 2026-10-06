@@ -24,7 +24,7 @@ vr_device_name: MedibusX
 3. Choose **Interface** from the list on the right — the page holding the DHCP / IP address / subnet mask / default gateway, **RS232**, LAN and USB settings.
 4. In the **COM 1** (or **COM 2**) block, set:
 
-- **Protocol:** **MEDIBUS.X** with **19200** baud (add as `MedibusX`), or **MEDIBUS** with **9600** baud (add as `Primus`) — the original connection guide uses the MEDIBUS / 9600 pairing. *None* disables the port.
+- **Protocol:** **MEDIBUS.X** with **19200** baud (add as `MedibusX`), or **MEDIBUS** with **9600** baud (add as `Primus`). *None* disables the port.
 - **Baud rate:** selectable values are 1200, 2400, 4800, 9600, 19200 and 38400
 - The frame format is fixed and shown next to the baud rate as **8, e, 1** (8 data bits, Even parity, 1 stop bit)
 
@@ -47,15 +47,6 @@ vr_device_name: MedibusX
 
 ## Notes
 
-- **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
 - Model-name selection and the generic `Medibus` entry exist on current builds.
 - With **`AUTO_DETECT=1`** in `vr.conf` Dräger MEDIBUS / MEDIBUS.X machines are detected on the serial line without a `[DEV/...]` section.
 - The same Interface page also sets the machine name and the MEDIBUS time-synchronisation source; neither is needed for recording.
-
-## Sources
-
-- Original Vital Recorder connection guide (legacy English edition) — *Null modem (F/F cross-gender)* then a direct serial cable; service mode via *System Settings > System Menu*, password `0000`; *Interface Configuration* menu; set the connected COM1 or COM2 port to **MEDIBUS, 9600**.
-- `VitalRecorder/Supported_Devices.md` — *Primus IE / Perseus (Medibus X), Draeger, RS-232, 19200 baud* → `MedibusX`; *Primus / Zeus / Fabius, 9600 baud* → `Primus`.
-- Field records (VitalDB installation and support logs, 2024–2026) — Perseus A500 lists **MEDIBUS.X and None only**, so 9600 produces `MEDIBUS COM2`; a Y-cable tap does not work on the Perseus; interface panel layout (male DB-9, USB, RJ-45).
-- Interface-page details (selectable baud rates 1200–38400, fixed **8, e, 1** frame, machine name and time-synchronization fields): manufacturer configuration documentation; no document identifier was recorded, and no photographs of the Perseus menus exist in this guide yet.
-- Vital Recorder official version history (<https://vitaldb.net/vital-recorder/?action=versions>) — `wavs=`, `AUTO_DETECT=1`, model-name and generic `Medibus` entries; device-related entries collected in [version-notes.md](../version-notes.md).

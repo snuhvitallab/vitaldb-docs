@@ -5,7 +5,7 @@ category: Hemodynamic Monitor
 manufacturer: Edwards Lifesciences
 vr_device_name: Vigilance
 -->
-> ⚠️ **Select `Vigilance` in Vital Recorder** — there is no separate "Vigilance II" entry. And a **straight-through serial cable will not work**: the link needs the TX/RX crossover from the **Null Modem (M/F)**. Both mistakes are recurring field reports for this monitor.
+> ⚠️ **Select `Vigilance` in Vital Recorder** — there is no separate "Vigilance II" entry. And a **direct serial cable alone will not work**: the link needs the TX/RX crossover from the **Null Modem (M/F)**. Both mistakes are recurring field reports for this monitor.
 
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|
@@ -17,7 +17,7 @@ vr_device_name: Vigilance
    <img src="../hardware_images/edwards_vigilance2_1.png" width="450" alt="Vigilance II rear panel with the upper of two stacked female DB-9 ports circled, marked 1 with port 2 below it and the RJ-45 and ECG connectors alongside">
 
 2. Attach a **Null Modem (M/F)** adapter to port 1.
-3. Connect a direct (straight-through) serial cable from the adapter to the PC via a USB-Serial converter.
+3. Connect a direct serial cable from the adapter to the PC via a USB-Serial converter.
 
 ## Device Configuration
 1. Touch the **wrench (setup)** icon in the tool bar at the bottom left of the screen.
@@ -52,15 +52,3 @@ Resulting serial settings:
 - **Configured but nothing arrives.** Check that **`Serial Port Setup`**, not **`Analog Input Setup`**, was used. The two entries sit next to each other in the Setup Menu, and Analog Input Setup lists **Port 1 / Port 2 / Port 3** which look deceptively like the serial ports. Analog input carries external pressure signals and is not used by Vital Recorder.
 
   <img src="../hardware_images/edwards_vigilance2_4.png" width="450" alt="Vigilance II Analog Input Setup screen listing Port 1 (None), Port 2 (None) and Port 3 (None) — the wrong menu for Vital Recorder">
-
-## Notes
-
-- **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
-- Source: field reports on the VitalDB bug-report board (crossover cable required; only `Vigilance` selectable).
-
-## Sources
-
-- Original Vital Recorder connection guide (legacy English and Korean editions) — Null Modem **M/F** to port **1**, the upper of the two rear serial ports; *Setup → Serial Port Setup → Port 1*, **Device = IFMout**, **Baud Rate = 9600**.
-- `VitalRecorder/Supported_Devices.md` — *Vigilance II / Vigilance C, RS-232, 9600 baud (STX/ETX)*.
-- Field reports on the VitalDB bug-report board — a crossover (Null Modem) cable is required; only `Vigilance` is selectable in Vital Recorder, there is no "Vigilance II" entry.
-- Stacked port layout, the wrench icon, the Setup Menu, the Serial Port Setup values and the look-alike Analog Input Setup screen: photographs in this guide.

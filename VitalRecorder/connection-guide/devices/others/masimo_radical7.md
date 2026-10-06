@@ -7,9 +7,9 @@ vr_device_name: Radical7
 -->
 > ⚠️ **The Radical-7 serial interface exists only on the Docking Station (RDS).** The handheld must be seated in the dock — undocked, there is no serial port and the device-output settings cannot even be changed.
 
-| Cable | Adapter | Port | Serial Output | Baud Rate | VR Device Name |
-|-------|---------|------|---------------|-----------|----------------|
-| Direct Serial (DB-9M ↔ DB-9F) | None | **P1 (RS-232)** — Docking Station rear | ASCII 1 | 9600 | `Radical7` |
+| Cable | Adapter | Port | Serial | VR Device Name |
+|-------|---------|------|--------|----------------|
+| Direct Serial (DB-9M ↔ DB-9F) | None | **P1 (RS-232)** — Docking Station rear | ASCII 1 — 9600 baud | `Radical7` |
 
 Extracts SpO₂, pulse rate, PI and the digital pleth waveform.
 
@@ -58,9 +58,3 @@ Extracts SpO₂, pulse rate, PI and the digital pleth waveform.
 - ASCII 1 is the Radical-7's default serial output mode; if someone has changed it, step 3 restores it.
 - When the Radical-7 is docked, the docking-station field is reported as `ASCII1 IAP FLEXPORT` — this is normal.
 - If the Radical-7 is used **together with a Masimo Root**, power on the **Radical-7 first**, then the Root. See [Masimo ROOT](masimo_root.md).
-
-## Sources
-
-- Masimo Radical-7 Operator's Manual (Serial Interface Specifications / Serial Interface Setup) — serial connector on the rear of the Docking Station, serial interface only available when docked, 9600 bps / 8 data bits / 1 stop bit / No parity / no handshaking, ASCII 1 default, `ASCII1 IAP FLEXPORT` docking-station field.
-- Cable and gender (direct serial, no Null Modem): original Vital Recorder connection guide device table.
-- Menu screens and port layout: photographs in this guide.

@@ -42,10 +42,3 @@ Nothing has to be enabled on the ventilator. The serial port is served by the bu
 
 - **Servo-U.** Supported at **19200 baud** (per `Supported_Devices.md`) with the same `Servo-i` entry; several sites report Servo-U replacing Servo-i fleets. **Whether the Servo-U needs the Null Modem, and which of its RS-232 ports is live, has not been verified on a unit** — photograph the connector panel and the interface menu on first contact and record it here. ❓ *Unverified — tracked in [unverified.md](../unverified.md).*
 - Typical parameters recorded: Paw, PEEP, TV, MV, RR, FiO2.
-
-## Sources
-
-- Original Vital Recorder connection guide (legacy English edition) — no device setting required; two RS-232 ports, connect to the **BOTTOM** one with a *Null modem (M/F cross gender)*; the TOP port is a debugging port; if the port is occupied by a patient monitor, collection is not possible and data must come through the monitor (Servo-i → Philips Intellivue → Vital Recorder).
-- `VitalRecorder/Supported_Devices.md` — *SERVO-i / SERVO-s, Maquet, RS-232, 9600 baud* and *SERVO-U, 19200 baud*, parameters Paw, PEEP, TV, MV, RR, FiO2.
-- Computer Interface Emulator (CIE) behavior — 9600 baud, Even parity, XON/XOFF, auto-detected data length and stop bits, opto-isolated port, 4 simultaneous waveform channels: manufacturer CIE documentation; no document identifier was recorded.
-- Field records (VitalDB installation and support logs, 2024–2026) — the "no data for 20 s → close" loop traced to cable type and seating; read-only Y-cable taps failing on the single usable port; Servo-U replacing Servo-i fleets at several sites. Servo-U adapter and live port are tracked in [unverified.md](../unverified.md).

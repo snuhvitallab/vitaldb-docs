@@ -28,11 +28,7 @@ vr_device_name: Datex-Ohmeda
 
 3. Connect the 9-pin end to the PC via a USB-Serial converter.
 
-## Device Configuration
-
-No setting has to be changed on the machine — the serial port streams continuously, and Vital Recorder's `Datex-Ohmeda` driver applies the line settings itself.
-
-## When the 15-pin Port is Already in Use
+### When the 15-pin Port is Already in Use
 
 If the 15-pin port is already feeding a patient monitor (CO2 curve, airway pressure, etc.), build a **Y-cable** so Vital Recorder can listen without disturbing the existing link, and enable **"Read Only Mode"** in Vital Recorder when adding the device.
 
@@ -46,30 +42,20 @@ Only the machine's transmit line and ground are branched to CON2, so Vital Recor
 
 <img src="../hardware_images/ge_datex_ohmeda_2.png" width="450" alt="Y-cable pin wiring diagram — machine TX (pin 13) and GND (pin 5) branch to both CON1 (DB-15F, existing GE device) and CON2 (DB-9F, PC Vital Recorder with the read-only option); RX (pin 6) goes only to CON1">
 
-## Vital Recorder Setup
+## Device Configuration
+No setting has to be changed on the machine — the serial port streams continuously, and Vital Recorder's `Datex-Ohmeda` driver applies the line settings itself.
 
+## Vital Recorder Setup
 - In Vital Recorder, add the device as **`Datex-Ohmeda`**.
 
 ## Troubleshooting
-
 - **Waveform gaps and lagging numerics.** This is a link-capacity limit, not a cable fault (see Known Limitations). Reduce the requested waveforms.
 - **Gas-agent values collide with a Philips monitor's on the same case.** Gas data from a Datex-Ohmeda machine arrives on the `AGENT1` track; keep the device types distinct so each source keeps its own tracks.
 
 ## Known Limitations
-
 - **The 19200 baud link carries about 1,920 characters per second.** When many parameters are active the stream exceeds that, waves drop out and numerics arrive late.
 
 ## Notes
-
-- **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
 - Confirmed models in the field include the **Aisys CS2** and **Avance CS2**.
 - With **`AUTO_DETECT=1`** in `vr.conf` GE / Datex-Ohmeda S/5 devices are identified on the serial line without a `[DEV/...]` section.
 - Typical parameters recorded: Paw, Pplat, EtCO2, TV, MV, FiO2.
-
-## Sources
-
-- Original Vital Recorder connection guide (legacy English and Korean editions) — *Serial (DB15F)* port behind the rear cover, *DB15M to DB9F custom serial cable*, no device setting required; custom-cable and Y-cable pin diagrams; Read Only Mode when tapping; GE Ohmeda Serial protocol model list (Aespire, Aespire View, Aestiva, Avance, Avance CS2, Aisys, Aisys CS2, Carestation 620/650/650c).
-- `VitalRecorder/Supported_Devices.md` — *Aisys / Avance / Aestiva, GE Datex-Ohmeda, RS-232, 19200 baud*, parameters Paw, Pplat, EtCO2, TV, MV, FiO2.
-- Connector panel and wiring diagrams: photographs in this guide.
-- Field records (VitalDB installation and support logs, 2024–2026) — 19200-baud link saturation (waveform gaps, lagging numerics); Aisys CS2 and Avance CS2 confirmed in the field; gas-agent data arriving on the `AGENT1` track.
-- Vital Recorder official version history (<https://vitaldb.net/vital-recorder/?action=versions>) — `AUTO_DETECT=1` for GE / Datex-Ohmeda S/5 devices; device-related entries collected in [version-notes.md](../version-notes.md).

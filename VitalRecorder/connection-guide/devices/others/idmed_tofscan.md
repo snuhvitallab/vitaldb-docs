@@ -43,8 +43,3 @@ No on-device output setting is documented for the TOFscan; the optic-serial cabl
 
 - The optical connector is threaded; hand-tighten it so it cannot work loose during a case.
 - Because the link is optical on the device side, the TOFscan is galvanically isolated from the recording PC through this cable.
-
-## Sources
-
-- IDMED ToFscan Neuromuscular Transmission Monitor User Manual — "Optical output for fiber optic connection"; "TOF-RS1 and TOF-RS2 are the only recommended Optic-Serial (RS232) cable to connect ToFscan to other monitors."
-- Cable routing to the USB-Serial converter: original Vital Recorder connection guide.

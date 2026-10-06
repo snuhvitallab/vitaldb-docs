@@ -7,9 +7,9 @@ vr_device_name: Hamilton
 -->
 > **Note:** Either Monitoring Interface port (1 or 2) can be used, but the port's protocol must be switched to **Block** first.
 
-| Cable | Adapter | Port | Protocol | Serial | VR Device Name |
-|-------|---------|------|----------|--------|----------------|
-| Direct Serial | Null Modem M/F | Monitoring Interface 1 or 2 | `HAMILTON-G5 / Block` | 38400 baud, 8 data bits, No parity, 1 stop bit, no handshake | `Hamilton` |
+| Cable | Adapter | Port | Serial | VR Device Name |
+|-------|---------|------|--------|----------------|
+| Direct Serial | Null Modem M/F | Monitoring Interface 1 or 2 | `HAMILTON-G5 / Block` protocol — 38400 baud, 8 data bits, No parity, 1 stop bit, no handshake | `Hamilton` |
 
 ## Connection Steps
 1. Find the connector column on the side/rear of the ventilator. Three connectors are stacked there:
@@ -39,16 +39,8 @@ The COM (RS-232) connector pin assignment is: **2 RxD, 3 TxD, 4 DTR, 5 GND, 6 DS
 
 ## Notes
 
-- **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
 - **C6, C2, T1 and MR1** are listed in `Supported_Devices.md` with the same 38400-baud Block protocol and the `Hamilton` entry. The port layout and the menu path to set *Block* differ by model — this page documents the G5; treat it as a starting point for the others and record differences. ❓ *Unverified — tracked in [unverified.md](../unverified.md).*
 - Waveform capture from Hamilton ventilators is supported on current builds; no `wavs=` entry is needed — unlike the S/5 monitors, the Block protocol carries the waveforms by default.
 - Block mode carries all settings, measurements, alarms and up to 8 high-resolution waveforms; polling mode is limited to 4 low-resolution waveforms and a data subset — this is why Vital Recorder requires Block.
 - The two Monitoring Interface ports are independent, so a patient monitor can stay on one port while Vital Recorder uses the other. Each port has its own protocol setting.
 - Typical parameters recorded: Paw, PEEP, Pplat, TV, MV, RR, FiO2, CO2.
-
-## Sources
-
-- Original Vital Recorder connection guide (legacy English edition) — Hamilton G5 has two rear RS-232 ports, *Monitoring Interface 1* and *Monitoring Interface 2*, either usable; *null modem (M/F cross gender)* plus a direct serial cable; enter Configuration mode (two keys together, button at bottom left) only when the ventilator is not operating, activate Test mode (two keys together), then *Configuration → Interface*, set the cabled COM port to the Block protocol, *Close* then *Close/Save*; "supported on version 1.10.2 or later".
-- `VitalRecorder/Supported_Devices.md` — *MR1 / C2 / C6 / T1, Hamilton Medical, RS-232, 38400 baud (STX/ETX)*, parameters Paw, PEEP, Pplat, TV, MV, RR, FiO2, CO2; basis for extending this page to the C-series under the same `Hamilton` entry.
-- Connector pin assignment (2 RxD, 3 TxD, 4 DTR, 5 GND, 6 DSR, 7 RTS, 8 CTS), Block line settings (38400, 8 / None / 1, no handshake), the Polling, `Block (ACK)` and `DraegerTestProtocol` options and the Standby condition: manufacturer interface documentation for the G5; no document identifier was recorded, and no photographs of a Hamilton unit exist in this guide yet.
-- Vital Recorder official version history (<https://vitaldb.net/vital-recorder/?action=versions>) — waveform capture from Hamilton ventilators on current builds; device-related entries collected in [version-notes.md](../version-notes.md).

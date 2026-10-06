@@ -5,16 +5,15 @@ category: Patient Monitor
 manufacturer: GE
 vr_device_name: Coro
 -->
-> ⚠️ **The RS-232C ports are 8-pin RJ-45 sockets, not DB-9.** A custom RJ-45 ↔ DB-9F cable is required, and the monitor's **CTS input must be asserted** or it will not transmit. Service setup mode must also be used to switch the port into the data-export communication mode — the factory defaults do not export data.
+> ⚠️ **The RS-232 ports are 8-pin RJ-45 sockets, not DB-9.** A custom RJ-45 ↔ DB-9F cable is required, and the monitor's **CTS input must be asserted** or it will not transmit. Service setup mode must also be used to switch the port into the data-export communication mode — the factory defaults do not export data.
 
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|
-| Custom RJ-45 ↔ DB-9F (null-modem wiring, CTS looped to RTS) | None | **RS-232 Port 1** or **Port 2** (rear panel, RJ-45) | `Coro` |
+| Custom RJ-45 ↔ DB-9F (crossed wiring, CTS looped to RTS) | None | **RS-232 Port 1** or **Port 2** (rear panel, RJ-45) | `Coro` |
 
 The DB-9F end plugs into the PC's DB-9M serial port or into a USB-Serial converter. Because the crossover is built into the custom cable's pin mapping, **no Null Modem adapter is used**.
 
 ## Connection Steps
-
 1. Prepare an RJ-45 ↔ DB-9F cable. The monitor's RJ-45 pinout is:
 
    | RJ-45 pin | Port 1 signal | Port 2 signal | Direction |
@@ -30,7 +29,7 @@ The DB-9F end plugs into the PC's DB-9M serial port or into a USB-Serial convert
 
    *Per the Corometrics 170 Series service manual (P/N 2000947-004), tables 8-6 and 8-7. Note that **pins 1 and 8 of Port 1 carry +5 V** — do not wire them to anything on the PC side.*
 
-2. Wire the three data conductors as a null-modem (crossed) connection: monitor **TXD (pin 6)** → DB-9F **pin 2**, monitor **RXD (pin 3)** ← DB-9F **pin 3**, **GND (pin 4 or 5)** → DB-9F **pin 5**.
+2. Wire the three data conductors as a crossed connection: monitor **TXD (pin 6)** → DB-9F **pin 2**, monitor **RXD (pin 3)** ← DB-9F **pin 3**, **GND (pin 4 or 5)** → DB-9F **pin 5**.
 
    - The manual states that when the monitor is connected directly to another DTE (a PC), **a standard null-modem cable must be used**.
 
@@ -40,15 +39,17 @@ The DB-9F end plugs into the PC's DB-9M serial port or into a USB-Serial convert
 
 4. Plug the RJ-45 end into **RS-232 Port 1** (or Port 2) on the rear panel and the DB-9F end into the PC via a USB-Serial converter.
 
-## Device Configuration
+### Corometrics 250cx
 
+The **250cx** is the model named in `Supported_Devices.md` (FHR, MHR, TOCO at 9600 baud) and the one most often found in delivery suites. Its serial port is **RJ11**, not the 170 Series' RJ45, so the cable above does not fit. A dedicated RJ11 ↔ DB-9F cable is needed; its pinout has not been recorded in this guide yet — confirm with the GE service manual for the 250cx before building one. On-site testing has been deferred to GE for this reason. ❓ *Unverified — tracked in [unverified.md](../unverified.md).*
+
+## Device Configuration
 The communication mode and baud rate for each port live in **service setup mode**, which can only be entered from a power-off state.
 
 1. **Enter service setup mode:**
    - Press and hold the **Setup** button (clock/calendar icon).
    - While still holding it, press and hold the blue **Power** button.
    - Release both buttons. Service mode is now active.
-   - *The original connection guide instead says to keep holding **Setup** for the whole procedure. If the display leaves setup mode when you release it, follow that.*
 
 2. Use the **UA Reference** button to toggle between the **setup code** (shown in the **UA display**) and its **value** (shown in the primary **FHR display**). The UA display is active when the `±` qualifier is lit; the FHR display is active when the heartbeat indicator is lit.
 
@@ -71,29 +72,13 @@ The communication mode and baud rate for each port live in **service setup mode*
 
 - Serial: **9600 baud**, port switched to communications mode **5 (115 update)**. The RTS/CTS loop described in step 3 is what makes a 3-wire cable work.
 
-## Corometrics 250cx
-
-The **250cx** is the model named in `Supported_Devices.md` (FHR, MHR, TOCO at 9600 baud) and the one most often found in delivery suites. Its serial port is **RJ11**, not the 170 Series' RJ45, so the cable above does not fit. A dedicated RJ11 ↔ DB-9F cable is needed; its pinout has not been recorded in this guide yet — confirm with the GE service manual for the 250cx before building one. On-site testing has been deferred to GE for this reason. ❓ *Unverified — tracked in [unverified.md](../unverified.md).*
-
 ## Vital Recorder Setup
-
 - Add the device in Vital Recorder as **`Coro`**.
 
 ## Troubleshooting
-
 - **The port is configured but nothing arrives.** Verify the setup codes on the unit in front of you. An earlier revision of this guide listed the port-1 baud rate under code `40`; the service manual (P/N 2000947-004) assigns `30`/`40` to the *communications mode* of ports 1/2 and `31`/`41` to their *baud rate*. The manual numbering is used above.
 
 ## Notes
-
-- **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
 - Recorded parameters: **fetal HR1 / HR2** and **uterine activity (UACT / TOCO)**. On current builds the **maternal vital signs (SpO2, PR, NIBP)** are also recorded into the same file as the fetal channels.
 - The 170 Series covers models **170, 171, 172, 173 and 174**. The setup-code table above is common to all of them; the *HR offset* and *ECG artifact elimination* codes exist only on 172/173/174.
 - **Gap:** there are no field photographs for this device yet — no rear-panel shot, no RS-232 port location, no setup-mode display. Photographs of the rear RJ-45 ports and of the UA/FHR displays while in service setup mode would be a useful addition.
-
-## Sources
-
-- GE Corometrics 170 Series service manual (P/N 2000947-004), tables 8-6 and 8-7 — RJ-45 pinout of RS-232 Ports 1 and 2 (including +5 V on Port 1 pins 1 and 8), the null-modem requirement toward a DTE, the CTS-must-be-asserted rule and the RTS loop, service setup mode entry/exit, setup codes `30`/`31`/`40`/`41`, communications-mode values and baud-rate values, factory defaults, and the model coverage (170–174).
-- Original Vital Recorder connection guide (legacy English edition) — *GE: Corometrics 170*: hold the Setup button for the entire procedure, UA Reference toggles the display, communication mode 115 and baud 9600 set with the volume buttons; its code numbering (P1 = 30/40) is recorded in Troubleshooting and `unverified.md`.
-- `VitalRecorder/Supported_Devices.md` — *Corometrics 250cx, GE Healthcare, RS-232, 9600 baud, FHR, MHR, TOCO*; the `Coro` device type.
-- Field records (VitalDB installation and support logs, 2024–2026) — the 250cx serial port is RJ11, no cable pinout recorded yet, on-site testing deferred to GE; maternal vitals recorded alongside the fetal channels.
-- Vital Recorder official version history — <https://vitaldb.net/vital-recorder/?action=versions>; device-related entries in [version-notes.md](../version-notes.md).

@@ -70,17 +70,9 @@ See [Configuration Guide → S5 / Datex Device Settings](../../../Configuration_
 
 - **No DB-9 on the rear panel.** Some B125M / B105M units ship without the serial port fitted; what looks like the port is the connector for GE's **Multi I/O adapter**, which must be purchased from GE to obtain the RS-232 port. The same applies to the B20 / B40.
 - **Nothing is recorded on a unit that monitors only ECG or only SpO2** (dialysis rooms, some wards). Vital Recorder's default case-cut logic waits for **both** HR and SpO2 before it starts recording. Set `CUT_BY` in `vr.conf` (HR-only or by-hour).
-- **Waveforms stop after about 40 minutes.** Observed on a B125M running on a plain direct cable. Check that the PC-side converter carries DTR/RTS and, if the site allows, shorten the requested `wavs` list — asking for more waveforms than the monitor can sustain is the usual trigger.
+- **Waveforms stop after about 40 minutes.** Observed on a B125M running on a plain direct serial cable. Check that the PC-side converter carries DTR/RTS and, if the site allows, shorten the requested `wavs` list — asking for more waveforms than the monitor can sustain is the usual trigger.
 
 ## Notes
 
-- The B155M carries its own serial port, so **no ATEN converter is involved** — a plain direct cable, unlike the CARESCAPE Bx50. Protocol and tracks are identical to the B650.
+- The B155M carries its own serial port, so **no ATEN converter is involved** — a plain direct serial cable, unlike the CARESCAPE Bx50. Protocol and tracks are identical to the B650.
 - **Do not confuse the B1x5M with the Bx50.** The CARESCAPE B450/B650/B850 uses a different port (USB, with an ATEN UC-232A), a Null Modem adapter and the `Bx50` device type. Pre-survey forms frequently list one model and the site turns out to have the other — see [GE CARESCAPE B850 / B650 / B450](ge_carescape.md).
-
-## Sources
-
-- Original Vital Recorder connection guide (legacy English and Korean editions) — *GE B105M, B125M, B155M*: direct serial cable to the serial port marked in red on the rear panel, no adapter.
-- `VitalRecorder/Supported_Devices.md` — *B105M / B125M, RS-232, 9600 baud, ECG, NIBP, SpO2, Temp, IBP*; the `B1x5M` device type and the S/5 Computer Interface (Datex DRI) protocol family.
-- `VitalRecorder/Configuration_Guide.md` (S5 / Datex Device Settings) — `wavs=` option, `IABP1`–`IABP8` naming and the ECG1/PLETH-only default for this family.
-- Service-menu path (Install/Service → Service → Page 3 → S5/Anesthesia), channel selector and the 19200/115200 baud choice: photographs in this guide.
-- Field records (VitalDB installation and support logs, 2024–2026) — GE Multi I/O adapter on units without a DB-9, B155M needing no ATEN converter, `CUT_BY` for ECG-only or SpO2-only units, the 40-minute waveform drop-out, and the DTR/RTS (FTDI) handshaking requirement with the PL2303 failure message.

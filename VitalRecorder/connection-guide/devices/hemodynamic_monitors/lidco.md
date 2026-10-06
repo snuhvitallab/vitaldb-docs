@@ -7,13 +7,13 @@ vr_device_name: LiDCO
 -->
 > ⚠️ **Serial output is off by default.** The RS-232 communications module must be switched on inside the monitor's **Engineering Screen** before Vital Recorder will see anything, and the baud rate here is **57600** — not the 9600 used by the Edwards monitors.
 
-| Cable | Adapter | Port | Baud Rate | VR Device Name |
-|-------|---------|------|-----------|----------------|
-| Direct Serial | Null Modem **M/F** | **COM1** — standard 9-way serial port on the monitor | 57600 | `LiDCO` |
+| Cable | Adapter | Port | Serial | VR Device Name |
+|-------|---------|------|--------|----------------|
+| Direct Serial | Null Modem **M/F** | **COM1** — standard 9-way serial port on the monitor | 57600 baud | `LiDCO` |
 
 ## Connection Steps
 1. Attach a **Null Modem (M/F)** adapter to **COM1** on the monitor. LiDCO documents COM1 as the hardware connection point for all serial communications output from LiDCO monitors, and describes it as a standard 9-way serial port.
-2. Connect a direct (straight-through) serial cable from the adapter to the PC via a USB-Serial converter. The Null Modem supplies the TX/RX crossover; a straight-through cable alone will not work.
+2. Connect a direct serial cable from the adapter to the PC via a USB-Serial converter. The Null Modem supplies the TX/RX crossover; a straight-through cable alone will not work.
 
 ## Device Configuration
 1. Enable the serial link and set its parameters. On the LiDCO monitor the RS-232 port configuration lives in the **Engineering Screen**, where the communications software module must also be switched on. On the units documented for Vital Recorder the path is **Settings → Communications → Serial**.
@@ -42,14 +42,6 @@ vr_device_name: LiDCO
 
 ## Notes
 
-- **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
 - **The COM1 connector gender is unverified.** ❓ *Unverified — tracked in [unverified.md](../unverified.md).* The usual arrangement on these monitors is a female port, which is what the M/F adapter above assumes.
 - LiDCO does not publish the RS-232 frame specification; contact LiDCO to obtain detailed specifications for the RS-232 interface.
 - This page has no photographs. LiDCO does not publish its operator manual publicly, so the COM1 location and the serial settings screen are described in text only — **confirm both against your unit's manual before connecting**.
-
-## Sources
-
-- Original Vital Recorder connection guide (legacy English and Korean editions) — one serial port on the rear, Null Modem **M/F** plus direct serial cable; *Settings > Communications > Serial > LiDCOserial Enabled*, **57600 baud, 8 / None / 1** (defaults), **Average Never**, **Observation beat-to-beat**.
-- `VitalRecorder/Supported_Devices.md` — *LiDCOrapid, LiDCO, RS-232, 57600 baud (STX/ETX)*.
-- LiDCO documentation — COM1 as the standard 9-way serial port for all serial communications output, RS-232 configuration and the communications module switch in the **Engineering Screen**, per-integration serial defaults (for example 19200 / even parity for the GE Centricity interface), and the unpublished RS-232 frame specification.
-- No photographs exist for this device; the COM1 connector gender is tracked in [unverified.md](../unverified.md).
