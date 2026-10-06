@@ -51,26 +51,11 @@ vr_device_name: B1x5M
 
 - Add the device in Vital Recorder as **GE :: B1x5M**; in `vr.conf` the type is `B1x5M`.
 
-### Waveform Selection
-
-Unlike other Datex DRI devices, the B1x5M family defaults to **ECG1 and PLETH only** — the monitor cannot keep up with the full S5 waveform stream. Any other waveform (invasive arterial pressure, CO2, AWP, etc.) must be requested explicitly using the `wavs` option in `vr.conf`:
-
-```ini
-[DEV/B1x5M]
-type=B1x5M
-port=LU
-wavs=ECG1,PLETH,IABP1,CO2,AWP
-```
-
-> **Arterial pressure (ART) waveform:** Use `IABP1` — names like `ART` or `INVP1` are not recognized. The first invasive pressure channel (labeled **ART** on the monitor screen) maps to `IABP1`; the second to `IABP2`, and so on up to `IABP8`.
-
-See [Configuration Guide → S5 / Datex Device Settings](../../../Configuration_Guide.md#s5--datex-device-settings-ge-solar--bx50--b1x5m--canvas) for the full list of supported waveform names.
-
 ## Troubleshooting
 
 - **No DB-9 on the rear panel.** Some B125M / B105M units ship without the serial port fitted; what looks like the port is the connector for GE's **Multi I/O adapter**, which must be purchased from GE to obtain the RS-232 port. The same applies to the B20 / B40.
 - **Nothing is recorded on a unit that monitors only ECG or only SpO2** (dialysis rooms, some wards). Vital Recorder's default case-cut logic waits for **both** HR and SpO2 before it starts recording. Set `CUT_BY` in `vr.conf` (HR-only or by-hour).
-- **Waveforms stop after about 40 minutes.** Observed on a B125M running on a plain direct serial cable. Check that the PC-side converter is FTDI-based and, if the site allows, shorten the requested `wavs` list — asking for more waveforms than the monitor can sustain is the usual trigger.
+- **Waveforms stop after about 40 minutes.** Observed on a B125M running on a plain direct serial cable. Check that the PC-side converter is FTDI-based and, if the site allows, shorten the requested `wavs` list.
 
 ## Notes
 
