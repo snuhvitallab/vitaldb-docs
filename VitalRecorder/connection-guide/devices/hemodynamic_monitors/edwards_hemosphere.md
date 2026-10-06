@@ -67,4 +67,3 @@ Resulting serial settings:
 ## Known Limitations
 
 - Edwards specifies the HemoSphere RS-232 port as using an Edwards proprietary protocol with a maximum data rate of 57.6 kbaud; **9600** is the rate Vital Recorder expects, so do not raise it.
-- Settings cannot be adjusted while the monitor is in use on a patient.
