@@ -11,7 +11,7 @@ vr_device_name: B1x5M
 |-------|---------|------|----------------|
 | Direct Serial | None | Serial port marked in **red** on the rear panel | `B1x5M` |
 
-> ⚠️ **The B1x5M uses hardware handshaking.** The USB-Serial converter on the PC side must carry **DTR and RTS** — an FTDI-based converter is recommended, and PL2303-based converters have proved unstable in the field (`pl2303_get_line_request failed`). A 3-wire connection will not work: the port opens but roughly 60 % of the waveform samples are lost.
+> ⚠️ **Use an FTDI-based USB-Serial converter on the PC side.** A 3-wire cable connects but loses most of the waveform samples.
 
 ## Connection Steps
 
@@ -70,7 +70,7 @@ See [Configuration Guide → S5 / Datex Device Settings](../../../Configuration_
 
 - **No DB-9 on the rear panel.** Some B125M / B105M units ship without the serial port fitted; what looks like the port is the connector for GE's **Multi I/O adapter**, which must be purchased from GE to obtain the RS-232 port. The same applies to the B20 / B40.
 - **Nothing is recorded on a unit that monitors only ECG or only SpO2** (dialysis rooms, some wards). Vital Recorder's default case-cut logic waits for **both** HR and SpO2 before it starts recording. Set `CUT_BY` in `vr.conf` (HR-only or by-hour).
-- **Waveforms stop after about 40 minutes.** Observed on a B125M running on a plain direct serial cable. Check that the PC-side converter carries DTR/RTS and, if the site allows, shorten the requested `wavs` list — asking for more waveforms than the monitor can sustain is the usual trigger.
+- **Waveforms stop after about 40 minutes.** Observed on a B125M running on a plain direct serial cable. Check that the PC-side converter is FTDI-based and, if the site allows, shorten the requested `wavs` list — asking for more waveforms than the monitor can sustain is the usual trigger.
 
 ## Notes
 

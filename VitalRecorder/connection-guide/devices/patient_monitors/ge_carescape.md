@@ -21,7 +21,7 @@ vr_device_name: Bx50
 >
 > Check the version under **Monitor setup → Defaults & Service → Service** before buying. Field reports of the Startech "not being recognized" come from v2 monitors. Do **not** connect to the monitor's own DB-9 serial port; use a USB port.
 
-> ⚠️ **The Bx50 uses hardware handshaking.** A 3-wire connection will not work. The converter on the **PC** side must carry **DTR and RTS** — an FTDI-based converter is recommended. With a 3-wire cable or a converter that drops the handshake lines the link comes up but roughly 60 % of the waveform samples are lost and reception is intermittent.
+> ⚠️ **Use an FTDI-based USB-Serial converter on the PC side.** A 3-wire cable connects but loses most of the waveform samples.
 
 ## Connection Steps
 
@@ -55,8 +55,8 @@ Once the interface is set to S/5, no baud rate has to be chosen on the monitor: 
 
 - **A freshly bought UC-232A produces nothing.** Converter revision matters: field reports indicate that only the older ATEN UC-232A revision (USB vendor ID `0x0557`) is driven by the monitor's built-in driver; newer stock built around a different chipset (`0x067b`) is not. Check the revision before changing anything else.
 - **An otherwise-correct installation produces nothing.** Dust in the rear USB ports has stopped such installations — clean the port before suspecting the converter.
-- **Communication stops and does not auto-recover (software version 2).** Data is received normally and then stops at an unpredictable point, and Vital Recorder does not re-establish the link on its own. Workaround: **unplug and re-plug the cable at the monitor end** — reception resumes immediately. Sites with frequent stoppages have fitted a relay to automate the re-connection, which reduced but did not fully eliminate the problem. Two causes have since been identified: (1) a missing hardware handshake on the PC-side converter (check DTR/RTS first), and (2) a one-second waveform gap at every re-request, which Vital Recorder fixed by sending the request only once at start-up — **update Vital Recorder** before chasing hardware.
-- **The link drops intermittently.** Prolific-based PC-side cables (ATEN new revision, NETmate Prolific, UGREEN Prolific) connect but drop intermittently; changing the monitor's USB port sometimes restores them. Avoid PL2303-based converters — they have proved unstable in the field (`pl2303_get_line_request failed`). Converters proven stable on Linux/PiVR: NETmate **KW-725 / KW-825** (FTDI) and UGREEN FTDI.
+- **Communication stops and does not auto-recover (software version 2).** Data is received normally and then stops at an unpredictable point, and Vital Recorder does not re-establish the link on its own. Workaround: **unplug and re-plug the cable at the monitor end** — reception resumes immediately. Sites with frequent stoppages have fitted a relay to automate the re-connection, which reduced but did not fully eliminate the problem. Two causes have since been identified: (1) the PC-side converter (use an FTDI-based one), and (2) a one-second waveform gap at every re-request, which Vital Recorder fixed by sending the request only once at start-up — **update Vital Recorder** before chasing hardware.
+- **The link drops intermittently.** Use an FTDI-based converter on the PC side. NETmate **KW-725 / KW-825** and UGREEN FTDI have proved stable on Linux/PiVR.
 - **Waveforms drop out.** Trim the `wavs=` list if the monitor cannot sustain all of the defaults (`wavs=1,4,8,9,13` — ECG1, PLETH, IABP1, CO2, AWP).
 
 ## Notes

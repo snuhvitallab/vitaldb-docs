@@ -43,4 +43,4 @@ No configuration is required on the monitor — X8 streams the S/5 Computer Inte
 
 ## Notes
 
-- **Handshaking.** As with the other S/5-protocol monitors, use a USB-Serial converter that carries DTR and RTS (FTDI recommended) rather than a 3-wire adapter.
+- **Converter.** Use an FTDI-based USB-Serial converter on the PC side rather than a 3-wire adapter.
