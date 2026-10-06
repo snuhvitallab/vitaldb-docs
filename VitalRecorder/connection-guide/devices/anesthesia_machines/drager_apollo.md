@@ -75,6 +75,3 @@ On machines that expose the setting on screen it is reached from the interface p
 - **Waveforms come out in the wrong order on a Y-cable (read-only) tap.** On current builds the order is detected automatically when the other device's requests are visible on the line; otherwise fix it with `wavs=`.
 - **The port does not open.** In `vr.conf`, `port=` must be the actual serial port name of the converter channel (e.g. `C1`), not `COM1`.
 - **The baud-rate setting cannot be found on an Atlan A350.** It is not in the obvious interface menu — ask the Dräger engineer for the path.
-
-## Notes
-- **Do not unplug a cable already occupying COM1 while the machine is running.** On a Primus this has switched off the connected patient monitor, which then did not restart — use the Y-cable, and fit it between cases.
