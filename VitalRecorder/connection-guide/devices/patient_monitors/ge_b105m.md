@@ -50,8 +50,3 @@ vr_device_name: B1x5M
 ## Vital Recorder Setup
 
 - Add the device in Vital Recorder as **GE :: B1x5M**; in `vr.conf` the type is `B1x5M`.
-
-## Notes
-
-- The B155M carries its own serial port, so **no ATEN converter is involved** — a plain direct serial cable, unlike the CARESCAPE Bx50. Protocol and tracks are identical to the B650.
-- **Do not confuse the B1x5M with the Bx50.** The CARESCAPE B450/B650/B850 uses a different port (USB, with an ATEN UC-232A), a Null Modem adapter and the `Bx50` device type. Pre-survey forms frequently list one model and the site turns out to have the other — see [GE CARESCAPE B850 / B650 / B450](ge_carescape.md).
