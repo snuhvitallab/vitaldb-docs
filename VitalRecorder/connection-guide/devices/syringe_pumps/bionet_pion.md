@@ -41,3 +41,9 @@ The device port is DB-9 **female** and the PC side is DB-9 **male**, so a direct
 ## Notes
 
 - Recorded tracks per pump are **`CT`** (target concentration), **`RATE`**, **`CP`** (plasma concentration), **`CE`** (effect-site concentration), **`MODE`** (e.g. `TCIE` for effect-site TCI) and **`DRUG`** (the selected agent, e.g. `REMIFENTANIL`).
+
+## Sources
+
+- Original Vital Recorder connection guide (legacy English and Korean editions) — Pion TCI device table (serial DB-9F, direct serial cable DB-9M–DB-9F, no setting required) and the Pion section: Vital Recorder reads the first number in the device name and prefixes the tracks with it (`Pion2` → `PUMP2`, no number → `PUMP1`).
+- `VitalRecorder/Supported_Devices.md` — *Pion, Bionet, RS-232, 115200 baud, infusion volume / rate*.
+- Rear-panel port identification (DB-9 female beside the USB-B socket) and the Vital Recorder screenshot with `Pion2` on COM5 producing `PUMP2_` tracks (`CT`, `RATE`, `CP`, `CE`, `MODE`, `DRUG`): photographs in this guide.

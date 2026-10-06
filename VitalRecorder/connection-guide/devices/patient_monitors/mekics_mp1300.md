@@ -83,3 +83,10 @@ In Vital Recorder press **Add Device**, select **Patient monitor → MEKICS : ME
 
 - **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
 - One router can serve several MP1300s; give each monitor a distinct last octet and point them all at the same Server IP and port.
+
+## Sources
+
+- Original Vital Recorder connection guide (legacy English and Korean editions) — wireless collection through a dedicated ipTIME router: router login at `192.168.0.1`, SSID / WPA2PSK+AES setup with SSID broadcast disabled, reconnecting as a hidden network, Wireless WAN extension to the VR PC's hotspot, wired port switched to LAN Port, MP1300 **System → Network** IP / Mask / Gateway and **Central → MP601** with Server Port `6002`, and adding **MEKICS** with Port `6002` in Vital Recorder.
+- `VitalRecorder/Supported_Devices.md` — *MEKICS patient monitor, TCP, Port 6002*.
+- Photographs in this guide — the router pages, the MP1300 Network / Central menus, the router mounted on the monitor's rear USB power, and the Vital Recorder Add Device dialog.
+- Vital Recorder official version history — <https://vitaldb.net/vital-recorder/?action=versions> (version guidance in Notes; device-related entries in [version-notes.md](../version-notes.md)).

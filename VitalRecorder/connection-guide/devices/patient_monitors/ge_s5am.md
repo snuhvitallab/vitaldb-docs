@@ -44,3 +44,11 @@ No configuration is required on the monitor — X8 streams the S/5 Computer Inte
 ## Notes
 
 - **Handshaking.** As with the other S/5-protocol monitors, use a USB-Serial converter that carries DTR and RTS (FTDI recommended) rather than a 3-wire adapter.
+
+## Sources
+
+- Original Vital Recorder connection guide (legacy English and Korean editions) — *GE S/5 AM*: connect to port **X8**, Null Modem (F/F) required; the S/5 Computer Interface protocol shared with the CARESCAPE Bx50 and B40/B20.
+- `VitalRecorder/Supported_Devices.md` — *GE / Datex-Ohmeda S/5* listed as supported; the `Bx50` device type used for all S/5 Computer Interface monitors.
+- `VitalRecorder/Configuration_Guide.md` (S5 / Datex Device Settings) — default waveforms, `wavs=` option, `IABP1` naming and the `AGENT1` gas channel.
+- X8 connector location on the rear of the S/5 frame: photographs in this guide.
+- Field records (VitalDB installation and support logs, 2024–2026) — DTR/RTS (FTDI) converter recommendation for the S/5 family.

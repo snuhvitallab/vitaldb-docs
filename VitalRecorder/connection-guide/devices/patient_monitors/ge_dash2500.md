@@ -68,3 +68,10 @@ Only pins 2, 3 and 5 are needed for recording. Note that **pin 1 is ground on th
 ## Notes
 
 - **Do not use the Dash 2000/3000/4000 procedure here.** Those models expose serial data on an RJ-45 Aux terminal over the Unity Network protocol and need a custom DB-9F ↔ RJ-45 cable — see [GE Dash 2000 / 3000 / 4000 / 5000](ge_dash2000.md).
+
+## Sources
+
+- Original Vital Recorder connection guide (legacy English and Korean editions) — *GE Dash 2500*: direct serial cable into the Host Comm port, the 14-step configuration sequence (Config Mode, code `2508`, Config HostComm → Remote Access → Serial 2, ASCII cmd / 9600 baud, Save Default Changes), `GE :: Dash 2500` device selection, and the note that the GE Dinamap protocol is used only by the Dash 2500.
+- GE Dash 2500 service manual (document 2042481-001) — HostComm DB-9 pin assignment, the isolated RS-232 host port versus the non-isolated DB-15 communication-adaptor connector carrying inverted TTL and fused +5 V / +12 V.
+- `VitalRecorder/Supported_Devices.md` — *Dash 2500 / 4000, RS-232, 9600 baud, ECG, NIBP, SpO2, Temp, Resp, IBP* and *MPS (Dash 2500), RS-232, 9600 baud, ECG, PLETH waveform, NIBP, SpO2* (the separate `MPS` device type for the PLETH waveform).
+- Rear-panel drawing with the HostComm port location: illustration in this guide.

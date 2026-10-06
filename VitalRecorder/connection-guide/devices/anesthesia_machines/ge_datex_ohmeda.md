@@ -65,3 +65,11 @@ Only the machine's transmit line and ground are branched to CON2, so Vital Recor
 - Confirmed models in the field include the **Aisys CS2** and **Avance CS2**.
 - With **`AUTO_DETECT=1`** in `vr.conf` GE / Datex-Ohmeda S/5 devices are identified on the serial line without a `[DEV/...]` section.
 - Typical parameters recorded: Paw, Pplat, EtCO2, TV, MV, FiO2.
+
+## Sources
+
+- Original Vital Recorder connection guide (legacy English and Korean editions) — *Serial (DB15F)* port behind the rear cover, *DB15M to DB9F custom serial cable*, no device setting required; custom-cable and Y-cable pin diagrams; Read Only Mode when tapping; GE Ohmeda Serial protocol model list (Aespire, Aespire View, Aestiva, Avance, Avance CS2, Aisys, Aisys CS2, Carestation 620/650/650c).
+- `VitalRecorder/Supported_Devices.md` — *Aisys / Avance / Aestiva, GE Datex-Ohmeda, RS-232, 19200 baud*, parameters Paw, Pplat, EtCO2, TV, MV, FiO2.
+- Connector panel and wiring diagrams: photographs in this guide.
+- Field records (VitalDB installation and support logs, 2024–2026) — 19200-baud link saturation (waveform gaps, lagging numerics); Aisys CS2 and Avance CS2 confirmed in the field; gas-agent data arriving on the `AGENT1` track.
+- Vital Recorder official version history (<https://vitaldb.net/vital-recorder/?action=versions>) — `AUTO_DETECT=1` for GE / Datex-Ohmeda S/5 devices; device-related entries collected in [version-notes.md](../version-notes.md).

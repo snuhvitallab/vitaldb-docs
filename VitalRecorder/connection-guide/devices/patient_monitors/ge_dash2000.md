@@ -56,3 +56,9 @@ No service-mode change is required on the monitor — the Aux terminal emits the
 - The **Dash 2500** is a different device — it uses the GE **Dinamap** protocol on a DB-9 *Host Comm* port and does require configuration. See [GE Dash 2500](ge_dash2500.md).
 - The **Dash 5000** is included per the original connection guide, which lists it with the Solar 8000 and Dash 3000/4000 as a Unity Network device. It is not yet named in `Supported_Devices.md` — add it there when the list is next updated.
 - For ECG and ABP as analog voltages (e.g. when higher-fidelity waveforms are needed), the front-panel Defib Sync socket can be used instead — see [GE Defib Connectors](ge_defib.md).
+
+## Sources
+
+- Original Vital Recorder connection guide (legacy English and Korean editions) — *GE Dash 2000/3000/4000*: AUX (RJ45) port, RJ45 ↔ DB9F custom serial cable with its pinout figure, `GE :: Dash x000` device selection, and the note that the GE Unity protocol is shared by the Solar 8000m/8000i and the Dash 3000, 4000 and **5000**.
+- `VitalRecorder/Supported_Devices.md` — *Dash 2500 / 4000, RS-232, 9600 baud, ECG, NIBP, SpO2, Temp, Resp, IBP* (the Dash 5000 is not yet listed there — see Notes).
+- Rear-panel Aux terminal location and the DB-9F ↔ RJ-45 wiring diagram: photographs in this guide.

@@ -57,3 +57,11 @@ vr_device_name: MedibusX
 - **Adapter gender is unverified.** ❓ *Unverified — tracked in [unverified.md](../unverified.md).* The original connection guide groups the Evita Infinity V500 with the Fabius and Zeus and specifies a null modem for all of them; the current Fabius page shows that the answer depends on the COM connector's gender (F/F onto a male port, M/F onto a female one). Look at the EVITA's connector and record which adapter worked.
 - MEDIBUS is also spoken by the Dräger **Carina, Babylog, Savina and Oxylog** — the same procedure applies, with `Primus` for 9600 machines and `MedibusX` for 19200 ones.
 - **No photographs yet** — the rear connector panel and the interface menu would be the most useful additions.
+
+## Sources
+
+- Original Vital Recorder connection guide (legacy English and Korean editions) — the *Infinity Evita V500* is grouped with the Fabius GS / Tiro and Zeus as needing a null modem (cross-gender) in between; no separate EVITA section or connection-table row exists there.
+- `VitalRecorder/Supported_Devices.md` — *Dräger Medibus / Medibus.X* supported; *Primus IE / Perseus (Medibus X), 19200 baud* → `MedibusX`, *Primus / Zeus / Fabius, 9600 baud* → `Primus` (the entry follows the protocol, not the model).
+- Field records (VitalDB installation and support logs, 2024–2026) — MEDIBUS.X on the EVITA family, `wavs=AWP,AWF` requests, volume waveform not transmitted (flow integrated locally on the ventilator), CO2 waveform only with a capnography module, Evita V600 waveform-naming case fixed in 1.19.15/1.19.16, working in the field on 1.19.22; rear HDMI-style connector on V600 / V800 is not the data port.
+- Vital Recorder official version history (<https://vitaldb.net/vital-recorder/?action=versions>) — MEDIBUS SIGSEGV loop 1.15.11–1.18.39 fixed in 1.18.40, `COM1 failure` keep-alive fix in 1.19.11, waveform naming 1.19.15/1.19.16, `AUTO_DETECT=1`; device-related entries collected in [version-notes.md](../version-notes.md).
+- No photographs of the EVITA exist in this guide; the adapter gender is tracked in [unverified.md](../unverified.md).

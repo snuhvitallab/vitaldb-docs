@@ -81,3 +81,11 @@ Only the machine's transmit line and ground are branched to CON2, so Vital Recor
 
 - **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
 - **Do not unplug a cable already occupying COM1 while the machine is running.** On a Primus this has switched off the connected patient monitor, which then did not restart — use the Y-cable, and fit it between cases.
+
+## Sources
+
+- Original Vital Recorder connection guide (legacy English and Korean editions) — *Apollo, Cicero EM Color, Julian, Primus, Vamos* need no device configuration; direct serial cable to COM1 (DB-9F) on the rear panel; the *When the COM1 port is already in use* Y-cable with the Read Only Mode requirement; the Atlan chain (`Drager DB9F — F/F — DB9M Y-cable CON1 (DB9F) — M/F`).
+- `VitalRecorder/Supported_Devices.md` — *Primus / Zeus / Fabius, Draeger, RS-232, 9600 baud*, MEDIBUS protocol; *Primus IE / Perseus (Medibus X), 19200 baud* for the `MedibusX` pairing.
+- Rear connector panel and Y-cable pin diagram: photographs in this guide.
+- Field records (VitalDB installation and support logs, 2024–2026) — unplugging the cable occupying COM1 on a running Primus switched off the connected patient monitor; Atlan A300 numerics without waveforms alongside `MEDIBUS COM1 FAILURE`; Atlan A350 baud-rate setting not in the interface menu.
+- Vital Recorder official version history (<https://vitaldb.net/vital-recorder/?action=versions>) — `wavs=` request limit, automatic waveform-order detection on Y-cable taps, `AUTO_DETECT=1`, model-name and generic `Medibus` entries; device-related entries collected in [version-notes.md](../version-notes.md).

@@ -54,3 +54,10 @@ Do this with **no probe connected** — the monitor blocks setup changes otherwi
 - After a protocol is selected the monitor shows a connection-status icon (not connected / connecting / connected), which is a quick way to confirm the link.
 - Deltex documents this port as being "for serial data offload by linking to a patient monitor or bedside terminal server for electronic medical records (EMR)" — it is the correct port for Vital Recorder.
 - The operating handbook does not publish the RS-232 frame specification ("contact your Deltex Medical representative for details").
+
+## Sources
+
+- Original Vital Recorder connection guide (legacy English and Korean editions) — one **male** serial port on the rear, Null Modem **F/F** plus direct serial cable; settings cannot be changed while the device is in use, verify with **DEMO mode**; boot-time path *General > Patient monitors > Monitor Setup*, **CardioQ Serial Protocol v2**, **57600 baud / No Flow Control**, then **Finished**.
+- `VitalRecorder/Supported_Devices.md` — *CardioQ, Deltex, RS-232, 57600 baud*.
+- Port location, the Monitor setup / General / Patient monitors screens and the Patient Monitor Settings values: photographs in this guide.
+- Deltex CardioQ operating handbook — the port's intended use for serial data offload, the connection-status icon, and the absence of a published RS-232 frame specification.

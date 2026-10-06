@@ -65,3 +65,11 @@ Once the interface is set to S/5, no baud rate has to be chosen on the monitor: 
 - **VRZero note:** the USB cable that connects to VRZero must support handshaking. Cables known to work:
   - [NETmate KW-525 (0.45 m)](http://www.compuzone.co.kr/product/product_detail.htm?ProductNo=374732)
   - [ATEN UC-232A (0.35 m)](http://www.compuzone.co.kr/product/product_detail.htm?ProductNo=60189)
+
+## Sources
+
+- Original Vital Recorder connection guide (legacy English and Korean editions) — *GE CARESCAPE B850, B650, B450*: USB port (not the DB-9 serial port), USB-to-RS232 converter plus Null Modem (F/F), S/5 Computer Interface protocol. The English edition (newer) gives the version rule — **v3.1 or higher: Startech ICUSB232V2; v2: legacy ATEN UC-232A, serial numbers Z3L1 or later, discontinued**; the Korean edition states ATEN only. The VRZero cable links (NETmate KW-525, ATEN UC-232A) are from the same guide.
+- `VitalRecorder/Supported_Devices.md` — *Bx50, RS-232, 9600 baud, ECG, NIBP, SpO2, Temp, IBP*.
+- `VitalRecorder/Configuration_Guide.md` (S5 / Datex Device Settings) — default waveforms `ECG1, PLETH, IABP1, CO2, AWP`, `wavs=` option and `IABP1` naming.
+- Rear-panel USB port location: photographs in this guide.
+- Field records (VitalDB installation and support logs, 2024–2026) — v3.1.4 Startech and the free firmware upgrade, MBF-RS232 as the alternative on both v3.1.4+ and v2, "Startech not recognized" reports traced to v2 units, USB port 4, dust in the rear USB ports, ATEN revision by USB vendor ID (`0x0557` vs `0x067b`), the two causes of non-recovering communication loss on v2 (missing handshake; one-second gap per re-request fixed in Vital Recorder), Prolific-based cable drop-outs and the converters proven stable on Linux/PiVR (NETmate KW-725 / KW-825, UGREEN FTDI).

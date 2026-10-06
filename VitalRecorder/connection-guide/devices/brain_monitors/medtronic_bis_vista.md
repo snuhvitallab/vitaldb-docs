@@ -88,3 +88,10 @@ The VISTA menu is a touch screen paged with **Next**. **Serial Protocol** sits t
 
 - The Maintenance menu also holds **BISx Connection History**, which lists the serial number of each BISx that was attached — useful when reconciling a recording with the sensor actually used.
 - Aspect/Medtronic do not publish the serial data format in the operating or service manual; the manuals direct users to contact Medtronic Technical Service. The settings above reflect the configuration Vital Recorder expects.
+
+## Sources
+
+- Original Vital Recorder connection guide (legacy English and Korean editions) — BIS device table (female port, direct serial cable, no Null Modem adapter) and the BIS VISTA section: *ASCII* gives all numeric data, *Legacy Binary* plus the **BIS (binary)** device in Vital Recorder gives the 128 Hz EEG wave, the protocol change takes effect only after the monitor is restarted, and the "Unrecoverable Monitor Exception" screen produced by a cross cable.
+- `VitalRecorder/Supported_Devices.md` — *VISTA (BIS 4-channel), Medtronic, RS-232, 57600 baud, BIS x4 / EMG / SQI / SR / EEG waveform*; `A2000` and `BISx` listed as separate entries.
+- Rear-panel layout (USB Type A / Type B, RS-232 port, Reset button), the three menu pages, the Maintenance menu and the Serial Protocol checkboxes: photographs in this guide.
+- BIS VISTA operating and service manuals — serial data format not published; users referred to Medtronic Technical Service.

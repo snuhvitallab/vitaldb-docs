@@ -62,3 +62,9 @@ vr_device_name: Vigilance
 
 - **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
 - The **System Configuration** screen shows an **IFMout ID #** — its presence confirms the monitor has the IFMout interface.
+
+## Sources
+
+- Original Vital Recorder connection guide (legacy English and Korean editions) — two serial ports on the rear panel, either COM1 or COM2 usable, Null Modem **M/F** plus direct serial cable as for the other Edwards Lifesciences monitors; **IFMout / 9600**.
+- `VitalRecorder/Supported_Devices.md` — Edwards Lifesciences cardiac monitors, *RS-232, 9600 baud (STX/ETX)*.
+- COM 1 / COM 2 and ANALOG IN layout, the Setup → Display Format → System Config → Digital Ports path, the Patient Information prompt, the IFMout ID # and the full COM1 parameter set: photographs in this guide.

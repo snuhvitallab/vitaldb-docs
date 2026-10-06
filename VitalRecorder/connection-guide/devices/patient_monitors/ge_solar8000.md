@@ -45,3 +45,11 @@ Nothing has to be changed in the monitor's service menu — the RS-232 port stre
 
 - **RS-232 1 vs. the other serial connectors.** On the Solar 8000M/i the RS-232 ports on this panel also serve the iPanel computer and other serial peripherals. Use the one labeled **RS-232 1**; if a site already has something occupying it, confirm with biomedical engineering before moving cables.
 - The **Dash 2000 / 3000 / 4000** share this protocol but expose it on an RJ-45 Aux terminal and need a custom cable — see [GE Dash 2000 / 3000 / 4000 / 5000](ge_dash2000.md). The **Dash 2500** uses a different protocol entirely — see [GE Dash 2500](ge_dash2500.md).
+
+## Sources
+
+- Original Vital Recorder connection guide (legacy English and Korean editions) — *GE Solar 8000m, 8000i*: direct serial cable (DB9M–DB9F) to the serial port, no adapter, `GE :: Solar 8000m` device selection, and the note that the GE Unity protocol is shared with the Dash 3000/4000/5000.
+- `VitalRecorder/Supported_Devices.md` — *Solar 8000 / Solar 8000M, RS-232, 9600 baud, ECG, NIBP, SpO2, Temp, Resp, IBP*; the `Solar8000` device type.
+- `VitalRecorder/Configuration_Guide.md` (S5 / Datex Device Settings) — default waveforms `ECG1, PLETH, IABP1, CO2, AWP` and the `wavs=` option.
+- RS-232 1 connector location on the rear panel: photographs in this guide.
+- Field records (VitalDB installation and support logs, 2024–2026) — the non-recovering drop-out traced to the per-device restart thread (seen with a TwitchView on the same machine) and stray bytes after re-cabling a running device.

@@ -63,3 +63,10 @@ The serial protocol lives several levels deep, in the diagnostic/service area of
 ## Notes
 
 - The A-2000's serial port is also the software/firmware download path, so a cable left connected during a service update can interfere — disconnect Vital Recorder before servicing.
+
+## Sources
+
+- Original Vital Recorder connection guide (legacy English and Korean editions) — BIS device table (female port, direct serial cable, no Null Modem adapter) and the A-2000 section: 2-channel 256 Hz EEG, direct cable to the 9-pin rear port, menu path *Advanced Setup → Diagnostic Menu → System Configuration Menu → Serial Port Protocol = Binary → Save Settings*.
+- `VitalRecorder/Supported_Devices.md` — *A2000 (BIS 256 Hz), Medtronic, RS-232, 57600 baud, BIS / EMG / SQI / SR / EEG waveform (high-res)*; `BISx` and `VISTA` listed as separate entries.
+- A-2000 service manual — isolated serial port, `J1` serial / `J2` printer assignment.
+- `J1` location, menu screens and the Binary option: photographs in this guide.

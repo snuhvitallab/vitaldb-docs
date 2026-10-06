@@ -89,3 +89,11 @@ The **250cx** is the model named in `Supported_Devices.md` (FHR, MHR, TOCO at 96
 - Recorded parameters: **fetal HR1 / HR2** and **uterine activity (UACT / TOCO)**. On current builds the **maternal vital signs (SpO2, PR, NIBP)** are also recorded into the same file as the fetal channels.
 - The 170 Series covers models **170, 171, 172, 173 and 174**. The setup-code table above is common to all of them; the *HR offset* and *ECG artifact elimination* codes exist only on 172/173/174.
 - **Gap:** there are no field photographs for this device yet — no rear-panel shot, no RS-232 port location, no setup-mode display. Photographs of the rear RJ-45 ports and of the UA/FHR displays while in service setup mode would be a useful addition.
+
+## Sources
+
+- GE Corometrics 170 Series service manual (P/N 2000947-004), tables 8-6 and 8-7 — RJ-45 pinout of RS-232 Ports 1 and 2 (including +5 V on Port 1 pins 1 and 8), the null-modem requirement toward a DTE, the CTS-must-be-asserted rule and the RTS loop, service setup mode entry/exit, setup codes `30`/`31`/`40`/`41`, communications-mode values and baud-rate values, factory defaults, and the model coverage (170–174).
+- Original Vital Recorder connection guide (legacy English edition) — *GE: Corometrics 170*: hold the Setup button for the entire procedure, UA Reference toggles the display, communication mode 115 and baud 9600 set with the volume buttons; its code numbering (P1 = 30/40) is recorded in Troubleshooting and `unverified.md`.
+- `VitalRecorder/Supported_Devices.md` — *Corometrics 250cx, GE Healthcare, RS-232, 9600 baud, FHR, MHR, TOCO*; the `Coro` device type.
+- Field records (VitalDB installation and support logs, 2024–2026) — the 250cx serial port is RJ11, no cable pinout recorded yet, on-site testing deferred to GE; maternal vitals recorded alongside the fetal channels.
+- Vital Recorder official version history — <https://vitaldb.net/vital-recorder/?action=versions>; device-related entries in [version-notes.md](../version-notes.md).

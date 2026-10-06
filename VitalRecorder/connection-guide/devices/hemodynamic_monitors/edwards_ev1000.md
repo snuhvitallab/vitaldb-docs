@@ -69,3 +69,9 @@ Resulting serial settings:
 ## Notes
 
 - **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
+
+## Sources
+
+- Original Vital Recorder connection guide (legacy English and Korean editions) — all Edwards Lifesciences monitors share the same settings; old EV-1000 has a different connector and takes Null Modem **F/F** on the second port from the right, EV-1000A takes Null Modem **M/F**; menu path *Settings → Monitor Settings → Serial Port Setup*, **Device = IFMout**, **Baud Rate = 9600**.
+- `VitalRecorder/Supported_Devices.md` — *EV1000, RS-232, 9600 baud (STX/ETX)*.
+- `REF EV1000M` / `REF EV1000A` labels, rear-panel port positions, the settings screens and the full serial parameter set (Parity, Stop Bits, Data Bits, Flow Control 2 seconds): photographs in this guide.

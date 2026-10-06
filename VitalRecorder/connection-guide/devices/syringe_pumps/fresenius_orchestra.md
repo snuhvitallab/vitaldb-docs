@@ -88,3 +88,9 @@ Two separate menus must be set: the **service-mode** serial configuration (which
 
 - **Vital Recorder versions:** recording from the Orchestra Base Primea (including TCI) has been supported since **0.9.11**.
 - The firmware of the documented unit reports **V03.2S-1A**.
+
+## Sources
+
+- Original Vital Recorder connection guide (legacy English and Korean editions) — Base Primea (Orchestra) device table (female port, Null Modem **M/F**, cross connection required) and the Orchestra section: **RS 232-3** at the right end of the three serial ports with an M/F adapter and a direct serial cable, service mode entered with the top blue side button + mute + power, *Serial & ...* (fourth blue button), **COM NEW SUP = 3** by jog dial, *Send a frame on every change* unchecked and *Send every* 1 s; the introduction's warning that the Orchestra needs a cross connection rather than a plain direct cable.
+- `VitalRecorder/Supported_Devices.md` — *Primea (Orchestra), Fresenius Kabi, RS-232, 19200 baud, infusion volume / rate / alarm status*.
+- Rear-port layout, the service-mode screens (*Special Functions*, *Serial, Supervisor and Print Configuration* with Ack timeout 1 s / Main timeout 10 s), the customisation path *OPT → Customisation → code `00123` → Serial Ports and Printer → RS232-3 = IDMS → Save and Exit*, the existing RS232-1 / RS232-2 assignments and firmware **V03.2S-1A**: photographs in this guide.

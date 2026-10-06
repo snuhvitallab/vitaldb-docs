@@ -57,3 +57,10 @@ Resulting serial settings:
 
 - **Vital Recorder version:** run the latest release (see the [official version history](https://vitaldb.net/vital-recorder/?action=versions)); device-related version notes are collected in [version-notes.md](../version-notes.md).
 - Source: field reports on the VitalDB bug-report board (crossover cable required; only `Vigilance` selectable).
+
+## Sources
+
+- Original Vital Recorder connection guide (legacy English and Korean editions) — Null Modem **M/F** to port **1**, the upper of the two rear serial ports; *Setup → Serial Port Setup → Port 1*, **Device = IFMout**, **Baud Rate = 9600**.
+- `VitalRecorder/Supported_Devices.md` — *Vigilance II / Vigilance C, RS-232, 9600 baud (STX/ETX)*.
+- Field reports on the VitalDB bug-report board — a crossover (Null Modem) cable is required; only `Vigilance` is selectable in Vital Recorder, there is no "Vigilance II" entry.
+- Stacked port layout, the wrench icon, the Setup Menu, the Serial Port Setup values and the look-alike Analog Input Setup screen: photographs in this guide.

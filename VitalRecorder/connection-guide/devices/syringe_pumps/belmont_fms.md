@@ -34,3 +34,10 @@ Because the device presents a **male** DB-9 and the PC also presents a male DB-9
 - The `FMS` device covers the Belmont Rapid Infuser family (RI-2 / FMS2000) as a rapid fluid infuser rather than a syringe pump, but it is configured in Vital Recorder from the same device list.
 - The port's location behind the vent panel means the cable is easily snagged when the unit is repositioned. Route it clear of the vent so airflow is not obstructed.
 - **Do not improvise the adapter.** An M/F changer will not mate with the device's male port, and stacking adapters to force a fit strains the connector. If no F/F Null Modem is on hand, order one rather than substituting a cross cable or another adapter combination.
+
+## Sources
+
+- Original Vital Recorder connection guide (legacy English and Korean editions) — FMS device table (male port, Null Modem **F/F**, direct serial cable) and the Belmont FMS (RI-2) section: communication port hidden beside the lower vent, F/F adapter because the device connector is male.
+- `VitalRecorder/Supported_Devices.md` — *FMS 2000, Belmont Instrument, RS-232, 19200 baud, infusion rate / temperature / total volume / alarm*.
+- Belmont operator's manual — serial parameters not published in the publicly available edition; verify with the manufacturer.
+- Recessed DB-9 male connector beside the vent grille: photograph in this guide.

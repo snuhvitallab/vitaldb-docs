@@ -55,3 +55,9 @@ No monitor-side configuration is required for numeric data — the export protoc
 - Dräger Korea has supplied the export cable and the analog cable set (MDR14 ↔ RJ45) to sites installing Vital Recorder — ask the Dräger service engineer before building cables.
 - The MDR-14 pin numbering is not photographed in this guide; request the pinout from the cable vendor or Dräger when ordering.
 - Sibling model **Infinity Kappa** uses the X5/X3 14-pin Mini-D port instead — see [Dräger Infinity Kappa](drager_infinity_kappa.md).
+
+## Sources
+
+- Original Vital Recorder connection guide (legacy English and Korean editions) — no monitor-side configuration; numeric data from the P2500 RJ10 port with RJ10 pins 3, 2, 4 → DB-9F pins 2, 3, 5; Analog/Sync cable joined through a Y cable to the M540 when an Infinity M-Cable Microstream CO2 is in use; MDR14 ↔ RJ45 cable to the ADC and the connector / pre-made cable purchase links.
+- `VitalRecorder/Supported_Devices.md` — *Infinity (Delta/Kappa/Gamma), RS-232, 19200 baud*, `Infinity` device entry under Draeger.
+- Field records (VitalDB installation and support logs, 2024–2026) — IACS naming, Dräger Export Protocol Cable **MS22948**, ADC channel mapping (ART = ch2 ×100, ECG = ch3), P2500 COM1–COM3 being input ports (anesthesia machine / TOFscan / BIS Vista–EV-1000 via Capsule adapter), Dräger Korea supplying the export and analog cable set, data stopping until Vital Recorder restarts, and C700 firmware 7.xx breaking RS-232 output.
