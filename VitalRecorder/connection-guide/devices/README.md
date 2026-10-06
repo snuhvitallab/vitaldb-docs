@@ -277,8 +277,6 @@ Basic kit for recording **four serial devices at once**:
 
 ---
 
----
-
 ## Troubleshooting
 
 | Problem | Likely Cause |
