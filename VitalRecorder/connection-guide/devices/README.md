@@ -49,7 +49,6 @@ In the tables, **None** means no adapter is required, **—** means the adapter 
 | [GE Solar 8000m / 8000i](patient_monitors/ge_solar8000.md) | Direct Serial | None | RS-232 1 | `Solar8000` |
 | [GE Dash 2000 / 3000 / 4000 / 5000](patient_monitors/ge_dash2000.md) | Custom DB-9F ↔ RJ-45 | None | RJ-45 AUX | `Dashx000` |
 | [GE Dash 2500](patient_monitors/ge_dash2500.md) | Direct Serial | None | Host Comm Port | `Dash2500` |
-| [GE Canvas](patient_monitors/ge_canvas.md) | Direct Serial — Not confirmed | Not confirmed | RS-232 — Not confirmed | `Canvas` |
 | [GE TRAM-RAC 4A](patient_monitors/ge_tram_rac.md) | ADC required (analog) | — | 15-pin ANALOG OUT | *(per ADC type)* |
 | [GE Defib Connectors](patient_monitors/ge_defib.md) | 7-pin DIN → ADC | — | Defib.Sync | *(per ADC type)* |
 | [Philips IntelliVue MP / MX](patient_monitors/philips_intellivue.md) | Custom RJ-45 ↔ DB-9F | None | **`MIB/RS232`** port — not the standalone `RS232` port | `Intellivue` |
