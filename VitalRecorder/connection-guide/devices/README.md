@@ -27,8 +27,6 @@ One recording PC collects from several devices at once. Serial devices reach the
   - [Requirements](#requirements)
   - [Connection Types](#connection-types)
   - [Cable Types](#cable-types)
-  - [Port Assignment Convention (PiVR)](#port-assignment-convention-pivr)
-- [Troubleshooting](#troubleshooting)
 
 ---
 
@@ -244,35 +242,3 @@ Cables under 10 meters do not risk signal degradation. Use shielded cables in OR
 [Purchase link (Korea)](http://cableguy.com/shop/mall.php?cat=025011002&query=view&no=541)
 
 <img src="hardware_images/usb_extension_1.png" width="220" alt="A USB 2.0 extension cable — USB-A male on one end, USB-A female on the other">
-
----
-
-### Port Assignment Convention (PiVR)
-
-Recorders with several serial channels are easier to support remotely when every site uses the same assignment. The convention used on PiVR installations:
-
-| Channel | Device |
-|---|---|
-| `P1` | Patient monitor (Philips Intellivue) |
-| `P2` | Anesthesia machine / ventilator |
-| `P3` | TwitchView |
-| `LU` | Wireless LAN adapter |
-| `RU` | Event button |
-| `RL` | Fresenius Link+ |
-| hotspot | Masimo ROOT (`X003`) |
-
-Leave a channel empty if the device is absent; other devices take the remaining channels.
-
----
-
-## Troubleshooting
-
-| Problem | Likely Cause |
-|---------|-------------|
-| Device not detected | Wrong COM port / driver not installed |
-| Data shows but wrong values | Cross cable used instead of direct (or vice versa) |
-| Intermittent data loss | Unpowered USB hub / insufficient USB power |
-| No data after correct setup | Device config not saved / baud rate mismatch |
-| Device disconnects randomly | USB extension cable too long (>10m) or poor contact |
-
-> ⚠️ Always complete device configuration **before** connecting to a patient.
