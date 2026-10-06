@@ -5,11 +5,11 @@ category: Anesthesia Machine
 manufacturer: Dräger
 vr_device_name: Primus
 -->
-> ⚠️ **Check the gender of the COM connector before ordering an adapter.** A Null Modem adapter is specified for the Zeus, but the connector gender — and therefore whether it is F/F or M/F — has not been verified on a unit. ❓ *Unverified — tracked in [unverified.md](../unverified.md).*
+> ⚠️ **Check the gender of the COM connector before ordering an adapter.** A Null Modem adapter is specified for the Zeus, but the connector gender — and therefore whether it is F/F or M/F — has not been verified on a unit.
 
 | Cable | Adapter | Port | Serial | VR Device Name |
 |-------|---------|------|--------|----------------|
-| Direct Serial | Null Modem — **F/F onto a male port, M/F onto a female port** ❓ | COM (serial) port on the rear | 9600 baud, 8 data bits, Even parity, 1 stop bit — MEDIBUS | `Primus` |
+| Direct Serial | Null Modem — **F/F onto a male port, M/F onto a female port** | COM (serial) port on the rear | 9600 baud, 8 data bits, Even parity, 1 stop bit — MEDIBUS | `Primus` |
 
 ## Connection Steps
 

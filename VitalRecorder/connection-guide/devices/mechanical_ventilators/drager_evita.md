@@ -9,7 +9,7 @@ vr_device_name: MedibusX
 
 | Cable | Adapter | Port | Serial | VR Device Name |
 |-------|---------|------|--------|----------------|
-| Direct Serial | Null Modem F/F ❓ *(unverified — see Notes)* | RS-232 **COM1** (or COM2) on the rear | 19200 baud, 8 data bits, Even parity, 1 stop bit — MEDIBUS.X | `MedibusX` |
+| Direct Serial | Null Modem F/F *(gender unverified — see Notes)* | RS-232 **COM1** (or COM2) on the rear | 19200 baud, 8 data bits, Even parity, 1 stop bit — MEDIBUS.X | `MedibusX` |
 
 ## Connection Steps
 
@@ -53,6 +53,6 @@ vr_device_name: MedibusX
 
 ## Notes
 
-- **Adapter gender is unverified.** ❓ *Unverified — tracked in [unverified.md](../unverified.md).* The Evita Infinity V500 has been grouped with the Fabius and Zeus as taking a null modem; the [Fabius page](../anesthesia_machines/drager_fabius.md) shows that the answer depends on the COM connector's gender (F/F onto a male port, M/F onto a female one). Look at the EVITA's connector and record which adapter worked.
+- **Adapter gender is unverified.** The Evita Infinity V500 has been grouped with the Fabius and Zeus as taking a null modem; the [Fabius page](../anesthesia_machines/drager_fabius.md) shows that the answer depends on the COM connector's gender (F/F onto a male port, M/F onto a female one). Look at the EVITA's connector and record which adapter worked.
 - MEDIBUS is also spoken by the Dräger **Carina, Babylog, Savina and Oxylog** — the same procedure applies, with `Primus` for 9600 machines and `MedibusX` for 19200 ones.
 - **No photographs yet** — the rear connector panel and the interface menu would be the most useful additions.

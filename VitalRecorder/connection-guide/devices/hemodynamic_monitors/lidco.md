@@ -42,6 +42,6 @@ vr_device_name: LiDCO
 
 ## Notes
 
-- **The COM1 connector gender is unverified.** ❓ *Unverified — tracked in [unverified.md](../unverified.md).* The usual arrangement on these monitors is a female port, which is what the M/F adapter above assumes.
+- **The COM1 connector gender is unverified.** The usual arrangement on these monitors is a female port, which is what the M/F adapter above assumes.
 - LiDCO does not publish the RS-232 frame specification; contact LiDCO to obtain detailed specifications for the RS-232 interface.
 - This page has no photographs. LiDCO does not publish its operator manual publicly, so the COM1 location and the serial settings screen are described in text only — **confirm both against your unit's manual before connecting**.

@@ -63,7 +63,7 @@ No monitor-side menu change is normally required.
 
 - The RS-232C link carries **numeric data only**; waveforms need the `ECG/BP OUT` path and an ADC.
 - **Ventilator parameters displayed on a BSM** (ventilator wired to the monitor with a Nihon Kohden cable) are **not** available on the monitor's serial port; they only come through the central server, or by connecting the ventilator directly (a Y-cable on the Nihon Kohden ventilator cable works).
-- **CSM / LifeScope** models are less well verified than BSM — treat support as unconfirmed. **CSM 1702 / PSM** are expected to speak the BSM protocol but unverified — test before committing an installation. ❓ *Unverified — tracked in [unverified.md](../unverified.md).*
+- **CSM / LifeScope** models are less well verified than BSM — treat support as unconfirmed. **CSM 1702 / PSM** are expected to speak the BSM protocol but unverified — test before committing an installation.
 
 ## Notes
 

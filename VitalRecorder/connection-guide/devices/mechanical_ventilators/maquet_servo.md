@@ -40,5 +40,5 @@ Nothing has to be enabled on the ventilator. The serial port is served by the bu
 
 ## Notes
 
-- **Servo-U.** Supported at **19200 baud** (per `Supported_Devices.md`) with the same `Servo-i` entry; several sites report Servo-U replacing Servo-i fleets. **Whether the Servo-U needs the Null Modem, and which of its RS-232 ports is live, has not been verified on a unit** — photograph the connector panel and the interface menu on first contact and record it here. ❓ *Unverified — tracked in [unverified.md](../unverified.md).*
+- **Servo-U.** Supported at **19200 baud** (per `Supported_Devices.md`) with the same `Servo-i` entry; several sites report Servo-U replacing Servo-i fleets. **Whether the Servo-U needs the Null Modem, and which of its RS-232 ports is live, has not been verified on a unit** — photograph the connector panel and the interface menu on first contact and record it here.
 - Typical parameters recorded: Paw, PEEP, TV, MV, RR, FiO2.

@@ -81,4 +81,4 @@ If the machine's purchase date is unknown, the connector itself is the answer. F
 ## Notes
 
 - **Waveforms** must be requested with `wavs=` in the device section (up to 4).
-- **Fabius plus:** a unit with a female COM1 has been seen to answer MEDIBUS correctly on the line (ICC/DEVID/MEAS with valid checksums at 9600 8E1) while Vital Recorder still recorded nothing on an older build — consistent with the no-waveform bug fixed in 1.19.20. Re-test on the latest Vital Recorder before changing cables. ❓ *Unverified — tracked in [unverified.md](../unverified.md).*
+- **Fabius plus:** a unit with a female COM1 has been seen to answer MEDIBUS correctly on the line (ICC/DEVID/MEAS with valid checksums at 9600 8E1) while Vital Recorder still recorded nothing on an older build — consistent with the no-waveform bug fixed in 1.19.20. Re-test on the latest Vital Recorder before changing cables.

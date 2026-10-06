@@ -41,7 +41,7 @@ The DB-9F end plugs into the PC's DB-9M serial port or into a USB-Serial convert
 
 ### Corometrics 250cx
 
-The **250cx** is the model named in `Supported_Devices.md` (FHR, MHR, TOCO at 9600 baud) and the one most often found in delivery suites. Its serial port is **RJ11**, not the 170 Series' RJ45, so the cable above does not fit. A dedicated RJ11 ↔ DB-9F cable is needed; its pinout has not been recorded in this guide yet — confirm with the GE service manual for the 250cx before building one. On-site testing has been deferred to GE for this reason. ❓ *Unverified — tracked in [unverified.md](../unverified.md).*
+The **250cx** is the model named in `Supported_Devices.md` (FHR, MHR, TOCO at 9600 baud) and the one most often found in delivery suites. Its serial port is **RJ11**, not the 170 Series' RJ45, so the cable above does not fit. A dedicated RJ11 ↔ DB-9F cable is needed; its pinout has not been recorded in this guide yet — confirm with the GE service manual for the 250cx before building one. On-site testing has been deferred to GE for this reason.
 
 ## Device Configuration
 The communication mode and baud rate for each port live in **service setup mode**, which can only be entered from a power-off state.

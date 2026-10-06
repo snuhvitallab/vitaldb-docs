@@ -38,8 +38,6 @@ One recording PC collects from several devices at once. Serial devices reach the
 
 > Find your device below and identify the cable type before connecting. Click the device name to open its full setup instructions.
 >
-> Items that are **stated but not yet confirmed on a unit** are collected in [unverified.md](unverified.md) — check it before relying on a ❓-marked value.
->
 > **Vital Recorder version:** always run the latest release — [official version history](https://vitaldb.net/vital-recorder/?action=versions). Device-related release notes are summarised in [version-notes.md](version-notes.md).
 
 ### Patient Monitors
@@ -68,7 +66,7 @@ One recording PC collects from several devices at once. Serial devices reach the
 |--------|-------|---------|------|----------------|
 | [Dräger Apollo / Cicero EM Color / Julian / Primus / Vamos](anesthesia_machines/drager_apollo.md) | Direct Serial | None | COM1 | `Primus` |
 | [Dräger Fabius](anesthesia_machines/drager_fabius.md) | Direct Serial | **Depends on COM1 connector** — None if female (Oct 2004 →), Null Modem F/F if male (before Oct 2004) | COM1 | `Primus` |
-| [Dräger Zeus](anesthesia_machines/drager_zeus.md) | Direct Serial | Null Modem — gender per connector ❓ | COM (rear) | `Primus` |
+| [Dräger Zeus](anesthesia_machines/drager_zeus.md) | Direct Serial | Null Modem — gender per connector *(unverified)* | COM (rear) | `Primus` |
 | [Dräger Perseus](anesthesia_machines/drager_perseus.md) | Direct Serial | Null Modem F/F | COM1 or COM2 | `MedibusX` |
 | [GE Datex-Ohmeda](anesthesia_machines/ge_datex_ohmeda.md) | Custom 9-pin ↔ 15-pin | None | 15-pin (under cover) | `Datex-Ohmeda` |
 | [Maquet Flow-i](anesthesia_machines/maquet_flow_i.md) | Direct Serial | Null Modem M/F | Serial port | `Flow-i` |
@@ -328,10 +326,6 @@ Every device page follows the same order. Optional sections are omitted when the
 ---
 
 ## Troubleshooting
-
-Common problems and fixes are documented in [`troubleshooting`](troubleshooting.md).
-
-Quick reference:
 
 | Problem | Likely Cause |
 |---------|-------------|
