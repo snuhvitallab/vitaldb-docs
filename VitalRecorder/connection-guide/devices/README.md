@@ -23,7 +23,6 @@ One recording PC collects from several devices at once. Serial devices reach the
   - [Syringe Pumps](#syringe-pumps)
   - [Brain Monitors](#brain-monitors)
   - [Others](#others)
-  - [Not Recordable](#not-recordable)
 - [Getting Started](#getting-started)
   - [Requirements](#requirements)
   - [Connection Types](#connection-types)
@@ -122,12 +121,7 @@ One recording PC collects from several devices at once. Serial devices reach the
 | [OBELAB NIRSIT-ON+](others/obelab_nirsit_on.md) | Direct Serial | None | Rear USB (serial) — **open TCP 5525** on the tablet | `NirsitON` |
 | [IDMed TOFscan](others/idmed_tofscan.md) | TOF-RS1 / TOF-RS2 optic-serial cable (from IDMed) | None | **Optical** output | `TOFScan` |
 
-### Not Recordable
-
-Devices and data paths from which Vital Recorder **cannot record**, confirmed by testing or by the manufacturer's documentation. The reason states whether the limit is on the device side (no usable port or output) or on the Vital Recorder side (protocol not implemented).
-
-| Device | Why |
-|---|---|
+---|---|
 | Philips **MP2 / X2 / X3** | No usable serial port; X3 has no MIB board |
 | Philips **Avalon FM20** fetal monitor | Needs the optional MIB board **and** a protocol Vital Recorder does not yet implement |
 | Dräger **Vista 120S** | Its MEDIBUS/X port only *receives* from anesthesia machines; no response at any baud / frame combination |
