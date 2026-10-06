@@ -121,13 +121,6 @@ One recording PC collects from several devices at once. Serial devices reach the
 | [OBELAB NIRSIT-ON+](others/obelab_nirsit_on.md) | Direct Serial | None | Rear USB (serial) — **open TCP 5525** on the tablet | `NirsitON` |
 | [IDMed TOFscan](others/idmed_tofscan.md) | TOF-RS1 / TOF-RS2 optic-serial cable (from IDMed) | None | **Optical** output | `TOFScan` |
 
----|---|
-| Philips **MP2 / X2 / X3** | No usable serial port; X3 has no MIB board |
-| Philips **Avalon FM20** fetal monitor | Needs the optional MIB board **and** a protocol Vital Recorder does not yet implement |
-| Dräger **Vista 120S** | Its MEDIBUS/X port only *receives* from anesthesia machines; no response at any baud / frame combination |
-| Anesthesia-machine data **relayed through a Dräger Infinity Kappa** | Not forwarded on the Kappa export link — connect the machine directly |
-| **Nihon Kohden BSM without an RS-232C interface board**, or ventilator data shown on a BSM | Numerics need the interface board; ventilator values are not on the serial port |
-
 ---
 
 ## Getting Started
