@@ -263,18 +263,6 @@ Recorders with several serial channels are easier to support remotely when every
 
 Leave a channel empty if the device is absent; other devices take the remaining channels.
 
-### Starter Kit
-
-Basic kit for recording **four serial devices at once**:
-
-| Item | Qty | Note |
-|---|---|---|
-| Null Modem adapter (M/F and F/F) | 6 | Keep spares |
-| Direct serial cable, M/F, 3 m | 4 | Buy the length you need |
-| 4-port USB-Serial converter | 1 | 4-port recommended |
-| Powered USB hub | 1 | Must have its own power adapter |
-| USB extension cable, M/F, 5 m | 1 | Buy the length you need |
-
 ---
 
 ## Troubleshooting
