@@ -4,7 +4,8 @@
 
 | Version | Date | Device | Change |
 |---|---|---|---|
-| 1.19.34 | 2026-10-06 | Nihon Kohden PVM-4700, BSM-3000/6000, CSM-1500/1700 | New **`PVM`** entry for the Vismo PVM-4700 series. These models previously recorded nothing over serial; numerics are now collected. |
+| 1.19.34 | 2026-10-06 | Nihon Kohden PVM-4700 | New **`PVM`** entry for the Vismo PVM-4700 series. Numerics are collected over RS-232C. |
+| 1.19.34 | 2026-10-06 | Nihon Kohden BSM-3000/6000, CSM-1500/1700 | Units that recorded nothing over serial now record numerics: Vital Recorder falls back to a request these models accept. |
 | 1.19.32 | 2026-10-05 | Philips IntelliVue | **`auto_wavs=0`** (device-dialog checkbox) requests only the selected waveforms. By default a waveform is added for every numeric present. |
 | 1.19.27 | 2026-09-05 | TwitchView, TOFscan | Serial auto-detection (`AUTO_DETECT=1`) now waits long enough for these monitors, which report only every ~5 min. |
 | 1.19.22 | 2026-08-30 | Dräger (MEDIBUS) | Machines selectable **by model** (`Fabius` added) plus a generic **`Medibus`** entry; `Primus`, `Fabius` and `Medibus` behave identically. Auto-detection identifies Dräger machines by protocol, not model. |
