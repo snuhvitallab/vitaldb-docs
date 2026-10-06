@@ -28,7 +28,7 @@ The serial port is configured from the machine's own system setup / interface me
 
 - Add the device as **`Medibus`**. Vital Recorder has no separate Zeus entry.
 - With **`AUTO_DETECT=1`** in `vr.conf` the machine is found on the serial line without a `[DEV/...]` section.
-- **Waveforms** must be requested with `wavs=` in the device section (up to 4).
+- **Waveforms:** Vital Recorder asks the machine which waveforms it offers and requests up to 4 of them, so `wavs=` is not needed. Set `wavs=` in the device section only to choose specific ones, e.g. `wavs=AWP,AWF`.
 
 ## Troubleshooting
 

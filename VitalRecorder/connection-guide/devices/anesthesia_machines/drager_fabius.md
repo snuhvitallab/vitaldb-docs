@@ -61,6 +61,7 @@ If the machine's purchase date is unknown, the connector itself is the answer. F
 
 - Add the device as **`Fabius`**.
 - With **`AUTO_DETECT=1`** in `vr.conf` the machine is found on the serial line without a `[DEV/...]` section. Detection names it `Medibus`, not `Fabius`.
+- **Waveforms:** Vital Recorder asks the machine which waveforms it offers and requests up to 4 of them, so `wavs=` is not needed. Set `wavs=` in the device section only to choose specific ones, e.g. `wavs=AWP,AWF`.
 - In `vr.conf`, `port=` must be the actual serial port name of the converter channel (e.g. `C1`), not `COM1`.
 
 ## Troubleshooting
@@ -78,5 +79,4 @@ If the machine's purchase date is unknown, the connector itself is the answer. F
 
 ## Notes
 
-- **Waveforms** must be requested with `wavs=` in the device section (up to 4).
 - **Fabius plus:** a unit with a female COM1 has been seen to answer MEDIBUS correctly on the line (ICC/DEVID/MEAS with valid checksums at 9600 8E1) while Vital Recorder still recorded nothing on an older build — consistent with the no-waveform bug fixed in 1.19.20. Re-test on the latest Vital Recorder before changing cables.

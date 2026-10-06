@@ -68,9 +68,11 @@ On machines that expose the setting on screen it is reached from the interface p
 ## Vital Recorder Setup
 - Add the device as **`Medibus`**. Vital Recorder has no separate entry for these models.
 - With **`AUTO_DETECT=1`** in `vr.conf`, the machine is found on the serial line with no `[DEV/...]` section.
+- **Waveforms:** Vital Recorder asks the machine which waveforms it offers and requests up to 4 of them, so `wavs=` is not needed. Set `wavs=` in the device section only to choose specific ones, e.g. `wavs=AWP,AWF`.
+- **On a Y-cable tap** Vital Recorder cannot send requests. It records the waveforms the existing device has requested.
 
 ## Troubleshooting
-- **Numerics arrive but no waveforms.** Waveforms must be requested explicitly with `wavs=` in the device section — up to 4 at a time (e.g. `wavs=AWP,AWF`). On an **Atlan A300**, some units show this together with a repeating `MEDIBUS COM1 FAILURE` warning even with `wavs=` set — under investigation; collect with `DEBUG=1` if you see it.
-- **Waveforms come out in the wrong order on a Y-cable (read-only) tap.** On current builds the order is detected automatically when the other device's requests are visible on the line; otherwise fix it with `wavs=`.
+- **Numerics arrive but no waveforms.** If `wavs=` is set, remove it and test again. On a Y-cable tap, waveforms arrive only when the existing device requests them. On an **Atlan A300**, some units show this together with a repeating `MEDIBUS COM1 FAILURE` warning — under investigation; collect with `DEBUG=1` if you see it.
+- **Waveforms come out in the wrong order on a Y-cable (read-only) tap.** The order is detected automatically when the existing device's requests are visible on the line. Otherwise list the waveforms with `wavs=` in the order the existing device requests them.
 - **The port does not open.** In `vr.conf`, `port=` must be the actual serial port name of the converter channel (e.g. `C1`), not `COM1`.
 - **The baud-rate setting cannot be found on an Atlan A350.** It is not in the obvious interface menu — ask the Dräger engineer for the path.

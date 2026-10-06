@@ -8,7 +8,7 @@
 | 1.19.22 | 2026-08-30 | Dräger (MEDIBUS) | Machines selectable **by model** (`Fabius` added) plus a generic **`Medibus`** entry; `Primus`, `Fabius` and `Medibus` behave identically. Auto-detection identifies Dräger machines by protocol, not model. |
 | 1.19.20 | 2026-08-29 | Dräger Fabius GS | Machines with no waveform capability now record numerics (previously nothing was collected). Fabius has AWP/AWF but no CO2 waveform. |
 | 1.19.19 | 2026-08-27 | Dräger (MEDIBUS) | New tracks: ventilation phase `VENT_PHASE`, mode `VENT_MODE`, device messages `VENT_MSG`. |
-| 1.19.15 – 1.19.18 | 2026-08-27 | Dräger (MEDIBUS) | **`wavs=`** selects up to 4 waveforms (AWP AWF PLETH VOL O2 CO2 …). On Y-cable taps the waveform type is auto-detected when the other device's requests are visible (1.19.18); otherwise `wavs=` fixes it (1.19.17). |
+| 1.19.15 – 1.19.18 | 2026-08-27 | Dräger (MEDIBUS) | Waveforms are requested from the list the machine offers, up to 4 (previously fixed to CO2 and AWP); **`wavs=`** selects specific ones (AWP AWF PLETH VOL O2 CO2 …). On Y-cable taps the waveform type is auto-detected when the other device's requests are visible (1.19.18); otherwise `wavs=` fixes it (1.19.17). |
 | 1.19.7 | 2026-08-12 | GE Corometrics | **Maternal SpO2 / PR / NIBP** recorded alongside fetal HR1/HR2 and UACT. |
 | 1.19.0 | 2026-08 | All serial devices | **`AUTO_DETECT=1`** — serial devices identified automatically. |
 | 1.18.49 | 2026-07-29 | Maquet Flow-i | 11 set-parameters added; TV no longer reported at half value (Set TV removed in protocol v5). |
