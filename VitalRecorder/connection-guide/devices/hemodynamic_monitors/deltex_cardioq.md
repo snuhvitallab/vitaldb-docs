@@ -16,7 +16,7 @@ vr_device_name: CardioQ
 
    <img src="../hardware_images/deltex_cardioq_1.png" width="450" alt="CardioQ rear panel with the male DB-9 serial port circled, between the RJ-45 network port and the mains inlet">
 
-2. Attach a **Null Modem (F/F)** adapter to that port. An M/F Null Modem will not mate with a male device port — this is the most common wiring mistake on this device.
+2. Attach a **Null Modem (F/F)** adapter to that port. An M/F Null Modem will not mate with a male device port.
 3. Connect a direct serial cable from the adapter to the PC via a USB-Serial converter.
 
 ## Device Configuration
@@ -40,7 +40,7 @@ Do this with **no probe connected** — the monitor blocks setup changes otherwi
 
 5. Enter **Demo mode** and confirm Vital Recorder is receiving data before connecting a patient.
 
-- Protocol: **CardioQ Serial Protocol v2**. The list also offers None, Philips VueLink, CardioQ Serial Protocol and Extended Serial Protocol — do **not** use these.
+- Select **CardioQ Serial Protocol v2**. The other listed options are not the protocol specified for this Vital Recorder connection.
 - Serial: **57600 baud, No Flow Control**.
 - Data bits, parity and stop bits are not exposed on the CardioQ setup screens; leave the PC side at 8-N-1 unless Deltex advises otherwise.
 

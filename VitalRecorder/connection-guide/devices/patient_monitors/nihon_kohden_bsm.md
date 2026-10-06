@@ -7,10 +7,10 @@ vr_device_name: BSM
 -->
 > ⚠️ **Whether a BSM has an RS-232C output depends on the model and on which optional interface unit is fitted.** Photograph the monitor's connector panel and confirm the model number before ordering anything.
 
-| Cable | Adapter | Port | VR Device Name |
-|-------|---------|------|----------------|
-| Direct serial DB-9M ↔ DB-9F (numeric) | Null Modem M/F | RS-232C socket on the interface unit | `BSM` |
-| Nihon Kohden ECG/BP output cable + custom 5.5pi Mono ↔ RJ45 (waveform) | None | `ECG/BP OUT` port | — (ADC device) |
+| Cable | Adapter | Port | Serial | VR Device Name |
+|-------|---------|------|--------|----------------|
+| Direct serial DB-9M ↔ DB-9F (numeric) | Null Modem M/F | RS-232C socket on the interface unit | RS-232C; 9600 / 19200 / 38400 baud (match the interface setting) | `BSM` |
+| Nihon Kohden ECG/BP output cable + custom 5.5pi Mono ↔ RJ45 (waveform) | None | `ECG/BP OUT` port | — | — (ADC device) |
 
 ## Before You Start
 
@@ -55,7 +55,7 @@ Where a Nihon Kohden central station with the HL7 gateway is installed, Vital Re
 | `NIHONKOHDEN::NealTime` | Waveforms, up to three — default ECG_II, PLETH and AWP | 9001 |
 
 - Give the ADT device the monitor's bed name.
-- The HL7 plug-in must be installed on the server. Without it the server delivers nothing.
+- The HL7 plug-in must be installed and configured on the server for this network collection path to work.
 - The gateway's Start Code must match what Vital Recorder expects. Changing it can break the site's EMR feed, so coordinate with Nihon Kohden.
 - Where there is no central station, per-bed serial is the only route.
 

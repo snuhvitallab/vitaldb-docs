@@ -75,4 +75,4 @@ On machines that expose the setting on screen it is reached from the interface p
 - **Numerics arrive but no waveforms.** If `wavs=` is set, remove it and test again. On a Y-cable tap, waveforms arrive only when the existing device requests them. On an **Atlan A300**, some units show this together with a repeating `MEDIBUS COM1 FAILURE` warning — under investigation; collect with `DEBUG=1` if you see it.
 - **Waveforms come out in the wrong order on a Y-cable (read-only) tap.** The order is detected automatically when the existing device's requests are visible on the line. Otherwise list the waveforms with `wavs=` in the order the existing device requests them.
 - **The port does not open.** In `vr.conf`, `port=` must be the actual serial port name of the converter channel (e.g. `C1`), not `COM1`.
-- **The baud-rate setting cannot be found on an Atlan A350.** It is not in the obvious interface menu — ask the Dräger engineer for the path.
+- **Atlan A350 baud-rate menu path.** This guide does not document the path. Check the procedure in the applicable Dräger documentation or with Dräger service before changing the setting.

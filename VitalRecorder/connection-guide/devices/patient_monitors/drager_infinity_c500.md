@@ -5,7 +5,7 @@ category: Patient Monitor
 manufacturer: Dräger
 vr_device_name: Infinity
 -->
-> ⚠️ **No monitor-side configuration is required, but C700 firmware 7.xx is known to break RS-232 output.** If a C700 stays silent with correct wiring, check the firmware version before rebuilding cables.
+> ⚠️ No monitor-side configuration is required. **Some C700 units with firmware 7.xx may have no RS-232 output.** If a correctly wired unit is silent, check its firmware version with Dräger.
 
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|
@@ -42,11 +42,6 @@ No monitor-side configuration is required for numeric data — the export protoc
 
 - In Vital Recorder, add **Patient monitor → Draeger : Infinity**.
 
-## Troubleshooting
-
-- **Data stops and does not resume on its own.** Expected on the Infinity family — restart Vital Recorder to re-establish the link.
-- **A correctly wired C700 produces no data.** Check the installed firmware with Dräger: **Infinity C700 firmware 7.xx breaks RS-232 output**.
-
 ## Known Limitations
 
 - **The P2500 COM ports are inputs.** On installed systems COM1 is reserved for a Dräger anesthesia machine, COM2 for a TOFscan and COM3 for BIS Vista / EV-1000 data coming *into* the monitor, usually through a Capsule Tech adapter. Recording from the monitor uses the RJ10 export port and the Analog/Sync port described above, not those COMs.
@@ -54,6 +49,5 @@ No monitor-side configuration is required for numeric data — the export protoc
 ## Notes
 
 - Dräger markets this family as the **Infinity Acute Care System (IACS)** — sites and vendors often say "IACS C500". Same connection.
-- Dräger Korea has supplied the export cable and the analog cable set (MDR14 ↔ RJ45) to sites installing Vital Recorder — ask the Dräger service engineer before building cables.
-- The MDR-14 pin numbering is not photographed in this guide; request the pinout from the cable vendor or Dräger when ordering.
+- Confirm the pinout with Dräger or the cable vendor before building the custom MDR14 ↔ RJ45 cable.
 - Sibling model **Infinity Kappa** uses the X5/X3 14-pin Mini-D port instead — see [Dräger Infinity Kappa](drager_infinity_kappa.md).

@@ -71,12 +71,8 @@ If the machine's purchase date is unknown, the connector itself is the answer. F
 1. **Female COM1 with a Null Modem fitted → remove the adapter.** This is the classic double-crossover: the direct serial cable is already wired pin-to-pin and the adapter swaps pins 2/3 a second time, so both ends transmit at each other.
 2. **Male COM1 with no adapter → add a Null Modem F/F adapter** at COM1.
 3. **Cable and adapter already match the connector → check the machine, not the cable.** Confirm in service mode that COM1 is set to **MEDIBUS at 9600**, and that the device was added in Vital Recorder as **`Fabius`**.
-4. **Everything above checks out → check the Vital Recorder build.** Older builds could open the port and record nothing; **models without waveform capability (Fabius GS) recorded nothing at all before 1.19.20.** Update to the latest release before touching the cable.
+4. **The port opens but no data arrives.** Check the Vital Recorder version. The Fabius GS numeric-data fix is listed in [Version Notes](../version-notes.md); update before changing a cable that has already been verified.
 
 ## Known Limitations
 
 - **The Fabius GS has no waveform output by specification** — expect numerics only. The Fabius family in general offers AWP/AWF but no CO2 waveform.
-
-## Notes
-
-- **Fabius plus:** a unit with a female COM1 has been seen to answer MEDIBUS correctly on the line (ICC/DEVID/MEAS with valid checksums at 9600 8E1) while Vital Recorder still recorded nothing on an older build — consistent with the no-waveform bug fixed in 1.19.20. Re-test on the latest Vital Recorder before changing cables.

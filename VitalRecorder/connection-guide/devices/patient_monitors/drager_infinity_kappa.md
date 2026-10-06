@@ -5,7 +5,7 @@ category: Patient Monitor
 manufacturer: Dräger
 vr_device_name: Infinity
 -->
-> ⚠️ **X5 and X3 have different pinouts — a cable made for one will not work on the other.** No monitor-side configuration is required. Numeric data arrives every 2 seconds; **waveforms cannot be extracted over the Mini-D serial link** — use the Analog/Sync port with an ADC instead.
+> ⚠️ **X5 and X3 have different pinouts — a cable made for one will not work on the other.** No monitor-side configuration is required. **Waveforms cannot be extracted over the Mini-D serial link**; use the Analog/Sync port with an ADC instead.
 
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|
@@ -61,10 +61,6 @@ No monitor-side configuration is required — the export protocol is always acti
 ## Vital Recorder Setup
 
 - In Vital Recorder, add **Patient monitor → Draeger : Infinity**.
-
-## Troubleshooting
-
-- **Data stops and does not resume on its own.** Expected on the Infinity family — restart Vital Recorder to re-establish the link.
 
 ## Known Limitations
 

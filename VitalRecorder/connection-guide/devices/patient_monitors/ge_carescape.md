@@ -7,11 +7,11 @@ vr_device_name: Bx50
 -->
 > **Note:** Protocol: **GE S5 Computer Interface** (the Datex DRI protocol, also used by the GE S/5, B40/B20 and B1x5M monitors). Data leaves the monitor through a **USB port**, not through the DB-9 serial connector on the rear panel.
 
-| Cable | Adapter | Port | VR Device Name |
-|-------|---------|------|----------------|
-| USB-Serial converter — **model depends on monitor software version** (see below) | Null Modem F/F | **USB port** on the rear panel | `Bx50` |
+| Cable | Adapter | Port | Serial | VR Device Name |
+|-------|---------|------|--------|----------------|
+| Monitor-side USB-to-RS-232 converter — **model depends on monitor software version** (see below) | Null Modem F/F | **USB port** on the rear panel | GE S5 Computer Interface | `Bx50` |
 
-> ⚠️ **The monitor accepts only specific USB-Serial converters, and which one depends on its software version.** The CARESCAPE runs its own embedded OS and carries drivers for these converters only:
+> ⚠️ **The monitor-side USB-to-RS-232 converter depends on monitor software version.** The CARESCAPE runs its own embedded OS and carries drivers for these converters only:
 >
 > | Monitor software | Converter |
 > |---|---|
@@ -19,24 +19,24 @@ vr_device_name: Bx50
 > | **v3.1 – v3.1.3** | Ask GE for the **free firmware upgrade** to 3.1.4 or later, then use the row above. |
 > | **v2** | **ATEN UC-232A**, legacy revision only — serial numbers starting **Z3L1** or later alphabetically (USB vendor ID `0x0557`); this revision is discontinued. **MBF-RS232** also works on v2 (chain: MBF-RS232 → Null Modem F/F → MBF-RS232). |
 >
-> Check the version under **Monitor setup → Defaults & Service → Service** before buying. A Startech that is "not recognized" is usually on a v2 monitor. Do **not** connect to the monitor's own DB-9 serial port; use a USB port.
+> Check the version under **Monitor setup → Defaults & Service → Service** before buying. If the monitor does not recognize a converter, recheck the software version and converter revision. Do **not** connect to the monitor's own DB-9 serial port; use a USB port.
 
 > ⚠️ **Use an FTDI-based USB-Serial converter on the PC side.** A 3-wire cable connects but loses most of the waveform samples.
 
 ## Connection Steps
 
-1. Plug the USB-Serial converter that matches the monitor's software version (see above) into one of the USB ports on the rear of the monitor. The USB block sits on the lower connector strip, to the left of the DVI and DB-9 connectors.
+1. Plug the **monitor-side USB-to-RS-232 converter** that matches the monitor's software version (see above) into one of the USB ports on the rear of the monitor. The USB block sits on the lower connector strip, to the left of the DVI and DB-9 connectors.
 
    <img src="../hardware_images/ge_carescape_1.png" width="450" alt="Rear three-quarter view of a CARESCAPE monitor; a red circle marks the block of four USB ports on the lower connector strip, to the left of the DVI video connector and the DB-9 serial connector">
 
-   Most installations use **USB port 4**. If no data appears, try the other ports before suspecting the cable.
+   If no data appears, try another rear USB port before replacing the cable.
 
-2. Attach a **Null Modem (F/F)** adapter to the DB-9 end of the converter. This is what turns the two "direct" ends into a crossed link.
+2. Attach a **Null Modem (F/F)** adapter to the DB-9 end of the monitor-side converter. This is what turns the two "direct" ends into a crossed link.
 
-3. Run a **direct serial cable** from the Null Modem adapter to the recording PC. On a laptop or tablet this means a second USB-Serial converter on the PC side — that one must support DTR/RTS (FTDI recommended).
+3. Run a **direct serial cable** from the Null Modem adapter to the recording PC. On a laptop or tablet, connect a separate FTDI-based PC-side USB-Serial converter.
 
    ```
-   CARESCAPE USB -- USB-Serial converter (DB-9M) -- Null Modem F/F -- direct serial cable -- USB-Serial (FTDI) -- PC
+   CARESCAPE USB -- monitor-side USB-to-RS-232 converter (DB-9M) -- Null Modem F/F -- direct serial cable -- PC-side USB-Serial converter (FTDI) -- PC
    ```
 
 ## Device Configuration
@@ -54,8 +54,7 @@ Once the interface is set to S/5, no baud rate has to be chosen on the monitor: 
 ## Troubleshooting
 
 - **A freshly bought UC-232A produces nothing.** Converter revision matters: only the older ATEN UC-232A revision (USB vendor ID `0x0557`) is driven by the monitor's built-in driver; newer stock built around a different chipset (`0x067b`) is not. Check the revision before changing anything else.
-- **An otherwise-correct installation produces nothing.** Dust in the rear USB ports has stopped such installations — clean the port before suspecting the converter.
-- **Communication stops and does not auto-recover (software version 2).** Data is received normally and then stops at an unpredictable point, and Vital Recorder does not re-establish the link on its own. Workaround: **unplug and re-plug the cable at the monitor end** — reception resumes immediately. Sites with frequent stoppages have fitted a relay to automate the re-connection, which reduced but did not fully eliminate the problem. Two causes have since been identified: (1) the PC-side converter (use an FTDI-based one), and (2) a one-second waveform gap at every re-request, which Vital Recorder fixed by sending the request only once at start-up — **update Vital Recorder** before chasing hardware.
+- **Communication stops and does not recover on software version 2.** Reconnect the cable at the monitor end. Use a PC-side FTDI converter and update Vital Recorder before replacing the monitor-side converter.
 - **The link drops intermittently.** Use an FTDI-based converter on the PC side. NETmate **KW-725 / KW-825** and UGREEN FTDI have proved stable on Linux/PiVR.
 - **Waveforms drop out.** Trim the `wavs=` list if the monitor cannot sustain all of the defaults (`wavs=1,4,8,9,13` — ECG1, PLETH, IABP1, CO2, AWP).
 

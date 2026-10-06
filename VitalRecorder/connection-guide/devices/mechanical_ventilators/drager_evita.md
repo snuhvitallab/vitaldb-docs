@@ -44,7 +44,7 @@ In the ventilator's system setup, open the **interface / COM port** page and set
 
 ## Troubleshooting
 
-- **Nothing at all.** Check the adapter (see Notes), the port's protocol setting, and that no other system already owns the port.
+- **Vital Recorder opens the port but receives no data.** Check the adapter and port protocol setting (see Device Configuration), and confirm that another system is not using the port.
 - **Port does not open (`opening failed`).** `port=` is set to `COM1`; use the real converter channel name.
 - **Numerics arrive but no waveforms, or a waveform is recorded under the wrong name.** Waveform requests and naming for MEDIBUS devices were fixed in 1.19.15/1.19.16 (an Evita V600 sending only AWP had it stored as CO2); upgrade. If `wavs=` is set, remove it and test again.
 - **Vital Recorder restarts repeatedly when a MEDIBUS device is attached.** A SIGSEGV loop present from 1.15.11 to 1.18.39 — fixed in 1.18.40; upgrade.
@@ -52,5 +52,4 @@ In the ventilator's system setup, open the **interface / COM port** page and set
 
 ## Notes
 
-- **Adapter gender is unverified.** The Evita Infinity V500 has been grouped with the Fabius and Zeus as taking a null modem; the [Fabius page](../anesthesia_machines/drager_fabius.md) shows that the answer depends on the COM connector's gender (F/F onto a male port, M/F onto a female one). Look at the EVITA's connector and record which adapter worked.
-- **No photographs yet** — the rear connector panel and the interface menu would be the most useful additions.
+- **Adapter gender is unverified.** Check the connector before ordering an adapter. The guide's rule is F/F for a male port and M/F for a female port; see the [Fabius page](../anesthesia_machines/drager_fabius.md) for the connector-gender procedure.

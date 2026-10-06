@@ -39,7 +39,7 @@ vr_device_name: B1x5M
 1. On the monitor, navigate to **Install/Service → Service → Page 3**.
 2. Tap **S5/Anesthesia**.
 3. Set **S/5 Channel 1** to **Serial** — this routes the S/5 output to the red-marked serial port. The thumbnails down the right-hand side of the screen show which physical connector each choice (`Serial`, `USB2`, `USB3`) refers to.
-4. Set the **Baudrate** for that channel to **19200**. The drop-down offers only **19200** and **115200**, and monitors are normally found on 115200, so this value has to be changed.
+4. Set the channel's **Baudrate** to **19200**. If **115200** is selected, change it to **19200**.
 
    <img src="../hardware_images/ge_b105m_1.jpeg" width="450" alt="Photograph of the monitor's S5/Anesthesia Configuration screen: Anesthesia set to USB3; S/5 Channel 1 set to Serial with its Baudrate drop-down open showing the only two choices, 19200 and 115200, with 115200 currently selected; S/5 Channel 2 set to USB2 at 115200; Cancel and Save buttons at the bottom">
 

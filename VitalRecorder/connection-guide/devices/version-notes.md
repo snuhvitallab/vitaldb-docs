@@ -1,6 +1,6 @@
 # Vital Recorder Version Notes (device-related)
 
-**Run the latest Vital Recorder.** The authoritative list is the official version history — <https://vitaldb.net/vital-recorder/?action=versions>. Only changes that add a device or change what is collected from one are summarised here; bug fixes and entries older than about two years are left out.
+**Run the latest Vital Recorder.** The [official version history](https://vitaldb.net/vital-recorder/?action=versions) is the complete release record. This page summarizes changes that add device support or change collected data; other release changes are listed in the official history. Entries older than about two years are omitted.
 
 | Version | Date | Device | Change |
 |---|---|---|---|

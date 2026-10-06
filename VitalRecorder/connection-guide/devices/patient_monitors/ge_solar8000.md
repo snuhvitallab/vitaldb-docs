@@ -38,7 +38,7 @@ Nothing has to be changed in the monitor's service menu — the RS-232 port stre
 
 ## Troubleshooting
 
-- **Dropout that never recovers.** Recording stops although the COM port stays open. This has been traced to the per-device restart thread in Vital Recorder dying in the background, and is seen most often when a TwitchView is being recorded on the same machine. Restarting Vital Recorder recovers it.
+- **Recording stops while the COM port stays open.** Restart Vital Recorder to re-establish recording.
 - **Garbage on the line after re-cabling.** Unplugging and re-plugging the serial cable while the device is running sends stray bytes into the stream. Stop the device in Vital Recorder before re-cabling, then start it again.
 
 ## Notes

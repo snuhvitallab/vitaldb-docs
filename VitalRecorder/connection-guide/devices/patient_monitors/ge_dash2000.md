@@ -54,5 +54,5 @@ No service-mode change is required on the monitor — the Aux terminal emits the
 ## Notes
 
 - The **Dash 2500** is a different device — it uses the GE **Dinamap** protocol on a DB-9 *Host Comm* port and does require configuration. See [GE Dash 2500](ge_dash2500.md).
-- The **Dash 5000** shares the Unity Network protocol with the Solar 8000 and Dash 3000/4000, so this page applies to it as well. It is not yet named in `Supported_Devices.md` — add it there when the list is next updated.
+- The **Dash 5000** shares the Unity Network protocol with the Solar 8000 and Dash 3000/4000; follow the same connection procedure.
 - For ECG and ABP as analog voltages (e.g. when higher-fidelity waveforms are needed), the front-panel Defib Sync socket can be used instead — see [GE Defib Connectors](ge_defib.md).

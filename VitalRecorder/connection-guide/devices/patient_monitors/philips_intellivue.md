@@ -1,4 +1,4 @@
-# Philips Intellivue MP / MX Series
+# Philips IntelliVue MP / MX Series
 
 <!-- meta
 category: Patient Monitor

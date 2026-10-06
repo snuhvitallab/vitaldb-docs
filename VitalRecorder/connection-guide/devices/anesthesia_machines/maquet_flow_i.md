@@ -28,11 +28,10 @@ Nothing has to be set on the machine — the serial port streams as soon as it i
 ## Troubleshooting
 
 - **The port opens but no data arrives.** Check the Null Modem adapter and that the cable is fully seated before suspecting the machine.
-- **TV is reported at half its value, or set-parameters are missing.** Fixed in 1.18.49 — run the latest release.
 
 ## Known Limitations
 
-- **Set TV is not transmitted** by Flow-i protocol v5 (the channel was removed). In volume modes derive it as **Set MV ÷ Set RR**. Eleven set-parameters (Set MV, RR, PEEP, PC, PS, FGF, FGF O2 %, Agent % …) are recorded on current builds (added in 1.18.49).
+- **Set TV is not transmitted** by Flow-i protocol v5 (the channel was removed). In volume modes derive it as **Set MV ÷ Set RR**. Eleven set-parameters, including Set MV, RR, PEEP, PC, PS, FGF, FGF O2 % and Agent %, are recorded.
 - The exact line settings (baud / parity) are not documented in our records; the `Flow-i` device driver handles them, so no serial parameters are entered in Vital Recorder. Verify with Getinge documentation if a third-party terminal is used for testing.
 
 ## Notes

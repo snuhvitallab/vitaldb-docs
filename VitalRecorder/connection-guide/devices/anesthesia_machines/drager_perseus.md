@@ -40,7 +40,6 @@ vr_device_name: MedibusX
 - **`MEDIBUS COM2` error.** The port is not at MEDIBUS.X / 19200. Correct it as in [Device Configuration](#device-configuration).
 - **The port does not open.** In `vr.conf`, `port=` must be the actual serial port name of the converter channel (e.g. `C1`), not `COM1`.
 - **Numerics arrive but no waveforms.** If `wavs=` is set, remove it and test again.
-- **No data on a Y-cable tap, even with the adapter fitted.** Expected — see Known Limitations; use a free COM port with a direct connection.
 
 ## Known Limitations
 

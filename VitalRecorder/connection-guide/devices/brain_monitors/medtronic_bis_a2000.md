@@ -14,7 +14,7 @@ vr_device_name: A2000
 
 The A-2000 presents a **DB-9 female** port, and the PC side is DB-9 male, so a plain **direct serial cable** is used — **no Null Modem adapter**. This distinguishes it from INVOS, whose port is male and therefore needs an F/F Null Modem.
 
-Supports **2-channel, 256 Hz EEG** acquisition — the highest-resolution EEG of the BIS family. It shares the monitor family of the BIS VISTA, but the menu structure and protocol options differ.
+Supports **2-channel, 256 Hz EEG** acquisition. It shares the monitor family of the BIS VISTA, but the menu structure and protocol options differ.
 
 ## Connection Steps
 1. Locate the **`J1` RS-232 serial port** on the lower right of the rear panel. It is a DB-9 female connector marked `J1` next to an attention symbol; the printer port `J2` is the other D-sub connector on the same panel.
@@ -54,7 +54,7 @@ The serial protocol lives several levels deep, in the diagnostic/service area of
 
 ## Troubleshooting
 
-- **EEG scaling is wrong after the gain or sampling frequency was changed on the monitor.** Vital Recorder fixes gain, offset and sample rate per track at creation time — **delete and re-create** the affected track for the new scaling to apply.
+- **EEG scaling is wrong after the gain or sampling frequency was changed on the monitor.** Vital Recorder fixes gain, offset and sample rate per track at creation time. Save or export any existing data you need before deleting and recreating the affected track.
 
 ## Known Limitations
 

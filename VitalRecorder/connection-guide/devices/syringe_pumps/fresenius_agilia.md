@@ -5,7 +5,7 @@ category: Syringe Pump
 manufacturer: Fresenius Kabi
 vr_device_name: Agilia
 -->
-> ⚠️ **A proprietary Fresenius Kabi cable is required and must be purchased** (approx. 130,000 KRW). The pump side is a circular screw-lock connector — no generic serial cable will fit, and none can be substituted.
+> ⚠️ **Use the proprietary Fresenius Kabi cable.** The pump has a circular screw-lock connector that a generic serial cable cannot fit.
 
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|
@@ -23,7 +23,7 @@ The cable's output end is DB-9 **female**, which mates directly with the DB-9 ma
 4. Connect the USB-Serial converter to the PC.
 
 ## Device Configuration
-- No configuration is required on the pump. No service menu, code or output option has to be enabled — the proprietary cable alone completes the connection.
+No pump-side configuration is required; connect the proprietary cable as described above.
 
 ## Vital Recorder Setup
 

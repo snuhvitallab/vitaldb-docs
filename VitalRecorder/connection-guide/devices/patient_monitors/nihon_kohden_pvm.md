@@ -11,12 +11,13 @@ vr_device_name: PVM
 |-------|---------|------|----------------|
 | Nihon Kohden `YS-089P`-series RS-232C cable | Not confirmed | RS-232C connector on the `QI-470P` interface | `PVM` |
 
+Confirm the required adapter with Nihon Kohden before ordering or connecting the cable.
+
 ## Connection Steps
 
 1. Locate the **RS-232C connector** on the monitor's **`QI-470P`** interface.
 2. Connect a Nihon Kohden **`YS-089P`-series** RS-232C cable to it.
 3. Connect the other end to the PC through a USB-Serial converter.
-4. In Vital Recorder, add the device as **`PVM`** — see [Vital Recorder Setup](#vital-recorder-setup).
 
 ## Device Configuration
 
