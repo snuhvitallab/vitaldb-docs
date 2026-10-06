@@ -32,4 +32,3 @@ No pump-side configuration is required; connect the proprietary cable as describ
 ## Notes
 
 - This page covers a **standalone Agilia pump** cabled directly to the PC. Where several Agilia SP / VP modules are mounted on a **Link+ / Agilia Link rack**, use the rack's USB connection instead and configure it as the `Link+` device — see [Fresenius Kabi Link+ Agilia](fresenius_link_agilia.md). Do not cable individual pumps separately when a Link+ rack is present.
-- Keep the rubber cap closed when the cable is not fitted; the connector is on the pump exterior and is exposed to fluid spills.
