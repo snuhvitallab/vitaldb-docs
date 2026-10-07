@@ -5,7 +5,7 @@ category: Multifunction Monitor
 manufacturer: Masimo
 vr_device_name: Radical7
 -->
-> ⚠️ **The Radical-7 serial interface exists only on the Docking Station (RDS).** The handheld must be seated in the dock — undocked, there is no serial port and the device-output settings cannot even be changed.
+> **Note:** **The Radical-7 serial interface exists only on the Docking Station (RDS).** The handheld must be seated in the dock — undocked, there is no serial port and the device-output settings cannot even be changed.
 
 | Cable | Adapter | Port | Serial | VR Device Name |
 |-------|---------|------|--------|----------------|

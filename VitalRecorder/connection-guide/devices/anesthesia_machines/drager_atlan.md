@@ -28,7 +28,7 @@ The Y-cable wiring is the same as on the [Dräger Apollo page](drager_apollo.md#
 ## Device Configuration
 Set the cabled COM port to **Protocol: MEDIBUS.X**, **Baud rate: 19200**. The frame is 8 data bits, Even parity, 1 stop bit. The menu path on the Atlan is not documented in this guide; check the Dräger documentation or ask Dräger service.
 
-> ⚠️ **Keep the baud rate at 19200.** Any other value produces a `MEDIBUS COM2` message or a repeated `COM1 failure` on the machine.
+> **Note:** **Keep the baud rate at 19200.** Any other value produces a `MEDIBUS COM2` message or a repeated `COM1 failure` on the machine.
 
 ## Vital Recorder Setup
 

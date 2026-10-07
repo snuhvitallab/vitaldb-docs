@@ -5,7 +5,7 @@ category: Multifunction Monitor
 manufacturer: Masimo
 vr_device_name: Root
 -->
-> ⚠️ **Power-cycle the ROOT after changing the USB baud rate.** The new rate takes effect after restart.
+> **Note:** **Power-cycle the ROOT after changing the USB baud rate.** The new rate takes effect after restart.
 
 | Cable | Adapter | Port | Serial | VR Device Name |
 |-------|---------|------|--------|----------------|

@@ -5,7 +5,7 @@ category: Multifunction Monitor
 manufacturer: MDMS
 vr_device_name: ANIMonitor2
 -->
-> ⚠️ **Use the DB-9 port marked `REAL TIME EXPORT`.** The USB port beside it is marked `DATA EXPORT` and is for offline file export only — it will not stream data to Vital Recorder.
+> **Note:** **Use the DB-9 port marked `REAL TIME EXPORT`.** The USB port beside it is marked `DATA EXPORT` and is for offline file export only — it will not stream data to Vital Recorder.
 
 | Cable | Adapter | Port | Serial | VR Device Name |
 |-------|---------|------|--------|----------------|

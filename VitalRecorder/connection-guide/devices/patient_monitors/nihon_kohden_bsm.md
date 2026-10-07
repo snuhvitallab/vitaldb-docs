@@ -5,7 +5,7 @@ category: Patient Monitor
 manufacturer: Nihon Kohden
 vr_device_name: BSM
 -->
-> ⚠️ **Whether a BSM has an RS-232C output depends on the model and on which optional interface unit is fitted.** Photograph the monitor's connector panel and confirm the model number before ordering anything.
+> **Note:** Whether a BSM has an RS-232C output depends on the model and on which optional interface unit is fitted.** Photograph the monitor's connector panel and confirm the model number before ordering anything.
 
 | Cable | Adapter | Port | Serial | VR Device Name |
 |-------|---------|------|--------|----------------|
@@ -22,8 +22,6 @@ vr_device_name: BSM
 | ECG / invasive BP **waveforms**, any model | Separate analog path | **`ECG/BP Output Cable`** — `YJ-910P` or `YJ-920P` — on the `ECG/BP OUT` port, plus an ADC. |
 
 Confirm the exact interface unit that applies to a given serial number with Nihon Kohden — the option list differs between the A and K market variants.
-
-The **Vismo PVM-4700** has its own entry and page — see [Nihon Kohden PVM-4700](nihon_kohden_pvm.md).
 
 ## Connection Steps
 

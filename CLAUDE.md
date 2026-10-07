@@ -70,12 +70,13 @@ category: <Patient Monitor|Anesthesia Machine|Mechanical Ventilator|Hemodynamic 
 manufacturer: <name>
 -->
 
-> ⚠️ One callout with the most important caution (optional).
+> **Note:** One callout with the most important caution (optional).
 
 | Cable | Adapter | Port | VR Device Name |     ← add a `Serial` column before VR Device Name when protocol/baud matters
 |-------|---------|------|----------------|
 
 ## Connection Requirements (optional)
+## Cable Pinout          (optional — custom cables: pin tables and wiring diagram, referenced from Connection Steps)
 ## Connection Steps        (### sub-sections for alternative paths, e.g. Y-cable, waveform output)
 ## Device Configuration
 ## Vital Recorder Setup

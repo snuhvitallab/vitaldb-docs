@@ -5,7 +5,7 @@ category: Patient Monitor
 manufacturer: MEKICS
 vr_device_name: MEKICS
 -->
-> ⚠️ **No serial cable — this monitor is collected over TCP/IP via a dedicated Wi-Fi router.** The router must be configured before first use, and the MP1300 must be rebooted for its network settings to apply.
+> **Note:** **No serial cable — this monitor is collected over TCP/IP via a dedicated Wi-Fi router.** The router must be configured before first use, and the MP1300 must be rebooted for its network settings to apply.
 
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|

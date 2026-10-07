@@ -5,7 +5,7 @@ category: Hemodynamic Monitor
 manufacturer: Edwards Lifesciences
 vr_device_name: Hemosphere
 -->
-> ⚠️ Serial output is enabled in the password-protected **Advanced Setup** menu. The monitor must be **restarted** for the change to take effect.
+> **Note:** Serial output is enabled in the password-protected **Advanced Setup** menu. The monitor must be **restarted** for the change to take effect.
 
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|

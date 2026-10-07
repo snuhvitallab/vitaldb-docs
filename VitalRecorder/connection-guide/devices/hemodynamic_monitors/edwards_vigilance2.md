@@ -5,7 +5,7 @@ category: Hemodynamic Monitor
 manufacturer: Edwards Lifesciences
 vr_device_name: Vigilance
 -->
-> ⚠️ **Select `Vigilance` in Vital Recorder** — there is no separate "Vigilance II" entry. And a **direct serial cable alone will not work**: the link needs the TX/RX crossover from the **Null Modem adapter (M/F)**.
+> **Note:** **Select `Vigilance` in Vital Recorder** — there is no separate "Vigilance II" entry. And a **direct serial cable alone will not work**: the link needs the TX/RX crossover from the **Null Modem adapter (M/F)**.
 
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|

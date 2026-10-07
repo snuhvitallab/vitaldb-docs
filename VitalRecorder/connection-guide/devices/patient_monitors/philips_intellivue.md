@@ -5,7 +5,7 @@ category: Patient Monitor
 manufacturer: Philips
 vr_device_name: Intellivue
 -->
-> ⚠️ **Use the port labeled `MIB/RS232`, not the plain `RS232` port.** Service-mode configuration is mandatory. The MIB port works whether or not the monitor is connected to a central station. **MP2 and X2 monitors have no usable serial port and cannot be used.**
+> **Note:** **Use the port labeled `MIB/RS232`, not the plain `RS232` port.** Service-mode configuration is mandatory. The MIB port works whether or not the monitor is connected to a central station. **MP2 and X2 monitors have no usable serial port and cannot be used.**
 
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|

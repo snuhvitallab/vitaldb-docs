@@ -5,7 +5,7 @@ category: Brain Monitor
 manufacturer: Medtronic
 vr_device_name: VISTA
 -->
-> ⚠️ **Use a direct serial cable only. A cross cable can drive the monitor into an "Unrecoverable Monitor Exception" screen, which halts monitoring until the unit is reset.**
+> **Note:** **Use a direct serial cable only. A cross cable can drive the monitor into an "Unrecoverable Monitor Exception" screen, which halts monitoring until the unit is reset.**
 > Protocol changes take effect only **after the monitor is restarted**.
 
 | Cable | Adapter | Port | VR Device Name |

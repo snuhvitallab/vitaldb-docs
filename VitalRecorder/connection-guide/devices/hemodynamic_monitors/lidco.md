@@ -5,7 +5,7 @@ category: Hemodynamic Monitor
 manufacturer: LiDCO
 vr_device_name: LiDCO
 -->
-> ⚠️ **Serial output is off by default.** The RS-232 communications module must be switched on inside the monitor's **Engineering Screen** before Vital Recorder will see anything, and the baud rate here is **57600** — not the 9600 used by the Edwards monitors.
+> **Note:** **Serial output is off by default.** The RS-232 communications module must be switched on inside the monitor's **Engineering Screen** before Vital Recorder will see anything, and the baud rate here is **57600** — not the 9600 used by the Edwards monitors.
 
 | Cable | Adapter | Port | Serial | VR Device Name |
 |-------|---------|------|--------|----------------|

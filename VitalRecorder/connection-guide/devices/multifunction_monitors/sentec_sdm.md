@@ -5,7 +5,7 @@ category: Multifunction Monitor
 manufacturer: Sentec
 vr_device_name: SDM
 -->
-> ⚠️ **The serial interface is disabled while trend data are being downloaded over the LAN port.** It is reactivated automatically once the LAN download finishes.
+> **Note:** **The serial interface is disabled while trend data are being downloaded over the LAN port.** It is reactivated automatically once the LAN download finishes.
 
 | Cable | Adapter | Port | Serial | VR Device Name |
 |-------|---------|------|--------|----------------|

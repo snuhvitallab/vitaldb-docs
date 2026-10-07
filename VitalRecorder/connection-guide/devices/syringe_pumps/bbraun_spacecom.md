@@ -5,7 +5,7 @@ category: Syringe Pump
 manufacturer: B. Braun
 vr_device_name: SpaceCom
 -->
-> ⚠️ **Two ports, two jobs.** Data is recorded from the **9-pin mini-DIN serial port** at the bottom of the SpaceCom module, but the serial interface must first be enabled and its parameters set through the **SpaceOnline web interface**, reached over the **LAN (RJ-45) port** higher up on the same module.
+> **Note:** **Two ports, two jobs.** Data is recorded from the **9-pin mini-DIN serial port** at the bottom of the SpaceCom module, but the serial interface must first be enabled and its parameters set through the **SpaceOnline web interface**, reached over the **LAN (RJ-45) port** higher up on the same module.
 
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|

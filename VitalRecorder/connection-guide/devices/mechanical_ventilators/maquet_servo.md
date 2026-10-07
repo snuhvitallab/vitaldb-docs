@@ -5,7 +5,7 @@ category: Mechanical Ventilator
 manufacturer: Maquet
 vr_device_name: Servo-i
 -->
-> ⚠️ **On Servo-i and Servo-s, connect to the BOTTOM RS-232 port.** The TOP port is for service/debugging. The live port and adapter requirement for Servo-U have not been verified; confirm both with Getinge before connecting.
+> **Note:** **On Servo-i and Servo-s, connect to the BOTTOM RS-232 port.** The TOP port is for service/debugging. The live port and adapter requirement for Servo-U have not been verified; confirm both with Getinge before connecting.
 
 | Cable | Adapter | Port | Serial | VR Device Name |
 |-------|---------|------|--------|----------------|

@@ -5,7 +5,7 @@ category: Hemodynamic Monitor
 manufacturer: Edwards Lifesciences
 vr_device_name: Vigileo
 -->
-> ⚠️ **The setup menu has no visible button.** Tap the blank strip at the **bottom left** of the monitoring screen to open the Status Menu. A **Null Modem adapter (M/F)** is also mandatory — a direct serial cable will not work.
+> **Note:** **The setup menu has no visible button.** Tap the blank strip at the **bottom left** of the monitoring screen to open the Status Menu. A **Null Modem adapter (M/F)** is also mandatory — a direct serial cable will not work.
 
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|

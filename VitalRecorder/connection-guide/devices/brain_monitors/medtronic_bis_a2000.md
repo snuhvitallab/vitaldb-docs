@@ -5,7 +5,7 @@ category: Brain Monitor
 manufacturer: Medtronic
 vr_device_name: A2000
 -->
-> ⚠️ **Use the `J1` port, not `J2`.** The A-2000 rear panel carries two connectors: **`J1` is the RS-232 serial port**, **`J2` is the printer port**. Connecting to `J2` will not produce data.
+> **Note:** **Use the `J1` port, not `J2`.** The A-2000 rear panel carries two connectors: **`J1` is the RS-232 serial port**, **`J2` is the printer port**. Connecting to `J2` will not produce data.
 > Set **Serial Port Protocol = Binary** and **Save Settings**, otherwise Vital Recorder receives nothing.
 
 | Cable | Adapter | Port | Serial | VR Device Name |

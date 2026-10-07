@@ -5,7 +5,7 @@ category: Hemodynamic Monitor
 manufacturer: Edwards Lifesciences
 vr_device_name: Vigilance
 -->
-> ⚠️ **A direct serial cable alone will not work** — the link needs the TX/RX crossover, so the **Null Modem adapter (M/F)** is mandatory. Configure the **Digital Ports** menu on the System Configuration screen.
+> **Note:** **A direct serial cable alone will not work** — the link needs the TX/RX crossover, so the **Null Modem adapter (M/F)** is mandatory. Configure the **Digital Ports** menu on the System Configuration screen.
 
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|

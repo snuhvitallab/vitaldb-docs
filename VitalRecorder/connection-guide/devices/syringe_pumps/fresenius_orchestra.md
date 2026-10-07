@@ -5,7 +5,7 @@ category: Syringe Pump
 manufacturer: Fresenius Kabi
 vr_device_name: Orchestra
 -->
-> ⚠️ **The port must be configured in service mode.** Connect a **direct serial cable** with a **Null Modem adapter (M/F)** as specified below. Do not use a cross cable or omit the adapter; either can prevent communication.
+> **Note:** **The port must be configured in service mode.** Connect a **direct serial cable** with a **Null Modem adapter (M/F)** as specified below. Do not use a cross cable or omit the adapter; either can prevent communication.
 
 | Cable | Adapter | Port | Serial | VR Device Name |
 |-------|---------|------|--------|----------------|

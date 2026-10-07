@@ -5,7 +5,7 @@ category: Syringe Pump
 manufacturer: Fresenius Kabi
 vr_device_name: Link+
 -->
-> ⚠️ **Two separate cables are involved.** Data is recorded over the rack's **USB-B (mini-USB) port**, but **Data Export must first be enabled once via the web interface**, which is reached over the **LAN (RJ-45) port**. Out of the box the serial export protocol is disabled and the pump rack sends nothing.
+> **Note:** **Two separate cables are involved.** Data is recorded over the rack's **USB-B (mini-USB) port**, but **Data Export must first be enabled once via the web interface**, which is reached over the **LAN (RJ-45) port**. Out of the box the serial export protocol is disabled and the pump rack sends nothing.
 
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|

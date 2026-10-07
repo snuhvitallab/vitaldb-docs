@@ -15,6 +15,25 @@ vr_device_name: (none — ADC device)
 
 The ADC connects to the PC over **USB**. There is no separate VR device entry for the Defib.Sync port — add the ADC in Vital Recorder and map its channels.
 
+## Cable Pinout
+
+Defib. Sync connector:
+
+<img src="../hardware_images/ge_defib_2.png" width="450" alt="Defibrillator synchronization connector J2 pin table — 1 DEFIB_MARKER_OUT, 2 DEFIB_MARKER_IN, 3 AGND1, 4 DGND, 5 AGND2, 6 BP_ANALOG_OUTPUT, 7 ECG_ANALOG_OUTPUT — beside a front view of the module socket">
+
+| Pin | Name | Description |
+|---|---|---|
+| 1 | DEFIB_MARKER_OUT | Digital defibrillator output synchronization signal |
+| 2 | DEFIB_MARKER_IN | Digital defibrillator input signal |
+| 3 | AGND1 | Signal ground |
+| 4 | DGND | Signal ground |
+| 5 | AGND2 | Signal ground |
+| 6 | **BP_ANALOG_OUTPUT** | Analog BP output |
+| 7 | **ECG_ANALOG_OUTPUT** | Analog ECG output |
+
+- ECG channel: signal **pin 7**, ground **pin 3**.
+- ABP channel: signal **pin 6**, ground **pin 3** (or pin 5).
+
 ## Connection Steps
 
 1. Locate the round **Defib. Sync** socket on the front panel of the module.
@@ -23,22 +42,7 @@ The ADC connects to the PC over **USB**. There is no separate VR device entry fo
 
 2. Obtain a 7-pin mini-DIN cable. An 8-pin mini-DIN cable also fits if the center pin is cut away. Cut the far end off and wire the conductors you need to the ADC.
 
-3. Wire the ADC inputs per the connector pinout:
-
-   <img src="../hardware_images/ge_defib_2.png" width="450" alt="Defibrillator synchronization connector J2 pin table — 1 DEFIB_MARKER_OUT, 2 DEFIB_MARKER_IN, 3 AGND1, 4 DGND, 5 AGND2, 6 BP_ANALOG_OUTPUT, 7 ECG_ANALOG_OUTPUT — beside a front view of the module socket">
-
-   | Pin | Name | Description |
-   |---|---|---|
-   | 1 | DEFIB_MARKER_OUT | Digital defibrillator output synchronization signal |
-   | 2 | DEFIB_MARKER_IN | Digital defibrillator input signal |
-   | 3 | AGND1 | Signal ground |
-   | 4 | DGND | Signal ground |
-   | 5 | AGND2 | Signal ground |
-   | 6 | **BP_ANALOG_OUTPUT** | Analog BP output |
-   | 7 | **ECG_ANALOG_OUTPUT** | Analog ECG output |
-
-   - ECG channel: signal **pin 7**, ground **pin 3**.
-   - ABP channel: signal **pin 6**, ground **pin 3** (or pin 5).
+3. Wire the ADC inputs as shown in [Cable Pinout](#cable-pinout).
 
 4. Connect the ADC to the PC via USB and map the two channels in Vital Recorder.
 

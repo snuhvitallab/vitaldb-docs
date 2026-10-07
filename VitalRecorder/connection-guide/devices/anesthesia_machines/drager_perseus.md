@@ -28,7 +28,7 @@ vr_device_name: MedibusX
 - **Baud rate:** **19200**
 - The frame format is fixed and shown next to the baud rate as **8, e, 1** (8 data bits, Even parity, 1 stop bit)
 
-> ⚠️ **Keep the baud rate at 19200.** Any other value produces a `MEDIBUS COM2` message or a repeated `COM1 failure` on the machine.
+> **Note:** **Keep the baud rate at 19200.** Any other value produces a `MEDIBUS COM2` message or a repeated `COM1 failure` on the machine.
 
 ## Vital Recorder Setup
 

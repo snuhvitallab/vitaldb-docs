@@ -5,7 +5,7 @@ category: Patient Monitor
 manufacturer: GE
 vr_device_name: Coro
 -->
-> ⚠️ **The RS-232 ports are 8-pin RJ-45 sockets, not DB-9.** A custom RJ-45 ↔ DB-9F cable is required, and the monitor's **CTS input must be asserted** or it will not transmit. Service setup mode must also be used to switch the port into the data-export communication mode — the factory defaults do not export data.
+> **Note:** **The RS-232 ports are 8-pin RJ-45 sockets, not DB-9.** A custom RJ-45 ↔ DB-9F cable is required, and the monitor's **CTS input must be asserted** or it will not transmit. Service setup mode must also be used to switch the port into the data-export communication mode — the factory defaults do not export data.
 
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|
@@ -15,28 +15,37 @@ vr_device_name: Coro
 
 The custom cross cable provides the TX/RX crossover, so no separate Null Modem adapter is used.
 
+## Cable Pinout
+
+Monitor RJ-45 port:
+
+| RJ-45 pin | Port 1 signal | Port 2 signal | Direction |
+|---|---|---|---|
+| 1 | +5 V (200 mA, fused) | GND | — |
+| 2 | RTS | RTS | Output from monitor |
+| 3 | RXD | RXD | Input to monitor |
+| 4 | GND | GND | — |
+| 5 | GND | GND | — |
+| 6 | TXD | TXD | Output from monitor |
+| 7 | CTS | CTS | Input to monitor |
+| 8 | +5 V (200 mA, fused) | GND | — |
+
+**Pins 1 and 8 of Port 1 carry +5 V** and are not connected to the PC side.
+
+Cable wiring — three data conductors, crossed:
+
+| RJ-45 (monitor) | Signal | DB-9F (PC side) | Signal |
+|---|---|---|---|
+| 6 | TXD | 2 | RX |
+| 3 | RXD | 3 | TX |
+| 4 or 5 | GND | 5 | GND |
+
+Connect RJ-45 **pin 7 (CTS)** to RJ-45 **pin 2 (RTS)** at the monitor end.
+
 ## Connection Steps
-1. Prepare an RJ-45 ↔ DB-9F cable. The monitor's RJ-45 pinout is:
+1. Build the RJ-45 ↔ DB-9F cable as shown in [Cable Pinout](#cable-pinout), including the CTS–RTS loop at the monitor end.
 
-   | RJ-45 pin | Port 1 signal | Port 2 signal | Direction |
-   |---|---|---|---|
-   | 1 | +5 V (200 mA, fused) | GND | — |
-   | 2 | RTS | RTS | Output from monitor |
-   | 3 | RXD | RXD | Input to monitor |
-   | 4 | GND | GND | — |
-   | 5 | GND | GND | — |
-   | 6 | TXD | TXD | Output from monitor |
-   | 7 | CTS | CTS | Input to monitor |
-   | 8 | +5 V (200 mA, fused) | GND | — |
-
-   **Pins 1 and 8 of Port 1 carry +5 V** and are not connected to the PC side.
-
-2. Wire the three data conductors as a crossed connection: monitor **TXD (pin 6)** → DB-9F **pin 2**, monitor **RXD (pin 3)** ← DB-9F **pin 3**, **GND (pin 4 or 5)** → DB-9F **pin 5**.
-
-
-3. Connect RJ-45 **pin 7 (CTS)** to RJ-45 **pin 2 (RTS)** at the monitor end.
-
-4. Plug the RJ-45 end into **RS-232 Port 1** (or Port 2) on the rear panel and the DB-9F end into the PC via a USB-Serial converter.
+2. Plug the RJ-45 end into **RS-232 Port 1** (or Port 2) on the rear panel and the DB-9F end into the PC via a USB-Serial converter.
 
 ### Corometrics 250cx
 

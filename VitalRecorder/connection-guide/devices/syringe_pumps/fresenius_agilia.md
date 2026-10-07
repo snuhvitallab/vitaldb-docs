@@ -5,7 +5,7 @@ category: Syringe Pump
 manufacturer: Fresenius Kabi
 vr_device_name: Agilia
 -->
-> ⚠️ **Use the proprietary Fresenius Kabi cable.** The pump has a circular screw-lock connector that a generic serial cable cannot fit.
+> **Note:** **Use the proprietary Fresenius Kabi cable.** The pump has a circular screw-lock connector that a generic serial cable cannot fit.
 
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|

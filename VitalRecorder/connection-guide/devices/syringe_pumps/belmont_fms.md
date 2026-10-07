@@ -5,7 +5,7 @@ category: Syringe Pump
 manufacturer: Belmont
 vr_device_name: FMS
 -->
-> ⚠️ **The device port is DB-9 male, so a Null Modem adapter (F/F) is required.** The serial port is behind the lower vent panel.
+> **Note:** **The device port is DB-9 male, so a Null Modem adapter (F/F) is required.** The serial port is behind the lower vent panel.
 
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|

@@ -5,7 +5,7 @@ category: Hemodynamic Monitor
 manufacturer: Edwards Lifesciences
 vr_device_name: EV1000
 -->
-> ⚠️ **The adapter gender differs between the two generations.** The old **EV-1000** (label `REF EV1000M`) has a **male** DB-9, so it needs a **Null Modem adapter (F/F)**. The newer **EV-1000A** (label `REF EV1000A`) has a **female** DB-9 and needs a **Null Modem adapter (M/F)**. Check the REF label on the rear panel before ordering the adapter.
+> **Note:** **The adapter gender differs between the two generations.** The old **EV-1000** (label `REF EV1000M`) has a **male** DB-9, so it needs a **Null Modem adapter (F/F)**. The newer **EV-1000A** (label `REF EV1000A`) has a **female** DB-9 and needs a **Null Modem adapter (M/F)**. Check the REF label on the rear panel before ordering the adapter.
 
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|

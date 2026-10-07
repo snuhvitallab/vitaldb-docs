@@ -13,7 +13,7 @@ vr_device_name: B1x5M
 
 ## Connection Requirements
 
-> ⚠️ **Use an FTDI-based USB-Serial converter on the PC side.** A 3-wire cable connects but loses most of the waveform samples.
+> **Note:** **Use an FTDI-based USB-Serial converter on the PC side.** A 3-wire cable connects but loses most of the waveform samples.
 
 ## Connection Steps
 
@@ -33,7 +33,7 @@ The monitor can also emit the S/5 stream on one of its USB ports instead (see th
 
 > **Note:** Required on firmware **version 4 and later** only. Earlier firmware emits the S/5 stream without any setup.
 
-> ⚠️ **Service login required.** When prompted, enter the credentials below:
+> **Note:** **Service login required.** When prompted, enter the credentials below:
 >
 > | Field | Value |
 > |-------|-------|

@@ -5,7 +5,7 @@ category: Anesthesia Machine
 manufacturer: Dräger
 vr_device_name: Fabius
 -->
-> ⚠️ **Check the machine's manufacture date before ordering a cable.** The Fabius shipped with two different COM1 connectors, and the adapter you need depends on which one is fitted. Read [Connection Requirements](#connection-requirements) first.
+> **Note:** **Check the machine's manufacture date before ordering a cable.** The Fabius shipped with two different COM1 connectors, and the adapter you need depends on which one is fitted. Read [Connection Requirements](#connection-requirements) first.
 
 | Cable | Adapter | Port | Serial | VR Device Name |
 |-------|---------|------|--------|----------------|
@@ -55,7 +55,7 @@ If the machine's purchase date is unknown, the connector itself is the answer. F
 
    <img src="../hardware_images/drager_fabius_2.png" width="450" alt="Fabius Service screen &quot;Serial Port Parameters&quot; for COM1 — Baud Rate 9600, Parity EVEN, Stop Bits 1, Data Bits 8, Protocol MEDIBUS">
 
-> ⚠️ **Keep the baud rate at 9600.** Any other value appears as a `MEDIBUS COM2` message or a repeated `COM1 failure` on the machine.
+> **Note:** **Keep the baud rate at 9600.** Any other value appears as a `MEDIBUS COM2` message or a repeated `COM1 failure` on the machine.
 
 ## Vital Recorder Setup
 

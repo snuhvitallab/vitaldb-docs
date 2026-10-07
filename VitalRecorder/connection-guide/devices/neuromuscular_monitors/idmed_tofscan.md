@@ -5,7 +5,7 @@ category: Neuromuscular Monitor
 manufacturer: IDMED
 vr_device_name: TOFScan
 -->
-> ⚠️ **The TOFscan data port is optical, not electrical.** Use the **TOF-RS1** or **TOF-RS2** optic-to-serial cable; a direct serial cable cannot be used.
+> **Note:** **The TOFscan data port is optical, not electrical.** Use the **TOF-RS1** or **TOF-RS2** optic-to-serial cable; a direct serial cable cannot be used.
 
 | Cable | Adapter | Port | Serial | VR Device Name |
 |-------|---------|------|--------|----------------|

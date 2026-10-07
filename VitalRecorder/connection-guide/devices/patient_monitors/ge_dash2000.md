@@ -17,23 +17,25 @@ The DB-9F end plugs into the PC's DB-9M serial port or into a USB-Serial convert
 
 > The Aux terminal sits between the **Ethernet** jack and the **Defib Sync** socket, and the two RJ-45 jacks look identical. The Ethernet jack is *not* the serial port — check the silk-screen label before connecting.
 
+## Cable Pinout
+
+<img src="../hardware_images/ge_dash2000_2.png" width="450" alt="Cable pinout diagram — DB-9 Female pin 2 RX to RJ-45 pin 6 TX, DB-9 pin 3 TX to RJ-45 pin 3 RX, DB-9 pin 5 GND to RJ-45 pin 4 GND">
+
+| DB-9 Female (PC side) | Signal | RJ-45 (monitor Aux) | Signal |
+|---|---|---|---|
+| 2 | RX | 6 | TX |
+| 3 | TX | 3 | RX |
+| 5 | GND | 4 | GND |
+
+Only these three conductors are needed; RJ-45 pins 1, 2, 5, 7 and 8 are left unconnected. Instead of soldering, a standard Cat5/Cat6 patch cable plus an off-the-shelf **RJ-45 female → DB-9 female modular adapter** (screw-terminal type) can be wired to the same three positions.
+
 ## Connection Steps
 
 1. Locate the **Aux** terminal on the rear panel.
 
    <img src="../hardware_images/ge_dash2000_1.png" width="450" alt="Rear panel of the monitor — the ETHERNET RJ-45 jack, the Aux RJ-45 terminal with a cable plugged into it, and the round Defib Sync socket, each labeled above">
 
-2. Build or order a DB-9F ↔ RJ-45 cable wired as follows. You can build it from a USB-Serial converter and a length of LAN cable, or send this pinout to a cable shop.
-
-   <img src="../hardware_images/ge_dash2000_2.png" width="450" alt="Cable pinout diagram — DB-9 Female pin 2 RX to RJ-45 pin 6 TX, DB-9 pin 3 TX to RJ-45 pin 3 RX, DB-9 pin 5 GND to RJ-45 pin 4 GND">
-
-   | DB-9 Female (PC side) | Signal | RJ-45 (monitor Aux) | Signal |
-   |---|---|---|---|
-   | 2 | RX | 6 | TX |
-   | 3 | TX | 3 | RX |
-   | 5 | GND | 4 | GND |
-
-   Only these three conductors are needed; RJ-45 pins 1, 2, 5, 7 and 8 are left unconnected. Instead of soldering, a standard Cat5/Cat6 patch cable plus an off-the-shelf **RJ-45 female → DB-9 female modular adapter** (screw-terminal type) can be wired to the same three positions.
+2. Build or order a DB-9F ↔ RJ-45 cable wired as shown in [Cable Pinout](#cable-pinout). You can build it from a USB-Serial converter and a length of LAN cable, or send the pinout to a cable shop.
 
 3. Plug the **RJ-45 end** into the Aux terminal on the rear of the monitor.
 

@@ -5,7 +5,7 @@ category: Hemodynamic Monitor
 manufacturer: Deltex
 vr_device_name: CardioQ
 -->
-> ⚠️ **The CardioQ rear serial port is male and needs a Null Modem adapter (F/F).** Monitor settings cannot be changed while a probe is connected. Verify the output in **Demo mode**.
+> **Note:** **The CardioQ rear serial port is male and needs a Null Modem adapter (F/F).** Monitor settings cannot be changed while a probe is connected. Verify the output in **Demo mode**.
 
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|

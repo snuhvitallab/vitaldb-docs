@@ -5,7 +5,7 @@ category: Patient Monitor
 manufacturer: GE
 vr_device_name: (none — ADC device)
 -->
-> ⚠️ **This is an analog connection, not serial.** ECG, arterial pressure and PLETH waveforms can only be taken from the **15-pin ANALOG OUT** connector on the rear of the TRAM-RAC 4A housing. The connector outputs the measured waveforms as voltages, so an **Analog-to-Digital Converter (ADC)** is required between the TRAM-RAC and the PC. A Tram-rac **2** housing has no analog output connector.
+> **Note:** **This is an analog connection, not serial.** ECG, arterial pressure and PLETH waveforms can only be taken from the **15-pin ANALOG OUT** connector on the rear of the TRAM-RAC 4A housing. The connector outputs the measured waveforms as voltages, so an **Analog-to-Digital Converter (ADC)** is required between the TRAM-RAC and the PC. A Tram-rac **2** housing has no analog output connector.
 
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|
@@ -17,35 +17,39 @@ The ADC connects to the PC over **USB**. There is no VR device entry for the TRA
 
 **Do NOT leave a transducer cable in the second BP connector (BP2)** when you want the PLETH waveform. Analog pin 13 carries **"Tram BP2 *or* SpO2 waveform"** — it only outputs PLETH while BP2 is unused. If a CVP or second arterial transducer is plugged into BP2, BP2 is recorded on the PLETH channel instead.
 
+## Cable Pinout
+
+ANALOG OUT connector:
+
+<img src="../hardware_images/ge_tram_rac_2.png" width="450" alt="Wiring diagram — ANALOG OUT DB-15 pins 2, 3, 5, 9, 10, 11 and 13 to ADC analog inputs Ch1 to Ch7 (+), with pins 1 and 8 as the common ground for all channel (−) inputs">
+
+| ANALOG OUT pin | Signal | ADC channel in the diagram |
+|---|---|---|
+| 1 | Signal GND for Tram waveforms | Ch1–Ch8 (−), common |
+| 2 | Trace I — the top displayed trace (ECG II unless aVR/aVL/aVF is selected) | Ch1 (+) |
+| 3 | Tram BP3 or SpO2 value | Ch2 (+) |
+| 4 | Reserved for future use | — |
+| 5 | Tram ART1 or BP1 | Ch3 (+) |
+| 6 | Slot 3 Series 7000 waveform A | — |
+| 7 | Slot 4 Series 7000 waveform A | — |
+| 8 | Signal GND for Series 7000 waveforms | Ch1–Ch8 (−), common |
+| 9 | Tram ECG II | Ch4 (+) |
+| 10 | Tram ECG V | Ch5 (+) |
+| 11 | Tram BP4 or RESP | Ch6 (+) |
+| 12 | Reserved for future use | — |
+| 13 | **Tram BP2 or SpO2 (PLETH) waveform** | Ch7 (+) |
+| 14 | Slot 3 Series 7000 waveform B | — |
+| 15 | Slot 4 Series 7000 waveform B | — |
+
+Which pins carry a signal depends on the Tram and input modules active on the monitor.
+
 ## Connection Steps
 
 1. Locate the **ANALOG OUT** connector on the rear of the TRAM-RAC 4A housing. It is a 15-pin D-type connector (yellow label), next to the two DB-9 **TRAM-NET** ports.
 
    <img src="../hardware_images/ge_tram_rac_1.png" width="450" alt="Rear of the TRAM-RAC 4A housing — the 15-pin ANALOG OUT connector circled in red, beside the two DB-9 TRAM-NET ports">
 
-2. Build or order a cable that routes the ANALOG OUT pins to the ADC's analog inputs. Only the pins you actually need have to be wired.
-
-   <img src="../hardware_images/ge_tram_rac_2.png" width="450" alt="Wiring diagram — ANALOG OUT DB-15 pins 2, 3, 5, 9, 10, 11 and 13 to ADC analog inputs Ch1 to Ch7 (+), with pins 1 and 8 as the common ground for all channel (−) inputs">
-
-   | ANALOG OUT pin | Signal | ADC channel in the diagram |
-   |---|---|---|
-   | 1 | Signal GND for Tram waveforms | Ch1–Ch8 (−), common |
-   | 2 | Trace I — the top displayed trace (ECG II unless aVR/aVL/aVF is selected) | Ch1 (+) |
-   | 3 | Tram BP3 or SpO2 value | Ch2 (+) |
-   | 4 | Reserved for future use | — |
-   | 5 | Tram ART1 or BP1 | Ch3 (+) |
-   | 6 | Slot 3 Series 7000 waveform A | — |
-   | 7 | Slot 4 Series 7000 waveform A | — |
-   | 8 | Signal GND for Series 7000 waveforms | Ch1–Ch8 (−), common |
-   | 9 | Tram ECG II | Ch4 (+) |
-   | 10 | Tram ECG V | Ch5 (+) |
-   | 11 | Tram BP4 or RESP | Ch6 (+) |
-   | 12 | Reserved for future use | — |
-   | 13 | **Tram BP2 or SpO2 (PLETH) waveform** | Ch7 (+) |
-   | 14 | Slot 3 Series 7000 waveform B | — |
-   | 15 | Slot 4 Series 7000 waveform B | — |
-
-   Which pins carry a signal depends on the Tram and input modules active on the monitor.
+2. Build or order a cable that routes the ANALOG OUT pins to the ADC's analog inputs as shown in [Cable Pinout](#cable-pinout). Only the pins you actually need have to be wired.
 
 3. Connect the finished cable to the ADC's analog input terminals, then connect the ADC to the PC over USB.
 

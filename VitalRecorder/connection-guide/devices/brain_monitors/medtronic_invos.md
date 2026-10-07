@@ -5,7 +5,7 @@ category: Brain Monitor
 manufacturer: Medtronic
 vr_device_name: Invos
 -->
-> ⚠️ **The INVOS RS-232 port is a DB-9 *male* connector, so a Null Modem adapter (F/F) is required.** This is the opposite of the BIS monitors, whose ports are female and take a direct serial cable.
+> **Note:** **The INVOS RS-232 port is a DB-9 *male* connector, so a Null Modem adapter (F/F) is required.** This is the opposite of the BIS monitors, whose ports are female and take a direct serial cable.
 > Select **PC LINK**, not **VUELINK** — VueLink is the Philips module format and runs at a different baud rate.
 
 | Cable | Adapter | Port | VR Device Name |
