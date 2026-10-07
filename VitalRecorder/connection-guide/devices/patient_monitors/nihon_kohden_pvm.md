@@ -12,7 +12,7 @@ vr_device_name: PVM
 | Direct serial cable | Null Modem (M/F) | RS-232C connector on the `QI-470P` interface | `PVM` |
 
 ## Connection Requirements
-1. The QI-470P interface must be installed on the monitor. If it is not installed, contact Nihon Kohden to arrange installation.
+1. Confirm with Nihon Kohden which interface board is installed on the monitor before ordering or connecting the cable. This page assumes the **`QI-470P`** RS-232C interface; if it is not installed, contact Nihon Kohden to arrange installation.
 2. Use Vital Recorder 1.19.34 or later.
 
 ## Connection Steps
