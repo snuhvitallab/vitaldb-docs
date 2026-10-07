@@ -9,11 +9,11 @@ vr_device_name: Solar8000
 
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|
-| Direct Serial | None | **RS-232 1** (9-pin D-type, female) | `Solar8000` |
+| direct serial cable | None | **RS-232 1** (9-pin D-type, female) | `Solar8000` |
 
 ## Connection Steps
 
-1. Locate the connector labeled **RS-232 1** on the right-hand side of the rear connector panel. It is a 9-pin D-type **female** socket, sitting directly under its silk-screened label and beside the **VGA Vid 1** and **DFP Vid 1** video connectors. A blue VGA cable is usually already plugged into the connector immediately below it — do not confuse the two.
+1. Locate the connector labeled **RS-232 1** on the right-hand side of the rear connector panel. It is a 9-pin D-type **female** socket, sitting directly under its silk-screened label and beside the **VGA Vid 1** and **DFP Vid 1** video connectors. The VGA Vid 1 connector is directly below it.
 
    <img src="../hardware_images/ge_solar8000_1.png" width="450" alt="Close-up of the Solar 8000 rear connector panel; a red circle marks the 9-pin D-type female socket under the silk-screened label RS-232 1, with the labels DFP Vid 1 and VGA Vid 1 alongside and a blue VGA cable plugged into the connector below">
 
@@ -29,7 +29,7 @@ vr_device_name: Solar8000
 
 Nothing has to be changed in the monitor's service menu — the RS-232 port streams as delivered.
 
-- Serial: **9600 baud**, per the Vital Recorder supported-device list for the Solar family.
+- Serial: **9600 baud**.
 
 ## Vital Recorder Setup
 

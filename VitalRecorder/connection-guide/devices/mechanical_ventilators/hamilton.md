@@ -9,14 +9,14 @@ vr_device_name: Hamilton
 
 | Cable | Adapter | Port | Serial | VR Device Name |
 |-------|---------|------|--------|----------------|
-| Direct Serial | Null Modem M/F | Monitoring Interface 1 or 2 | `HAMILTON-G5 / Block` protocol — 38400 baud, 8 data bits, No parity, 1 stop bit, no handshake | `Hamilton` |
+| direct serial cable | Null Modem adapter (M/F) | Monitoring Interface 1 or 2 | `HAMILTON-G5 / Block` protocol — 38400 baud, 8 data bits, No parity, 1 stop bit, no handshake | `Hamilton` |
 
 ## Connection Steps
 1. Find the connector column on the side/rear of the ventilator. Three connectors are stacked there:
    - **Special Interface connector** (15-pin, topmost) — **not** a COM port, do not use it
    - **Monitoring Interface 1 connector** (9-pin) = COM1
    - **Monitoring Interface 2 connector** (9-pin) = COM2
-2. Attach a **Null Modem (M/F)** adapter to Monitoring Interface **1** or **2**.
+2. Attach a **Null Modem adapter (M/F)** to Monitoring Interface **1** or **2**.
 3. Connect a direct serial cable from the adapter to the PC via a USB-Serial converter.
 
 The COM (RS-232) connector pin assignment is: **2 RxD, 3 TxD, 4 DTR, 5 GND, 6 DSR, 7 RTS, 8 CTS** (pins 1 and 9 unused, shield = chassis ground).

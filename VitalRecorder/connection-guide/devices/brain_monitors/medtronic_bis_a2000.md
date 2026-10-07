@@ -10,9 +10,11 @@ vr_device_name: A2000
 
 | Cable | Adapter | Port | Serial | VR Device Name |
 |-------|---------|------|--------|----------------|
-| Direct Serial (DB-9M ↔ DB-9F) | None | `J1` — DB-9 **female**, rear panel | Binary | `A2000` |
+| direct serial cable (DB-9M ↔ DB-9F) | None | `J1` — DB-9 **female**, rear panel | Binary | `A2000` |
 
-The A-2000 presents a **DB-9 female** port, and the PC side is DB-9 male, so a plain **direct serial cable** is used — **no Null Modem adapter**. This distinguishes it from INVOS, whose port is male and therefore needs an F/F Null Modem.
+## Connection Requirements
+
+The A-2000 presents a **DB-9 female** port, and the PC side is DB-9 male, so a **direct serial cable** is used — **no Null Modem adapter**. This distinguishes it from INVOS, whose port is male and therefore needs a Null Modem adapter (F/F).
 
 Supports **2-channel, 256 Hz EEG** acquisition. It shares the monitor family of the BIS VISTA, but the menu structure and protocol options differ.
 
@@ -46,7 +48,7 @@ The serial protocol lives several levels deep, in the diagnostic/service area of
 5. Press **Return To Diagnostic Menu → Return to Advanced Setup Menu → Save Settings**. Without **Save Settings**, the protocol reverts on the next power cycle.
 
 - Serial: **57600 baud**, Binary protocol.
-- The A-2000 serial port is isolated from ground (per the A-2000 service manual specifications), so no additional isolator is required.
+- The A-2000 serial port is isolated from ground.
 
 ## Vital Recorder Setup
 

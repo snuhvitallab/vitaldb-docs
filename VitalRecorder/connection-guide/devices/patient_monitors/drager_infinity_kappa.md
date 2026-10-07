@@ -12,6 +12,8 @@ vr_device_name: Infinity
 | 14-pin Mini-D ↔ DB-9F, custom (numeric) | None | `X5` or `X3` on the module, monitor or docking station | `Infinity` |
 | Analog/Sync cable → ADC (waveform) | None | Analog/Sync port (see Notes) | — (ADC device) |
 
+## Connection Requirements
+
 The serial link can be taken from the **module, the monitor itself, or the docking station** — whichever exposes an X5 or X3 port. The DB-9F end goes to the PC's DB-9M serial port or a USB-Serial converter; no Null Modem adapter is used, because the crossover is built into the custom cable.
 
 A factory cable is available instead of a custom-built one: **Dräger part `5206441`** ("Export/Expert Protocol Cable, 3 m, with 9-pin connector"), which carries the 14-pin universal connector on the monitor side.
@@ -26,7 +28,7 @@ A factory cable is available instead of a custom-built one: **Dräger part `5206
 
 2. Identify the pin numbering on the 14-pin Mini-D connector: pin 1 is top-left, 7 top-right, 8 bottom-left, 14 bottom-right.
 
-   <img src="../hardware_images/drager_infinity_3.png" width="300" alt="Close-up of the 14-pin Mini-D connector with pins 1, 7, 8 and 14 marked at the four corners">
+   <img src="../hardware_images/drager_infinity_3.png" width="450" alt="Close-up of the 14-pin Mini-D connector with pins 1, 7, 8 and 14 marked at the four corners">
 
 3. Wire the cable for the port you are using:
 
@@ -70,5 +72,4 @@ No monitor-side configuration is required — the export protocol is always acti
 ## Notes
 
 - For a recorder with a 3.5 mm serial jack (VRZ), the X5 cable is wired **pin 10 (TX) → tip, pin 11 (RX) → ring, pin 7 (GND) → sleeve**.
-- Earlier documentation gives the Analog/Sync port as **X10**, but the docking station photographed above labels its analog/sync connector **X16**. Confirm the label on the actual unit before wiring.
 - Sibling model **Infinity C500 / C700** uses a completely different connection (P2500 RJ10 port) — see [Dräger Infinity C500 / C700](drager_infinity_c500.md).

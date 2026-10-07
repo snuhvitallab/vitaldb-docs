@@ -7,9 +7,11 @@ vr_device_name: (none — ADC device)
 -->
 > **Note:** Use this route when the TRAM-RAC ANALOG OUT port is already occupied. ECG and ABP are available as voltages from the **Defib. Sync** connector on the front of the Tram / Patient Data Module. Like the TRAM-RAC analog port this is an **analog** output, so an ADC is required — the voltage scaling is the same.
 
-| Cable | Adapter | Port | ADC | VR Device Name |
-|-------|---------|------|-----|----------------|
-| 7-pin mini-DIN (or an 8-pin mini-DIN with the center pin cut away) | — | **Defib. Sync** (front panel of the Tram / Patient Data Module) | DataQ DI-149 / DI-155 / DI-1110 or SNU-ADC | *(per ADC type)* |
+| Cable | Adapter | Port | VR Device Name |
+|-------|---------|------|----------------|
+| 7-pin mini-DIN cable to ADC analog inputs (or an 8-pin mini-DIN with the center pin cut away) | — | **Defib. Sync** (front panel of the Tram / Patient Data Module) | *(per ADC type)* |
+
+## Connection Requirements
 
 The ADC connects to the PC over **USB**. There is no separate VR device entry for the Defib.Sync port — add the ADC in Vital Recorder and map its channels.
 
@@ -17,7 +19,7 @@ The ADC connects to the PC over **USB**. There is no separate VR device entry fo
 
 1. Locate the round **Defib. Sync** socket on the front panel of the module.
 
-   <img src="../hardware_images/ge_defib_1.png" width="300" alt="Front panel of the module — the round 7-pin mini-DIN socket labeled Defib. Sync">
+   <img src="../hardware_images/ge_defib_1.png" width="450" alt="Front panel of the module — the round 7-pin mini-DIN socket labeled Defib. Sync">
 
 2. Obtain a 7-pin mini-DIN cable. An 8-pin mini-DIN cable also fits if the center pin is cut away. Cut the far end off and wire the conductors you need to the ADC.
 
@@ -37,7 +39,6 @@ The ADC connects to the PC over **USB**. There is no separate VR device entry fo
 
    - ECG channel: signal **pin 7**, ground **pin 3**.
    - ABP channel: signal **pin 6**, ground **pin 3** (or pin 5).
-   - *Pinout per the GE Solar 8000M/i service manual, "Defibrillator Synchronization connector J2".*
 
 4. Connect the ADC to the PC via USB and map the two channels in Vital Recorder.
 
@@ -57,4 +58,3 @@ No configuration is required on the module — the analog outputs are always liv
 ## Notes
 
 - **Voltage scaling** matches the TRAM-RAC analog output: ECG **1 V/mV ± 10%**, invasive BP **1 V / 100 mmHg**.
-- The Solar 8000M/i service manual also documents a separate 9-pin *test* cable for this port (pin 1 brown = ECG_ANALOG_OUT, pin 2 red = BP_ANALOG_OUT, pin 6 green = ANALOG_RETURN). The two numbering schemes are not interchangeable — use the module-socket numbers above unless you are working from that test cable.

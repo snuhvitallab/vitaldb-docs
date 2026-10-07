@@ -12,6 +12,8 @@ vr_device_name: Intellivue
 | Custom RJ-45 ↔ DB-9F (MP / MX via MIB) | None | `MIB/RS232` (RJ-45) | `Intellivue` |
 | Custom RJ-45 ↔ DB-9F with pins 2/3 swapped (MX400–550 via ASIB) | None | `MIB/RS232` on the Advanced Interface Card | `Intellivue` |
 
+## Connection Requirements
+
 The DB-9F end goes to the PC's DB-9M serial port or a USB-Serial converter (e.g. ATEN UC-232A). The monitor side is RJ-45, so **no Null Modem adapter is used** — the crossover is built into the custom cable.
 
 ## Connection Steps
@@ -40,21 +42,21 @@ The DB-9F end goes to the PC's DB-9M serial port or a USB-Serial converter (e.g.
 ## Device Configuration
 1. Press **Main Setup → Operating Modes**.
 
-   <img src="../hardware_images/philips_intellivue_5.png" width="300" alt="Main Setup menu with Operating Modes highlighted">
+   <img src="../hardware_images/philips_intellivue_5.png" width="450" alt="Main Setup menu with Operating Modes highlighted">
 
-2. Select **Service** and enter the service password (default: **`1345`**). Contact the manufacturer if this fails.
+2. Select **Service** and enter the service password (default: **`1345`**).
 
-   <img src="../hardware_images/philips_intellivue_6.png" width="300" alt="Service password entry keypad">
+   <img src="../hardware_images/philips_intellivue_6.png" width="450" alt="Service password entry keypad">
 
 3. Go back into **Main Setup** and scroll to the bottom of the list for **Hardware**.
 
-   <img src="../hardware_images/philips_intellivue_7.png" width="300" alt="Main Setup menu scrolled down with Hardware highlighted">
+   <img src="../hardware_images/philips_intellivue_7.png" width="450" alt="Main Setup menu scrolled down with Hardware highlighted">
 
 4. In **Setup Hardware**, set **Data Export 1** and **Data Export 2** to **`Fix 115200`**, then press **Interfaces**.
 
-   <img src="../hardware_images/philips_intellivue_8.png" width="300" alt="Setup Hardware menu with Interfaces highlighted and Data Export 1 / Data Export 2 both showing Fix 115200">
+   <img src="../hardware_images/philips_intellivue_8.png" width="450" alt="Setup Hardware menu with Interfaces highlighted and Data Export 1 / Data Export 2 both showing Fix 115200">
 
-5. In **Setup Interfaces**, verify the driver on the **MIB/RS232** slot (usually port **`01a`**) is **`DtOut1`**. If it shows anything else (`GM`, `AGM`, `Mouse/Keybd`, …), press **Change Driver → DtOut1**.
+5. In **Setup Interfaces**, verify the driver on the **MIB/RS232** slot is **`DtOut1`**. If it shows anything else (`GM`, `AGM`, `Mouse/Keybd`, …), press **Change Driver → DtOut1**.
 
    <img src="../hardware_images/philips_intellivue_9.png" width="450" alt="Setup Interfaces list showing slot 01a MIB/RS232 with driver DtOut1 highlighted, alongside slots 04a and 04b">
 
@@ -82,7 +84,7 @@ The DB-9F end goes to the PC's DB-9M serial port or a USB-Serial converter (e.g.
 
 4. Navigate to **Setup Anesth. Machine → Device Driver → Setup Waves**.
 
-   <img src="../hardware_images/philips_intellivue_13.png" width="300" alt="Setup Anesth. Machine menu with Device Driver highlighted">
+   <img src="../hardware_images/philips_intellivue_13.png" width="450" alt="Setup Anesth. Machine menu with Device Driver highlighted">
 
 5. Press **Add** and select **CO2** and **AWP**.
    - If incorrect waves appear, press **Delete All**, then re-add the correct waves.
@@ -109,5 +111,4 @@ The DB-9F end goes to the PC's DB-9M serial port or a USB-Serial converter (e.g.
 - **AWF looks wrong after an anesthesia-machine swap.** The airway-flow bias differs by bridged machine (about −130 for Datex-Ohmeda, −160 for Dräger). Re-request `awp`/`awf` in `vr.conf` after the swap.
 - **Waveforms stop a few seconds after recording starts while numerics continue.** More waveforms were requested than the serial link can carry, and the monitor then stops sending all of them. By default Vital Recorder adds a waveform for every numeric present on top of the ones selected. Clear the auto-add checkbox in the device dialog (`auto_wavs=0`) so only the selected waveforms are requested.
 - **Waves missing on old firmware (e.g. some MP20 units).** Request them explicitly in `vr.conf`.
-- **The recorder does not boot when powered from the monitor's rear USB port.** Seen on the MX750 and MX400 — use an external power supply.
-- **Repeated crashes on a multi-bed installation, or serial reception failing.** Fixed in 1.19.3 and 1.16.4 respectively — run the latest release.
+- **Repeated crashes on a multi-bed installation, or serial reception failing.** The multi-bed crash was fixed in 1.19.3; serial reception failure was fixed in 1.16.4.

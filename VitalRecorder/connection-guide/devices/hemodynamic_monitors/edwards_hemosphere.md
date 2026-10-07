@@ -5,18 +5,18 @@ category: Hemodynamic Monitor
 manufacturer: Edwards Lifesciences
 vr_device_name: Hemosphere
 -->
-> ⚠️ Serial output lives behind the password-protected **Advanced Setup** menu, and the monitor must be **restarted** for the change to take effect — so configure it before the case, not during one.
+> ⚠️ Serial output is enabled in the password-protected **Advanced Setup** menu. The monitor must be **restarted** for the change to take effect.
 
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|
-| Direct Serial | Null Modem **M/F** | Rear **female** DB-9 serial port | `Hemosphere` |
+| direct serial cable | Null Modem adapter (M/F) | Rear **female** DB-9 serial port | `Hemosphere` |
 
 ## Connection Steps
 1. Locate the serial port on the rear panel. It is the **female DB-9** in the lower connector block, to the left of the wider DB-15 connector; the upper block carries HDMI and Ethernet, and the lower block also has USB and the ECG input.
 
    <img src="../hardware_images/edwards_hemosphere_1.png" width="450" alt="HemoSphere rear panel with the female DB-9 serial port outlined in the lower connector block, left of the DB-15 connector and below the USB and ECG inputs">
 
-2. Attach a **Null Modem (M/F)** adapter to that port.
+2. Attach a **Null Modem adapter (M/F)** to that port.
 3. Connect a direct serial cable from the adapter to the PC via a USB-Serial converter.
 
 ## Device Configuration

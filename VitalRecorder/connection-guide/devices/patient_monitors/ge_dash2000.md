@@ -11,6 +11,8 @@ vr_device_name: Dashx000
 |-------|---------|------|----------------|
 | Custom DB-9F ↔ RJ-45 | None | **Aux** (RJ-45) on the rear panel | `Dashx000` |
 
+## Connection Requirements
+
 The DB-9F end plugs into the PC's DB-9M serial port or into a USB-Serial converter. Because the crossover is built into the custom cable's pin mapping, **no Null Modem adapter is used**.
 
 > The Aux terminal sits between the **Ethernet** jack and the **Defib Sync** socket, and the two RJ-45 jacks look identical. The Ethernet jack is *not* the serial port — check the silk-screen label before connecting.
@@ -41,7 +43,7 @@ The DB-9F end plugs into the PC's DB-9M serial port or into a USB-Serial convert
 
 No service-mode change is required on the monitor — the Aux terminal emits the Unity Network stream as delivered.
 
-- Serial: **9600 baud**, per the Vital Recorder supported-device list for the Dash family.
+- Serial: **9600 baud**.
 
 ## Vital Recorder Setup
 

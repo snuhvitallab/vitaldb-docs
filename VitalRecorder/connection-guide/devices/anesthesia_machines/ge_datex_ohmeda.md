@@ -14,7 +14,7 @@ vr_device_name: Datex-Ohmeda
 ## Connection Steps
 1. Open the **back cover** of the anesthesia machine to expose the **15-pin female** connector. It sits on the same panel as the 9-pin, RJ-45 and USB connectors; it is the same height as an ordinary DB-9 but noticeably longer.
 
-   <img src="../hardware_images/ge_datex_ohmeda_1.png" width="300" alt="Rear connector panel behind the opened cover, with an arrow marking the 15-pin female connector">
+   <img src="../hardware_images/ge_datex_ohmeda_1.png" width="450" alt="Rear connector panel behind the opened cover, with an arrow marking the 15-pin female connector">
 
 2. Connect the **custom 15-pin to 9-pin cable** to that connector. Ordinary USB-Serial converters end in a 9-pin male plug, so this cable has to be built — the wiring is only three conductors:
 

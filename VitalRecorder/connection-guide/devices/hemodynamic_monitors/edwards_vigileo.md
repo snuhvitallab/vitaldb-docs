@@ -5,18 +5,18 @@ category: Hemodynamic Monitor
 manufacturer: Edwards Lifesciences
 vr_device_name: Vigileo
 -->
-> ⚠️ **The setup menu has no visible button.** Tap the blank strip at the **bottom left** of the monitoring screen to open the Status Menu. A **Null Modem (M/F)** is also mandatory — a straight-through cable will not work.
+> ⚠️ **The setup menu has no visible button.** Tap the blank strip at the **bottom left** of the monitoring screen to open the Status Menu. A **Null Modem adapter (M/F)** is also mandatory — a direct serial cable will not work.
 
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|
-| Direct Serial | Null Modem **M/F** | Rear **female** DB-9 serial port | `Vigileo` |
+| direct serial cable | Null Modem adapter (M/F) | Rear **female** DB-9 serial port | `Vigileo` |
 
 ## Connection Steps
 1. Locate the serial port on the rear of the monitor. It is a **female** DB-9 recessed below the USB port.
 
    <img src="../hardware_images/edwards_vigileo_1.png" width="450" alt="Vigileo rear panel with the recessed female DB-9 serial port circled, below the USB port">
 
-2. Attach a **Null Modem (M/F)** adapter to that port.
+2. Attach a **Null Modem adapter (M/F)** to that port.
 3. Connect a direct serial cable from the adapter to the PC via a USB-Serial converter.
 
 ## Device Configuration

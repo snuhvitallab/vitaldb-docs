@@ -9,9 +9,11 @@ vr_device_name: Dash2500
 
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|
-| Direct Serial | None | **HostComm Port** (DB-9, rear panel) | `Dash2500` |
+| direct serial cable | None | **HostComm Port** (DB-9, rear panel) | `Dash2500` |
 
-> ⚠️ **Use the DB-9 HostComm port only.** The Dash 2500 also carries a non-isolated DB-15 communication-adaptor connector that runs inverted-TTL signals and puts fused **+5 V and +12 V on two of its pins**. Plugging a PC serial cable into that connector can damage the converter or the monitor. The DB-9 HostComm port is the isolated, RS-232-level port.
+## Connection Requirements
+
+**Use the DB-9 HostComm port only.** The Dash 2500 also carries a non-isolated DB-15 communication-adaptor connector that runs inverted-TTL signals and puts fused **+5 V and +12 V on two of its pins**. Plugging a PC serial cable into that connector can damage the converter or the monitor. The DB-9 HostComm port is the isolated, RS-232-level port.
 
 ## Connection Steps
 
@@ -29,21 +31,17 @@ vr_device_name: Dash2500
 
 ### HostComm DB-9 pin assignment
 
-Per the GE Dash 2500 service manual (document 2042481-001), the isolated host communications connector is wired as:
+The isolated host communications connector is wired as:
 
-| Pin | Signal | Pin | Signal |
-|-----|--------|-----|--------|
-| 1 | Ground | 6 | DSR |
-| 2 | TX (RS-232) | 7 | RTS |
-| 3 | RX (RS-232) | 8 | CTS |
-| 4 | DTR | 9 | No connection |
-| 5 | Ground | | |
+| Pin | Signal |
+|-----|--------|
+| 2 | TX (RS-232) |
+| 3 | RX (RS-232) |
+| 5 | Ground |
 
-Only pins 2, 3 and 5 are needed for recording. Note that **pin 1 is ground on this monitor**, not DCD as on a PC — this is harmless with an ordinary cable and matters only when a cable is being built.
+Pins 2, 3 and 5 carry the serial data and ground used by Vital Recorder.
 
 ## Device Configuration
-
-*(Only needed if communication is not established — the monitor usually ships with the HostComm port already enabled.)*
 
 1. Turn the Trim Knob → **Main Menu**.
 2. Select **Other System Setting → Go to Config Mode → Yes**. The monitor reboots.

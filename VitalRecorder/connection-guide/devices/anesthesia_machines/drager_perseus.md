@@ -9,11 +9,11 @@ vr_device_name: MedibusX
 
 | Cable | Adapter | Port | Serial | VR Device Name |
 |-------|---------|------|--------|----------------|
-| Direct Serial | Null Modem F/F | COM 1 or COM 2 | 19200 baud, 8 data bits, Even parity, 1 stop bit — MEDIBUS.X | `MedibusX` |
+| direct serial cable | Null Modem adapter (F/F) | COM 1 or COM 2 | 19200 baud, 8 data bits, Even parity, 1 stop bit — MEDIBUS.X | `MedibusX` |
 
 ## Connection Steps
 1. Open the interface panel on the machine column. It carries a **male DB-9 serial connector** together with a USB port and a LAN (RJ-45) socket.
-2. Attach a **Null Modem (F/F)** adapter to the DB-9 serial port.
+2. Attach a **Null Modem adapter (F/F)** to the DB-9 serial port.
 3. Connect a direct serial cable from the adapter to the PC via a USB-Serial converter.
 
 > The Perseus has **two RS-232 ports (COM 1 and COM 2)**. Either can be used, but only the port you enable in the interface page transmits — the other is often already assigned to the hospital EMR gateway.

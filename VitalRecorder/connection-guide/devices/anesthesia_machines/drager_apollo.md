@@ -9,7 +9,7 @@ vr_device_name: Medibus
 
 | Cable | Adapter | Port | Serial | VR Device Name |
 |-------|---------|------|--------|----------------|
-| Direct Serial | None | COM1 (rear) | 9600 baud, 8 data bits, Even parity, 1 stop bit — MEDIBUS | `Medibus` |
+| direct serial cable | None | COM1 (rear) | 9600 baud, 8 data bits, Even parity, 1 stop bit — MEDIBUS | `Medibus` |
 
 ## Connection Steps
 1. Locate **COM 1** on the rear connector panel. The panel carries **COM 1**, **COM 2** and an **IV System** connector side by side — use **COM 1**.
@@ -45,14 +45,14 @@ Dräger COM1 (DB9F) ──┤ DB9M  Y-cable  CON1 (DB9F) ├── existing devi
 
 Only the machine's transmit line and ground are branched to CON2, so Vital Recorder listens without ever driving the line.
 
-> **Reading the pin numbers.** Signal names here are given **from the machine's side**: on the Dräger COM1, pin 2 transmits and pin 3 receives. The [Cable Types](../README.md#cable-types) table in the main README names the same pins **from the PC's side**, where pin 2 receives and pin 3 transmits. Both describe the same straight-through link.
+> **Reading the pin numbers.** Signal names here are given **from the machine's side**: on the Dräger COM1, pin 2 transmits and pin 3 receives. The [Cable Types](../README.md#cable-types) table in the main README names the same pins **from the PC's side**, where pin 2 receives and pin 3 transmits. Both describe the same direct serial cable.
 
 <img src="../hardware_images/com1_in_use_1.png" width="450" alt="Y-cable pin wiring diagram — machine TX (pin 2) and GND (pin 5) branch to both CON1 and CON2 (PC Vital Recorder, read-only option); RX (pin 3) goes only to CON1">
 
 > **Atlan Anesthesia Machine:** Attach a Null Modem adapter matching the connector on both the anesthesia machine side and the CON1 side. CON2 is used as-is for data reading:
 >
 > ```
-> Atlan COM (DB9F) --- Null Modem F/F --- DB9M  Y-cable  CON1 (DB9F) --- Null Modem M/F --- existing device
+> Atlan COM (DB9F) --- Null Modem adapter (F/F) --- DB9M  Y-cable  CON1 (DB9F) --- Null Modem adapter (M/F) --- existing device
 > ```
 
 ## Device Configuration
@@ -72,7 +72,6 @@ On machines that expose the setting on screen it is reached from the interface p
 - **On a Y-cable tap** Vital Recorder cannot send requests. It records the waveforms the existing device has requested.
 
 ## Troubleshooting
-- **Numerics arrive but no waveforms.** If `wavs=` is set, remove it and test again. On a Y-cable tap, waveforms arrive only when the existing device requests them. On an **Atlan A300**, some units show this together with a repeating `MEDIBUS COM1 FAILURE` warning — under investigation; collect with `DEBUG=1` if you see it.
+- **Numerics arrive but no waveforms.** If `wavs=` is set, remove it and test again. On a Y-cable tap, waveforms arrive only when the existing device requests them.
 - **Waveforms come out in the wrong order on a Y-cable (read-only) tap.** The order is detected automatically when the existing device's requests are visible on the line. Otherwise list the waveforms with `wavs=` in the order the existing device requests them.
 - **The port does not open.** In `vr.conf`, `port=` must be the actual serial port name of the converter channel (e.g. `C1`), not `COM1`.
-- **Atlan A350 baud-rate menu path.** This guide does not document the path. Check the procedure in the applicable Dräger documentation or with Dräger service before changing the setting.

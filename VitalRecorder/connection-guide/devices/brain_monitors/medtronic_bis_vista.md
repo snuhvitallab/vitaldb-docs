@@ -10,9 +10,11 @@ vr_device_name: VISTA
 
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|
-| Direct Serial (DB-9M ↔ DB-9F) — **NOT a cross cable** | None | RS-232 port, rear panel (DB-9 **female**) | `VISTA` |
+| direct serial cable (DB-9M ↔ DB-9F) — **NOT a cross cable** | None | RS-232 port, rear panel (DB-9 **female**) | `VISTA` |
 
-The VISTA presents a **DB-9 female** RS-232 port and the PC side is DB-9 male, so a plain **direct serial cable** is correct and **no Null Modem adapter is used**.
+## Connection Requirements
+
+The VISTA presents a **DB-9 female** RS-232 port and the PC side is DB-9 male, so a **direct serial cable** is correct and **no Null Modem adapter is used**.
 
 | Serial Protocol option | What it carries | Vital Recorder device to select |
 |----------|------|------|
@@ -87,4 +89,3 @@ The VISTA menu is a touch screen paged with **Next**. **Serial Protocol** sits t
 ## Notes
 
 - The Maintenance menu also holds **BISx Connection History**, which lists the serial number of each BISx that was attached — useful when reconciling a recording with the sensor actually used.
-- Aspect/Medtronic do not publish the serial data format in the operating or service manual; the manuals direct users to contact Medtronic Technical Service. The settings above reflect the configuration Vital Recorder expects.

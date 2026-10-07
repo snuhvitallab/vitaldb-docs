@@ -5,18 +5,18 @@ category: Hemodynamic Monitor
 manufacturer: Edwards Lifesciences
 vr_device_name: Vigilance
 -->
-> ⚠️ **A direct serial cable alone will not work** — the link needs the TX/RX crossover, so the **Null Modem (M/F)** adapter is mandatory. The **Digital Ports** menu is also buried three screens deep and must be configured before use.
+> ⚠️ **A direct serial cable alone will not work** — the link needs the TX/RX crossover, so the **Null Modem adapter (M/F)** is mandatory. Configure the **Digital Ports** menu on the System Configuration screen.
 
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|
-| Direct Serial | Null Modem **M/F** | **COM 1** (rear, **female** DB-9; COM 2 also usable) | `Vigilance` |
+| direct serial cable | Null Modem adapter (M/F) | **COM 1** (rear, **female** DB-9; COM 2 also usable) | `Vigilance` |
 
 ## Connection Steps
 1. Locate **COM 1** on the rear panel. There are two identical **female** DB-9 ports labeled **COM 1** and **COM 2**; COM 1 is the left-hand one, below the *ECG MONITOR IN* legend. The two phono jacks to the right are **ANALOG IN 1/2** — not serial.
 
    <img src="../hardware_images/edwards_vigilance_1.png" width="450" alt="Vigilance rear panel with the female DB-9 port labeled COM 1 circled, COM 2 beside it and the ANALOG IN 1/2 jacks to the right">
 
-2. Attach a **Null Modem (M/F)** adapter to COM 1.
+2. Attach a **Null Modem adapter (M/F)** to COM 1.
 3. Connect a direct serial cable from the adapter to the PC via a USB-Serial converter.
 
 ## Device Configuration

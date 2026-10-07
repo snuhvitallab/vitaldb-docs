@@ -9,9 +9,11 @@ vr_device_name: Coro
 
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|
-| Custom RJ-45 ↔ DB-9F (crossed wiring, CTS looped to RTS) | None | **RS-232 Port 1** or **Port 2** (rear panel, RJ-45) | `Coro` |
+| Custom cross cable, RJ-45 ↔ DB-9F (CTS looped to RTS) | None | **RS-232 Port 1** or **Port 2** (rear panel, RJ-45) | `Coro` |
 
-The DB-9F end plugs into the PC's DB-9M serial port or into a USB-Serial converter. Because the crossover is built into the custom cable's pin mapping, **no Null Modem adapter is used**.
+## Connection Requirements
+
+The custom cross cable provides the TX/RX crossover, so no separate Null Modem adapter is used.
 
 ## Connection Steps
 1. Prepare an RJ-45 ↔ DB-9F cable. The monitor's RJ-45 pinout is:
@@ -27,21 +29,18 @@ The DB-9F end plugs into the PC's DB-9M serial port or into a USB-Serial convert
    | 7 | CTS | CTS | Input to monitor |
    | 8 | +5 V (200 mA, fused) | GND | — |
 
-   *Per the Corometrics 170 Series service manual (P/N 2000947-004), tables 8-6 and 8-7. Note that **pins 1 and 8 of Port 1 carry +5 V** — do not wire them to anything on the PC side.*
+   **Pins 1 and 8 of Port 1 carry +5 V** and are not connected to the PC side.
 
 2. Wire the three data conductors as a crossed connection: monitor **TXD (pin 6)** → DB-9F **pin 2**, monitor **RXD (pin 3)** ← DB-9F **pin 3**, **GND (pin 4 or 5)** → DB-9F **pin 5**.
 
-   - The manual states that when the monitor is connected directly to another DTE (a PC), **a standard null-modem cable must be used**.
 
-3. **Loop CTS to RTS at the monitor end** — join RJ-45 **pin 7 (CTS)** to RJ-45 **pin 2 (RTS)**. The manual specifies that the CTS input must be asserted to enable transmission and that, with no modem in the path, it may be tied to the monitor's own RTS line. Without this loop the port stays silent.
-
-   - RTS is asserted (+12 V) whenever the monitor is powered on and operating, so the loop doubles as a power-on indication.
+3. Connect RJ-45 **pin 7 (CTS)** to RJ-45 **pin 2 (RTS)** at the monitor end.
 
 4. Plug the RJ-45 end into **RS-232 Port 1** (or Port 2) on the rear panel and the DB-9F end into the PC via a USB-Serial converter.
 
 ### Corometrics 250cx
 
-The **250cx** is the model named in `Supported_Devices.md` (FHR, MHR, TOCO at 9600 baud) and the one most often found in delivery suites. Its serial port is **RJ11**, not the 170 Series' RJ45, so the cable above does not fit. A dedicated RJ11 ↔ DB-9F cable is needed; its pinout has not been recorded in this guide yet — confirm with the GE service manual for the 250cx before building one. On-site testing has been deferred to GE for this reason.
+The **250cx** has an **RJ11** serial port, not the 170 Series' RJ45 port, so it needs a separate cable.
 
 ## Device Configuration
 The communication mode and baud rate for each port live in **service setup mode**, which can only be entered from a power-off state.
@@ -70,13 +69,13 @@ The communication mode and baud rate for each port live in **service setup mode*
 
 5. **Exit with the Setup button.** Exiting service setup mode puts the monitor into standby. If you exit with the **Power** button instead, none of your changes are saved.
 
-- Serial: **9600 baud**, port switched to communications mode **5 (115 update)**. The RTS/CTS loop described in step 3 is what makes a 3-wire cable work.
+- Serial: **9600 baud**, port switched to communications mode **5 (115 update)**.
 
 ## Vital Recorder Setup
 - Add the device in Vital Recorder as **`Coro`**.
 
 ## Troubleshooting
-- **The port is configured but nothing arrives.** Verify the setup codes on the unit: the service manual (P/N 2000947-004) assigns `30`/`40` to the *communications mode* of ports 1/2 and `31`/`41` to their *baud rate*.
+- **The port is configured but nothing arrives.** Verify the setup codes: `30`/`40` select the communications mode for ports 1/2 and `31`/`41` set their baud rate.
 
 ## Notes
 - Recorded parameters: **fetal HR1 / HR2** and **uterine activity (UACT / TOCO)**. On current builds the **maternal vital signs (SpO2, PR, NIBP)** are also recorded into the same file as the fetal channels.

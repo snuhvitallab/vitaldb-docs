@@ -9,13 +9,15 @@ vr_device_name: B1x5M
 
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|
-| Direct Serial | None | Serial port marked in **red** on the rear panel | `B1x5M` |
+| direct serial cable | None | Serial port marked in **red** on the rear panel | `B1x5M` |
+
+## Connection Requirements
 
 > ⚠️ **Use an FTDI-based USB-Serial converter on the PC side.** A 3-wire cable connects but loses most of the waveform samples.
 
 ## Connection Steps
 
-1. Connect a **direct serial cable** to the serial port **marked in red** on the rear of the monitor. No Null Modem adapter is used — the monitor-side connector and a standard direct cable already line up.
+1. Connect a **direct serial cable** to the serial port **marked in red** on the rear of the monitor. No Null Modem adapter is used — the monitor-side connector and a direct serial cable line up.
 
 2. Connect the other end to the PC through a USB-Serial converter.
 
@@ -23,7 +25,9 @@ vr_device_name: B1x5M
    B1x5M red serial port -- direct serial cable -- USB-Serial (FTDI) -- PC
    ```
 
-   The monitor can also emit the S/5 stream on one of its USB ports instead (see the channel selector below), but the red serial port is the route this guide is written for.
+### Alternative: USB Output
+
+The monitor can also emit the S/5 stream on one of its USB ports instead (see the channel selector below).
 
 ## Device Configuration
 
@@ -45,7 +49,7 @@ vr_device_name: B1x5M
 
 5. Tap **Save**.
 
-- Serial frame: **8 data bits, Even parity, 1 stop bit** at the baud rate set above (Datex DRI defaults — verify with GE if the link does not come up).
+- Serial frame: **8 data bits, Even parity, 1 stop bit** at the baud rate set above (Datex DRI defaults).
 
 ## Vital Recorder Setup
 

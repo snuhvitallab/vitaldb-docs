@@ -1,15 +1,17 @@
 # Mdoloris ANI Monitor V2
 
 <!-- meta
-category: Other
+category: Multifunction Monitor
 manufacturer: MDMS
 vr_device_name: ANIMonitor2
 -->
 > ⚠️ **Use the DB-9 port marked `REAL TIME EXPORT`.** The USB port beside it is marked `DATA EXPORT` and is for offline file export only — it will not stream data to Vital Recorder.
 
-| Cable | Adapter | Port | VR Device Name |
-|-------|---------|------|----------------|
-| USB-Serial converter, e.g. NEXT USB 2.0 to SERIAL [NEXT-RS232U20] | None | `REAL TIME EXPORT` DB-9 (connector panel) | `ANIMonitor2` |
+| Cable | Adapter | Port | Serial | VR Device Name |
+|-------|---------|------|--------|----------------|
+| USB-Serial converter | None | `REAL TIME EXPORT` DB-9 (connector panel) | 115200 baud | `ANIMonitor2` |
+
+## Connection Requirements
 
 ANI = Analgesia Nociception Index. The V2 monitor derives it from the ECG-based respiratory pattern.
 
@@ -33,7 +35,6 @@ ANI = Analgesia Nociception Index. The V2 monitor derives it from the ECG-based 
 
 **No on-device setting is required** — the ANI Monitor V2 streams on the `REAL TIME EXPORT` port as soon as a session is running.
 
-- **Serial parameters (baud rate, data bits, parity) are not published** in the publicly available Mdoloris documentation — *verify with Mdoloris Medical Systems* if you need them for a third-party terminal. Vital Recorder applies them automatically.
 
 ## Vital Recorder Setup
 

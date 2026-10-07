@@ -5,20 +5,22 @@ category: Syringe Pump
 manufacturer: Fresenius Kabi
 vr_device_name: Orchestra
 -->
-> ⚠️ **A crossed link is required, and the port must be configured in service mode.** Connect a **direct serial cable** plus a **Null Modem M/F adapter** as specified below. Do not use a cross cable or omit the adapter; either can prevent communication.
+> ⚠️ **The port must be configured in service mode.** Connect a **direct serial cable** with a **Null Modem adapter (M/F)** as specified below. Do not use a cross cable or omit the adapter; either can prevent communication.
 
 | Cable | Adapter | Port | Serial | VR Device Name |
 |-------|---------|------|--------|----------------|
-| Direct serial (DB-9M ↔ DB-9F) | Null Modem **M/F** | **RS 232-3** (DB-9F) — rightmost of the three serial ports on the Base Primea | IDMS | `Orchestra` |
+| direct serial cable (DB-9M ↔ DB-9F) | Null Modem adapter (M/F) | **RS 232-3** (DB-9F) — rightmost of the three serial ports on the Base Primea | IDMS | `Orchestra` |
 
-The Base Primea's serial ports are DB-9 **female**, and the PC side is DB-9 **male**, so the M/F Null Modem adapter both reverses the wiring and keeps the correct genders. Screwing the adapter onto the device port and leaving it there is the safest arrangement — it cannot be lost and it removes any doubt about which cable is in use.
+## Connection Requirements
+
+The Base Primea's serial ports are DB-9 **female**, and the PC side is DB-9 **male**, so a Null Modem adapter (M/F) reverses the wiring and mates with both connectors.
 
 ## Connection Steps
 1. Identify the serial ports on the rear of the Base Primea. They are labeled **RS 232-1**, **RS 232-2** and **RS 232-3**; **RS 232-3 is the rightmost**, alongside the round connectors, and is the only one used for data export.
 
-   <img src="../hardware_images/fresenius_orchestra_10.png" width="350" alt="Rear of the Base Primea showing RS 232-1 and RS 232-2 stacked on the left and the rightmost RS 232-3 port circled">
+   <img src="../hardware_images/fresenius_orchestra_10.png" width="450" alt="Rear of the Base Primea showing RS 232-1 and RS 232-2 stacked on the left and the rightmost RS 232-3 port circled">
 
-2. Attach the **Null Modem (M/F)** adapter to **RS 232-3**.
+2. Attach the **Null Modem adapter (M/F)** to **RS 232-3**.
 3. Connect a **direct** serial cable from the adapter to the PC, via a USB-Serial converter if the PC has no DB-9 port.
 
 ## Device Configuration
@@ -40,7 +42,6 @@ Two separate menus must be set: the **service-mode** serial configuration (which
 
    <img src="../hardware_images/fresenius_orchestra_3.png" width="450" alt="Serial, Supervisor and Print Configuration screen with COMM NEW SUP set to 3 circled, and the COMM NEW SUP panel showing Send a frame on every change unchecked, Send every 1 s, Ack timeout 1 s and Main timeout 10 s">
 
-   - The other timeouts on that panel (**Ack timeout 1 s**, **Main timeout 10 s**) are the values in use on the documented unit; leave them at their defaults.
 
 5. Power the unit off, then on again to leave service mode.
 
@@ -66,7 +67,6 @@ Two separate menus must be set: the **service-mode** serial configuration (which
 
     <img src="../hardware_images/fresenius_orchestra_8.png" width="450" alt="SERIAL PORTS AND PRINTER screen with the RS232-3 drop-down open showing Not connected, Printer, PCBM, PCBM + Printer and IDMS, with RS232-3 and IDMS circled">
 
-    - On the documented unit **RS232-1** is assigned to *Remote display* and **RS232-2** to *Barcode reader*. Leave those two alone; only RS 232-3 is changed.
 
 11. Confirm the list now reads **RS232-3  IDMS**, then press **SAVE AND EXIT**. Power-cycle the unit for the setting to take effect.
 
@@ -87,4 +87,3 @@ Two separate menus must be set: the **service-mode** serial configuration (which
 ## Notes
 
 - **Vital Recorder versions:** recording from the Orchestra Base Primea (including TCI) has been supported since **0.9.11**.
-- The firmware of the documented unit reports **V03.2S-1A**.

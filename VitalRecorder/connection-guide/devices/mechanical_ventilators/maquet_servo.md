@@ -9,11 +9,11 @@ vr_device_name: Servo-i
 
 | Cable | Adapter | Port | Serial | VR Device Name |
 |-------|---------|------|--------|----------------|
-| Direct Serial | Servo-i / Servo-s: Null Modem M/F; Servo-U: unverified | Servo-i / Servo-s: **BOTTOM** RS-232; Servo-U: unverified | Servo-i / Servo-s: 9600 baud, Even parity (7 or 8 data bits, 1 or 2 stop bits — auto-detected), XON/XOFF · **Servo-U: 19200** | `Servo-i` |
+| direct serial cable | Servo-i / Servo-s: Null Modem adapter (M/F); Servo-U: unverified | Servo-i / Servo-s: **BOTTOM** RS-232; Servo-U: unverified | Servo-i / Servo-s: 9600 baud, Even parity (7 or 8 data bits, 1 or 2 stop bits — auto-detected), XON/XOFF · **Servo-U: 19200** | `Servo-i` |
 
 ## Connection Steps
-1. Open the connector cover on the rear of the patient unit. On Servo-i and Servo-s, identify the **BOTTOM** of the two ports labeled **RS 232**; the upper port is for service/debugging. For Servo-U, confirm the active port with Getinge before connecting.
-2. On Servo-i and Servo-s, attach a **Null Modem (M/F)** adapter to the bottom port. Confirm the adapter requirement for Servo-U with Getinge before connecting.
+1. Open the connector cover on the rear of the patient unit. On Servo-i and Servo-s, identify the **BOTTOM** of the two ports labeled **RS 232**; the upper port is for service/debugging.
+2. On Servo-i and Servo-s, attach a **Null Modem adapter (M/F)** to the bottom port.
 3. Connect a direct serial cable from the adapter to the PC via a USB-Serial converter.
 
 ## Device Configuration
@@ -30,7 +30,7 @@ Nothing has to be enabled on the ventilator. The serial port is served by the bu
 
 ## Troubleshooting
 
-- **The port opens but no data arrives.** Check that the cable and adapter match the model and are fully seated. Confirm that the connection is direct rather than a read-only tap (see Known Limitations), then verify the RS-232 output with Getinge documentation.
+- **The port opens but no data arrives.** Check that the cable and adapter match the model and are fully seated. Confirm that the connection is direct rather than a read-only tap (see Known Limitations).
 
 ## Known Limitations
 
@@ -39,5 +39,4 @@ Nothing has to be enabled on the ventilator. The serial port is served by the bu
 
 ## Notes
 
-- **Servo-U.** `Supported_Devices.md` lists it at **19200 baud** with the `Servo-i` entry.
-- Typical parameters recorded: Paw, PEEP, TV, MV, RR, FiO2.
+- Typical parameters recorded: Paw, PEEP, TV, MV, FiO2.
