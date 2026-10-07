@@ -22,7 +22,7 @@ vr_device_name: PVM
 
 ## Device Configuration
 
-No monitor-side menu change is normally required.
+No changes to the monitor settings are required.
 
 ## Vital Recorder Setup
 

@@ -5,23 +5,38 @@ category: Patient Monitor
 manufacturer: Nihon Kohden
 vr_device_name: BSM
 -->
-> **Note:** Whether a BSM has an RS-232C output depends on the model and on which optional interface unit is fitted.** Photograph the monitor's connector panel and confirm the model number before ordering anything.
+> **Note:** The availability of **RS-232C** and **ECG/BP OUT** ports depends on the monitor model and installed interface or input unit. If the required port is not present, contact Nihon Kohden to confirm the compatible hardware and installation options. RS-232C supports **numeric data only**. ECG and invasive blood pressure waveforms require an **ECG/BP OUT** connection and an analog-to-digital converter (ADC).
 
-| Cable | Adapter | Port | Serial | VR Device Name |
-|-------|---------|------|--------|----------------|
-| direct serial cable DB-9M ↔ DB-9F (numeric) | Null Modem adapter (M/F) | RS-232C socket on the interface unit | RS-232C; 9600 / 19200 / 38400 baud (match the interface setting) | `BSM` |
-| Nihon Kohden ECG/BP output cable + custom 5.5pi Mono ↔ RJ45 (waveform) | None | `ECG/BP OUT` port | — | — (ADC device) |
+| Connection | Cable or Interface | Adapter | Device Port | Vital Recorder Device Type |
+|---|---|---|---|---|
+| Numeric data — QI-373P | Direct serial cable (DB-9 M/F) | Null modem (M/F) | RS-232C on the QI-373P interface | `BSM` |
+| Numeric data — other interfaces | Cable appropriate for the interface | Confirm for the interface | RS-232C | `BSM` |
+| ECG/BP waveforms | Compatible Nihon Kohden ECG/BP output cable, connection cable for the ADC, and ADC | Depends on the ADC connection | ECG/BP OUT | Select the device type for your ADC |
 
 ## Connection Requirements
 
-| Model | RS-232C output | What is needed |
-|-------|----------------|----------------|
-| **BSM-1700 series** | Present | Collect directly over serial. If a cable is already fitted, confirm it is free and not feeding another system. |
-| **BSM-3000 series (e.g. BSM-3763)** | **Not on the base interface** | Add an RS-232C output interface — **`QF-910P`** or an RS-232C-capable **`QI-373P`** — for numeric data. The `QI-373P` also carries the `ECG/BP OUT` port. |
-| **BSM-6000 series (BSM-6301 / 6501 / 6701, incl. K variants)** | Present only with the optional interface unit | **`QI-631P`** for BSM-6301; **`QI-671P`** for BSM-6501 / BSM-6701. Both provide the RS-232C socket. |
-| ECG / invasive BP **waveforms**, any model | Separate analog path | **`ECG/BP Output Cable`** — `YJ-910P` or `YJ-920P` — on the `ECG/BP OUT` port, plus an ADC. |
+### Numeric Data
 
-Confirm the exact interface unit that applies to a given serial number with Nihon Kohden — the option list differs between the A and K market variants.
+| Model | RS-232C Interface |
+|---|---|
+| BSM-1700 series | Built-in; no additional interface board required |
+| BSM-3000 series | QI-373P, subject to model compatibility |
+| BSM-6301 | QI-631P |
+| BSM-6501 / BSM-6701 | QI-671P |
+
+The **direct serial cable + null modem adapter (M/F)** configuration applies to **QI-373P**. Confirm the cable and adapter requirements for other interfaces.
+
+### ECG/BP Waveforms
+
+| Model | ECG/BP OUT |
+|---|---|
+| BSM-1700 series | Built into the monitor; no additional interface board required |
+| BSM-3000 series | Provided by a compatible QI-371P or QI-372P interface |
+| BSM-6000 series | Provided by a compatible AY input unit; not available on AY-660P |
+
+An RS-232C interface does not necessarily provide ECG/BP OUT.
+
+Use a compatible **YJ-910P or YJ-920P ECG/BP output cable** and an ADC. The connection between the output cable and the ADC depends on the cable termination and the ADC's input connector.
 
 ## Connection Steps
 
@@ -38,7 +53,7 @@ Confirm the exact interface unit that applies to a given serial number with Niho
 
 ECG and arterial pressure waveforms come out of the **`ECG/BP OUT`** port as analog voltages, visible on the same connector panel as the serial socket.
 
-1. Plug the Nihon Kohden **ECG/BP output cable** (`YJ-910P` or `YJ-920P`) into the `ECG/BP OUT` port.
+1. Plug the Nihon Kohden **ECG/BP output cable** into the `ECG/BP OUT` port.
 2. Build a **5.5pi Mono ↔ RJ45** cable to bring the analog outputs into the ADC (SNU-ADC / SNUADCM, DataQ DI-149/DI-155, …).
 3. Connect the ADC to the PC via USB.
 
@@ -52,28 +67,12 @@ Where a Nihon Kohden central station with the HL7 gateway is installed, Vital Re
 | `NIHONKOHDEN::ORF` | Numeric data every 30 seconds | 7999 |
 | `NIHONKOHDEN::NealTime` | Waveforms, up to three — default ECG_II, PLETH and AWP | 9001 |
 
-- Give the ADT device the monitor's bed name.
-- The HL7 plug-in must be installed and configured on the server for this network collection path to work.
-- The gateway's Start Code must match what Vital Recorder expects. Changing it can break the site's EMR feed, so coordinate with Nihon Kohden.
-- Where there is no central station, per-bed serial is the only route.
+Network collection may be available through a compatible Nihon Kohden central monitoring system and HL7 gateway. Confirm the available data and connection settings with Nihon Kohden and the hospital's system administrator.
 
 ## Device Configuration
 
-No monitor-side menu change is normally required.
-
-- Serial: **RS-232C**. The BSM RS-232C socket supports **9600 / 19200 / 38400 baud**. If nothing arrives, confirm the port's configured baud rate with Nihon Kohden.
+No changes to the monitor settings are required.
 
 ## Vital Recorder Setup
 
-- In Vital Recorder, add **Patient monitor → Nihon Kohden : BSM**.
-
-## Troubleshooting
-
-- **The port opens but no data arrives.** Confirm that the installed interface unit has an RS-232C output and that a **Null Modem adapter (M/F)** is fitted at its socket. Check that the device is added as `BSM` and that the baud rate matches the port's setting (9600 / 19200 / 38400).
-- **A BSM-3000 / BSM-6000 or CSM-1500 / CSM-1700 records nothing over serial on a build before 1.19.34.** These models reject the extended request earlier builds sent. Upgrade.
-
-## Known Limitations
-
-- The RS-232C link carries **numeric data only**; waveforms need the `ECG/BP OUT` path and an ADC.
-- **Ventilator parameters displayed on a BSM** (ventilator wired to the monitor with a Nihon Kohden cable) are **not** available on the monitor's serial port; they only come through the central station, or by connecting the ventilator directly (a Y-cable on the Nihon Kohden ventilator cable works).
-- **CSM-1500 / CSM-1700** are added as `BSM`. **PSM** models have not been tested.
+- Add the device as **`BSM`** and select the PC serial port used for the connection.
