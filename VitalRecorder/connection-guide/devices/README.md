@@ -61,7 +61,7 @@ These tables summarize the connection requirements for each device. Follow the l
 | [Dräger Fabius GS](anesthesia_machines/drager_fabius.md) | Direct serial cable | Check the COM1 connector:<br>Male (before Oct 2004): Null modem (F/F)<br>Female (Oct 2004 onward): None | COM1 | `Fabius` |
 | [Dräger Zeus](anesthesia_machines/drager_zeus.md) | Direct serial cable | Null modem; connector gender not confirmed | Rear COM port | `Medibus` |
 | [Dräger Perseus A500](anesthesia_machines/drager_perseus.md) | Direct serial cable | Null modem (F/F) | COM1 or COM2 | `MedibusX` |
-| [Dräger Atlan](anesthesia_machines/drager_apollo.md) | Direct serial cable | Null modem (F/F) | COM1 or COM2 | `MedibusX` |
+| [Dräger Atlan](anesthesia_machines/drager_atlan.md) | Direct serial cable | Null modem (F/F) | COM1 or COM2 | `MedibusX` |
 | [GE Datex-Ohmeda](anesthesia_machines/ge_datex_ohmeda.md) | Custom 15-pin D-sub (M) to DB-9F serial cable | None | 15-pin (under cover) | `Datex-Ohmeda` |
 | [Maquet Flow-i](anesthesia_machines/maquet_flow_i.md) | Direct serial cable | Null modem (M/F) | Serial port | `Flow-i` |
 
@@ -134,12 +134,6 @@ These tables summarize the connection requirements for each device. Follow the l
 #### Computer
 
 Vital Recorder runs on Windows, Raspberry Pi, and Ubuntu. See the [Vital Recorder User Manual](../../User_Manual.md) for platform-specific setup instructions.
-
-| Spec | Details |
-|------|---------|
-| USB Ports | Multiple full-size ports recommended; USB hub supported |
-
-> **Tip:** A laptop or low-cost Windows tablet works well. Use a powered USB hub when connecting more than 2 devices.
 
 #### Serial Cables
 
