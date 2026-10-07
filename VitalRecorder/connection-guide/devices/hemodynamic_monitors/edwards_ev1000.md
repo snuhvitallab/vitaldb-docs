@@ -5,21 +5,21 @@ category: Hemodynamic Monitor
 manufacturer: Edwards Lifesciences
 vr_device_name: EV1000
 -->
-> ⚠️ **The adapter gender differs between the two generations.** The old **EV-1000** (label `REF EV1000M`) has a **male** DB-9, so it needs a **Null Modem F/F**. The newer **EV-1000A** (label `REF EV1000A`) has a **female** DB-9 and needs a **Null Modem M/F**. Check the REF label on the rear panel before ordering the adapter.
+> **Note:** **The adapter gender differs between the two generations.** The old **EV-1000** (label `REF EV1000M`) has a **male** DB-9, so it needs a **Null Modem adapter (F/F)**. The newer **EV-1000A** (label `REF EV1000A`) has a **female** DB-9 and needs a **Null Modem adapter (M/F)**. Check the REF label on the rear panel before ordering the adapter.
 
-| Model | Cable | Adapter | Port | VR Device Name |
-|-------|-------|---------|------|----------------|
-| EV-1000 (old, `EV1000M`) | Direct Serial | Null Modem **F/F** | Rear **male** DB-9 — 2nd port from the right (the VGA connector is rightmost) | `EV1000` |
-| EV-1000A (new, `EV1000A`) | Direct Serial | Null Modem **M/F** | Rear **female** DB-9, next to the LAN2 port | `EV1000` |
+| Cable | Adapter | Port | VR Device Name |
+|-------|---------|------|----------------|
+| direct serial cable (EV-1000, `REF EV1000M`) | Null Modem adapter (F/F) | Rear **male** DB-9 — 2nd port from the right (the VGA connector is rightmost) | `EV1000` |
+| direct serial cable (EV-1000A, `REF EV1000A`) | Null Modem adapter (M/F) | Rear **female** DB-9, next to the LAN2 port | `EV1000` |
 
 ## Connection Steps
 1. Identify the generation from the rear panel.
 
-   - **Old EV-1000:** the serial connector is a **male** DB-9, second from the right — LAN, two USB ports, then the serial port, then VGA. Attach a **Null Modem (F/F)**.
+   - **Old EV-1000:** the serial connector is a **male** DB-9, second from the right — LAN, two USB ports, then the serial port, then VGA. Attach a **Null Modem adapter (F/F)**.
 
      <img src="../hardware_images/edwards_ev1000_1.png" width="450" alt="Old EV-1000 (REF EV1000M) rear panel with the male DB-9 serial port circled, sited between the USB ports and the VGA connector">
 
-   - **EV-1000A:** the serial connector is a **female** DB-9 immediately to the right of the port marked **LAN2**. Attach a **Null Modem (M/F)**.
+   - **EV-1000A:** the serial connector is a **female** DB-9 immediately to the right of the port marked **LAN2**. Attach a **Null Modem adapter (M/F)**.
 
      <img src="../hardware_images/edwards_ev1000_2.png" width="450" alt="EV-1000A rear panel with the female DB-9 serial port circled, immediately right of the LAN2 port">
 

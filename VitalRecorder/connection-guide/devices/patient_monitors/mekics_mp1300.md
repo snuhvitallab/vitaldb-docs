@@ -5,13 +5,15 @@ category: Patient Monitor
 manufacturer: MEKICS
 vr_device_name: MEKICS
 -->
-> ⚠️ **No serial cable — this monitor is collected over TCP/IP via a dedicated Wi-Fi router.** The router must be configured before first use, and the MP1300 must be rebooted for its network settings to apply.
+> **Note:** **No serial cable — this monitor is collected over TCP/IP via a dedicated Wi-Fi router.** The router must be configured before first use, and the MP1300 must be rebooted for its network settings to apply.
 
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|
 | Ethernet — monitor → dedicated Wi-Fi router (`192.168.0.1`) → VR PC | — | TCP `6002` (monitor **Server Port**; Server IP = VR PC, see [Device Configuration](#device-configuration)) | `MEKICS` |
 
-The MP1300 speaks the **MP601 central-station protocol**; Vital Recorder listens as the central station on TCP port `6002`. The example below uses an ipTIME mini3 router — other models are configured the same way.
+## Connection Requirements
+
+The MP1300 speaks the **MP601 central-station protocol**; Vital Recorder listens as the central station on TCP port `6002`. The example below uses an ipTIME mini3 router.
 
 ## Connection Steps
 
@@ -19,15 +21,15 @@ The MP1300 speaks the **MP601 central-station protocol**; Vital Recorder listens
 
 1. Power the router and connect the PC to its default AP, **`iptime_mini`** (open network).
 
-   <img src="../hardware_images/mekics_mp1300_1.png" width="300" alt="Windows Wi-Fi network list with the open iptime_mini access point selected">
+   <img src="../hardware_images/mekics_mp1300_1.png" width="450" alt="Windows Wi-Fi network list with the open iptime_mini access point selected">
 
 2. Open a browser → `192.168.0.1` → log in with **`admin` / `admin`**.
 
-   <img src="../hardware_images/mekics_mp1300_2.png" width="300" alt="ipTIME mini3 router login page at 192.168.0.1 with admin credentials and a captcha field">
+   <img src="../hardware_images/mekics_mp1300_2.png" width="450" alt="ipTIME mini3 router login page at 192.168.0.1 with admin credentials and a captcha field">
 
 3. Press **Setup** (not Wizard).
 
-   <img src="../hardware_images/mekics_mp1300_3.png" width="300" alt="ipTIME mini3 home page with the Setup and Wizard buttons">
+   <img src="../hardware_images/mekics_mp1300_3.png" width="450" alt="ipTIME mini3 home page with the Setup and Wizard buttons">
 
 4. Go to **Advanced Settings → Wireless LAN Management → Wireless Settings/Security**. Set the network name (SSID) and password, choose encryption **WPA2PSK + AES**, and **uncheck "Broadcast SSID"** → **Apply**.
 
@@ -35,7 +37,7 @@ The MP1300 speaks the **MP601 central-station protocol**; Vital Recorder listens
 
    > Saving this drops the PC's connection because the SSID changed. Reconnect by adding a **hidden network** and typing the new SSID and password manually, then reopen `192.168.0.1`.
 
-   <img src="../hardware_images/mekics_mp1300_5.png" width="300" alt="Windows hidden-network dialog with the new SSID typed in manually">
+   <img src="../hardware_images/mekics_mp1300_5.png" width="450" alt="Windows hidden-network dialog with the new SSID typed in manually">
 
 5. *(Optional — only if the router must reach an upstream network)* Go to **Advanced Settings → Wireless LAN Management → Wireless Extension Settings**. Set the extension method to **Wireless WAN** and enter the SSID and password of the **VR PC's hotspot**.
 
@@ -49,7 +51,7 @@ The MP1300 speaks the **MP601 central-station protocol**; Vital Recorder listens
 
 Mount the router on the monitor, power it from the **USB port on the rear of the MP1300**, and run a **LAN cable** from the router to the MP1300's Ethernet port.
 
-   <img src="../hardware_images/mekics_mp1300_8.png" width="300" alt="Rear of the MP1300 with the router on top, its USB power lead and the LAN cable circled">
+   <img src="../hardware_images/mekics_mp1300_8.png" width="450" alt="Rear of the MP1300 with the router on top, its USB power lead and the LAN cable circled">
 
 ## Device Configuration
 

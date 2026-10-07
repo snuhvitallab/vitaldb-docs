@@ -1,15 +1,17 @@
 # Masimo Radical-7
 
 <!-- meta
-category: Other
+category: Multifunction Monitor
 manufacturer: Masimo
 vr_device_name: Radical7
 -->
-> ⚠️ **The Radical-7 serial interface exists only on the Docking Station (RDS).** The handheld must be seated in the dock — undocked, there is no serial port and the device-output settings cannot even be changed.
+> **Note:** **The Radical-7 serial interface exists only on the Docking Station (RDS).** The handheld must be seated in the dock — undocked, there is no serial port and the device-output settings cannot even be changed.
 
 | Cable | Adapter | Port | Serial | VR Device Name |
 |-------|---------|------|--------|----------------|
-| Direct Serial (DB-9M ↔ DB-9F) | None | **P1 (RS-232)** — Docking Station rear | ASCII 1 — 9600 baud | `Radical7` |
+| direct serial cable (DB-9M ↔ DB-9F) | None | **P1 (RS-232)** — Docking Station rear | ASCII 1 — 9600 baud | `Radical7` |
+
+## Connection Requirements
 
 Extracts SpO₂, pulse rate, PI and the digital pleth waveform.
 
@@ -54,7 +56,6 @@ Extracts SpO₂, pulse rate, PI and the digital pleth waveform.
 
 ## Notes
 
-- **Alternative without the ASCII 1 path:** add the device as **`X002`** with the Docking Station serial set to **IAP** protocol at **57600** — the maximum the Radical-7 supports. This delivers SpO2, PR, PI and the **pleth waveform without an ADC**.
 - ASCII 1 is the Radical-7's default serial output mode; if someone has changed it, step 3 restores it.
 - When the Radical-7 is docked, the docking-station field is reported as `ASCII1 IAP FLEXPORT` — this is normal.
 - If the Radical-7 is used **together with a Masimo Root**, power on the **Radical-7 first**, then the Root. See [Masimo ROOT](masimo_root.md).

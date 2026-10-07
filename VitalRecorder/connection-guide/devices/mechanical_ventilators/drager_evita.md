@@ -9,7 +9,7 @@ vr_device_name: MedibusX
 
 | Cable | Adapter | Port | Serial | VR Device Name |
 |-------|---------|------|--------|----------------|
-| Direct Serial | Null Modem F/F *(gender unverified — see Notes)* | RS-232 **COM1** (or COM2) on the rear | 19200 baud, 8 data bits, Even parity, 1 stop bit — MEDIBUS.X | `MedibusX` |
+| direct serial cable | Null Modem adapter (F/F) *(gender unverified — see Notes)* | RS-232 **COM1** (or COM2) on the rear | 19200 baud, 8 data bits, Even parity, 1 stop bit — MEDIBUS.X | `MedibusX` |
 
 ## Connection Steps
 

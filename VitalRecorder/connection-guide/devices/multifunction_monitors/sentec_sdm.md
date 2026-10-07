@@ -1,15 +1,17 @@
 # Sentec SDM
 
 <!-- meta
-category: Other
+category: Multifunction Monitor
 manufacturer: Sentec
 vr_device_name: SDM
 -->
-> ⚠️ **The serial interface is disabled while trend data are being downloaded over the LAN port.** It is reactivated automatically once the LAN download finishes.
+> **Note:** **The serial interface is disabled while trend data are being downloaded over the LAN port.** It is reactivated automatically once the LAN download finishes.
 
 | Cable | Adapter | Port | Serial | VR Device Name |
 |-------|---------|------|--------|----------------|
 | USB-Serial converter (PC without a built-in serial port) or direct serial cable (PC with a built-in serial port) | None | Serial Data Port (RS-232) — rear panel | SenTecLink — 115200 baud | `SDM` |
+
+## Connection Requirements
 
 The SenTec Digital Monitor (SDM) provides transcutaneous PCO₂ and PO₂ along with SpO₂, pulse rate and heating power.
 
@@ -19,7 +21,7 @@ The SenTec Digital Monitor (SDM) provides transcutaneous PCO₂ and PO₂ along 
 
    <img src="../hardware_images/sentec_sdm_2.png" width="450" alt="Sentec SDM rear panel — the RS-232 serial data port among the surrounding interface connectors">
 
-2. Connect a **USB-Serial converter** directly to the serial data port if the PC has no built-in serial port. If the PC has a built-in serial port, connect it with a direct serial cable instead. SenTec calls its converter a USB232 converter cable.
+2. Connect a **USB-Serial converter** directly to the serial data port if the PC has no built-in serial port. If the PC has a built-in serial port, connect it with a direct serial cable instead.
 
 3. If using a USB-Serial converter, connect its USB end to the PC.
 
@@ -46,7 +48,6 @@ Navigate to **Interfaces → Serial Interface** and configure:
 <img src="../hardware_images/sentec_sdm_1.png" width="450" alt="Serial Interface menu with protocol set to SenTecLink and baud rate 115200">
 
 - Baud rates **other than 115200 will not work** with the SenTecLink protocol.
-- Data bits / parity / stop bits are not stated in the publicly available Sentec service manual — *verify with Sentec* if you need them for a third-party terminal.
 
 ## Vital Recorder Setup
 

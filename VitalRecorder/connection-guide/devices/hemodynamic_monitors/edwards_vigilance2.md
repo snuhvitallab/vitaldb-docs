@@ -5,18 +5,18 @@ category: Hemodynamic Monitor
 manufacturer: Edwards Lifesciences
 vr_device_name: Vigilance
 -->
-> ⚠️ **Select `Vigilance` in Vital Recorder** — there is no separate "Vigilance II" entry. And a **direct serial cable alone will not work**: the link needs the TX/RX crossover from the **Null Modem (M/F)**.
+> **Note:** **Select `Vigilance` in Vital Recorder** — there is no separate "Vigilance II" entry. And a **direct serial cable alone will not work**: the link needs the TX/RX crossover from the **Null Modem adapter (M/F)**.
 
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|
-| Direct Serial | Null Modem **M/F** | Port **1** — the **upper** of the two rear **female** DB-9 ports | `Vigilance` |
+| direct serial cable | Null Modem adapter (M/F) | Port **1** — the **upper** of the two rear **female** DB-9 ports | `Vigilance` |
 
 ## Connection Steps
 1. Locate port **1** on the rear panel. Two identical **female** DB-9 ports are stacked vertically, marked **1** (upper) and **2** (lower). Use the upper one.
 
    <img src="../hardware_images/edwards_vigilance2_1.png" width="450" alt="Vigilance II rear panel with the upper of two stacked female DB-9 ports circled, marked 1 with port 2 below it and the RJ-45 and ECG connectors alongside">
 
-2. Attach a **Null Modem (M/F)** adapter to port 1.
+2. Attach a **Null Modem adapter (M/F)** to port 1.
 3. Connect a direct serial cable from the adapter to the PC via a USB-Serial converter.
 
 ## Device Configuration

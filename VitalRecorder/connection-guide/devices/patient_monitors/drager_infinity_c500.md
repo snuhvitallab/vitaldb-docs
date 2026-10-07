@@ -5,12 +5,14 @@ category: Patient Monitor
 manufacturer: Dräger
 vr_device_name: Infinity
 -->
-> ⚠️ No monitor-side configuration is required. **Some C700 units with firmware 7.xx may have no RS-232 output.** If a correctly wired unit is silent, check its firmware version with Dräger.
+> No monitor-side configuration is required.
 
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|
 | Custom RJ10 ↔ DB-9F (numeric) — or Dräger **Export Protocol Cable MS22948** | None | `RJ10` port on the P2500 | `Infinity` |
 | Analog/Sync cable → custom MDR14 ↔ RJ45 → ADC (waveform) | None | Analog/Sync port | — (ADC device) |
+
+## Connection Requirements
 
 The DB-9F end goes to the PC's DB-9M serial port or a USB-Serial converter. No Null Modem adapter is used — the crossover is built into the custom cable's pin mapping.
 
@@ -44,7 +46,7 @@ No monitor-side configuration is required for numeric data — the export protoc
 
 ## Known Limitations
 
-- **The P2500 COM ports are inputs.** On installed systems COM1 is reserved for a Dräger anesthesia machine, COM2 for a TOFscan and COM3 for BIS Vista / EV-1000 data coming *into* the monitor, usually through a Capsule Tech adapter. Recording from the monitor uses the RJ10 export port and the Analog/Sync port described above, not those COMs.
+- **The P2500 COM ports are inputs.** Recording from the monitor uses the RJ10 export port and the Analog/Sync port described above.
 
 ## Notes
 

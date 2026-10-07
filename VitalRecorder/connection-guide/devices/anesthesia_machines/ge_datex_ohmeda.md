@@ -11,20 +11,24 @@ vr_device_name: Datex-Ohmeda
 |-------|---------|------|--------|----------------|
 | Custom 9-pin ↔ 15-pin serial | None | 15-pin female connector (under the rear cover) | GE Ohmeda Serial Protocol, 19200 baud | `Datex-Ohmeda` |
 
+## Cable Pinout
+
+Only three conductors are wired:
+
+| Machine side — DB-15 male | PC side — DB-9 female |
+|---------------------------|------------------------|
+| 13 — TX                   | 2 — RX                 |
+| 6 — RX                    | 3 — TX                 |
+| 5 — GND                   | 5 — GND                |
+
+<img src="../hardware_images/ge_datex_ohmeda_3.png" width="450" alt="Pin wiring diagram of the custom cable — Datex-Ohmeda DB-15 male pin 13 (TX) to DB-9 female pin 2 (RX), pin 6 (RX) to pin 3 (TX), pin 5 to pin 5 (GND)">
+
 ## Connection Steps
 1. Open the **back cover** of the anesthesia machine to expose the **15-pin female** connector. It sits on the same panel as the 9-pin, RJ-45 and USB connectors; it is the same height as an ordinary DB-9 but noticeably longer.
 
-   <img src="../hardware_images/ge_datex_ohmeda_1.png" width="300" alt="Rear connector panel behind the opened cover, with an arrow marking the 15-pin female connector">
+   <img src="../hardware_images/ge_datex_ohmeda_1.png" width="450" alt="Rear connector panel behind the opened cover, with an arrow marking the 15-pin female connector">
 
-2. Connect the **custom 15-pin to 9-pin cable** to that connector. Ordinary USB-Serial converters end in a 9-pin male plug, so this cable has to be built — the wiring is only three conductors:
-
-   | Machine side — DB-15 male | PC side — DB-9 female |
-   |---------------------------|------------------------|
-   | 13 — TX                   | 2 — RX                 |
-   | 6 — RX                    | 3 — TX                 |
-   | 5 — GND                   | 5 — GND                |
-
-   <img src="../hardware_images/ge_datex_ohmeda_3.png" width="450" alt="Pin wiring diagram of the custom cable — Datex-Ohmeda DB-15 male pin 13 (TX) to DB-9 female pin 2 (RX), pin 6 (RX) to pin 3 (TX), pin 5 to pin 5 (GND)">
+2. Connect the **custom 15-pin to 9-pin cable** to that connector. Ordinary USB-Serial converters end in a 9-pin male plug, so this cable has to be built — see [Cable Pinout](#cable-pinout).
 
 3. Connect the 9-pin end to the PC via a USB-Serial converter.
 

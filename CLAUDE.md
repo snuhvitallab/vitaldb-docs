@@ -25,13 +25,15 @@ VitalRecorder/                      # Primary docs (hand-edited)
 ├── VitalServer_HL7_v2_Spec.md      # HL7 v2 upload protocol
 └── connection-guide/
     └── devices/
-        ├── README.md               # Quick-reference table (all 49 devices)
+        ├── README.md               # Quick-reference table (all 50 devices)
         ├── anesthesia_machines/
         ├── brain_monitors/
         ├── hemodynamic_monitors/
+        ├── mechanical_ventilators/
         ├── patient_monitors/
         ├── syringe_pumps/
-        ├── others/
+        ├── multifunction_monitors/
+        ├── neuromuscular_monitors/
         └── hardware_images/        # Device photos (199 images)
 
 API/                                # Python library + Web API docs
@@ -64,16 +66,17 @@ Each device file in `connection-guide/devices/<category>/<device>.md`:
 # Manufacturer Model Name
 
 <!-- meta
-category: <Patient Monitor|Anesthesia Machine|Hemodynamic Monitor|Syringe Pump|Brain Monitor|Other>
+category: <Patient Monitor|Anesthesia Machine|Mechanical Ventilator|Hemodynamic Monitor|Syringe Pump|Brain Monitor|Multifunction Monitor|Neuromuscular Monitor>
 manufacturer: <name>
 -->
 
-> ⚠️ One callout with the most important caution (optional).
+> **Note:** One callout with the most important caution (optional).
 
 | Cable | Adapter | Port | VR Device Name |     ← add a `Serial` column before VR Device Name when protocol/baud matters
 |-------|---------|------|----------------|
 
-## Before You Start        (optional)
+## Connection Requirements (optional)
+## Cable Pinout          (optional — custom cables: pin tables and wiring diagram, referenced from Connection Steps)
 ## Connection Steps        (### sub-sections for alternative paths, e.g. Y-cable, waveform output)
 ## Device Configuration
 ## Vital Recorder Setup

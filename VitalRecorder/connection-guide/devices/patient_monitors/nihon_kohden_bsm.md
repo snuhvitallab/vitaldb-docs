@@ -5,14 +5,14 @@ category: Patient Monitor
 manufacturer: Nihon Kohden
 vr_device_name: BSM
 -->
-> ⚠️ **Whether a BSM has an RS-232C output depends on the model and on which optional interface unit is fitted.** Photograph the monitor's connector panel and confirm the model number before ordering anything.
+> **Note:** Whether a BSM has an RS-232C output depends on the model and on which optional interface unit is fitted.** Photograph the monitor's connector panel and confirm the model number before ordering anything.
 
 | Cable | Adapter | Port | Serial | VR Device Name |
 |-------|---------|------|--------|----------------|
-| Direct serial DB-9M ↔ DB-9F (numeric) | Null Modem M/F | RS-232C socket on the interface unit | RS-232C; 9600 / 19200 / 38400 baud (match the interface setting) | `BSM` |
+| direct serial cable DB-9M ↔ DB-9F (numeric) | Null Modem adapter (M/F) | RS-232C socket on the interface unit | RS-232C; 9600 / 19200 / 38400 baud (match the interface setting) | `BSM` |
 | Nihon Kohden ECG/BP output cable + custom 5.5pi Mono ↔ RJ45 (waveform) | None | `ECG/BP OUT` port | — | — (ADC device) |
 
-## Before You Start
+## Connection Requirements
 
 | Model | RS-232C output | What is needed |
 |-------|----------------|----------------|
@@ -23,17 +23,15 @@ vr_device_name: BSM
 
 Confirm the exact interface unit that applies to a given serial number with Nihon Kohden — the option list differs between the A and K market variants.
 
-The **Vismo PVM-4700** has its own entry and page — see [Nihon Kohden PVM-4700](nihon_kohden_pvm.md).
-
 ## Connection Steps
 
 ### Numeric Data
 
 1. Identify the **RS-232C socket** (DB-9 female, marked with the serial `IOIOI` icon) on the interface unit's panel. Do not confuse it with the 15-pin RGB/video socket (`IOI`) directly below it, or with the RJ-45 network socket.
 
-   <img src="../hardware_images/nihon_kohden_bsm_1.png" width="300" alt="BSM interface unit connector panel with the DB-9 RS-232C socket outlined in red, above the 15-pin video socket, the RJ-45 network socket and the ECG/BP OUT connector">
+   <img src="../hardware_images/nihon_kohden_bsm_1.png" width="450" alt="BSM interface unit connector panel with the DB-9 RS-232C socket outlined in red, above the 15-pin video socket, the RJ-45 network socket and the ECG/BP OUT connector">
 
-2. Attach a **Null Modem (M/F)** adapter to that socket. Secure the adapter with the connector screws.
+2. Attach a **Null Modem adapter (M/F)** to that socket. Secure the adapter with the connector screws.
 3. Connect a **direct serial cable** from the adapter to the PC's DB-9M port or a USB-Serial converter.
 
 ### ECG and Arterial Pressure Waveforms
@@ -71,7 +69,7 @@ No monitor-side menu change is normally required.
 
 ## Troubleshooting
 
-- **The port opens but no data arrives.** Confirm that the installed interface unit has an RS-232C output and that a **Null Modem (M/F)** is fitted at its socket. Check that the device is added as `BSM` and that the baud rate matches the port's setting (9600 / 19200 / 38400).
+- **The port opens but no data arrives.** Confirm that the installed interface unit has an RS-232C output and that a **Null Modem adapter (M/F)** is fitted at its socket. Check that the device is added as `BSM` and that the baud rate matches the port's setting (9600 / 19200 / 38400).
 - **A BSM-3000 / BSM-6000 or CSM-1500 / CSM-1700 records nothing over serial on a build before 1.19.34.** These models reject the extended request earlier builds sent. Upgrade.
 
 ## Known Limitations

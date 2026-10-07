@@ -5,11 +5,11 @@ category: Anesthesia Machine
 manufacturer: Dräger
 vr_device_name: Medibus
 -->
-> ⚠️ **Check the gender of the COM connector before ordering an adapter.** A Null Modem adapter is specified for the Zeus, but the connector gender — and therefore whether it is F/F or M/F — has not been verified on a unit.
+> **Note:** **Check the gender of the COM connector before ordering an adapter.** A Null Modem adapter is specified for the Zeus, but the connector gender — and therefore whether it is F/F or M/F — has not been verified on a unit.
 
 | Cable | Adapter | Port | Serial | VR Device Name |
 |-------|---------|------|--------|----------------|
-| Direct Serial | Null Modem — **F/F onto a male port, M/F onto a female port** | COM (serial) port on the rear | 9600 baud, 8 data bits, Even parity, 1 stop bit — MEDIBUS | `Medibus` |
+| direct serial cable | Null Modem adapter (F/F on a male port, M/F on a female port) | COM (serial) port on the rear | 9600 baud, 8 data bits, Even parity, 1 stop bit — MEDIBUS | `Medibus` |
 
 ## Connection Steps
 
@@ -22,7 +22,7 @@ vr_device_name: Medibus
 
 The serial port is configured from the machine's own system setup / interface menu. Confirm that the port used is set to **MEDIBUS** at **9600 baud, 8 data bits, Even parity, 1 stop bit**.
 
-> ⚠️ **Keep the baud rate at 9600.** Any other value appears as a `MEDIBUS COM2` message or a repeated `COM1 failure` on the machine.
+> **Note:** **Keep the baud rate at 9600.** Any other value appears as a `MEDIBUS COM2` message or a repeated `COM1 failure` on the machine.
 
 ## Vital Recorder Setup
 

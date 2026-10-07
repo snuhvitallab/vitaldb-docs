@@ -7,9 +7,11 @@ vr_device_name: Pion
 -->
 > **Note:** When multiple Pion pumps are connected, Vital Recorder distinguishes them by the **number in the device name**. A device named **`Pion2`** produces tracks prefixed **`PUMP2_`**; a name with no number defaults to **`PUMP1_`**.
 
-| Cable | Adapter | Port | VR Device Name |
-|-------|---------|------|----------------|
-| Direct serial (DB-9M ↔ DB-9F) | None | Serial (DB-9F), rear panel | `Pion` / `Pion1`, `Pion2`, … |
+| Cable | Adapter | Port | Serial | VR Device Name |
+|-------|---------|------|--------|----------------|
+| direct serial cable (DB-9M ↔ DB-9F) | None | Serial (DB-9F), rear panel | 115200 baud | `Pion` / `Pion1`, `Pion2`, … |
+
+## Connection Requirements
 
 The device port is DB-9 **female** and the PC side is DB-9 **male**, so a direct serial cable mates correctly and **no Null Modem adapter is needed**.
 
@@ -21,7 +23,6 @@ The device port is DB-9 **female** and the PC side is DB-9 **male**, so a direct
 2. Connect a **direct** serial cable to that port, and the other end to the PC via a USB-Serial converter.
 ## Device Configuration
 - No configuration is required on the pump — no service menu, code or output option has to be enabled.
-- **Serial parameters are not published in a publicly available Bionet manual — verify with the manufacturer** if a correctly cabled pump produces no usable data.
 
 ## Vital Recorder Setup
 

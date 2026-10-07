@@ -5,18 +5,18 @@ category: Hemodynamic Monitor
 manufacturer: Deltex
 vr_device_name: CardioQ
 -->
-> ⚠️ **The CardioQ rear serial port is male and needs a Null Modem (F/F)** — unlike most monitors in this section, which have a female port and take M/F. **Monitor settings cannot be changed while a probe is connected:** configure with the probe unplugged and verify output in **Demo mode** before patient connection.
+> **Note:** **The CardioQ rear serial port is male and needs a Null Modem adapter (F/F).** Monitor settings cannot be changed while a probe is connected. Verify the output in **Demo mode**.
 
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|
-| Direct Serial | Null Modem **F/F** | Rear **male** DB-9 serial port | `CardioQ` |
+| direct serial cable | Null Modem adapter (F/F) | Rear **male** DB-9 serial port | `CardioQ` |
 
 ## Connection Steps
 1. Locate the serial (RS-232) port on the rear panel. It is a **male DB-9** between the RJ-45 network port and the mains inlet; USB, ADC and the equipotential earth terminal are on the same panel.
 
    <img src="../hardware_images/deltex_cardioq_1.png" width="450" alt="CardioQ rear panel with the male DB-9 serial port circled, between the RJ-45 network port and the mains inlet">
 
-2. Attach a **Null Modem (F/F)** adapter to that port. An M/F Null Modem will not mate with a male device port.
+2. Attach a **Null Modem adapter (F/F)** to that port. A Null Modem adapter (M/F) will not mate with a male device port.
 3. Connect a direct serial cable from the adapter to the PC via a USB-Serial converter.
 
 ## Device Configuration
@@ -38,11 +38,10 @@ Do this with **no probe connected** — the monitor blocks setup changes otherwi
 
    <img src="../hardware_images/deltex_cardioq_5.png" width="450" alt="Patient Monitors list with CardioQ Serial Protocol v2 highlighted and Patient Monitor Settings showing Baud Rate 57600 and No Flow Control">
 
-5. Enter **Demo mode** and confirm Vital Recorder is receiving data before connecting a patient.
 
 - Select **CardioQ Serial Protocol v2**. The other listed options are not the protocol specified for this Vital Recorder connection.
 - Serial: **57600 baud, No Flow Control**.
-- Data bits, parity and stop bits are not exposed on the CardioQ setup screens; leave the PC side at 8-N-1 unless Deltex advises otherwise.
+- Data bits, parity and stop bits are not exposed on the CardioQ setup screens.
 
 ## Vital Recorder Setup
 
@@ -51,5 +50,3 @@ Do this with **no probe connected** — the monitor blocks setup changes otherwi
 ## Notes
 
 - After a protocol is selected the monitor shows a connection-status icon (not connected / connecting / connected), which is a quick way to confirm the link.
-- Deltex documents this port as being "for serial data offload by linking to a patient monitor or bedside terminal server for electronic medical records (EMR)" — it is the correct port for Vital Recorder.
-- The operating handbook does not publish the RS-232 frame specification ("contact your Deltex Medical representative for details").
