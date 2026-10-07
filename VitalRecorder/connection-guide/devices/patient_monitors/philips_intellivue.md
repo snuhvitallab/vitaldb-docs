@@ -11,6 +11,20 @@ vr_device_name: Intellivue
 |-------|---------|------|----------------|
 | Custom RJ-45 ↔ DB-9F | None | `MIB/RS232` | `Intellivue` |
 
+## Cable Pinout
+| DB-9F (PC side) | Signal | RJ-45 | Signal |
+|---|---|---|---|
+| 2 | RX | 5 | TX |
+| 3 | TX | 7 | RX |
+| 5 | GND | 4 | GND |
+
+MP5 and MX400–550 monitors with an Advanced System Interface Board (ASIB) use a different pin assignment:
+
+| DB-9F (PC side) | Signal | RJ-45 | Signal |
+|---|---|---|---|
+| 2 | RX | 7 | TX |
+| 3 | TX | 5 | RX |
+| 5 | GND | 4 | GND |
 
 ## Connection Steps
 1. Locate the port labeled **`MIB/RS232`** on the monitor. A separate port labeled only `RS232` (next to `Alarm`) is **not** the data-export port and will not work.
@@ -21,25 +35,11 @@ vr_device_name: Intellivue
 
    <img src="../hardware_images/philips_intellivue_2.png" width="450" alt="MIB/RS232 port appearance on IntelliVue MP5, MP20-90 / Avalon FM 20-50, MX400-550 and MX 600-800">
 
-3. Prepare a cable connecting **RJ-45 pins 4 (GND), 5 (TX), 7 (RX)** → **DB-9F pins 5 (GND), 2 (RX), 3 (TX)**.
+3. Prepare a custom RJ-45 to DB-9F cable using the appropriate connections in Cable Pinout.
 
-   <img src="../hardware_images/philips_intellivue_3.png" width="450" alt="MIB port wiring diagram: DB-9F pin 2 RX to RJ-45 pin 5 TX, DB-9F pin 3 TX to RJ-45 pin 7 RX, DB-9F pin 5 GND to RJ-45 pin 4 GND">
+4. Connect the RJ-45 end to the monitor's MIB port.
 
-   - Only three conductors are needed. Instead of soldering, a standard Cat5/Cat6 patch cable plus an off-the-shelf **RJ-45 female → DB-9 female modular adapter** (screw-terminal type) can be wired to the same three positions.
-
-4. Plug the **RJ-45 end** into the MIB/RS232 port and the **DB-9F end** into the PC via USB-Serial converter.
-
-5. **MX400–550 series only:** the **Advanced Interface Card (ASIB)** port can be used instead. Its Rx/Tx are reversed relative to the MIB port, so the cable is wired as follows:
-
-   | DB-9F (PC side) | Signal | RJ-45 (ASIB) | Signal |
-   |---|---|---|---|
-   | 2 | RX | 7 | TX |
-   | 3 | TX | 5 | RX |
-   | 5 | GND | 4 | GND |
-
-   <img src="../hardware_images/philips_intellivue_4.png" width="450" alt="MX400-550 Advanced Interface Card wiring diagram: DB-9F pin 2 RX to RJ-45 pin 7 TX, DB-9F pin 3 TX to RJ-45 pin 5 RX, DB-9F pin 5 GND to RJ-45 pin 4 GND">
-
-> MX600–800 series: the MIB board must be installed.
+5. Connect the DB-9F end to the PC's serial port. If the PC has no serial port, use a USB-Serial converter.
 
 ## Device Configuration
 1. Press **Main Setup → Operating Modes**.
