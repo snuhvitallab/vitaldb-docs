@@ -5,34 +5,27 @@ category: Patient Monitor
 manufacturer: Nihon Kohden
 vr_device_name: PVM
 -->
-> **Note:** The serial link carries **numeric data only**. Waveforms are not sent over RS-232C.
+> **Note:** Use Vital Recorder 1.19.34 or later. This connection supports numeric data only. Waveforms are not transmitted over RS-232C.
 
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|
-| Nihon Kohden `YS-089P`-series RS-232C cable | Not confirmed | RS-232C connector on the `QI-470P` interface | `PVM` |
+| Direct serial cable | Null Modem (M/F) | RS-232C connector on the `QI-470P` interface | `PVM` |
 
 Confirm the required adapter with Nihon Kohden before ordering or connecting the cable.
 
+## Connection Requirements
+1. The QI-470P interface must be installed on the monitor. If it is not installed, contact Nihon Kohden to arrange installation.
+2. Use Vital Recorder 1.19.34 or later.
+
 ## Connection Steps
 
-1. Locate the **RS-232C connector** on the monitor's **`QI-470P`** interface.
-2. Connect a Nihon Kohden **`YS-089P`-series** RS-232C cable to it.
-3. Connect the other end to the PC through a USB-Serial converter.
+1. Connect the RS-232C cable to the RS-232C connector on the QI-470P interface.
+2. Connect the other end to the PC's serial port, using null modem (M/F). If the PC has no serial port, use a USB-Serial converter.
 
 ## Device Configuration
 
-No monitor-side menu change is normally required. If nothing arrives, confirm the RS-232C port's baud rate with Nihon Kohden.
+No monitor-side menu change is normally required.
 
 ## Vital Recorder Setup
 
-- Add **Patient monitor → Nihon Kohden : PVM** (`type=PVM` in `vr.conf`).
-- A PVM already added as `BSM` also records; no change is needed on existing installations.
-
-## Troubleshooting
-
-- **Nothing arrives on a build before 1.19.34.** Earlier builds sent a request the PVM-4700 rejects, and recorded nothing. Upgrade.
-- **Numerics arrive but no waveforms.** Expected — see Known Limitations.
-
-## Known Limitations
-
-- **Numeric data only** over RS-232C: HR, PR, SpO2, RR and temperature, plus NIBP when it is measured.
+- Add the device as **`PVM`** and select the PC serial port used for the connection.
