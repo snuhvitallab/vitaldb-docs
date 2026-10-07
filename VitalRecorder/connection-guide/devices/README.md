@@ -1,4 +1,4 @@
-# Vital Recorder Hardware Connection Guide
+# Hardware Connection Guide
 
 Find your device in the tables below, then open its guide for cable wiring, device settings, and Vital Recorder setup.
 
