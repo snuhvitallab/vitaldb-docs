@@ -45,7 +45,7 @@ Dräger COM1 (DB9F) ──┤ DB9M  Y-cable  CON1 (DB9F) ├── existing devi
 
 Only the machine's transmit line and ground are branched to CON2, so Vital Recorder listens without ever driving the line.
 
-> **Reading the pin numbers.** Signal names here are given **from the machine's side**: on the Dräger COM1, pin 2 transmits and pin 3 receives. The [Cable Types](../README.md#cable-types) table in the main README names the same pins **from the PC's side**, where pin 2 receives and pin 3 transmits. Both describe the same direct serial cable.
+> **Reading the pin numbers.** Signal names here are given **from the machine's side**: on the Dräger COM1, pin 2 transmits and pin 3 receives. Seen **from the PC's side**, the same pins are named the other way round: pin 2 receives and pin 3 transmits. Both describe the same direct serial cable.
 
 <img src="../hardware_images/com1_in_use_1.png" width="450" alt="Y-cable pin wiring diagram — machine TX (pin 2) and GND (pin 5) branch to both CON1 and CON2 (PC Vital Recorder, read-only option); RX (pin 3) goes only to CON1">
 

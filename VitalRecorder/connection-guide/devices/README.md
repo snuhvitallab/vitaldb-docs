@@ -19,8 +19,7 @@ Use the latest Vital Recorder release. See the [device-related version notes](ve
   - [Neuromuscular monitors](#neuromuscular-monitors)
 - [Getting Started](#getting-started)
   - [Requirements](#requirements)
-  - [Connection Types](#connection-types)
-  - [Cable Types](#cable-types)
+  - [Serial Cables](#serial-cables)
 
 ## Device Quick Reference
 
@@ -135,108 +134,15 @@ These tables summarize the connection requirements for each device. Follow the l
 
 Vital Recorder runs on Windows, Raspberry Pi, and Ubuntu. See the [Vital Recorder User Manual](../../User_Manual.md) for platform-specific setup instructions.
 
-#### Serial Cables
+### Serial Cables
 
-There are two types of serial cable. They are **physically identical in appearance** — the difference is in the internal wiring.
+**Direct cables** connect corresponding pins at both ends. **Cross cables** cross the transmit and receive lines. The cable type cannot be reliably identified by appearance alone.
 
-<img src="hardware_images/serial_cable_1.png" width="360" alt="A DB-9 serial cable with a male connector on one end and a female connector on the other — a direct and a cross cable look exactly like this, so the wiring cannot be told apart by sight">
+For standard DB-9 connections, use a **direct cable** and add a **null modem adapter** when specified in the device guide. Follow that guide for any custom or manufacturer-specific cable requirements.
 
-| Type | Wiring | Use in this guide |
-|------|--------|-------------------|
-| **Direct serial cable** — also called a *straight-through* cable | Pin 2 ↔ Pin 2 (Rx), Pin 3 ↔ Pin 3 (Tx) | Default cable for standard serial connections |
-| **Cross cable** — also called a *crossover* or *null-modem cable* | Pin 2 ↔ Pin 3 (crossed) | Some device pages specify a custom cable with crossed wiring. For standard DB-9 runs, the guide specifies a direct serial cable and, where required, a **Null Modem adapter** |
+**M/F** and **F/F** indicate connector gender (M = male; F = female). A null modem adapter provides crossed pin connections; a straight-through gender changer does not.
 
-> ⚠️ Use the cable type and adapter specified on the device page. Incorrect wiring can prevent communication; verify the pinout before connecting.
+#### Purchase Links (Korea)
 
-For standard DB-9 connections, use a direct serial cable and add a **Null Modem adapter** when the device page specifies one. For custom cables, follow the device-specific pinout.
-
----
-
-### Connection Types
-
-Every device in this guide connects in one of four ways. Identify which type applies to your device, then follow its device page for the exact port and settings.
-
-> The device lists in these diagrams are examples only. Use the [Quick Reference tables](#device-quick-reference) and the device page together; update both when a connection requirement changes.
-
-#### Type A — Direct Serial
-
-Device serial port → direct serial cable → USB-Serial converter → PC. No adapter.
-
-<img src="hardware_images/connection_direct.svg" width="620" alt="Type A: a device 9-pin serial port joins a direct serial cable wired pin 2 to 2 and pin 3 to 3, into a USB-Serial converter that presents a virtual COM port, then by USB to the PC running Vital Recorder">
-
-#### Type B — Null Modem Adapter
-
-Same as Type A, with a Null Modem adapter fitted **at the device port**.
-
-<img src="hardware_images/connection_cross.svg" width="620" alt="Type B: a device serial port takes a Null Modem adapter, M/F or F/F, that swaps pins 2 and 3, then a standard direct serial cable to a USB-Serial converter and by USB to the PC running Vital Recorder">
-
-#### Type C — Custom / Proprietary Cable
-
-The device port is not a standard DB-9 — RJ-45, RJ-10, 15-pin or DIN — so a cable with specific pin wiring is required.
-
-<img src="hardware_images/connection_custom.svg" width="620" alt="Type C: a device with an RJ-45, RJ-10, 15-pin or DIN port needs a custom cable with specific pin wiring, for example RJ-45 to DB-9F, then a USB-Serial converter presenting a virtual COM port to the PC running Vital Recorder">
-
-#### Type D — Wireless (Wi-Fi)
-
-The device sends data over the network instead of a serial line. The router must be configured in advance.
-
-<img src="hardware_images/connection_wireless.svg" width="620" alt="Type D: a MEKICS MP1300 connects by LAN cable to a Wi-Fi router at 192.168.0.1, which reaches the PC running Vital Recorder over Wi-Fi on port 6002; the router must be pre-configured with SSID, WPA2PSK with AES, and the recording PC's IP">
-
----
-
-### Cable Types
-
-The images below show the cables and adapters referenced throughout this guide.
-
-#### Direct Serial Cable
-
-<img src="hardware_images/cable_direct.svg" width="450" alt="Diagram of a direct serial cable — DB-9 female on the device side, DB-9 male on the PC or converter side, with pin 2 to pin 2, pin 3 to pin 3 and pin 5 to pin 5; the default cable choice for most devices">
-
-#### Null Modem Adapter — F/F (Female / Female)
-
-A **Null Modem adapter** swaps the TX and RX lines (pins 2 and 3) and is specified by the gender of its two connectors, **M/F** or **F/F**. It is also sold as a *cross-gender* adapter.
-
-> Korean cable shops sell Null Modem adapters as **"크로스 젠더" (cross gender)**. Ask for that name when buying locally — a plain *gender changer* (젠더) is wired straight through and will **not** work.
-
-<img src="hardware_images/cable_null_modem_ff.svg" width="450" alt="Diagram of a Null Modem F/F adapter — female DB-9 on both ends, pins 2 and 3 crossed internally, pin 5 straight through; required when the device port is female-type">
-
-<img src="hardware_images/serial_cable_3.png" width="300" alt="A Null Modem F/F serial gender adapter (9F/9F, cross wiring) — female sockets on both sides">
-
-| Adapter | Description | Purchase (Korea) |
-|---------|-------------|-----------------|
-| Null Modem M/F | Male on one side, Female on the other | [cableguy.com](http://cableguy.com/shop/mall.php?cat=007001001&query=view&no=33688) |
-| Null Modem F/F | Female on both sides | [cableguy.com](http://cableguy.com/shop/mall.php?cat=007001001&query=view&no=189324) |
-
-#### Null Modem Adapter — M/F (Male / Female)
-
-<img src="hardware_images/cable_null_modem_mf.svg" width="450" alt="Diagram of a Null Modem M/F adapter — male DB-9 on one end and female on the other, pins 2 and 3 crossed internally, pin 5 straight through; required when the device port is male-type">
-
-<img src="hardware_images/serial_cable_2.png" width="260" alt="A Null Modem M/F serial gender adapter (9M/9F, cross wiring) — male pins on one side, female sockets on the other">
-
-#### USB-Serial Converter
-
-<img src="hardware_images/cable_usb_serial.svg" width="450" alt="Diagram of a USB-Serial converter — USB-A to the PC on one side, DB-9 male to the device cable on the other, creating a virtual COM port; it acts as a direct cable">
-
-Laptops and tablets typically lack a built-in serial port. A **USB-Serial converter**, also sold as a USB-to-RS-232 converter, creates a virtual COM port and **acts as a direct serial cable**. Devices that require a cross connection still need a Null Modem adapter.
-
-**Recommended:** Netmate 4-port USB-Serial converter (Kangwon Electronics) — creates four COM ports from one USB connection. [Purchase link (Korea)](http://cableguy.com/shop/mall.php?cat=005004003&query=view&no=39206)
-
-<img src="hardware_images/usb_serial_converter_1.png" width="400" alt="A 4-port RS-232-to-USB converter cable (NEXT-RS232 4P) — one USB-A plug fanning out to four DB-9 connectors, creating four COM ports from a single USB port">
-
-> Some devices accept only specific converter models. The **GE CARESCAPE** accepts one converter per monitor software version — see its device page before buying.
-
-#### USB Hub
-
-Use a **powered USB hub** (with its own external power adapter) so that every connected device receives sufficient USB power.
-
-[Purchase — ORICO 4-port Powered USB Hub (Korea)](http://www.enuri.com/detail.jsp?modelno=10534644)
-
-<img src="hardware_images/usb_hub_1.png" width="400" alt="Two ORICO 4-port powered USB hubs — each has four USB ports on the front and, on the side, a USB uplink port next to a socket for its own external power adapter">
-
-#### USB Extension Cable
-
-Follow the cable and device manufacturers' guidance for maximum USB cable length. For operating-room installations, use a shielded cable when required by the manufacturer.
-
-[Purchase link (Korea)](http://cableguy.com/shop/mall.php?cat=025011002&query=view&no=541)
-
-<img src="hardware_images/usb_extension_1.png" width="220" alt="A USB 2.0 extension cable — USB-A male on one end, USB-A female on the other">
+- [Null modem adapter — M/F](http://cableguy.com/shop/mall.php?cat=007001001&query=view&no=33688)
+- [Null modem adapter — F/F](http://cableguy.com/shop/mall.php?cat=007001001&query=view&no=189324)
