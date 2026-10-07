@@ -8,12 +8,12 @@ vr_device_name: Intellivue
 > **Note:** **Use the port labeled `MIB/RS232`, not the plain `RS232` port.** Service-mode configuration is mandatory. The MIB port works whether or not the monitor is connected to a central station. **MP2 and X2 monitors have no usable serial port and cannot be used.**
 
 | Cable | Adapter | Port | VR Device Name |
-|-------|---------|------|----------------|
+|-------|---------|------|---------------- |
 | Custom RJ-45 ↔ DB-9F | None | `MIB/RS232` | `Intellivue` |
 
 ## Cable Pinout
 | DB-9F (PC side) | Signal | RJ-45 | Signal |
-|---|---|---|---|
+|---|---|---|--- |
 | 2 | RX | 5 | TX |
 | 3 | TX | 7 | RX |
 | 5 | GND | 4 | GND |
@@ -21,7 +21,7 @@ vr_device_name: Intellivue
 MP5 and MX400–550 monitors with an Advanced System Interface Board (ASIB) use a different pin assignment:
 
 | DB-9F (PC side) | Signal | RJ-45 | Signal |
-|---|---|---|---|
+|---|---|---|--- |
 | 2 | RX | 7 | TX |
 | 3 | TX | 5 | RX |
 | 5 | GND | 4 | GND |
@@ -67,7 +67,6 @@ MP5 and MX400–550 monitors with an Advanced System Interface Board (ASIB) use 
    > When both data-export connections are in use, only one can receive waveforms at a time. The connection whose waveform request succeeds first receives the waveforms; waveform requests from the other connection are rejected.
 
 6. **Reboot the monitor.** The driver change only takes effect after a power cycle.
-
 
 ## Optional: CO2 and Airway Pressure Waveforms via IntelliBridge EC10
 

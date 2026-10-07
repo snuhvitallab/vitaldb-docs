@@ -5,24 +5,17 @@ category: Syringe Pump
 manufacturer: Fresenius Kabi
 vr_device_name: Link+
 -->
-> **Note:** **Two separate cables are involved.** Data is recorded over the rack's **USB-B (mini-USB) port**, but **Data Export must first be enabled once via the web interface**, which is reached over the **LAN (RJ-45) port**. Out of the box the serial export protocol is disabled and the pump rack sends nothing.
+> **Note:** Data is recorded through USB. Enable Data Export through the LAN connection before recording.
 
 | Cable | Adapter | Port | VR Device Name |
-|-------|---------|------|----------------|
-| USB 2.0 A-male ↔ mini-B 5-pin | None | USB-B (mini-USB), connector panel on the rack | `Link+` |
-| Ethernet patch cable (one-time setup only) | None | LAN (RJ-45), same connector panel | — |
-
-## Connection Requirements
-
-The Link+ rack aggregates every Agilia SP / VP module mounted on it, so **all pumps on one rack appear in Vital Recorder as a single logical device** — one `Link+` entry, not one per pump.
+|-------|---------|------|---------------- |
+| USB 2.0 A-male ↔ mini-B 5-pin | None | USB-B (mini-USB)| `Link+` |
 
 ## Connection Steps
-1. Locate the connector panel on the rack. The **mini-USB (USB-B) port** is the data port used by Vital Recorder — it sits on the right-hand side of the panel, above the full-size USB-A socket, and is distinct from the RJ-45 and the round power/nurse-call connectors on the same panel.
+1. Connect the **mini-B end** to that port and the **USB-A end** directly to the PC. No USB-Serial converter is needed — the rack presents itself as a USB CDC-ACM serial device.
+## Device Configuration
 
    <img src="../hardware_images/fresenius_link_agilia_1.png" width="450" alt="Link+ connector panel with the mini-USB (USB-B) data port highlighted, above the USB-A socket and beside the RJ-45 and round connectors">
-
-2. Connect the **mini-B end** to that port and the **USB-A end** directly to the PC. No USB-Serial converter is needed — the rack presents itself as a USB CDC-ACM serial device.
-## Device Configuration
 
 Enabling **Data Export** is a **one-time** procedure performed over LAN from a PC. It must be done before the USB connection will produce any data.
 
@@ -60,17 +53,13 @@ Enabling **Data Export** is a **one-time** procedure performed over LAN from a P
    <img src="../hardware_images/fresenius_link_agilia_9.png" width="450" alt="Link+ Agilia web interface Configuration menu expanded showing General Parameters, Network, Data Export, Time and Configuration Summary, with Data Export highlighted">
 
 8. Under **Serial export protocol for Agilia SP and VP**, tick **Enabled**, then click **Apply**.
-   - Leave **Serial export protocol Over TCP** disabled. It is a separate transport (default port `52000`) that requires VPN configuration in the **Network** tab. Vital Recorder uses the USB/serial export above.
-
    <img src="../hardware_images/fresenius_link_agilia_10.png" width="450" alt="Data Export page with Serial export protocol for Agilia SP and VP set to Enabled, Serial export protocol Over TCP left disabled with port 52000, and the Apply button highlighted">
 
 9. A dialog confirms the parameters were applied and warns that the Link+ will reboot when configuration is exited. Click **OK**.
 
    <img src="../hardware_images/fresenius_link_agilia_11.png" width="450" alt="Data Export confirmation dialog reading Applying parameters, please wait .. OK and warning that the settings will force the Link+ to reboot when configuration is exit">
 
-10. Click **Exit Configuration**. The rack reboots on its own, which completes the setup. Afterwards restore the PC's Ethernet adapter to **Obtain an IP address automatically** if it is needed on the hospital network.
-
-- The web interface reports its firmware revision at the top right. Menu wording can differ by revision.
+10. Click **Exit Configuration**. The rack reboots on its own, which completes the setup.
 
 ## Vital Recorder Setup
 
@@ -78,17 +67,4 @@ Enabling **Data Export** is a **one-time** procedure performed over LAN from a P
 
 ## Troubleshooting
 
-- **The Link+ is unstable — the recorder reboots or loses the server connection.** Insufficient USB power on a bus-powered port causes this; the syslog shows USB power errors before each drop. Connect the rack through a **powered hub** or a Y-cable with external power, and keep the USB run short — a 6 m extension with a repeater is not enough.
-- **The rack stops reporting after a network or power event.** **Power-cycle the pump rack and then restart Vital Recorder** — the recorder applies a 60-second timeout before it gives up on the port, so the order matters.
-- **A previously working rack reports nothing after a service intervention.** `Data Export` reverts to disabled if the rack is reset to factory configuration — re-run the web procedure.
 - **Crashes or a failed reconnection on an older build.** Several Link+-specific crashes and a reconnection failure were fixed across 1.18.50–1.19.5; upgrade before troubleshooting hardware.
-
-## Known Limitations
-
-- The rack also carries an RS-232 connector for system management, maintenance and export to a Patient Data Management System (RS-232 levels, asynchronous, half duplex, up to 115.2 kb/s). Vital Recorder does not use it; the USB path above is the supported one.
-
-## Notes
-
-- All Agilia SP / VP modules on the rack are reported through the one `Link+` device. Track names are distinguished per module by the rack, so no separate Vital Recorder device is added for each pump.
-- If the PC reaches the rack through a Windows hotspot instead of the LAN port, set the rack's address to **`192.168.137.2`** in the web interface.
-- The four-channel **Agilia Link4+** rack is the same device with the `Link4` type name in older builds.

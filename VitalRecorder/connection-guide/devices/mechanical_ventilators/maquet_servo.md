@@ -8,7 +8,7 @@ vr_device_name: Servo-i
 > **Note:** **On Servo-i and Servo-s, connect to the BOTTOM RS-232 port.** The TOP port is for service/debugging. The live port and adapter requirement for Servo-U have not been verified; confirm both with Getinge before connecting.
 
 | Cable | Adapter | Port | Serial | VR Device Name |
-|-------|---------|------|--------|----------------|
+|-------|---------|------|--------|---------------- |
 | direct serial cable | Servo-i / Servo-s: Null Modem adapter (M/F); Servo-U: unverified | Servo-i / Servo-s: **BOTTOM** RS-232; Servo-U: unverified | Servo-i / Servo-s: 9600 baud, Even parity (7 or 8 data bits, 1 or 2 stop bits — auto-detected), XON/XOFF · **Servo-U: 19200** | `Servo-i` |
 
 ## Connection Steps
@@ -27,16 +27,3 @@ Nothing has to be enabled on the ventilator. The serial port is served by the bu
 ## Vital Recorder Setup
 
 - In Vital Recorder, add the device as **`Servo-i`**.
-
-## Troubleshooting
-
-- **The port opens but no data arrives.** Check that the cable and adapter match the model and are fully seated. Confirm that the connection is direct rather than a read-only tap (see Known Limitations).
-
-## Known Limitations
-
-- **The Servo-i has only one usable serial port.** If the patient monitor already occupies it, a read-only Y-cable tap does **not** work: the listening branch cannot resolve the parameter order. Connect directly or collect the data through the patient monitor (Servo-i → Philips IntelliVue → Vital Recorder).
-- Only 4 waveform channels can be sampled simultaneously over the CIE (a firmware limit of the interface).
-
-## Notes
-
-- Typical parameters recorded: Paw, PEEP, TV, MV, FiO2.

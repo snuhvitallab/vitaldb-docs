@@ -5,18 +5,16 @@ category: Anesthesia Machine
 manufacturer: GE
 vr_device_name: Datex-Ohmeda
 -->
-> **Note:** Protocol: **GE Ohmeda Serial Protocol**. `Supported_Devices.md` lists Aisys, Avance and Aestiva; the Aisys CS2 and Avance CS2 are confirmed to work with this setup. Confirm other models with GE.
+> **Note:** This guide describes the connection for **Aisys CS2** and **Avance CS2**. Confirm the connector and pinout with GE for other models.
 
-| Cable | Adapter | Port | Serial | VR Device Name |
-|-------|---------|------|--------|----------------|
-| Custom 9-pin ↔ 15-pin serial | None | 15-pin female connector (under the rear cover) | GE Ohmeda Serial Protocol, 19200 baud | `Datex-Ohmeda` |
+| Cable | Adapter | Port | VR Device Name |
+|-------|---------|------|---------------- |
+| Custom 9-pin ↔ 15-pin serial | None | 15-pin female connector | `Datex-Ohmeda` |
 
 ## Cable Pinout
 
-Only three conductors are wired:
-
 | Machine side — DB-15 male | PC side — DB-9 female |
-|---------------------------|------------------------|
+|---------------------------|------------------------ |
 | 13 — TX                   | 2 — RX                 |
 | 6 — RX                    | 3 — TX                 |
 | 5 — GND                   | 5 — GND                |
@@ -24,41 +22,34 @@ Only three conductors are wired:
 <img src="../hardware_images/ge_datex_ohmeda_3.png" width="450" alt="Pin wiring diagram of the custom cable — Datex-Ohmeda DB-15 male pin 13 (TX) to DB-9 female pin 2 (RX), pin 6 (RX) to pin 3 (TX), pin 5 to pin 5 (GND)">
 
 ## Connection Steps
-1. Open the **back cover** of the anesthesia machine to expose the **15-pin female** connector. It sits on the same panel as the 9-pin, RJ-45 and USB connectors; it is the same height as an ordinary DB-9 but noticeably longer.
+1. Open the rear connector cover and connect the **15-pin end** of the custom cable to the serial port.
 
    <img src="../hardware_images/ge_datex_ohmeda_1.png" width="450" alt="Rear connector panel behind the opened cover, with an arrow marking the 15-pin female connector">
 
-2. Connect the **custom 15-pin to 9-pin cable** to that connector. Ordinary USB-Serial converters end in a 9-pin male plug, so this cable has to be built — see [Cable Pinout](#cable-pinout).
+2. Connect the **DB-9F end** to the PC through a USB-Serial converter.
 
-3. Connect the 9-pin end to the PC via a USB-Serial converter.
+### When the 15-pin Port Is Already in Use
 
-### When the 15-pin Port is Already in Use
+For the connection shown below, use a Y-cable with a receive-only branch to Vital Recorder. Enable **Read Only Mode** when adding the device.
 
-If the 15-pin port is already feeding a patient monitor (CO2 curve, airway pressure, etc.), build a **Y-cable** so Vital Recorder can listen without disturbing the existing link, and enable **"Read Only Mode"** in Vital Recorder when adding the device.
+#### Y-Cable Pinout
 
-| Machine side — DB-15 male | CON1 — to the existing GE device (DB-15F) | CON2 — to Vital Recorder (DB-9F) |
-|---------------------------|--------------------------------------------|-----------------------------------|
-| 13 — TX                   | 13 — RX                                    | 2 — RX                            |
-| 6 — RX                    | 6 — TX                                     | *not connected*                   |
-| 5 — GND                   | 5 — GND                                    | 5 — GND                           |
+| Machine end — 15-pin D-sub male | Existing connection — 15-pin D-sub female (CON1) | PC end — DB-9F (CON2) |
+|--------------------------------|------------------------------------------------|---------------------- |
+| 13 (TxD from machine) | 13 | 2 (RxD at PC) |
+| 6 (RxD to machine) | 6 | Not connected |
+| 5 (GND) | 5 | 5 (GND) |
 
-Only the machine's transmit line and ground are branched to CON2, so Vital Recorder never drives the line.
+Only the machine's transmit signal and ground connect to the PC branch.
 
 <img src="../hardware_images/ge_datex_ohmeda_2.png" width="450" alt="Y-cable pin wiring diagram — machine TX (pin 13) and GND (pin 5) branch to both CON1 (DB-15F, existing GE device) and CON2 (DB-9F, PC Vital Recorder with the read-only option); RX (pin 6) goes only to CON1">
 
 ## Device Configuration
-No setting has to be changed on the machine — the serial port streams continuously, and Vital Recorder's `Datex-Ohmeda` driver applies the line settings itself.
+
+No changes to the machine settings are required for this setup.
 
 ## Vital Recorder Setup
-- In Vital Recorder, add the device as **`Datex-Ohmeda`**.
 
-## Troubleshooting
-- **Waveform gaps and lagging numerics.** This is a link-capacity limit, not a cable fault (see Known Limitations). Reduce the requested waveforms.
+Add the device as **`Datex-Ohmeda`** and select the PC serial port used for the connection.
 
-## Known Limitations
-- **The 19200 baud link carries about 1,920 characters per second.** When many parameters are active the stream exceeds that, waves drop out and numerics arrive late.
-
-## Notes
-- Gas-agent values from a Datex-Ohmeda machine use the `AGENT1` track. If a Philips monitor is also connected, account for this shared track when configuring the device types.
-- With **`AUTO_DETECT=1`** in `vr.conf` GE / Datex-Ohmeda S/5 devices are identified on the serial line without a `[DEV/...]` section.
-- Typical parameters recorded: Paw, Pplat, EtCO2, TV, MV, FiO2.
+For a Y-cable connection, enable **Read Only Mode**. Available data depends on the existing communication between the machine and the connected device.

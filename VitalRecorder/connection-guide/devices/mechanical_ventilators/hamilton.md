@@ -7,13 +7,12 @@ vr_device_name: Hamilton
 -->
 > **Note:** Either Monitoring Interface port (1 or 2) can be used, but the port's protocol must be switched to **Block** first.
 
-| Cable | Adapter | Port | Serial | VR Device Name |
-|-------|---------|------|--------|----------------|
-| direct serial cable | Null Modem adapter (M/F) | Monitoring Interface 1 or 2 | `HAMILTON-G5 / Block` protocol — 38400 baud, 8 data bits, No parity, 1 stop bit, no handshake | `Hamilton` |
+| Cable | Adapter | Port | VR Device Name |
+|-------|---------|------|---------------- |
+| direct serial cable | Null Modem (M/F) | Monitoring Interface 1 or 2 | `Hamilton` |
 
 ## Connection Steps
 1. Find the connector column on the side/rear of the ventilator. Three connectors are stacked there:
-   - **Special Interface connector** (15-pin, topmost) — **not** a COM port, do not use it
    - **Monitoring Interface 1 connector** (9-pin) = COM1
    - **Monitoring Interface 2 connector** (9-pin) = COM2
 2. Attach a **Null Modem adapter (M/F)** to Monitoring Interface **1** or **2**.
@@ -36,11 +35,3 @@ The COM (RS-232) connector pin assignment is: **2 RxD, 3 TxD, 4 DTR, 5 GND, 6 DS
 ## Vital Recorder Setup
 
 - In Vital Recorder, add the device as **`Hamilton`**.
-
-## Notes
-
-- **C6, C2, T1 and MR1** are listed in `Supported_Devices.md` with the same 38400-baud Block protocol and the `Hamilton` entry. The port layout and the menu path to set *Block* differ by model — this page documents the G5; treat it as a starting point for the others and record differences.
-- Waveform capture from Hamilton ventilators is supported on current builds; no `wavs=` entry is needed — unlike the S/5 monitors, the Block protocol carries the waveforms by default.
-- Block mode carries all settings, measurements, alarms and up to 8 high-resolution waveforms; polling mode is limited to 4 low-resolution waveforms and a data subset — this is why Vital Recorder requires Block.
-- The two Monitoring Interface ports are independent, so a patient monitor can stay on one port while Vital Recorder uses the other. Each port has its own protocol setting.
-- Typical parameters recorded: Paw, PEEP, Pplat, TV, MV, RR, FiO2, CO2.

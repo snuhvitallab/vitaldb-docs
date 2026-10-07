@@ -8,7 +8,7 @@ vr_device_name: (none — ADC device)
 > **Note:** Use this route when the TRAM-RAC ANALOG OUT port is already occupied. ECG and ABP are available as voltages from the **Defib. Sync** connector on the front of the Tram / Patient Data Module. Like the TRAM-RAC analog port this is an **analog** output, so an ADC is required — the voltage scaling is the same.
 
 | Cable | Adapter | Port | VR Device Name |
-|-------|---------|------|----------------|
+|-------|---------|------|---------------- |
 | 7-pin mini-DIN cable to ADC analog inputs (or an 8-pin mini-DIN with the center pin cut away) | — | **Defib. Sync** (front panel of the Tram / Patient Data Module) | *(per ADC type)* |
 
 ## Connection Requirements
@@ -22,7 +22,7 @@ Defib. Sync connector:
 <img src="../hardware_images/ge_defib_2.png" width="450" alt="Defibrillator synchronization connector J2 pin table — 1 DEFIB_MARKER_OUT, 2 DEFIB_MARKER_IN, 3 AGND1, 4 DGND, 5 AGND2, 6 BP_ANALOG_OUTPUT, 7 ECG_ANALOG_OUTPUT — beside a front view of the module socket">
 
 | Pin | Name | Description |
-|---|---|---|
+|---|---|--- |
 | 1 | DEFIB_MARKER_OUT | Digital defibrillator output synchronization signal |
 | 2 | DEFIB_MARKER_IN | Digital defibrillator input signal |
 | 3 | AGND1 | Signal ground |

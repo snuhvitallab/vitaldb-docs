@@ -8,7 +8,7 @@ vr_device_name: BSM
 > **Note:** The availability of **RS-232C** and **ECG/BP OUT** ports depends on the monitor model and installed interface or input unit. If the required port is not present, contact Nihon Kohden to confirm the compatible hardware and installation options. RS-232C supports **numeric data only**. ECG and invasive blood pressure waveforms require an **ECG/BP OUT** connection and an analog-to-digital converter (ADC).
 
 | Connection | Cable or Interface | Adapter | Device Port | Vital Recorder Device Type |
-|---|---|---|---|---|
+|---|---|---|---|--- |
 | Numeric data — QI-373P | Direct serial cable (DB-9 M/F) | Null modem (M/F) | RS-232C on the QI-373P interface | `BSM` |
 | Numeric data — other interfaces | Cable appropriate for the interface | Confirm for the interface | RS-232C | `BSM` |
 | ECG/BP waveforms | Compatible Nihon Kohden ECG/BP output cable, connection cable for the ADC, and ADC | Depends on the ADC connection | ECG/BP OUT | Select the device type for your ADC |
@@ -18,7 +18,7 @@ vr_device_name: BSM
 ### Numeric Data
 
 | Model | RS-232C Interface |
-|---|---|
+|---|--- |
 | BSM-1700 series | Built-in; no additional interface board required |
 | BSM-3000 series | QI-373P, subject to model compatibility |
 | BSM-6301 | QI-631P |
@@ -29,7 +29,7 @@ The **direct serial cable + null modem adapter (M/F)** configuration applies to 
 ### ECG/BP Waveforms
 
 | Model | ECG/BP OUT |
-|---|---|
+|---|--- |
 | BSM-1700 series | Built into the monitor; no additional interface board required |
 | BSM-3000 series | Provided by a compatible QI-371P or QI-372P interface |
 | BSM-6000 series | Provided by a compatible AY input unit; not available on AY-660P |
@@ -62,7 +62,7 @@ ECG and arterial pressure waveforms come out of the **`ECG/BP OUT`** port as ana
 Where a Nihon Kohden central station with the HL7 gateway is installed, Vital Recorder can collect data over the network without a per-bed serial cable. Add these three devices:
 
 | Vital Recorder device | Data | Port |
-|---|---|---:|
+|---|---|---: |
 | `NIHONKOHDEN::ADT` | Patient ID | 9007 |
 | `NIHONKOHDEN::ORF` | Numeric data every 30 seconds | 7999 |
 | `NIHONKOHDEN::NealTime` | Waveforms, up to three — default ECG_II, PLETH and AWP | 9001 |

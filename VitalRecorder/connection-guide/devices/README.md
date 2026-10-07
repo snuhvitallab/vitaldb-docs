@@ -27,11 +27,10 @@ These tables summarize the connection requirements for each device. Follow the l
 
 **Null modem adapters** use crossover wiring. M/F and F/F indicate connector gender.
 
-
 ### Patient Monitors
 
 | Device | Cable or Interface | Adapter | Device Port | Vital Recorder Device Type |
-|--------|-------|---------|------|----------------|
+|--------|-------|---------|------|---------------- |
 | [GE CARESCAPE B850 / B650 / B450](patient_monitors/ge_carescape.md) | Monitor-side USB-Serial converter (compatible with the monitor’s software version) | Null modem (F/F) | USB port | `Bx50` |
 | [GE S/5 AM](patient_monitors/ge_s5am.md) | Direct serial cable | Null modem (F/F) | Port X8 | `Bx50` |
 | [GE B40 / B20](patient_monitors/ge_b40_b20.md) | 9-pin serial cable with pin 4 removed | GE Multi I/O adapter (if not already installed) | 9-pin RS-232 port on the Multi I/O adapter | `Bx50` |
@@ -54,7 +53,7 @@ These tables summarize the connection requirements for each device. Follow the l
 ### Anesthesia Machines
 
 | Device | Cable or Interface | Adapter | Device Port | Vital Recorder Device Type |
-|--------|-------|---------|------|----------------|
+|--------|-------|---------|------|---------------- |
 | [Dräger Apollo / Cicero EM Color / Julian / Vamos](anesthesia_machines/drager_apollo.md) | Direct serial cable | None | COM1 | `Medibus` |
 | [Dräger Primus](anesthesia_machines/drager_primus.md) | Direct serial cable | None | COM1 | `Primus` |
 | [Dräger Fabius GS](anesthesia_machines/drager_fabius.md) | Direct serial cable | Check the COM1 connector:<br>Male (before Oct 2004): Null modem (F/F)<br>Female (Oct 2004 onward): None | COM1 | `Fabius` |
@@ -64,21 +63,19 @@ These tables summarize the connection requirements for each device. Follow the l
 | [GE Datex-Ohmeda](anesthesia_machines/ge_datex_ohmeda.md) | Custom 15-pin D-sub (M) to DB-9F serial cable | None | 15-pin (under cover) | `Datex-Ohmeda` |
 | [Maquet Flow-i](anesthesia_machines/maquet_flow_i.md) | Direct serial cable | Null modem (M/F) | Serial port | `Flow-i` |
 
-
 ### Mechanical Ventilators
 
 | Device | Cable or Interface | Adapter | Device Port | Vital Recorder Device Type |
-|--------|-------|---------|------|----------------|
+|--------|-------|---------|------|---------------- |
 | [Dräger EVITA V300 / V500 / V600 / V800](mechanical_ventilators/drager_evita.md) | Direct serial cable | Null modem; connector gender not confirmed | RS-232 COM1 | `MedibusX` |
 | [Maquet / Getinge Servo-i / Servo-s](mechanical_ventilators/maquet_servo.md) | Direct serial cable | Null modem (M/F) | **Bottom** RS-232 port | `Servo-i` |
 | [Maquet / Getinge Servo-U](mechanical_ventilators/maquet_servo.md) | Direct serial cable  | Null modem; connector gender not confirmed | RS-232 port | `Servo-u` |
 | [Hamilton G5](mechanical_ventilators/hamilton.md) | Direct serial cable | Null modem (M/F) | Monitoring Interface 1 or 2 | `Hamilton` |
 
-
 ### Hemodynamic Monitors
 
 | Device | Cable or Interface | Adapter | Device Port | Vital Recorder Device Type |
-|--------|-------|---------|------|----------------|
+|--------|-------|---------|------|---------------- |
 | [Edwards EV-1000](hemodynamic_monitors/edwards_ev1000.md) | Direct serial cable | Null modem (F/F) | Second serial port from the right | `EV1000` |
 | [Edwards EV-1000A](hemodynamic_monitors/edwards_ev1000.md) | Direct serial cable | Null modem (M/F) | Serial port | `EV1000` |
 | [Edwards Vigilance](hemodynamic_monitors/edwards_vigilance.md) | Direct serial cable | Null modem (M/F) | COM1 (or COM2) | `Vigilance` |
@@ -91,8 +88,8 @@ These tables summarize the connection requirements for each device. Follow the l
 ### Infusion Devices
 
 | Device | Cable or Interface | Adapter | Device Port | Vital Recorder Device Type |
-|--------|-------|---------|------|----------------|
-| [Fresenius Vial Orchestra](syringe_pumps/fresenius_orchestra.md) | Direct serial cable | Null modem (M/F) | RS232-3 | `Orchestra` |
+|--------|-------|---------|------|---------------- |
+| [Fresenius Vial Orchestra](syringe_pumps/fresenius_orchestra.md) | Direct serial cable | Null modem (M/F) | `RS232-3` | `Orchestra` |
 | [Fresenius Kabi Agilia](syringe_pumps/fresenius_agilia.md) | Proprietary Fresenius cable | None | Device-specific | `Agilia` |
 | [Fresenius Kabi Link+ Agilia](syringe_pumps/fresenius_link_agilia.md) | USB-A ↔ USB mini-B (5-pin) | None | USB mini-B | `Link+` |
 | [B. Braun SpaceCom](syringe_pumps/bbraun_spacecom.md) | Cable for 9-pin mini-DIN | None | Mini-DIN | `SpaceCom` |
@@ -102,16 +99,16 @@ These tables summarize the connection requirements for each device. Follow the l
 ### Brain Monitors
 
 | Device | Cable or Interface | Adapter | Device Port | Vital Recorder Device Type |
-|--------|-------|---------|------|----------------|
-| [Medtronic BIS VISTA](brain_monitors/medtronic_bis_vista.md) | Direct serial cable | None | RS-232 port | `BIS` |
-| [Medtronic BIS A-2000](brain_monitors/medtronic_bis_a2000.md) | Direct serial cable | None | RS-232 port | `BIS` |
+|--------|-------|---------|------|---------------- |
+| [Medtronic BIS VISTA](brain_monitors/medtronic_bis_vista.md) | Direct serial cable | None | RS-232 port | `VISTA` (ASCII) / `BIS (binary)` (Legacy Binary) |
+| [Medtronic BIS A-2000](brain_monitors/medtronic_bis_a2000.md) | Direct serial cable | None | RS-232 port | `A2000` |
 | [Medtronic INVOS Cerebral/Somatic Oximetry](brain_monitors/medtronic_invos.md) | Direct serial cable | Null modem (F/F) | RS-232 port | `Invos` |
 | [OBELAB NIRSIT-ON+](brain_monitors/obelab_nirsit_on.md) | Direct serial cable | None | USB port | `NirsitON` |
 
 ### Multifunction monitors
 
 | Device | Cable or Interface | Adapter | Device Port | Vital Recorder Device Type |
-|--------|-------|---------|------|----------------|
+|--------|-------|---------|------|---------------- |
 | [Masimo Radical-7](multifunction_monitors/masimo_radical7.md) | Direct serial cable | None | P1 RS-232 (docking station) | `Radical7` |
 | [Masimo ROOT](multifunction_monitors/masimo_root.md) | Masimo data-acquisition USB cable | None | USB1 or USB2 | `Root` |
 | [Sentec SDM](multifunction_monitors/sentec_sdm.md) | Direct serial cable | None | RS-232 port | `SDM` |
@@ -120,9 +117,9 @@ These tables summarize the connection requirements for each device. Follow the l
 ### Neuromuscular monitors
 
 | Device | Cable or Interface | Adapter | Device Port | Vital Recorder Device Type |
-|--------|-------|---------|------|----------------|
+|--------|-------|---------|------|---------------- |
 | [Blink Device TwitchView](neuromuscular_monitors/blink_twitchview.md) | Custom RJ-45 to DB-9F serial cable  | None | RJ-45 on the charging station (monitor docked)  | `TwitchView` |
-| [IDMED TOFscan](neuromuscular_monitors/idmed_tofscan.md) | TOF-RS1 / TOF-RS2 Optic-Serial (RS232) cable | None | Optical output | `TOFScan` |
+| [IDMED TOFscan](neuromuscular_monitors/idmed_tofscan.md) | TOF-RS1 Optic-Serial (RS232) cable | None | Optical output | `TOFScan` |
 
 ---
 

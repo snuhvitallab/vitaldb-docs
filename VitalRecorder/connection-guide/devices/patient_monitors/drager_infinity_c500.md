@@ -5,26 +5,38 @@ category: Patient Monitor
 manufacturer: Dräger
 vr_device_name: Infinity
 -->
-> No monitor-side configuration is required.
+> **Note:** This Infinity Acute Care System (IACS) connection records **numeric data** through the P2500 export port. ECG and arterial pressure waveforms require the **Analog/Sync** connection and an ADC.
 
-| Cable | Adapter | Port | VR Device Name |
-|-------|---------|------|----------------|
-| Custom RJ10 ↔ DB-9F (numeric) — or Dräger **Export Protocol Cable MS22948** | None | `RJ10` port on the P2500 | `Infinity` |
-| Analog/Sync cable → custom MDR14 ↔ RJ45 → ADC (waveform) | None | Analog/Sync port | — (ADC device) |
+| Connection | Cable or Interface | Adapter | Port | VR Device Name |
+|---|---|---|---|--- |
+| Numeric data | Dräger export protocol cable MS22948 or custom RJ-10 to DB-9F cable | None for the cable described below | Export port on P2500 | `Infinity` |
+| ECG/BP waveforms | Compatible Analog/Sync cable, connection cable for the ADC, and ADC | Depends on the ADC connection | Analog/Sync connection on M540 | Select the device type for your ADC |
 
 ## Connection Requirements
 
-The DB-9F end goes to the PC's DB-9M serial port or a USB-Serial converter. No Null Modem adapter is used — the crossover is built into the custom cable's pin mapping.
+Use the **P2500 export port** for this serial connection. No additional null modem adapter is required with the custom pin assignment below.
+
+For analog waveforms, use a compatible **Dräger Analog/Sync cable** and ADC. If an **Infinity M-Cable Microstream CO2** is also connected to the M540, use the compatible Y-cable arrangement for those accessories.
+
+## Cable Pinout
+
+### Numeric Data
+
+| RJ-10 Pin (P2500 end) | DB-9F Pin (PC end) |
+|---|--- |
+| 3 | 2 |
+| 2 | 3 |
+| 4 | 5 |
 
 ## Connection Steps
 
 ### Numeric Data
 
-1. Prepare a cable connecting **RJ10 pins 3, 2, 4** → **DB-9F pins 2, 3, 5**.
-2. Connect the **RJ10 end** to the RJ10 port on the **P2500**.
-3. Connect the **DB-9F end** to the PC via a USB-Serial converter.
+1. Prepare a custom RJ-10 to DB-9F cable using the connections in [Cable Pinout](#cable-pinout), or use the Dräger export protocol cable **MS22948**.
+2. Connect the **RJ-10 end** to the export port on the **P2500**.
+3. Connect the **DB-9F end** to the PC's serial port. If the PC has no serial port, use a **USB-Serial converter**.
 
-### Waveform Data (Optional)
+### ECG/BP Waveforms
 
 Waveforms are only available as analog voltages, read through an ADC (SNU-ADC, DataQ DI-149/DI-155, …).
 
@@ -38,18 +50,15 @@ Waveforms are only available as analog voltages, read through an ADC (SNU-ADC, D
 
 ## Device Configuration
 
-No monitor-side configuration is required for numeric data — the export protocol on the P2500 RJ10 port is always active.
+No changes to the monitor settings are required for the numeric-data connection described here.
 
 ## Vital Recorder Setup
 
-- In Vital Recorder, add **Patient monitor → Draeger : Infinity**.
+### Numeric Data
 
-## Known Limitations
+- Add the device as **`Infinity`** and select the PC serial port used for the connection.
 
-- **The P2500 COM ports are inputs.** Recording from the monitor uses the RJ10 export port and the Analog/Sync port described above.
+### ECG/BP Waveforms
 
-## Notes
-
-- Dräger markets this family as the **Infinity Acute Care System (IACS)** — sites and vendors often say "IACS C500". Same connection.
-- Confirm the pinout with Dräger or the cable vendor before building the custom MDR14 ↔ RJ45 cable.
-- Sibling model **Infinity Kappa** uses the X5/X3 14-pin Mini-D port instead — see [Dräger Infinity Kappa](drager_infinity_kappa.md).
+- Add the device type corresponding to your **ADC**.
+- Configure the channels and signal scaling for the cable used. In the SNUADC example from this guide, **ART uses channel 2 with gain ×100**, and **ECG uses channel 3**. This mapping is specific to that cable and ADC setup.

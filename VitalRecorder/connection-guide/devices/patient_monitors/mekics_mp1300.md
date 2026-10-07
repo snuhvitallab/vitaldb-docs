@@ -8,7 +8,7 @@ vr_device_name: MEKICS
 > **Note:** **No serial cable — this monitor is collected over TCP/IP via a dedicated Wi-Fi router.** The router must be configured before first use, and the MP1300 must be rebooted for its network settings to apply.
 
 | Cable | Adapter | Port | VR Device Name |
-|-------|---------|------|----------------|
+|-------|---------|------|---------------- |
 | Ethernet — monitor → dedicated Wi-Fi router (`192.168.0.1`) → VR PC | — | TCP `6002` (monitor **Server Port**; Server IP = VR PC, see [Device Configuration](#device-configuration)) | `MEKICS` |
 
 ## Connection Requirements
