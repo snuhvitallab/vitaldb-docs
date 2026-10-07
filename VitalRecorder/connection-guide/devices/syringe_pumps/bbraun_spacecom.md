@@ -8,7 +8,7 @@ vr_device_name: SpaceCom
 > **Note:** **Two ports, two jobs.** Data is recorded from the **9-pin mini-DIN serial port** at the bottom of the SpaceCom module, but the serial interface must first be enabled and its parameters set through the **SpaceOnline web interface**, reached over the **LAN (RJ-45) port** higher up on the same module.
 
 | Cable | Adapter | Port | VR Device Name |
-|-------|---------|------|----------------|
+|-------|---------|------|---------------- |
 | Cable for 9-pin mini-DIN serial port | None | Serial (9-pin mini-DIN), bottom of the SpaceCom module | `SpaceCom` |
 | Ethernet patch cable (configuration only) | None | LAN (RJ-45), SpaceOnline | — |
 
@@ -50,13 +50,3 @@ The serial interface is configured over LAN through **SpaceOnline**, the module'
 ## Vital Recorder Setup
 
 - Add the device in Vital Recorder as **`SpaceCom`**.
-
-## Troubleshooting
-
-- **The SpaceCom links up but transmits nothing.** Configuration is mandatory — an unconfigured SpaceCom links up electrically but sends no data. Complete the SpaceOnline procedure above.
-- **A previously working station stops producing tracks.** After a firmware update or a factory reset the interface settings return to their defaults. Re-check **Interface Settings** first.
-
-## Notes
-
-- The SpaceCom is the communication module of the **SpaceStation** rack; it reports the infusion pumps (Perfusor / Infusomat Space) docked in that rack, so one `SpaceCom` device in Vital Recorder covers the whole station rather than one entry per pump.
-- Restore the PC's Ethernet adapter to DHCP after configuration if it is also used on the hospital network.

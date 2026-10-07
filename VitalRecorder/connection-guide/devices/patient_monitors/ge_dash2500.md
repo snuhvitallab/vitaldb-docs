@@ -5,19 +5,19 @@ category: Patient Monitor
 manufacturer: GE
 vr_device_name: Dash2500
 -->
-> **Note:** Protocol: **GE Dinamap Protocol** — *not* the Unity Network protocol used by the Dash 2000/3000/4000. The two families are wired and configured differently.
+> **Note:** This connection uses the **HostComm** port and requires the monitor settings below. It differs from the AUX connection used by the Dash 2000 / 3000 / 4000 / 5000.
 
 | Cable | Adapter | Port | VR Device Name |
-|-------|---------|------|----------------|
-| direct serial cable | None | **HostComm Port** (DB-9, rear panel) | `Dash2500` |
+|---|---|---|--- |
+| Direct serial cable | None | HostComm (DB-9) | `Dash2500` |
 
 ## Connection Requirements
 
-**Use the DB-9 HostComm port only.** The Dash 2500 also carries a non-isolated DB-15 communication-adaptor connector that runs inverted-TTL signals and puts fused **+5 V and +12 V on two of its pins**. Plugging a PC serial cable into that connector can damage the converter or the monitor. The DB-9 HostComm port is the isolated, RS-232-level port.
+Use the **9-pin HostComm port** for this RS-232 connection. The separate 15-pin communication-adapter connector is not a PC RS-232 port.
 
 ## Connection Steps
 
-1. Locate the **HostComm Port** on the rear panel. It is the D-sub connector immediately to the right of the AC power inlet, inside the same recessed bay; the potential-equalization stud sits just below it. The two RJ-45 jacks further to the right on the panel are the Ethernet/serial network connectors and are **not** used for this connection.
+1. Connect a **direct serial cable** to the **HostComm** port on the rear of the monitor. No null modem adapter is required.
 
    <img src="../hardware_images/ge_dash2500_1.png" width="450" alt="Line drawing of the Dash 2500 rear panel with callouts: Speaker at top, AC Power Operation inlet and the HostComm Port D-sub connector beside it in the same recessed bay, the Potential Equalization Terminal stud below, and the Ethernet and Serial Connectors (two RJ-45 jacks) on the right">
 
@@ -34,7 +34,7 @@ vr_device_name: Dash2500
 The isolated host communications connector is wired as:
 
 | Pin | Signal |
-|-----|--------|
+|-----|-------- |
 | 2 | TX (RS-232) |
 | 3 | RX (RS-232) |
 | 5 | Ground |
@@ -56,13 +56,4 @@ Pins 2, 3 and 5 carry the serial data and ground used by Vital Recorder.
 
 ## Vital Recorder Setup
 
-- Add the device in Vital Recorder as **GE :: Dash 2500**; in `vr.conf` the type is `Dash2500`.
-- Parameters delivered over this link are numerics (ECG/HR, NIBP, SpO2, Temp, Resp, IBP). If the site needs the MPS module's PLETH waveform, that is recorded as the separate **MPS** device type.
-
-## Troubleshooting
-
-- **The link stays silent after configuration.** Re-check that **Remote Access** is set to **Serial 2** — the setting reverts if *Save Default Changes* is skipped before leaving configuration mode.
-
-## Notes
-
-- **Do not use the Dash 2000/3000/4000 procedure here.** Those models expose serial data on an RJ-45 Aux terminal over the Unity Network protocol and need a custom DB-9F ↔ RJ-45 cable — see [GE Dash 2000 / 3000 / 4000 / 5000](ge_dash2000.md).
+- Add the device as **`Dash2500`** and select the PC serial port used for the connection.

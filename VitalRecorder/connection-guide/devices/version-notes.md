@@ -3,7 +3,7 @@
 **Run the latest Vital Recorder.** The [official version history](https://vitaldb.net/vital-recorder/?action=versions) is the complete release record. This page summarizes changes that add device support or change collected data; other release changes are listed in the official history. Entries older than about two years are omitted.
 
 | Version | Date | Device | Change |
-|---|---|---|---|
+|---|---|---|--- |
 | 1.19.34 | 2026-10-06 | Nihon Kohden PVM-4700 | New **`PVM`** entry for the Vismo PVM-4700 series. Numerics are collected over RS-232C. |
 | 1.19.34 | 2026-10-06 | Nihon Kohden BSM-3000/6000, CSM-1500/1700 | Units that recorded nothing over serial now record numerics: Vital Recorder falls back to a request these models accept. |
 | 1.19.32 | 2026-10-05 | Philips IntelliVue | **`auto_wavs=0`** (device-dialog checkbox) requests only the selected waveforms. By default a waveform is added for every numeric present. |

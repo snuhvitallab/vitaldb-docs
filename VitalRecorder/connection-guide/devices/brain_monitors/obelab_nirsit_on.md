@@ -5,19 +5,21 @@ category: Brain Monitor
 manufacturer: OBELAB
 vr_device_name: NirsitON
 -->
-| Cable | Adapter | Port | Serial | VR Device Name |
-|-------|---------|------|--------|----------------|
-| direct serial cable | None | USB port on the rear of the device (serial over USB) | 115200 baud | `NirsitON` |
+| Cable | Adapter | Port | VR Device Name |
+|-------|---------|------|---------------- |
+| USB-Serial converter (USB end into the device) | Not confirmed | USB-A port | `NirsitON` |
 
 ## Connection Steps
 
-1. Connect a direct serial cable (via a USB-Serial converter) to the **USB port on the rear** of the NIRSIT-ON+ unit. No Null Modem adapter is used.
-2. In Vital Recorder, add the device as **`NirsitON`**.
+1. Plug the USB end of a USB-Serial converter into the USB-A port on the rear of the NIRSIT ON+.
+2. Use an additional direct serial cable to connect the converter’s DB-9 end to the PC’s serial port.
+3. If the PC has no serial port, connect the cable to the PC through a second USB-Serial converter.
 
 ## Device Configuration
 
-Serial output: **115200 baud**.
+- Serial output settings : **115200 baud, 8 / None / 1**.
+- On the NIRSIT ON+, press Calibrate. Data transmission begins when calibration starts.
 
 ## Vital Recorder Setup
 
-- Add the device as **`NirsitON`**. Recorded parameters: rSO2, HbO2, HbR, CCO and the NIRS waveform.
+- Add the device as **`NirsitON`**.

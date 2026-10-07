@@ -8,7 +8,7 @@ vr_device_name: LiDCO
 > **Note:** **Serial output is off by default.** The RS-232 communications module must be switched on inside the monitor's **Engineering Screen** before Vital Recorder will see anything, and the baud rate here is **57600** — not the 9600 used by the Edwards monitors.
 
 | Cable | Adapter | Port | Serial | VR Device Name |
-|-------|---------|------|--------|----------------|
+|-------|---------|------|--------|---------------- |
 | direct serial cable | Null Modem adapter (M/F) (assumes female COM1; unverified) | **COM1** — standard 9-way serial port on the monitor | 57600 baud | `LiDCO` |
 
 ## Connection Steps
@@ -20,7 +20,7 @@ vr_device_name: LiDCO
 2. Set the following:
 
    | Parameter | Value |
-   |-----------|-------|
+   |-----------|------- |
    | LiDCO Serial | Enabled |
    | Baud Rate | 57600 |
    | Data Bits | 8 |

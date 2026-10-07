@@ -5,43 +5,23 @@ category: Patient Monitor
 manufacturer: GE
 vr_device_name: (none — ADC device)
 -->
-> **Note:** **This is an analog connection, not serial.** ECG, arterial pressure and PLETH waveforms can only be taken from the **15-pin ANALOG OUT** connector on the rear of the TRAM-RAC 4A housing. The connector outputs the measured waveforms as voltages, so an **Analog-to-Digital Converter (ADC)** is required between the TRAM-RAC and the PC. A Tram-rac **2** housing has no analog output connector.
+> **Note:** This connection collects analog signals from the 15-pin ANALOG OUT connector on the rear of the TRAM-RAC 4A. An analog-to-digital converter (ADC) is required to record these signals on a PC. The TRAM-RAC 2 does not provide this analog output.
 
 | Cable | Adapter | Port | VR Device Name |
-|-------|---------|------|----------------|
-| Custom DB-15M to ADC analog inputs | — | 15-pin **ANALOG OUT** (rear of TRAM-RAC 4A housing) | *(per ADC type)* |
-
-## Connection Requirements
-
-The ADC connects to the PC over **USB**. There is no VR device entry for the TRAM-RAC itself — the ADC is added in Vital Recorder as the ADC device (DataQ or SNU-ADC) and each analog channel is mapped to a track.
-
-**Do NOT leave a transducer cable in the second BP connector (BP2)** when you want the PLETH waveform. Analog pin 13 carries **"Tram BP2 *or* SpO2 waveform"** — it only outputs PLETH while BP2 is unused. If a CVP or second arterial transducer is plugged into BP2, BP2 is recorded on the PLETH channel instead.
+|-------|---------|------|---------------- |
+| Custom 15-pin D-sub male cable and ADC | — | 15-pin **ANALOG OUT** | Select the device type for your ADC |
 
 ## Cable Pinout
 
-ANALOG OUT connector:
-
 <img src="../hardware_images/ge_tram_rac_2.png" width="450" alt="Wiring diagram — ANALOG OUT DB-15 pins 2, 3, 5, 9, 10, 11 and 13 to ADC analog inputs Ch1 to Ch7 (+), with pins 1 and 8 as the common ground for all channel (−) inputs">
 
-| ANALOG OUT pin | Signal | ADC channel in the diagram |
-|---|---|---|
-| 1 | Signal GND for Tram waveforms | Ch1–Ch8 (−), common |
-| 2 | Trace I — the top displayed trace (ECG II unless aVR/aVL/aVF is selected) | Ch1 (+) |
-| 3 | Tram BP3 or SpO2 value | Ch2 (+) |
-| 4 | Reserved for future use | — |
-| 5 | Tram ART1 or BP1 | Ch3 (+) |
-| 6 | Slot 3 Series 7000 waveform A | — |
-| 7 | Slot 4 Series 7000 waveform A | — |
-| 8 | Signal GND for Series 7000 waveforms | Ch1–Ch8 (−), common |
-| 9 | Tram ECG II | Ch4 (+) |
-| 10 | Tram ECG V | Ch5 (+) |
-| 11 | Tram BP4 or RESP | Ch6 (+) |
-| 12 | Reserved for future use | — |
-| 13 | **Tram BP2 or SpO2 (PLETH) waveform** | Ch7 (+) |
-| 14 | Slot 3 Series 7000 waveform B | — |
-| 15 | Slot 4 Series 7000 waveform B | — |
+## Connection Requirements
 
-Which pins carry a signal depends on the Tram and input modules active on the monitor.
+1. An ADC supported by Vital Recorder, connected to the PC via USB.
+2. A custom cable connecting the required ANALOG OUT pins to the ADC's analog inputs.
+3. The TRAM module in the top slot for the TRAM outputs listed below.
+
+DATAQ DI-149 and DI-155 have been used with this setup. SNUADC is an alternative with eight analog input channels and support for wired or wireless event-marker buttons.
 
 ## Connection Steps
 
@@ -63,33 +43,30 @@ Which pins carry a signal depends on the Tram and input modules active on the mo
 
 No configuration is required on the TRAM-RAC — the analog outputs are always live. All setup happens on the ADC side in Vital Recorder: channel mapping, gain and unit (see Notes for the scaling values).
 
-### Choosing the Module Slots
+### Connection Setup for PLETH and CVP
 
-1. Verify in Vital Recorder that each channel carries the waveform you expect. Below, PLETH shows no pulsatile signal and CVP does not come through at all — the signature of a BP2 conflict.
+1. Confirm that each channel in Vital Recorder contains the expected waveform. In the example below, CVP is recorded on the channel labeled PLETH, while the CVP channel does not show the expected signal.
 
    <img src="../hardware_images/ge_tram_rac_5.png" width="450" alt="Vital Recorder screen with ECG and ART1 tracing normally while the CVP pane is empty and the PLETH channel is a flat line">
 
-2. **Incorrect:** the CVP transducer cable is in the **second** BP connector from the left (BP2), so pin 13 outputs BP2 instead of the PLETH waveform.
-
+2. BP2 connected: the CVP transducer cable is connected to BP2, so pin 13 outputs CVP instead of PLETH.
    <img src="../hardware_images/ge_tram_rac_6.png" width="450" alt="Tram module front panel labeled ARTERIAL / RA-CVP with a transducer cable occupying the second BP connector and the third BP socket left empty — incorrect">
 
-3. **Correct:** leave **BP2 empty** and move the CVP transducer to the **third** BP connector (BP3).
+3. Configuration for collecting both signals: connect the CVP transducer to BP3 and leave BP2 unused. Pin 3 provides CVP, and pin 13 provides PLETH. Assign the corresponding ADC channels to CVP and PLETH in Vital Recorder.
 
    <img src="../hardware_images/ge_tram_rac_7.png" width="450" alt="Tram module front panel with the second BP socket left empty and the transducer cables moved to the third and fourth positions — correct">
 
 ## Vital Recorder Setup
 
-- There is no Vital Recorder device entry for this port. Add the **ADC** (DataQ DI-149 / DI-155 / DI-1110 or SNU-ADC) as the device and map each analog channel to a track.
+1. Add the device type corresponding to your ADC.
+2. Configure the connected analog channels and sampling rate according to the ADC guide.
+3. Assign each channel a track name and unit.
+4. Apply the appropriate signal scaling.
+5. Start recording and confirm that each channel contains the expected signal.
 
 ## Troubleshooting
 
-- **The ECG channel stays flat.** Vital Recorder records **ECG lead II only** from this port — if the monitor is displaying another lead, switch it to **lead II**.
 - **A DataQ DI-1110 (or newer) is not recognised.** These can run in either libusb or CDC mode, and Vital Recorder only recognises **CDC mode** — switch the device to CDC mode before use.
-- **The channel on Trace I (pin 2) changes unexpectedly.** It mirrors whatever trace sits at the top of the monitor screen, so changing the displayed lead changes what is recorded on that channel. Pins 9 and 10 (ECG II and ECG V) are fixed and are the safer choice.
-
-## Notes
-
 - Analog output scaling: ECG **1 V/mV ± 10%**, invasive BP **1 V / 100 mmHg**, SpO2 **0–100 % equivalent to 0–1 V**. Use these to set the per-channel gain and unit in Vital Recorder.
 - **ICP:** when monitoring ICP, the ICP module must be in the **first slot** of the TRAM-RAC.
 - **Choosing an ADC:** the DI-149 and DI-155 differ mainly in voltage resolution. The DI-149 is adequate for general monitoring; use the DI-155 if you intend to analyse ECG detail such as P- or T-waves.
-- If the analog port is already in use for another purpose, ECG and ABP can also be taken from the **Defib.Sync** connector on the module front panel — see [GE Defib Connectors](ge_defib.md).
