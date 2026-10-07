@@ -9,12 +9,8 @@ vr_device_name: Intellivue
 
 | Cable | Adapter | Port | VR Device Name |
 |-------|---------|------|----------------|
-| Custom RJ-45 ↔ DB-9F (MP / MX via MIB) | None | `MIB/RS232` (RJ-45) | `Intellivue` |
-| Custom RJ-45 ↔ DB-9F with pins 2/3 swapped (MX400–550 via ASIB) | None | `MIB/RS232` on the Advanced Interface Card | `Intellivue` |
+| Custom RJ-45 ↔ DB-9F | None | `MIB/RS232` | `Intellivue` |
 
-## Connection Requirements
-
-The DB-9F end goes to the PC's DB-9M serial port or a USB-Serial converter (e.g. ATEN UC-232A). The monitor side is RJ-45, so **no Null Modem adapter is used** — the crossover is built into the custom cable.
 
 ## Connection Steps
 1. Locate the port labeled **`MIB/RS232`** on the monitor. A separate port labeled only `RS232` (next to `Alarm`) is **not** the data-export port and will not work.
@@ -33,7 +29,13 @@ The DB-9F end goes to the PC's DB-9M serial port or a USB-Serial converter (e.g.
 
 4. Plug the **RJ-45 end** into the MIB/RS232 port and the **DB-9F end** into the PC via USB-Serial converter.
 
-5. **MX400–550 series only:** the **Advanced Interface Card (ASIB)** port can be used instead. Its Rx/Tx are reversed relative to the MIB port — **DB-9F pins 2 and 3 are swapped** (RJ-45 4, 5, 7 → DB-9F 5, 3, 2).
+5. **MX400–550 series only:** the **Advanced Interface Card (ASIB)** port can be used instead. Its Rx/Tx are reversed relative to the MIB port, so the cable is wired as follows:
+
+   | DB-9F (PC side) | Signal | RJ-45 (ASIB) | Signal |
+   |---|---|---|---|
+   | 2 | RX | 7 | TX |
+   | 3 | TX | 5 | RX |
+   | 5 | GND | 4 | GND |
 
    <img src="../hardware_images/philips_intellivue_4.png" width="450" alt="MX400-550 Advanced Interface Card wiring diagram: DB-9F pin 2 RX to RJ-45 pin 7 TX, DB-9F pin 3 TX to RJ-45 pin 5 RX, DB-9F pin 5 GND to RJ-45 pin 4 GND">
 
@@ -62,53 +64,38 @@ The DB-9F end goes to the PC's DB-9M serial port or a USB-Serial converter (e.g.
 
    - The digit after `DtOut` follows the slot the port is assigned to, so `DtOut2` may be correct on a monitor with a different card layout.
 
-6. **Restart the monitor.** The driver change only takes effect after a power cycle.
+   > When both data-export connections are in use, only one can receive waveforms at a time. The connection whose waveform request succeeds first receives the waveforms; waveform requests from the other connection are rejected.
 
-- Serial: **115200 baud, fixed** (set via *Data Export 1 / 2*). No hardware flow control — the cable carries only RxD, TxD and GND.
-- Verification: when a MIB/RS232 port is configured for data export, the yellow **arrow-out LED** beside that port lights up.
+6. **Reboot the monitor.** The driver change only takes effect after a power cycle.
 
-**Optional — Extract ETCO2 / AWP Waveform (via IntelliBridge EC10 Module):**
 
-1. Navigate to **Main Setup → Operating Modes → Config**.
+## Optional: CO2 and Airway Pressure Waveforms via IntelliBridge EC10
+
+Use this section when an anesthesia machine is connected to the IntelliVue monitor through an IntelliBridge EC10 module.
+
+1. Open **Main Setup → Operating Modes → Config** and enter the configuration password.
    - Config password: **`71034`**
 
    <img src="../hardware_images/philips_intellivue_10.png" width="450" alt="Operating Modes menu with Config selected and the Enter Config password keypad open">
 
-2. Press the **Setup** button on the **IntelliBridge EC10 module** connected to the anesthesia machine.
-
-   <img src="../hardware_images/philips_intellivue_11.png" width="450" alt="Monitor module rack with the Setup button on an IntelliBridge EC10 module highlighted">
-
-3. On the monitor, select **Setup Device** in the *External Devices* bar.
-
-   <img src="../hardware_images/philips_intellivue_12.png" width="450" alt="Anesth. Machine window with the External Devices bar below it and the Setup Device button highlighted">
-
-4. Navigate to **Setup Anesth. Machine → Device Driver → Setup Waves**.
+2. Press the **Setup** button on the IntelliBridge EC10 module.
+3. On the monitor, select **Setup Device** in the **External Devices** bar.
+4. Open **Setup Anesth. Machine → Device Driver → Setup Waves**.
 
    <img src="../hardware_images/philips_intellivue_13.png" width="450" alt="Setup Anesth. Machine menu with Device Driver highlighted">
 
-5. Press **Add** and select **CO2** and **AWP**.
-   - If incorrect waves appear, press **Delete All**, then re-add the correct waves.
-
-6. Select **Select to change operating mode → Monitoring**.
-
-   <img src="../hardware_images/philips_intellivue_14.png" width="450" alt="Select to change operating mode prompt with Monitoring highlighted in the Operating Modes list">
-
-7. Press **Confirm** to leave configuration mode and apply the settings.
+5. Add **CO2** and **AWP**, if available for the connected device.
+6. Press **Confirm** to leave configuration mode and apply the settings.
 
    <img src="../hardware_images/philips_intellivue_15.png" width="450" alt="Please Confirm prompt for leaving Configuration Mode with the Confirm button highlighted">
 
 ## Vital Recorder Setup
 
-- Add the device in Vital Recorder as **`Intellivue`**.
+- Add the device as **`Intellivue`** and select the PC serial port used for the connection.
 
 ## Troubleshooting
 
 - **A bed records nothing after a monitor swap or a power event.** The `DtOut1` setting can be lost silently. Re-check *Setup Interfaces*, then power-cycle the monitor and restart Vital Recorder.
-- **Numerics arrive but no pressure waveform.** Check the invasive pressure label on the monitor — it must be **`ART1` / `IBP1`**. Beds labelled `ART2` (or another second-channel label) record numerics only. Relabel on the monitor; the track name is not configurable in Vital Recorder.
-- **The ECG waveform is missing.** It disappears when the monitor is displaying lead I or III — switch to **lead II**.
-- **No CO2 / AWP from the ventilator.** Enable the monitor's ventilator-data setup; the parameters are not forwarded otherwise.
-- **Anesthesia-machine waves arrive in the wrong order (Datex-Ohmeda through IntelliBridge).** The order Vital Recorder receives is whatever the monitor sends. Set the wave order on the monitor to **C-F-V-P** (CO2, Flow, Volume, Pressure) — `wavs=` only tells Vital Recorder how to interpret the order.
-- **AWF looks wrong after an anesthesia-machine swap.** The airway-flow bias differs by bridged machine (about −130 for Datex-Ohmeda, −160 for Dräger). Re-request `awp`/`awf` in `vr.conf` after the swap.
 - **Waveforms stop a few seconds after recording starts while numerics continue.** More waveforms were requested than the serial link can carry, and the monitor then stops sending all of them. By default Vital Recorder adds a waveform for every numeric present on top of the ones selected. Clear the auto-add checkbox in the device dialog (`auto_wavs=0`) so only the selected waveforms are requested.
 - **Waves missing on old firmware (e.g. some MP20 units).** Request them explicitly in `vr.conf`.
 - **Repeated crashes on a multi-bed installation, or serial reception failing.** The multi-bed crash was fixed in 1.19.3; serial reception failure was fixed in 1.16.4.
