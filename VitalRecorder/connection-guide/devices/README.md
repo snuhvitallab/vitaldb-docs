@@ -139,7 +139,16 @@ For standard DB-9 connections, use a **direct cable** and add a **null modem ada
 
 **M/F** and **F/F** indicate connector gender (M = male; F = female). A null modem adapter provides crossed pin connections; a straight-through gender changer does not.
 
-#### Purchase Links (Korea)
+#### Null Modem Adapters
 
-- [Null modem adapter — M/F](http://cableguy.com/shop/mall.php?cat=007001001&query=view&no=33688)
-- [Null modem adapter — F/F](http://cableguy.com/shop/mall.php?cat=007001001&query=view&no=189324)
+**M/F** — male at one end, female at the other
+
+<img src="hardware_images/serial_cable_2.png" width="260" alt="Null modem adapter (M/F) with male pins at one end and female sockets at the other">
+
+[Purchase reference (Korea)](http://cableguy.com/shop/mall.php?cat=007001001&query=view&no=33688)
+
+**F/F** — female at both ends
+
+<img src="hardware_images/serial_cable_3.png" width="300" alt="Null modem adapter (F/F) with female sockets at both ends">
+
+[Purchase reference (Korea)](http://cableguy.com/shop/mall.php?cat=007001001&query=view&no=189324)
