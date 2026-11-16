@@ -386,9 +386,6 @@ If you use the VitalDB open dataset in your research, please cite the following 
 </tbody>
 </table>
 
-\
-=
-
 # Parameter List
 
 ## Clinical Information
@@ -470,9 +467,6 @@ If you use the VitalDB open dataset in your research, please cite the following 
 | intraop_phe | EMR | Phenylephrine | mcg |
 | intraop_epi | EMR | Epinephrine | mcg |
 | intraop_ca | EMR | Calcium chloride | mg |
-
-\
--
 
 ## Hemodynamic Parameters
 
@@ -679,9 +673,6 @@ W=waveform; N=numeric; S=string
 | FMS/PRESSURE | Infusion line pressure | N |
 | FMS/TOTAL_VOL | Total infused volume | N |
 
-\
-=
-
 ## Lab Results
 
 | **Parameter** | **Data Source** | **Category** | **Description** | **Unit** | **Reference value** |
@@ -719,9 +710,6 @@ W=waveform; N=numeric; S=string
 | hco3 | EMR | ABGA | Bicarbonate | mmol/L | 18~23.0 |
 | be | EMR | ABGA | Base excess | mmol/L | -2.0~3.0 |
 | sao2 | EMR | ABGA | Arterial oxygen saturation | % | 95~98 |
-
-\
-=
 
 # Data Use Agreement
 
