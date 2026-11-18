@@ -55,6 +55,14 @@ For unattended server-style recording without a GUI, download the platform-speci
 
 > **32-bit Raspberry Pi (`pivr`, armhf) is no longer supported.** The last 32-bit build is **1.15.10** (2025-07-14); no newer 32-bit builds are released. For devices that must stay on 32-bit, **1.13.10** is the recommended stable version. New installations should use the 64-bit build (`pivr64`) on current Raspberry Pi OS.
 
+| Raspberry Pi | Build to use |
+|---|---|
+| Pi Zero W, Pi 1 (ARMv6) | 32-bit only (`pivr`, 1.13.10 recommended). These boards cannot run a 64-bit OS. |
+| Pi Zero 2 W, Pi 3/4/5 with 64-bit Raspberry Pi OS | 64-bit (`pivr64`, latest) |
+| Pi Zero 2 W, Pi 3/4/5 with 32-bit Raspberry Pi OS | 32-bit (`pivr`). To use the 64-bit build, reinstall the OS as 64-bit first. |
+
+> ⚠️ **Do not install `pivr64` on a 32-bit OS — it will not run.** Check the OS with `getconf LONG_BIT`: `32` → use `pivr`, `64` → use `pivr64`.
+
 ---
 
 ## Quick Start
