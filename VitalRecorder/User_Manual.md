@@ -53,6 +53,8 @@ Log out and back in for the group change to take effect.
 
 For unattended server-style recording without a GUI, download the platform-specific console binary (`pivr64` for Raspberry Pi ARM64 or `ubuntu64` for Ubuntu x64) from the release page and run it directly.
 
+> **32-bit Raspberry Pi (`pivr`, armhf) is no longer supported.** The last 32-bit build is **1.15.10** (2025-07-14); no newer 32-bit builds are released. For devices that must stay on 32-bit, **1.13.10** is the recommended stable version. New installations should use the 64-bit build (`pivr64`) on current Raspberry Pi OS.
+
 ---
 
 ## Quick Start
